@@ -3,9 +3,9 @@
   "name": "Yet Another Otter System",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "256x256",
-      "type": "image/x-icon"
+      "src": "icon.png",
+      "sizes": "1417x1417",
+      "type": "image/png"
     }
   ],
   "start_url": ".",
