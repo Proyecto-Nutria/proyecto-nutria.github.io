@@ -1,5 +1,5 @@
 # YAOS
 
-### Yet Another Otter System
+### Yet An Otter System
 
 [Site Link](https://proyecto-nutria.github.io/)
