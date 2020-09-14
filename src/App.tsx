@@ -1,9 +1,26 @@
 import React from 'react';
-import './App.css';
+import { Grommet, Box, Button } from 'grommet';
 
 function App() {
+  const theme = {
+    global: {
+      font: {
+        family: 'sans-serif',
+        size: '18px',
+        height: '20px',
+      },
+    },
+  };
   return (
-    <div>Hello World</div>
+    <Grommet theme={theme}>
+      <Box align="center" background="neutral-2">
+        <Button
+          label="Hello world"
+          primary
+          onClick={() => alert('Hello, world')}
+        />
+      </Box>
+    </Grommet>
   );
 }
 
