@@ -9,6 +9,7 @@ import Login from "./screens/Login";
 import Home from "./screens/Main";
 import Landing from "./screens/Landing";
 import SignUp from "./screens/SignUp";
+import EditProfile from "./screens/EditProfile";
 
 const App = () => {
   const theme = {
