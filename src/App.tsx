@@ -11,7 +11,35 @@ import Landing from "./screens/Landing";
 import SignUp from "./screens/SignUp";
 import EditProfile from "./screens/EditProfile";
 
-const App = () => {
+const Routes = () => {
+  const user = useContext(UserContext);
+
+  return (
+    <HashRouter>
+      <Switch>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/signUp">
+          <SignUp />
+        </Route>
+        {user && (
+          <Route path="/home">
+            <Home />
+          </Route>
+        )}
+        <Route path="/editProfile">
+          <EditProfile />
+        </Route>
+        <Route path="/">
+          <Landing />
+        </Route>
+      </Switch>
+    </HashRouter>
+  );
+};
+
+const App: React.FunctionComponent = () => {
   const theme = {
     global: {
       font: {
@@ -21,39 +49,12 @@ const App = () => {
     },
   };
 
-  const user = useContext(UserContext);
-
   return (
-    <HashRouter>
+    <Grommet theme={theme}>
       <UserProvider>
-        <Grommet theme={theme}>
-          <Switch>
-            <Route path="/">
-              <Landing />
-            </Route>
-            {user == null ? (
-              <>
-                <Route path="/login">
-                  <Login />
-                </Route>
-                <Route path="/signUp">
-                  <SignUp />
-                </Route>
-              </>
-            ) : (
-              <>
-                <Route path="/home">
-                  <Home />
-                </Route>
-                <Route path="/editProfile">
-                  <EditProfile />
-                </Route>
-              </>
-            )}
-          </Switch>
-        </Grommet>
+        <Routes />
       </UserProvider>
-    </HashRouter>
+    </Grommet>
   );
 };
 

@@ -8,7 +8,6 @@ const Login = () => {
   return (
     <Box align="center" background="neutral-2">
       <Button label="Login" primary onClick={signInWithGoogle} />
-      <Button label="Sign Out" primary onClick={signOutWithGoogle} />
     </Box>
   );
 };

@@ -9,7 +9,9 @@ const UserProvider: React.FunctionComponent = ({ children }) => {
   const [user, changeUser] = useState<maybeUser>(null);
 
   useEffect(() => {
-    auth.onAuthStateChanged((userAuth) => changeUser(userAuth));
+    auth.onAuthStateChanged((userAuth) => {
+      changeUser(userAuth);
+    });
   }, []);
 
   return <Provider value={user}>{children}</Provider>;
