@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Grommet } from "grommet";
 
 import { HashRouter, Switch, Route } from "react-router-dom";
 
-import UserProvider from "./providers/UserProvider";
+import UserProvider, { UserContext } from "./providers/UserProvider";
 
 import Login from "./screens/Login";
 import Home from "./screens/Main";
@@ -20,23 +20,32 @@ const App = () => {
     },
   };
 
+  const user = useContext(UserContext);
+
   return (
     <HashRouter>
       <UserProvider>
         <Grommet theme={theme}>
           <Switch>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/signUp">
-              <SignUp />
-            </Route>
-            <Route path="/home">
-              <Home />
-            </Route>
             <Route path="/">
               <Landing />
             </Route>
+            {user == null ? (
+              <>
+                <Route path="/login">
+                  <Login />
+                </Route>
+                <Route path="/signUp">
+                  <SignUp />
+                </Route>
+              </>
+            ) : (
+              <>
+                <Route path="/home">
+                  <Home />
+                </Route>
+              </>
+            )}
           </Switch>
         </Grommet>
       </UserProvider>
