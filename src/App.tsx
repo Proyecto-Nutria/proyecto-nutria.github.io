@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Grommet } from "grommet";
+import { Grommet, ThemeType } from "grommet";
 
 import { HashRouter, Switch, Route } from "react-router-dom";
 
@@ -11,22 +11,15 @@ import Landing from "./screens/Landing";
 import SignUp from "./screens/SignUp";
 import EditProfile from "./screens/EditProfile";
 
-const App = () => {
-  const theme = {
-    global: {
-      font: {
-        family: "Inter",
-        size: "1.2rem",
-      },
-    },
-  };
+import theme from "./theme";
 
+const App = () => {
   const user = useContext(UserContext);
 
   return (
     <HashRouter>
       <UserProvider>
-        <Grommet theme={theme}>
+        <Grommet theme={theme as ThemeType}>
           <Switch>
             <Route path="/">
               <Landing />
