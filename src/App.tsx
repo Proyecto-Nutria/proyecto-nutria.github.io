@@ -10,7 +10,7 @@ const App = () => {
   const theme = {
     global: {
       font: {
-        family: "sans-serif",
+        family: "Inter",
         size: "18px",
         height: "20px",
       },
