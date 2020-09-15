@@ -1,16 +1,14 @@
 import React from "react";
-
-import { Box, Button } from "grommet";
+import Header from "./Header";
 
 const Main = () => {
   return (
-    <Box align="center" background="neutral-2">
-      <Button
-        label="Hello world"
-        primary
-        onClick={() => alert("Hello, world")}
-      />
-    </Box>
+    <>
+      <Header />
+      <main>
+        <footer></footer>
+      </main>
+    </>
   );
 };
 
