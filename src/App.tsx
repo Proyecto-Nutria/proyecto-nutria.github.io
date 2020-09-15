@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Grommet } from "grommet";
+import { Grommet, ThemeType } from "grommet";
 
 import { HashRouter, Switch, Route } from "react-router-dom";
 
