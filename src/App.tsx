@@ -3,6 +3,8 @@ import { Grommet } from "grommet";
 
 import { HashRouter, Switch, Route } from "react-router-dom";
 
+import UserProvider from "./providers/UserProvider";
+
 import Login from "./screens/Login";
 import Home from "./screens/Main";
 import Landing from "./screens/Landing";
