@@ -4,7 +4,7 @@ import { Box, Button } from "grommet";
 
 import { Redirect } from "react-router-dom";
 
-import { signInWithGoogle, signOutWithGoogle } from "./../../firebase";
+import { signInWithGoogle } from "./../../firebase";
 import { UserContext } from "../../providers/UserProvider";
 
 const Login = () => {
