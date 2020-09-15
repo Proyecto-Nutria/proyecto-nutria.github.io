@@ -1,14 +1,17 @@
 .bigSectionButton {
   border-radius: 0.5rem;
   padding: 1rem;
-  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
+  text-align: center;
   font-weight: 600;
   font-size: 2rem;
   line-height: 2.4rem;
+  user-select: none;
+
   transition: all 0.2s ease-in-out;
 }
 

@@ -21,7 +21,7 @@ const Main = () => {
             Schedule a Mock Interview
           </Box>
           <Box background="brand" className={styles.bigSectionButton}>
-            ...
+            Check my interviews history
           </Box>
           <Box background="brand" className={styles.bigSectionButton}>
             ...
