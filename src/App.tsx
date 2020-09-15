@@ -5,6 +5,7 @@ import { HashRouter, Switch, Route } from "react-router-dom";
 
 import Login from "./screens/Login";
 import Home from "./screens/Main";
+import InterviewList from "./screens/InterviewList";
 import Landing from "./screens/Landing";
 
 const App = () => {
@@ -26,6 +27,9 @@ const App = () => {
           </Route>
           <Route path="/home">
             <Home />
+          </Route>
+          <Route path="/interviews">
+            <InterviewList />
           </Route>
           <Route path="/">
             <Landing />
