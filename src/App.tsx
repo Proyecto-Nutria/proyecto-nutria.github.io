@@ -6,6 +6,7 @@ import { HashRouter, Switch, Route } from "react-router-dom";
 import Login from "./screens/Login";
 import Home from "./screens/Main";
 import Landing from "./screens/Landing";
+import SignUp from "./screens/SignUp";
 
 const App = () => {
   const theme = {
@@ -23,6 +24,9 @@ const App = () => {
         <Switch>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/SignUp">
+            <SignUp/>
           </Route>
           <Route path="/home">
             <Home />
