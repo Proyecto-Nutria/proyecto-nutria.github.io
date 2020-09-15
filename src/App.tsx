@@ -45,6 +45,9 @@ const App = () => {
                 <Route path="/home">
                   <Home />
                 </Route>
+                <Route path="/editProfile">
+                  <EditProfile />
+                </Route>
               </>
             )}
           </Switch>
