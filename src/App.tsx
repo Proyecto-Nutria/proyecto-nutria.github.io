@@ -4,7 +4,8 @@ import { Grommet } from "grommet";
 import { HashRouter, Switch, Route } from "react-router-dom";
 
 import Login from "./screens/Login";
-import Main from "./screens/Main";
+import Home from "./screens/Main";
+import Landing from "./screens/Landing";
 
 const App = () => {
   const theme = {
@@ -23,8 +24,11 @@ const App = () => {
           <Route path="/login">
             <Login />
           </Route>
+          <Route path="/home">
+            <Home />
+          </Route>
           <Route path="/">
-            <Main />
+            <Landing />
           </Route>
         </Switch>
       </Grommet>
