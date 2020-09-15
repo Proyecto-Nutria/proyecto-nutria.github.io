@@ -5,12 +5,12 @@ export const UserContext = createContext({ user: null });
 
 class UserProvider extends Component {
   state = {
-    user: null as any
+    user: null as any,
   };
 
   componentDidMount = () => {
-    auth.onAuthStateChanged(userAuth => {
-      this.setState({ user: userAuth});
+    auth.onAuthStateChanged((userAuth) => {
+      this.setState({ user: userAuth });
     });
   };
 

@@ -22,22 +22,24 @@ const App = () => {
 
   return (
     <HashRouter>
-      <Grommet theme={theme}>
-        <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/signUp">
-            <SignUp/>
-          </Route>
-          <Route path="/home">
-            <Home />
-          </Route>
-          <Route path="/">
-            <Landing />
-          </Route>
-        </Switch>
-      </Grommet>
+      <UserProvider>
+        <Grommet theme={theme}>
+          <Switch>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/signUp">
+              <SignUp />
+            </Route>
+            <Route path="/home">
+              <Home />
+            </Route>
+            <Route path="/">
+              <Landing />
+            </Route>
+          </Switch>
+        </Grommet>
+      </UserProvider>
     </HashRouter>
   );
 };
