@@ -3,6 +3,8 @@ import { Grommet } from "grommet";
 
 import { HashRouter, Switch, Route } from "react-router-dom";
 
+import UserProvider from "./providers/UserProvider";
+
 import Login from "./screens/Login";
 import Home from "./screens/Main";
 import Landing from "./screens/Landing";
@@ -20,22 +22,24 @@ const App = () => {
 
   return (
     <HashRouter>
-      <Grommet theme={theme}>
-        <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/SignUp">
-            <SignUp/>
-          </Route>
-          <Route path="/home">
-            <Home />
-          </Route>
-          <Route path="/">
-            <Landing />
-          </Route>
-        </Switch>
-      </Grommet>
+      <UserProvider>
+        <Grommet theme={theme}>
+          <Switch>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/SignUp">
+              <SignUp/>
+            </Route>
+            <Route path="/home">
+              <Home />
+            </Route>
+            <Route path="/">
+              <Landing />
+            </Route>
+          </Switch>
+        </Grommet>
+      </UserProvider>
     </HashRouter>
   );
 };
