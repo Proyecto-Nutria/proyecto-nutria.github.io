@@ -7,6 +7,7 @@ import Login from "./screens/Login";
 import Home from "./screens/Main";
 import Landing from "./screens/Landing";
 import SignUp from "./screens/SignUp";
+import EditProfile from "./screens/EditProfile";
 
 const App = () => {
   const theme = {
@@ -25,8 +26,11 @@ const App = () => {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/SignUp">
+          <Route path="/signUp">
             <SignUp/>
+          </Route>
+          <Route path="/editProfile">
+            <EditProfile/>
           </Route>
           <Route path="/home">
             <Home />
