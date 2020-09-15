@@ -11,8 +11,7 @@ const App = () => {
     global: {
       font: {
         family: "Inter",
-        size: "18px",
-        height: "20px",
+        size: "1.2rem",
       },
     },
   };
