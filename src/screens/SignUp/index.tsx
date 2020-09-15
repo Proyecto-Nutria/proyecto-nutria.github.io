@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Grid, TextInput, Box, CheckBox, TextArea, Button } from "grommet";
 
+import style from "./signUp.module.css"
+
 const SignUp = () => {
-  const [valueName, setNameValue] = React.useState('');
-  const [checked, setChecked] = React.useState(true);
-  const [valueAboutYou, setAboutYouValue] = React.useState('');
+  const [valueName, setNameValue] = useState("");
+  const [checked, setChecked] = useState(true);
+  const [valueAboutYou, setAboutYouValue] = useState("");
 
   return (
     <Grid gap="medium" margin="xlarge">
@@ -13,32 +15,32 @@ const SignUp = () => {
         <TextInput
           placeholder="Name"
           value={valueName}
-          onChange={event => setNameValue(event.target.value)}
+          onChange={(event) => setNameValue(event.target.value)}
         />
       </Box>
       <Box>
         <CheckBox
           checked={checked}
           label="Check if you want to appear as a contributor"
-          reverse = {true}
+          reverse={true}
           onChange={(event) => setChecked(event.target.checked)}
         />
       </Box>
-      { checked &&
+      {checked && (
         <Box gap="xsmall">
-            Describe yourself:
-            <TextArea
-              placeholder="Maximum 250 characters"
-              value={valueAboutYou}
-              onChange={event => setAboutYouValue(event.target.value)}
-            />
+          Describe yourself:
+          <TextArea
+            placeholder="Maximum 250 characters"
+            value={valueAboutYou}
+            onChange={(event) => setAboutYouValue(event.target.value)}
+          />
         </Box>
-      }
-      <Box >
-        <Button primary label="Sign Up" />
+      )}
+      <Box>
+        <Button className={style.buttonSignUp} primary label="Sign Up" />
       </Box>
     </Grid>
   );
-}
+};
 
 export default SignUp;
