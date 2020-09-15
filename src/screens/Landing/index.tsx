@@ -1,16 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import { Box, Button } from "grommet";
+import { Box, Button, Heading } from "grommet";
+import { UserContext } from "../../providers/UserProvider";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
+  const user = useContext(UserContext);
+  const history = useHistory();
+
   return (
-    <Box align="center" background="neutral-2">
-      <Button
-        label="Landing page"
-        primary
-        onClick={() => alert("Hello, world")}
-      />
-    </Box>
+    <>
+      <Heading margin="none">Landing Page</Heading>
+      {user ? (
+        <Button
+          label="Go to home"
+          primary
+          onClick={() => history.push("/home")}
+        />
+      ) : (
+        <Button
+          label="Go to login"
+          primary
+          onClick={() => history.push("/login")}
+        />
+      )}
+    </>
   );
 };
 
