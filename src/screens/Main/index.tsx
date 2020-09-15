@@ -8,7 +8,8 @@ import { Main as MainGrommet, Grid, Box } from "grommet";
 const Main = () => {
   return (
     <>
-      <Header />
+      <Header position="fixed" />
+      <Header position="relative" />
       <MainGrommet pad="large">
         <Grid
           rows={["small"]}
@@ -28,7 +29,6 @@ const Main = () => {
           </Box>
         </Grid>
       </MainGrommet>
-      <footer></footer>
     </>
   );
 };
