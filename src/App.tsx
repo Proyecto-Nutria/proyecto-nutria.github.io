@@ -11,6 +11,8 @@ import Landing from "./screens/Landing";
 import SignUp from "./screens/SignUp";
 import EditProfile from "./screens/EditProfile";
 
+import theme from "./theme";
+
 const Routes = () => {
   const user = useContext(UserContext);
 
@@ -40,17 +42,8 @@ const Routes = () => {
 };
 
 const App: React.FunctionComponent = () => {
-  const theme = {
-    global: {
-      font: {
-        family: "Inter",
-        size: "1.2rem",
-      },
-    },
-  };
-
   return (
-    <Grommet theme={theme}>
+    <Grommet theme={theme as ThemeType}>
       <UserProvider>
         <Routes />
       </UserProvider>
