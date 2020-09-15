@@ -1,27 +1,36 @@
-import React from 'react';
-import { Grommet, Box, Button } from 'grommet';
+import React from "react";
+import { Grommet } from "grommet";
 
-function App() {
+import { HashRouter, Switch, Route } from "react-router-dom";
+
+import Login from "./screens/Login";
+import Main from "./screens/Main";
+
+const App = () => {
   const theme = {
     global: {
       font: {
-        family: 'sans-serif',
-        size: '18px',
-        height: '20px',
+        family: "sans-serif",
+        size: "18px",
+        height: "20px",
       },
     },
   };
+
   return (
-    <Grommet theme={theme}>
-      <Box align="center" background="neutral-2">
-        <Button
-          label="Hello world"
-          primary
-          onClick={() => alert('Hello, world')}
-        />
-      </Box>
-    </Grommet>
+    <HashRouter>
+      <Grommet theme={theme}>
+        <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/">
+            <Main />
+          </Route>
+        </Switch>
+      </Grommet>
+    </HashRouter>
   );
-}
+};
 
 export default App;
