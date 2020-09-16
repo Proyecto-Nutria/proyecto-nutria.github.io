@@ -2,21 +2,29 @@ import React from "react"
 import { useQuery, gql } from "@apollo/client"
 
 const NAMES = gql`
-  query persons {
-    name
+  {
+    persons {
+      name
+    }
   }
 `
 
 const Schedule = () => {
-  const token = localStorage.getItem("token") ?? ""
+  const { loading, error, data } = useQuery(NAMES)
 
-  fetch("https://us-central1-nutria-system.cloudfunctions.net/graphql=query=Persons{name}", {
-    headers: new Headers({ Authorization: token }),
-  })
-    .then(x => x.json())
-    .then(data => console.log(data))
+  if (loading) return <p>Loading...</p>
+  if (error) {
+    console.log(error)
+    return <p>Error :(</p>
+  }
 
-  return null
+  return (
+    <>
+      {data.persons.map(({ name }: { name: string }) => (
+        <h1 key={name}> {name}</h1>
+      ))}
+    </>
+  )
 }
 
 export default Schedule

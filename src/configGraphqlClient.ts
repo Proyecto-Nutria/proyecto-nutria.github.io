@@ -1,27 +1,24 @@
-import { setContext } from "@apollo/client/link/context"
-import { ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client"
+import { ApolloClient, ApolloLink, createHttpLink, InMemoryCache } from "@apollo/client"
 
 const getClient = () => {
-  const uri = "https://us-central1-nutria-system.cloudfunctions.net"
+  const uri = "https://us-central1-nutria-system.cloudfunctions.net/graphql"
   const httpLink = createHttpLink({
     uri,
-    fetchOptions: {
-      mode: "cors",
-    },
   })
 
-  const authLink = setContext((_, { headers }) => {
+  const authMiddleware = new ApolloLink((operation, forward) => {
     const token = localStorage.getItem("token")
-    return {
+    operation.setContext({
       headers: {
-        ...headers,
         Authorization: token,
       },
-    }
+    })
+
+    return forward(operation)
   })
 
   const client = new ApolloClient({
-    link: authLink.concat(httpLink),
+    link: authMiddleware.concat(httpLink),
     cache: new InMemoryCache(),
   })
 
