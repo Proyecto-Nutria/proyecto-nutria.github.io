@@ -1,7 +1,7 @@
 import React from "react"
 
 const Schedule = () => {
-  return null
+  return <>hello</>
 }
 
 export default Schedule
