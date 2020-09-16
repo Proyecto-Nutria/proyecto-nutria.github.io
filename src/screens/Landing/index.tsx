@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { Box, Button, Heading } from "grommet";
+import { Main, Button, Heading } from "grommet";
 import { UserContext } from "../../providers/UserProvider";
 import { useHistory } from "react-router-dom";
 
@@ -9,22 +9,24 @@ const Login = () => {
   const history = useHistory();
 
   return (
-    <>
-      <Heading margin="none">Landing Page</Heading>
+    <Main pad="large">
+      <Heading margin="medium">Landing Page</Heading>
       {user ? (
         <Button
+          style={{ maxWidth: "15rem" }}
           label="Go to home"
           primary
           onClick={() => history.push("/home")}
         />
       ) : (
         <Button
+          style={{ maxWidth: "15rem" }}
           label="Go to login"
           primary
           onClick={() => history.push("/login")}
         />
       )}
-    </>
+    </Main>
   );
 };
 

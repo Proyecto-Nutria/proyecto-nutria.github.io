@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Nav, Anchor, Box, Table, TableCell, TableRow, TableHeader, TableBody } from "grommet";
+import { Table, TableCell, TableRow, TableHeader, TableBody } from "grommet";
 
 const InterviewList = () => {
   return (
@@ -8,10 +8,10 @@ const InterviewList = () => {
         <TableRow>
           <TableCell scope="col" border="bottom">
             Name
-      </TableCell>
+          </TableCell>
           <TableCell scope="col" border="bottom">
             Flavor
-      </TableCell>
+          </TableCell>
         </TableRow>
       </TableHeader>
       <TableBody>

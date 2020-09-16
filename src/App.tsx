@@ -12,7 +12,7 @@ import Landing from "./screens/Landing";
 import SignUp from "./screens/SignUp";
 import EditProfile from "./screens/EditProfile";
 
-import theme from "./theme";
+import theme from "./generalStyles/theme";
 
 const Routes = () => {
   const user = useContext(UserContext);
@@ -45,8 +45,8 @@ const Routes = () => {
         </Route>
       </Switch>
     </HashRouter>
-  )
-}
+  );
+};
 
 const App: React.FunctionComponent = () => {
   return (
