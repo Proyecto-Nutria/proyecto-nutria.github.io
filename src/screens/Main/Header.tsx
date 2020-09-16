@@ -1,9 +1,9 @@
-import React from "react";
-import { Text, Nav, Anchor, Box } from "grommet";
-import { Header } from "grommet-controls";
-import * as Icons from "grommet-icons";
+import React from "react"
+import { Text, Nav, Anchor, Box } from "grommet"
+import { Header } from "grommet-controls"
+import * as Icons from "grommet-icons"
 interface IHeaderProps {
-  position: "fixed" | "absolute" | "sticky" | "static" | "relative" | undefined;
+  position: "fixed" | "absolute" | "sticky" | "static" | "relative" | undefined
 }
 
 const MyHeader = (props: IHeaderProps) => {
@@ -18,7 +18,7 @@ const MyHeader = (props: IHeaderProps) => {
         <Anchor icon={<Icons.ChatOption />} />
       </Nav>
     </Header>
-  );
-};
+  )
+}
 
-export default MyHeader;
+export default MyHeader

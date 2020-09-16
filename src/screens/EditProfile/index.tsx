@@ -1,12 +1,12 @@
-import React from "react";
+import React from "react"
 
-import { Grid, TextInput, Box, Select, Button } from "grommet";
-import { DocumentUpload } from "grommet-icons";
+import { Grid, TextInput, Box, Select, Button } from "grommet"
+import { DocumentUpload } from "grommet-icons"
 
 const EditProfile = () => {
-  const [valueName, setNameValue] = React.useState("");
-  const [school, setSchooleValue] = React.useState("");
-  const [programming, setProgrammingValues] = React.useState([""]);
+  const [valueName, setNameValue] = React.useState("")
+  const [school, setSchooleValue] = React.useState("")
+  const [programming, setProgrammingValues] = React.useState([""])
 
   return (
     <Grid gap="medium" margin="xlarge">
@@ -14,7 +14,7 @@ const EditProfile = () => {
         <TextInput
           placeholder="Name"
           value={valueName}
-          onChange={(event) => setNameValue(event.target.value)}
+          onChange={event => setNameValue(event.target.value)}
         />
       </Box>
       <Box>
@@ -34,19 +34,17 @@ const EditProfile = () => {
           options={["C", "C++", "Python", "Java", "JavaScript", "Other"]}
           value={programming}
           onChange={({ option }) => {
-            let exists = false;
+            let exists = false
             for (let i = 0; i < programming.length; i++) {
               if (programming[i] === option) {
-                exists = true;
-                break;
+                exists = true
+                break
               }
             }
             if (exists) {
-              setProgrammingValues(
-                programming.filter((elem) => elem !== option)
-              );
+              setProgrammingValues(programming.filter(elem => elem !== option))
             } else {
-              setProgrammingValues([...programming, option]);
+              setProgrammingValues([...programming, option])
             }
           }}
         />
@@ -71,7 +69,7 @@ const EditProfile = () => {
         <Button label="Sign Up" onClick={() => {}} size="large" primary />
       </Box>
     </Grid>
-  );
-};
+  )
+}
 
-export default EditProfile;
+export default EditProfile

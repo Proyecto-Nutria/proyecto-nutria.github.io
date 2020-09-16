@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext } from "react"
 
-import { Main, Button, Heading } from "grommet";
-import { UserContext } from "../../providers/UserProvider";
-import { useHistory } from "react-router-dom";
+import { Main, Button, Heading } from "grommet"
+import { UserContext } from "../../providers/UserProvider"
+import { useHistory } from "react-router-dom"
 
 const Login = () => {
-  const user = useContext(UserContext);
-  const history = useHistory();
+  const user = useContext(UserContext)
+  const history = useHistory()
 
   return (
     <Main pad="large">
@@ -27,7 +27,7 @@ const Login = () => {
         />
       )}
     </Main>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

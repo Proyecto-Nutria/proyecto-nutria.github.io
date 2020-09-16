@@ -1,5 +1,5 @@
-import React from "react";
-import { Table, TableCell, TableRow, TableHeader, TableBody } from "grommet";
+import React from "react"
+import { Table, TableCell, TableRow, TableHeader, TableBody } from "grommet"
 
 const InterviewList = () => {
   return (
@@ -29,7 +29,7 @@ const InterviewList = () => {
         </TableRow>
       </TableBody>
     </Table>
-  );
-};
+  )
+}
 
-export default InterviewList;
+export default InterviewList

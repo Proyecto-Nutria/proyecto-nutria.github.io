@@ -1,7 +1,7 @@
-import React from "react";
+import React from "react"
 
 const Schedule = () => {
-  return null;
-};
+  return null
+}
 
-export default Schedule;
+export default Schedule

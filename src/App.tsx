@@ -1,21 +1,21 @@
-import React, { useContext } from "react";
-import { Grommet, ThemeType } from "grommet";
+import React, { useContext } from "react"
+import { Grommet, ThemeType } from "grommet"
 
-import { HashRouter, Switch, Route } from "react-router-dom";
+import { HashRouter, Switch, Route } from "react-router-dom"
 
-import UserProvider, { UserContext } from "./providers/UserProvider";
+import UserProvider, { UserContext } from "./providers/UserProvider"
 
-import Login from "./screens/Login";
-import Home from "./screens/Main";
-import InterviewList from "./screens/InterviewList";
-import Landing from "./screens/Landing";
-import SignUp from "./screens/SignUp";
-import EditProfile from "./screens/EditProfile";
+import Login from "./screens/Login"
+import Home from "./screens/Main"
+import InterviewList from "./screens/InterviewList"
+import Landing from "./screens/Landing"
+import SignUp from "./screens/SignUp"
+import EditProfile from "./screens/EditProfile"
 
-import theme from "./generalStyles/theme";
+import theme from "./generalStyles/theme"
 
 const Routes = () => {
-  const user = useContext(UserContext);
+  const user = useContext(UserContext)
 
   return (
     <HashRouter>
@@ -45,8 +45,8 @@ const Routes = () => {
         </Route>
       </Switch>
     </HashRouter>
-  );
-};
+  )
+}
 
 const App: React.FunctionComponent = () => {
   return (
@@ -55,7 +55,7 @@ const App: React.FunctionComponent = () => {
         <Routes />
       </UserProvider>
     </Grommet>
-  );
-};
+  )
+}
 
-export default App;
+export default App
