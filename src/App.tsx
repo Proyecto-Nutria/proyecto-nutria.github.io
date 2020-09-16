@@ -13,8 +13,8 @@ import Home from "./screens/Main"
 import InterviewList from "./screens/InterviewList"
 import Landing from "./screens/Landing"
 import SignUp from "./screens/SignUp"
-import EditProfile from "./screens/EditProfile"
-import Schedule from "./screens/Schedule"
+import EditProfile from "./screens/Interviewee/EditProfile"
+import Schedule from "./screens/Interviewee/Schedule"
 
 import theme from "./generalStyles/theme"
 
