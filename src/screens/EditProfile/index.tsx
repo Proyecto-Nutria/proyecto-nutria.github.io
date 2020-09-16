@@ -5,7 +5,7 @@ import { DocumentUpload } from "grommet-icons"
 
 const EditProfile = () => {
   const [valueName, setNameValue] = React.useState("")
-  const [school, setSchooleValue] = React.useState("")
+  const [school, setSchoolValue] = React.useState("")
   const [programming, setProgrammingValues] = React.useState([""])
 
   return (
@@ -23,7 +23,7 @@ const EditProfile = () => {
           placeholder="Select one"
           options={["ESCOM", "UNAM", "Other"]}
           value={school}
-          onChange={({ option }) => setSchooleValue(option)}
+          onChange={({ option }) => setSchoolValue(option)}
         />
       </Box>
       <Box>
@@ -66,7 +66,7 @@ const EditProfile = () => {
       // height="100px"
       // width="auto"
       >
-        <Button label="Sign Up" onClick={() => {}} size="large" primary />
+        <Button label="Update" onClick={() => {}} size="large" primary />
       </Box>
     </Grid>
   )
