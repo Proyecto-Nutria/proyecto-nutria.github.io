@@ -38,9 +38,6 @@ const Routes = () => {
         <Route path="/interviews">
           <InterviewList />
         </Route>
-        <Route path="/">
-          <Landing />
-        </Route>
         <Route path="/editProfile">
           <EditProfile />
         </Route>
