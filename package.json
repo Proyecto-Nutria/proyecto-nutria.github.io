@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://proyecto-nutria.github.io/",
   "dependencies": {
+    "@apollo/client": "^3.2.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -13,6 +14,7 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.5",
     "firebase": "^7.20.0",
+    "graphql": "^15.3.0",
     "grommet": "^2.15.0",
     "grommet-controls": "^3.0.1",
     "grommet-icons": "^4.4.0",
