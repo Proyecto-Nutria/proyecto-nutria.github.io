@@ -1,8 +1,9 @@
 import React, { useContext } from "react"
 import { Grommet, ThemeType } from "grommet"
 
-import { ApolloProvider, ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client"
-import { setContext } from "@apollo/client/link/context"
+import { ApolloProvider } from "@apollo/client"
+
+import getClient from "./configGraphqlClient"
 
 import { HashRouter, Switch, Route } from "react-router-dom"
 
@@ -15,6 +16,7 @@ import Landing from "./screens/Landing"
 import SignUp from "./screens/SignUp"
 import EditProfile from "./screens/Interviewee/EditProfile"
 import Schedule from "./screens/Interviewee/Schedule"
+import Testing from "./screens/TestingApollo"
 
 import theme from "./generalStyles/theme"
 
@@ -44,39 +46,15 @@ const Routes = () => {
         <Route path="/schedule">
           <Schedule />
         </Route>
+        <Route path="/testing">
+          <Testing />
+        </Route>
         <Route path="/">
           <Landing />
         </Route>
       </Switch>
     </HashRouter>
   )
-}
-
-const getClient = () => {
-  const uri = "https://us-central1-nutria-system.cloudfunctions.net"
-  const httpLink = createHttpLink({
-    uri,
-    fetchOptions: {
-      mode: "cors",
-    },
-  })
-
-  const authLink = setContext((_, { headers }) => {
-    const token = localStorage.getItem("token")
-    return {
-      headers: {
-        ...headers,
-        Authorization: token,
-      },
-    }
-  })
-
-  const client = new ApolloClient({
-    link: authLink.concat(httpLink),
-    cache: new InMemoryCache(),
-  })
-
-  return client
 }
 
 const client = getClient()
