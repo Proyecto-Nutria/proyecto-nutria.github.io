@@ -54,7 +54,12 @@ const Routes = () => {
 
 const getClient = () => {
   const uri = "https://us-central1-nutria-system.cloudfunctions.net"
-  const httpLink = createHttpLink({ uri })
+  const httpLink = createHttpLink({
+    uri,
+    fetchOptions: {
+      mode: "cors",
+    },
+  })
 
   const authLink = setContext((_, { headers }) => {
     const token = localStorage.getItem("token")
