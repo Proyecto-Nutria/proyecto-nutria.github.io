@@ -28,58 +28,63 @@ const Routes = () => {
 
   return (
     <HashRouter>
-      <Switch>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/signUp">
-          <SignUp />
-        </Route>
-        {user && (
-          <Route path="/home">
-            <Home />
-          </Route>
-        )}
-        <Route path="/interviewsInterviewee">
-          <InterviewsInterviewee
-            data={[
-              {
-                date: "00/00/00",
-                time: "01:30 pm",
-                document: "Link",
-                place: "room-4",
-                confirmed: true,
-              },
-            ]}
-          />
-        </Route>
-        <Route path="/interviewsInterviewer">
-          <InterviewsInterviewer
-            data={[
-              {
-                name: "Sergio",
-                date: "00/00/00",
-                time: "01:30 pm",
-                document: "Link",
-                place: "room-4",
-                confirmed: true,
-              },
-            ]}
-          />
-        </Route>
-        <Route path="/editProfile">
-          <EditProfile />
-        </Route>
-        <Route path="/schedule">
-          <Schedule />
-        </Route>
-        <Route path="/testing">
-          <Testing />
-        </Route>
-        <Route path="/">
-          <Landing />
-        </Route>
-      </Switch>
+      <Box height="100%" width="100%" direction="column" background="background-back">
+        <AppHeader /> {/* todo: add conditions to decide when not to show the header */}
+        <MainGrommet flex={{ grow: 1, shrink: 1 }} overflow={{ vertical: "auto" }} pad="large">
+          <Switch>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/signUp">
+              <SignUp />
+            </Route>
+            {user && (
+              <Route path="/home">
+                <Home />
+              </Route>
+            )}
+            <Route path="/interviewsInterviewee">
+              <InterviewsInterviewee
+                data={[
+                  {
+                    date: "00/00/00",
+                    time: "01:30 pm",
+                    document: "Link",
+                    place: "room-4",
+                    confirmed: true,
+                  },
+                ]}
+              />
+            </Route>
+            <Route path="/interviewsInterviewer">
+              <InterviewsInterviewer
+                data={[
+                  {
+                    name: "Sergio",
+                    date: "00/00/00",
+                    time: "01:30 pm",
+                    document: "Link",
+                    place: "room-4",
+                    confirmed: true,
+                  },
+                ]}
+              />
+            </Route>
+            <Route path="/editProfile">
+              <EditProfile />
+            </Route>
+            <Route path="/schedule">
+              <Schedule />
+            </Route>
+            <Route path="/testing">
+              <Testing />
+            </Route>
+            <Route path="/">
+              <Landing />
+            </Route>
+          </Switch>
+        </MainGrommet>
+      </Box>
     </HashRouter>
   )
 }
@@ -90,12 +95,7 @@ const App: React.FunctionComponent = () => {
     <Grommet theme={theme as ThemeType} full={true}>
       <UserProvider>
         <ApolloProvider client={client}>
-          <Box height="100%" width="100%" direction="column" background="background-back">
-            <AppHeader /> {/* todo: add conditions to decide when not to show the header */}
-            <MainGrommet flex={{ grow: 1, shrink: 1 }} overflow={{ vertical: "auto" }} pad="large">
-              <Routes />
-            </MainGrommet>
-          </Box>
+          <Routes />
         </ApolloProvider>
       </UserProvider>
     </Grommet>
