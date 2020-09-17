@@ -1,49 +1,36 @@
-import React from "react"
+import React, { useState } from "react"
 
 import { Grid, Box, Select, Button } from "grommet"
 import { FormSubtract } from "grommet-icons"
+import { day, hour } from "../../../general/values"
 
-type hour =
-  | "00:00 PT"
-  | "01:00 PT"
-  | "02:00 PT"
-  | "03:00 PT"
-  | "04:00 PT"
-  | "05:00 PT"
-  | "06:00 PT"
-  | "07:00 PT"
-  | "08:00 PT"
+const listOfDays = Object.values(day)
+const listOfHours = Object.values(hour)
 
-const hours = [
-  "00:00 PT",
-  "01:00 PT",
-  "02:00 PT",
-  "03:00 PT",
-  "04:00 PT",
-  "05:00 PT",
-  "06:00 PT",
-  "07:00 PT",
-  "08:00 PT",
-]
+const hourToDisplay = (hour: number | string) => `${hour < 10 ? "0" : ""}${hour}:00 PT`
+const listOfHoursDisplay = listOfHours.filter(h => typeof h !== "string").map(hourToDisplay)
 
-type day = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday"
 type range = { startHour: hour; endHour: hour }
 type ranges = Record<day, Array<range>>
 
-const Schedule = () => {
-  const [rol, setRolValue] = React.useState("")
-  const [company, setCompanyValue] = React.useState("")
-  const [typeInterview, setTypeInterviewValue] = React.useState("")
+console.log({ listOfHoursDisplay })
 
-  const [rangesOfTime, setRangesOfTime] = React.useState<ranges>({
-    Monday: [],
-    Tuesday: [{ startHour: "03:00 PT", endHour: "04:00 PT" }],
-    Wednesday: [],
-    Thursday: [],
-    Friday: [],
-    Saturday: [],
-    Sunday: [],
-  })
+const defaultRange: ranges = {
+  [day.Monday]: [],
+  [day.Tuesday]: [{ startHour: hour.h13, endHour: hour.h15 }],
+  [day.Wednesday]: [],
+  [day.Thursday]: [],
+  [day.Friday]: [],
+  [day.Saturday]: [],
+  [day.Sunday]: [],
+}
+
+const Schedule = () => {
+  const [rol, setRolValue] = useState("")
+  const [company, setCompanyValue] = useState("")
+  const [typeInterview, setTypeInterviewValue] = useState("")
+
+  const [rangesOfTime, setRangesOfTime] = useState<ranges>(defaultRange)
 
   return (
     <Grid gap="medium" margin="xlarge">
@@ -91,13 +78,12 @@ const Schedule = () => {
 
       <h2>When?</h2>
       <Box direction="column">
-        {Object.entries(rangesOfTime).map(entry => {
-          const day = entry[0] as day
-          const currentRanges = entry[1] as Array<range>
+        {Object.entries(rangesOfTime).map(([dayName, currentRanges]) => {
+          const currentDay = day[dayName as keyof typeof day]
 
           return currentRanges.map(({ startHour, endHour }, index) => (
             <Box
-              key={day + startHour}
+              key={currentDay + startHour}
               direction="row-responsive"
               flex={true}
               justify="center"
@@ -110,22 +96,14 @@ const Schedule = () => {
                 <Select
                   size="small"
                   placeholder="Select one"
-                  options={[
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday",
-                    "Sunday",
-                  ]}
-                  value={day}
+                  options={listOfDays}
+                  value={currentDay.toString()}
                   onChange={event => {
                     const newDay = event.option as day
                     setRangesOfTime(ranges => {
                       const newRanges = JSON.parse(JSON.stringify(ranges)) as ranges
                       newRanges[newDay].push({ startHour, endHour })
-                      newRanges[day].splice(index, 1)
+                      newRanges[currentDay].splice(index, 1)
                       return newRanges
                     })
                   }}
@@ -135,23 +113,41 @@ const Schedule = () => {
                 from
               </Box>
               <Box width="small" background="pink">
-                <Select size="small" placeholder="Select one" options={hours} value={startHour}
-                onChange={event => {
-                  const newStartingHour = event.option as hour
-                  setRangesOfTime(ranges => {
-                    const newRanges = JSON.parse(JSON.stringify(ranges)) as ranges
-                    newRanges[day].push({ startHour: newStartingHour, endHour })
-                    newRanges[day].splice(index, 1)
-                    return newRanges
-                  })
-                }}
+                <Select
+                  size="small"
+                  placeholder="Select one"
+                  options={listOfHoursDisplay}
+                  value={hourToDisplay(startHour)}
+                  onChange={event => {
+                    const newStartingHour = parseInt(event.option.slice(0, 2)) as hour
+                    setRangesOfTime(ranges => {
+                      const newRanges = JSON.parse(JSON.stringify(ranges)) as ranges
+                      newRanges[currentDay].push({ startHour: newStartingHour, endHour })
+                      newRanges[currentDay].splice(index, 1)
+                      return newRanges
+                    })
+                  }}
                 />
               </Box>
               <Box width="xxsmall" background="green">
                 to
               </Box>
               <Box width="small" background="pink">
-                <Select size="small" placeholder="Select one" options={hours} value={endHour} />
+                <Select
+                  size="small"
+                  placeholder="Select one"
+                  options={listOfHoursDisplay}
+                  value={hourToDisplay(endHour)}
+                  onChange={event => {
+                    const newEndHour = parseInt(event.option.slice(0, 2)) as hour
+                    setRangesOfTime(ranges => {
+                      const newRanges = JSON.parse(JSON.stringify(ranges)) as ranges
+                      newRanges[currentDay].push({ startHour, endHour: newEndHour })
+                      newRanges[currentDay].splice(index, 1)
+                      return newRanges
+                    })
+                  }}
+                />
               </Box>
               <Box
                 width="xxxsmall"
