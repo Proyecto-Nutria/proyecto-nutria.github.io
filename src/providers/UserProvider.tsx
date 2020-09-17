@@ -1,22 +1,28 @@
-import React, { useState, createContext, useEffect } from "react";
-import { auth } from "./../firebase";
+import React, { useState, createContext, useEffect } from "react"
+import { auth } from "./../firebase"
 
-type maybeUser = firebase.User | null;
-const UserContext = createContext<maybeUser>(null);
+type maybeUser = firebase.User | null
+const UserContext = createContext<maybeUser>(null)
 
-const Provider = UserContext.Provider;
+const saveToken = async (currentUser: firebase.User) => {
+  const token = await currentUser?.getIdToken()
+  localStorage.setItem("token", token)
+}
+
+const Provider = UserContext.Provider
 const UserProvider: React.FunctionComponent = ({ children }) => {
-  const [user, changeUser] = useState<maybeUser>(null);
+  const [user, changeUser] = useState<maybeUser>(null)
 
   useEffect(() => {
-    auth.onAuthStateChanged((userAuth) => {
-      changeUser(userAuth);
-    });
-  }, []);
+    auth.onAuthStateChanged(userAuth => {
+      changeUser(userAuth)
+      userAuth && saveToken(userAuth)
+    })
+  }, [])
 
-  return <Provider value={user}>{children}</Provider>;
-};
+  return <Provider value={user}>{children}</Provider>
+}
 
-export { UserContext };
+export { UserContext }
 
-export default UserProvider;
+export default UserProvider
