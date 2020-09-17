@@ -3,10 +3,12 @@ import React, { useContext } from "react"
 import { Grid, Box, Image, Heading, Button, ResponsiveContext } from "grommet";
 import { User, Google } from "grommet-icons";
 
-import { Redirect } from "react-router-dom"
+import { Redirect } from "react-router-dom";
 
-import { signInWithGoogle } from "./../../firebase"
-import { UserContext } from "../../providers/UserProvider"
+import styles from "./login.module.css";
+
+import { signInWithGoogle } from "./../../firebase";
+import { UserContext } from "../../providers/UserProvider";
 
 const Login = () => {
   const user = useContext(UserContext);
@@ -21,7 +23,7 @@ const Login = () => {
   }
 
   return (
-    <Box justify="center" height="100vh">
+    <Box justify="center" height="100vh" className={styles.backgroundBox}>
       <Grid 
         margin="xlarge" 
         justifyContent="center"
@@ -33,15 +35,15 @@ const Login = () => {
           { name: 'loginRight', start: [start_right_c, start_right_r], end: [1, 1] }
         ]}
       >
-        <Box gridArea="loginLeft" justify="center" align="center">
-          <Image src="./nutria_transparente.png" fit="contain" />
+        <Box gridArea="loginLeft" justify="center" align="center" className={size === "small" ? styles.boxTop : styles.boxLeft}>
+          <Image src="./images/nutria_transparente.png" fit="contain" className={styles.leftImg} />
         </Box>
-        <Box gridArea="loginRight" justify="center" align="center" gap="medium">
+        <Box gridArea="loginRight" justify="center" align="center" gap="medium" className={size === "small" ? styles.boxBottom : styles.boxRight}>
           <Box justify="center" align="center">
-            <Heading margin="none">Welcome</Heading>
+            <Heading margin="none" color="white">Welcome</Heading>
           </Box>
           <Box justify="center" align="center">
-            <User size = "large" />
+            <User size = "large" color="white"/>
           </Box>
           <Box
             justify="center"
