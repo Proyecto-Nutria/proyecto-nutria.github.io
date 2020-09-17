@@ -7,7 +7,8 @@ import UserProvider, { UserContext } from "./providers/UserProvider";
 
 import Login from "./screens/Login";
 import Home from "./screens/Main";
-import InterviewList from "./screens/InterviewList";
+import InterviewsInterviewee from "./screens/InterviewsInterviewee";
+import InterviewsInterviewer from "./screens/InterviewsInterviewer";
 import Landing from "./screens/Landing";
 import SignUp from "./screens/SignUp";
 import EditProfile from "./screens/EditProfile";
@@ -31,8 +32,32 @@ const Routes = () => {
             <Home />
           </Route>
         )}
-        <Route path="/interviews">
-          <InterviewList />
+        <Route path="/interviewsInterviewee">
+          <InterviewsInterviewee
+            data={[
+              {
+                date: "00/00/00",
+                time: "01:30 pm",
+                document: "Link",
+                place: "room-4",
+                confirmed: true,
+              },
+            ]}
+          />
+        </Route>
+        <Route path="/interviewsInterviewer">
+          <InterviewsInterviewer
+            data={[
+              {
+                name: "Sergio",
+                date: "00/00/00",
+                time: "01:30 pm",
+                document: "Link",
+                place: "room-4",
+                confirmed: true,
+              },
+            ]}
+          />
         </Route>
         <Route path="/">
           <Landing />
@@ -45,8 +70,8 @@ const Routes = () => {
         </Route>
       </Switch>
     </HashRouter>
-  )
-}
+  );
+};
 
 const App: React.FunctionComponent = () => {
   return (

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { Box, Button, Heading } from "grommet";
+import { Button, Heading } from "grommet";
 import { UserContext } from "../../providers/UserProvider";
 import { useHistory } from "react-router-dom";
 
