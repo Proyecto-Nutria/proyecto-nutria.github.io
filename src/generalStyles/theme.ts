@@ -2,7 +2,7 @@ const theme = {
     "name": "my theme",
     "rounding": 4,
     "spacing": 24,
-    "defaultMode": "light",
+    "defaultMode": "dark",
     "global": {
       "colors": {
         "brand": {

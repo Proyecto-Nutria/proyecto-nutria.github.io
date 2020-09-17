@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { Grommet, ThemeType } from "grommet"
+import { Box, Grommet, Main as MainGrommet, ThemeType } from "grommet"
 
 import { ApolloProvider } from "@apollo/client"
 
@@ -20,9 +20,11 @@ import Schedule from "./screens/Interviewee/Schedule"
 import Testing from "./screens/TestingApollo"
 
 import theme from "./generalStyles/theme"
+import AppHeader from "./screens/Main/Header"
 
 const Routes = () => {
   const user = useContext(UserContext)
+  // todo: if user not logged redirect to /login"
 
   return (
     <HashRouter>
@@ -79,16 +81,21 @@ const Routes = () => {
         </Route>
       </Switch>
     </HashRouter>
-  );
-};
+  )
+}
 
 const client = getClient()
 const App: React.FunctionComponent = () => {
   return (
-    <Grommet theme={theme as ThemeType}>
+    <Grommet theme={theme as ThemeType} full={true}>
       <UserProvider>
         <ApolloProvider client={client}>
-          <Routes />
+          <Box height="100%" width="100%" direction="column" background="background-back">
+            <AppHeader /> {/* todo: add conditions to decide when not to show the header */}
+            <MainGrommet flex={{ grow: 1, shrink: 1 }} overflow={{ vertical: "auto" }} pad="large">
+              <Routes />
+            </MainGrommet>
+          </Box>
         </ApolloProvider>
       </UserProvider>
     </Grommet>

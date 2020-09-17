@@ -1,24 +1,26 @@
 import React from "react"
 import { Text, Nav, Anchor, Box } from "grommet"
-import { Header } from "grommet-controls"
 import * as Icons from "grommet-icons"
-interface IHeaderProps {
-  position: "fixed" | "absolute" | "sticky" | "static" | "relative" | undefined
-}
 
-const MyHeader = (props: IHeaderProps) => {
+const AppHeader = () => {
   return (
-    <Header position={props.position} background="brand" justify="between" pad="xsmall">
+    <Box
+      flex={{ grow: 0, shrink: 0 }}
+      direction="row"
+      justify="between"
+      background="background-front"
+      align="center"
+    >
       <Box pad="small">
         <Text>{"Yet An Otter System"}</Text>
       </Box>
-      <Nav direction="row" background="brand" pad="none">
-        <Anchor icon={<Icons.User />} />
-        <Anchor icon={<Icons.Notification />} />
-        <Anchor icon={<Icons.ChatOption />} />
+      <Nav direction="row" pad="xsmall">
+        <Anchor color="brand" icon={<Icons.User />} />
+        <Anchor color="brand" icon={<Icons.Notification />} />
+        <Anchor color="brand" icon={<Icons.ChatOption />} />
       </Nav>
-    </Header>
+    </Box>
   )
 }
 
-export default MyHeader
+export default AppHeader

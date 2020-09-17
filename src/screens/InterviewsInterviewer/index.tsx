@@ -17,7 +17,7 @@ interface IInterviewsInterviewerProps {
 
 const InterviewsInterviewer = (props: IInterviewsInterviewerProps) => {
   return (
-    <Box align="center" pad="small">
+    <Box align="center" pad="small" background="background-contrast" width="95%" alignSelf="center">
       <DataTable
         size="medium"
         alignSelf="center"

@@ -1,14 +1,8 @@
 import React, { useContext } from "react"
 
-<<<<<<< HEAD
-import { Button, Heading } from "grommet";
-import { UserContext } from "../../providers/UserProvider";
-import { useHistory } from "react-router-dom";
-=======
 import { Main, Button, Heading } from "grommet"
 import { UserContext } from "../../providers/UserProvider"
 import { useHistory } from "react-router-dom"
->>>>>>> ee35d4de9dfc001ec87d38c1eb78da706ccf5f21
 
 const Login = () => {
   const user = useContext(UserContext)
