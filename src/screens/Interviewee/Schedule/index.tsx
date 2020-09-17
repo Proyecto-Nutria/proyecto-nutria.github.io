@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 
 import { Grid, Box, Select, Button } from "grommet"
-import { FormSubtract } from "grommet-icons"
+import { FormSubtract, Add } from "grommet-icons"
 import { day, hour } from "../../../general/values"
 
 const listOfDays = Object.values(day)
@@ -12,8 +12,6 @@ const listOfHoursDisplay = listOfHours.filter(h => typeof h !== "string").map(ho
 
 type range = { startHour: hour; endHour: hour }
 type ranges = Record<day, Array<range>>
-
-console.log({ listOfHoursDisplay })
 
 const defaultRange: ranges = {
   [day.Monday]: [],
@@ -77,22 +75,23 @@ const Schedule = () => {
       </Box>
 
       <h2>When?</h2>
-      <Box direction="column">
+      <Box direction="column-reverse" gap="xsmall">
         {Object.entries(rangesOfTime).map(([dayName, currentRanges]) => {
           const currentDay = day[dayName as keyof typeof day]
 
           return currentRanges.map(({ startHour, endHour }, index) => (
             <Box
-              key={currentDay + startHour}
+              key={index}
               direction="row-responsive"
               flex={true}
               justify="center"
+              align="center"
               alignContent="center"
             >
-              <Box width="xxsmall" background="green" align="center">
+              <Box width="xxsmall" align="center">
                 On
               </Box>
-              <Box width="small" background="pink">
+              <Box width="small">
                 <Select
                   size="small"
                   placeholder="Select one"
@@ -109,10 +108,10 @@ const Schedule = () => {
                   }}
                 />
               </Box>
-              <Box width="xxsmall" background="green">
+              <Box width="xsmall" align="center">
                 from
               </Box>
-              <Box width="small" background="pink">
+              <Box width="small">
                 <Select
                   size="small"
                   placeholder="Select one"
@@ -129,10 +128,10 @@ const Schedule = () => {
                   }}
                 />
               </Box>
-              <Box width="xxsmall" background="green">
+              <Box width="xxsmall" align="center">
                 to
               </Box>
-              <Box width="small" background="pink">
+              <Box width="small">
                 <Select
                   size="small"
                   placeholder="Select one"
@@ -156,16 +155,28 @@ const Schedule = () => {
                 background="#DC3123"
                 align="center"
               >
-                <Button icon={<FormSubtract />} hoverIndicator onClick={() => {}} />
+                <Button icon={<FormSubtract />} hoverIndicator onClick={() => {
+                  setRangesOfTime(ranges => {
+                    const newRanges = JSON.parse(JSON.stringify(ranges)) as ranges
+                    newRanges[currentDay].splice(index, 1)
+                    return newRanges
+                  })
+                }} />
               </Box>
             </Box>
           ))
         })}
       </Box>
-
-      <Box>
-        <Button label="AGREGA OTRO" onClick={() => {}} size="large" primary />
+      <Box round="full" overflow="hidden" background="neutral-1" width="xxsmall" height="xxsmall">
+        <Button icon={<Add />} hoverIndicator onClick={() => {
+          setRangesOfTime(ranges => {
+            const newRanges = JSON.parse(JSON.stringify(ranges)) as ranges
+            newRanges["Monday"].push({ startHour: hour.h13, endHour: hour.h15 })
+            return newRanges
+          })
+        }}  />
       </Box>
+      <h2>How often?</h2>
       <Box>
         <Button label="Schedule Mock" onClick={() => {}} size="large" primary />
       </Box>
