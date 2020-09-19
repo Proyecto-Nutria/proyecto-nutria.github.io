@@ -209,8 +209,9 @@ const CandidatesTable = () => {
                   setData(DATA);
                 }else{
                   const auxData = new Set();
-                  value.map((selectedDay: any) => {
-                    DATA.map(row => {
+                  // @ts-ignore
+                  value.forEach((selectedDay: string) => {
+                    DATA.forEach(row => {
                       if (!auxData.has(row)) {
                         switch (selectedDay) {
                           case day.Monday:
