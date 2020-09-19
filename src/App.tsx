@@ -30,7 +30,7 @@ const Routes = () => {
     <HashRouter>
       <Box height="100%" width="100%" direction="column" background="background-back">
         <AppHeader /> {/* todo: add conditions to decide when not to show the header */}
-        <MainGrommet flex={{ grow: 1, shrink: 1 }} overflow={{ vertical: "auto" }} pad="large">
+        <MainGrommet flex={{ grow: 1, shrink: 1 }} overflow={{ vertical: "auto" }} pad="medium">
           <Switch>
             <Route path="/login">
               <Login />
@@ -44,31 +44,10 @@ const Routes = () => {
               </Route>
             )}
             <Route path="/interviewsInterviewee">
-              <InterviewsInterviewee
-                data={[
-                  {
-                    date: "00/00/00",
-                    time: "01:30 pm",
-                    document: "Link",
-                    place: "room-4",
-                    confirmed: true,
-                  },
-                ]}
-              />
+              <InterviewsInterviewee />
             </Route>
             <Route path="/interviewsInterviewer">
-              <InterviewsInterviewer
-                data={[
-                  {
-                    name: "Sergio",
-                    date: "00/00/00",
-                    time: "01:30 pm",
-                    document: "Link",
-                    place: "room-4",
-                    confirmed: true,
-                  },
-                ]}
-              />
+              <InterviewsInterviewer />
             </Route>
             <Route path="/editProfile">
               <EditProfile />

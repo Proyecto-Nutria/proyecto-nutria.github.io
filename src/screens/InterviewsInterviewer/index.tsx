@@ -1,74 +1,73 @@
-import React from "react";
-import { DataTable, Text, Box, CheckBox } from "grommet";
-// import './interviewsInterviewer.module.css'
+import React, { useState } from "react"
+import { DataTable, Text, Box, CheckBox, Heading } from "grommet"
+import Util from "../../general/Util"
+import InterviewInfoList from "../InterviewInfoList/InterviewInfoList"
 
-interface IInterviewsInterviewer {
-  name: string;
-  date: string;
-  time: string;
-  document: string;
-  place: string;
-  confirmed: boolean;
-}
+const data = [
+  {
+    id: "1",
+    name: "Jose Manuel Calva Hernandez",
+    document: "Link",
+    place: "room-4",
+    confirmed: false,
+    timestamp: new Date(2020, 8, 21, 15, 30),
+  },
+  {
+    id: "2",
+    name: "Sergio Gabriel Sanchez Valencia",
+    document: "Link",
+    place: "room-2",
+    confirmed: true,
+    timestamp: new Date(2020, 8, 22, 13, 30),
+  },
+  {
+    id: "3",
+    name: "Abigail Nicolas Sayago",
+    document: "Link",
+    place: "room-4",
+    confirmed: false,
+    timestamp: new Date(2020, 8, 21, 14, 30),
+  },
+  {
+    id: "4",
+    name: "Roberto Reyes Fragoso",
+    document: "Link",
+    place: "room-5",
+    confirmed: true,
+    timestamp: new Date(2020, 8, 13, 14, 30),
+  },
+  {
+    id: "5",
+    name: "Hugo Duhart",
+    document: "Link",
+    place: "room-1",
+    confirmed: true,
+    timestamp: new Date(2020, 8, 14, 14, 30),
+  },
+]
 
-interface IInterviewsInterviewerProps {
-  data: [IInterviewsInterviewer];
-}
+const InterviewsInterviewer = () => {
+  // let [info, setData] = useState(data.sort(compareDates).reverse())
+  console.log(data[1].timestamp)
+  let [first, second] = Util.splitByTime(data, new Date())
+  let [incomingInterviews, setIncomingInterviews] = useState(
+    first.sort(Util.datesComparator).reverse()
+  )
 
-const InterviewsInterviewer = (props: IInterviewsInterviewerProps) => {
+  let [pastInterviews, setPastInterviews] = useState(second.sort(Util.datesComparator).reverse())
+
   return (
-    <Box align="center" pad="small" background="background-contrast" width="95%" alignSelf="center">
-      <DataTable
-        size="medium"
-        alignSelf="center"
-        onClickRow={(event) => {
-          // redirect to next page
-          console.log(event);
-          return;
-        }}
-        columns={[
-          {
-            align: "center",
-            property: "name",
-            header: <Text>Name</Text>,
-          },
-          {
-            align: "center",
-            property: "date",
-            header: <Text>Date</Text>,
-          },
-          {
-            align: "center",
-            property: "time",
-            header: <Text>Time</Text>,
-          },
-          {
-            align: "center",
-            property: "document",
-            header: <Text>Document</Text>,
-          },
-          {
-            align: "center",
-            property: "place",
-            header: <Text>Place</Text>,
-          },
-          {
-            align: "center",
-            property: "confirmed",
-            header: <Text>Confirmed</Text>,
-            render: ({ confirmed }) => {
-              return (
-                <Box alignSelf="center" align="center">
-                  <CheckBox checked={confirmed} />
-                </Box>
-              );
-            },
-          },
-        ]}
-        data={props.data}
-      />
-    </Box>
-  );
-};
+    <>
+      <Heading level={2} margin="20px">
+        Incoming Interviews
+      </Heading>
+      <InterviewInfoList showName={true} info={incomingInterviews} onRowClick={(_) => {}} />
+      <Heading level={2} margin="20px">
+        Past Interviews
+      </Heading>
+      <InterviewInfoList showName={true} info={pastInterviews} onRowClick={(_) => {}} />
+    </>
+  )
+}
 
-export default InterviewsInterviewer;
+export default InterviewsInterviewer
