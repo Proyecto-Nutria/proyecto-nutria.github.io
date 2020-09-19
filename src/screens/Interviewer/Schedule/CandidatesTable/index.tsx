@@ -269,48 +269,41 @@ const CandidatesTable = () => {
               placeholder="Select one"
               options={listOfHoursDisplay}
               onChange={({ value }) => {
-                console.log(1)
                 const formattedHour = parseInt(value.slice(0, 2)) as hour
-                console.log(2)
                 setData(DATA.filter(row => 
                   {
-                    console.log(3)
                     if (row.Monday && 
-                      ( row.Monday.range.startHour <= formattedHour ||
+                      ( row.Monday.range.startHour <= formattedHour &&
                         formattedHour <= row.Monday.range.endHour )
                     ) {
-                      console.log(row.Monday.range.startHour)
-                      console.log(typeof row.Monday.range.startHour)
-                      console.log(formattedHour)
-                      console.log(typeof formattedHour)
                       return true;
                     } else if (row.Tuesday && 
-                      ( row.Tuesday.range.startHour <= formattedHour ||
+                      ( row.Tuesday.range.startHour <= formattedHour &&
                         formattedHour <= row.Tuesday.range.endHour )
                     ) {
                       return true;
                     } else if (row.Wednesday && 
-                      ( row.Wednesday.range.startHour <= formattedHour ||
+                      ( row.Wednesday.range.startHour <= formattedHour &&
                         formattedHour <= row.Wednesday.range.endHour )
                     ) {
                       return true;
                     } else if (row.Thursday && 
-                      ( row.Thursday.range.startHour <= formattedHour ||
+                      ( row.Thursday.range.startHour <= formattedHour &&
                         formattedHour <= row.Thursday.range.endHour )
                     ) {
                       return true;
                     } else if (row.Friday && 
-                      ( row.Friday.range.startHour <= formattedHour ||
+                      ( row.Friday.range.startHour <= formattedHour &&
                         formattedHour <= row.Friday.range.endHour )
                     ) {
                       return true;
                     } else if (row.Saturday && 
-                      ( row.Saturday.range.startHour <= formattedHour ||
+                      ( row.Saturday.range.startHour <= formattedHour &&
                         formattedHour <= row.Saturday.range.endHour )
                     ) {
                       return true;
                     } else if (row.Sunday && 
-                      ( row.Sunday.range.startHour <= formattedHour ||
+                      ( row.Sunday.range.startHour <= formattedHour &&
                         formattedHour <= row.Sunday.range.endHour )
                     ) {
                       return true;
@@ -319,7 +312,6 @@ const CandidatesTable = () => {
                     }
                   }
                 ))
-                console.log(4)
               }}
             />
           </Box>
