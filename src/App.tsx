@@ -1,16 +1,16 @@
-import React, { useContext } from "react"
+import React, { useContext, Fragment } from "react"
 import { Box, Grommet, Main as MainGrommet, ThemeType } from "grommet"
 
 import { ApolloProvider } from "@apollo/client"
 
 import getClient from "./configGraphqlClient"
 
-import { HashRouter, Switch, Route } from "react-router-dom"
+import { HashRouter, Switch, Route, Redirect } from "react-router-dom"
 
 import UserProvider, { UserContext } from "./providers/UserProvider"
 
 import Login from "./screens/Login"
-import Home from "./screens/Main"
+import Main from "./screens/Main"
 import InterviewsInterviewee from "./screens/InterviewsInterviewee/InterviewsInterviewee"
 import InterviewsInterviewer from "./screens/InterviewsInterviewer/InterviewsInterviewer"
 import IntervieweeDetails from "./screens/IntervieweeDetails/IntervieweeDetails"
@@ -30,48 +30,55 @@ const Routes = () => {
 
   return (
     <HashRouter>
-      <Box height="100%" width="100%" direction="column" background="background-back">
-        <AppHeader /> {/* todo: add conditions to decide when not to show the header */}
-        <MainGrommet flex={{ grow: 1, shrink: 1 }} overflow={{ vertical: "auto" }} pad="medium">
-          <Switch>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/signUp">
-              <SignUp />
-            </Route>
-            {user && (
-              <Route path="/home">
-                <Home />
-              </Route>
-            )}
-            <Route path="/intervieweeDetails">
-              <IntervieweeDetails />
-            </Route>
-            <Route path="/interviewsInterviewee">
-              <InterviewsInterviewee />
-            </Route>
-            <Route path="/interviewsInterviewer">
-              <InterviewsInterviewer />
-            </Route>
-            <Route path="/editProfile">
-              <EditProfile />
-            </Route>
-            <Route path="/scheduleInterviewee">
-              <ScheduleInterviewee />
-            </Route>
-            <Route path="/scheduleInterviewer">
-              <ScheduleInterviewer />
-            </Route>
-            <Route path="/testing">
-              <Testing />
-            </Route>
-            <Route path="/">
-              <Landing />
-            </Route>
-          </Switch>
-        </MainGrommet>
-      </Box>
+      <Switch>
+        <Route exact={true} path="/">
+          <Landing />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/signUp">
+          <SignUp />
+        </Route>
+        {user && (
+          <Fragment>
+            <Box height="100%" width="100%" direction="column" background="background-back">
+              <AppHeader /> {/* todo: add conditions to decide when not to show the header */}
+              <MainGrommet
+                flex={{ grow: 1, shrink: 1 }}
+                overflow={{ vertical: "auto" }}
+                pad="medium"
+              >
+                <Route path="/home">
+                  <Main />
+                </Route>
+                <Route path="/intervieweeDetails">
+                  <IntervieweeDetails />
+                </Route>
+                <Route path="/interviewsInterviewee">
+                  <InterviewsInterviewee />
+                </Route>
+                <Route path="/interviewsInterviewer">
+                  <InterviewsInterviewer />
+                </Route>
+                <Route path="/editProfile">
+                  <EditProfile />
+                </Route>
+                <Route path="/scheduleInterviewee">
+                  <ScheduleInterviewee />
+                </Route>
+                <Route path="/scheduleInterviewer">
+                  <ScheduleInterviewer />
+                </Route>
+                <Route path="/testing">
+                  <Testing />
+                </Route>
+              </MainGrommet>
+            </Box>
+          </Fragment>
+        )}
+        <Redirect to="/" />
+      </Switch>
     </HashRouter>
   )
 }

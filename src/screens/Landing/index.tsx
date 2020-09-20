@@ -9,7 +9,7 @@ const Login = () => {
   const history = useHistory()
 
   return (
-    <Main pad="large">
+    <Main pad="large" background="background-back">
       <Heading margin="medium">Landing Page</Heading>
       {user ? (
         <Button

@@ -1,5 +1,5 @@
 import { Anchor, Box, Heading } from "grommet"
-import React, { useState } from "react"
+import React from "react"
 import InterviewInfoList from "../InterviewInfoList/InterviewInfoList"
 import DetailField from "./DetailField"
 

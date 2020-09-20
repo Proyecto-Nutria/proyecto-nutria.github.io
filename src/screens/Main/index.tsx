@@ -18,13 +18,13 @@ const Main = () => {
         columns={["1fr", "1fr", "1fr"]}
         gap="medium"
       >
-      <Box
-        background="brand"
-        className={styles.bigSectionButton}
-        onClick={() => history.push("/scheduleInterviewee")}
-      >
-        Schedule a Mock Interview (Interviewee)
-      </Box>
+        <Box
+          background="brand"
+          className={styles.bigSectionButton}
+          onClick={() => history.push("/scheduleInterviewee")}
+        >
+          Schedule a Mock Interview (Interviewee)
+        </Box>
         <Box
           background="brand"
           className={styles.bigSectionButton}
@@ -56,7 +56,14 @@ const Main = () => {
         <Box background="brand" className={styles.bigSectionButton}>
           Endpoint
         </Box>
-        <Box background="brand" className={styles.bigSectionButton} onClick={signOutWithGoogle}>
+        <Box
+          background="brand"
+          className={styles.bigSectionButton}
+          onClick={() => {
+            signOutWithGoogle()
+            history.push("/login")
+          }}
+        >
           Log Out
         </Box>
       </Grid>
