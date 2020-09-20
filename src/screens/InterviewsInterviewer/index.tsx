@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { DataTable, Text, Box, CheckBox, Heading } from "grommet"
+import { Heading } from "grommet"
 import Util from "../../general/Util"
 import InterviewInfoList from "../InterviewInfoList/InterviewInfoList"
 
@@ -50,22 +50,20 @@ const InterviewsInterviewer = () => {
   // let [info, setData] = useState(data.sort(compareDates).reverse())
   console.log(data[1].timestamp)
   let [first, second] = Util.splitByTime(data, new Date())
-  let [incomingInterviews, setIncomingInterviews] = useState(
-    first.sort(Util.datesComparator).reverse()
-  )
+  let [incomingInterviews] = useState(first.sort(Util.datesComparator).reverse())
 
-  let [pastInterviews, setPastInterviews] = useState(second.sort(Util.datesComparator).reverse())
+  let [pastInterviews] = useState(second.sort(Util.datesComparator).reverse())
 
   return (
     <>
       <Heading level={2} margin="20px">
         Incoming Interviews
       </Heading>
-      <InterviewInfoList showName={true} info={incomingInterviews} onRowClick={(_) => {}} />
+      <InterviewInfoList showName={true} info={incomingInterviews} onRowClick={_ => {}} />
       <Heading level={2} margin="20px">
         Past Interviews
       </Heading>
-      <InterviewInfoList showName={true} info={pastInterviews} onRowClick={(_) => {}} />
+      <InterviewInfoList showName={true} info={pastInterviews} onRowClick={_ => {}} />
     </>
   )
 }

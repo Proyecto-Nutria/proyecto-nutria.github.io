@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Grid, Box, Select, Text, Button } from "grommet"
+import { Grid } from "grommet"
 
 import Filter from "./Filter"
 import CandidatesTable from "./CandidatesTable"
