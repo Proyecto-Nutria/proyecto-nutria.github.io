@@ -75,56 +75,37 @@ const Ranges: React.FC<{ ranges: Array<range> }> = ({ ranges }) => (
   <>
     {ranges.map(({ startHour, endHour }) => (
       <Box pad={{ vertical: "xsmall" }}>
-        <Text>{hourToDisplay(startHour)} - {hourToDisplay(endHour)}</Text>
+        <Text size="10%">
+          {hourToDisplay(startHour)} - {hourToDisplay(endHour)}
+        </Text>
       </Box>
     ))}
   </>
 )
 
-const columns = [
+const nameColumn: Array<any> = [
   {
     property: "name",
     header: "Name",
     primary: true,
     search: true,
     size: "small",
-  },
-  {
-    property: "Monday",
-    header: "Monday",
-    render: (row: personData) => <Ranges ranges={row.Monday} />,
-  },
-  {
-    property: "Tuesday",
-    header: "Tuesday",
-    render: (row: personData) => <Ranges ranges={row.Tuesday} />,
-  },
-  {
-    property: "Wednesday",
-    header: "Wednesday",
-    render: (row: personData) => <Ranges ranges={row.Wednesday} />,
-  },
-  {
-    property: "Thursday",
-    header: "Thursday",
-    render: (row: personData) => <Ranges ranges={row.Thursday} />,
-  },
-  {
-    property: "Friday",
-    header: "Friday",
-    render: (row: personData) => <Ranges ranges={row.Friday} />,
-  },
-  {
-    property: "Saturday",
-    header: "Saturday",
-    render: (row: personData) => <Ranges ranges={row.Saturday} />,
-  },
-  {
-    property: "Sunday",
-    header: "Sunday",
-    render: (row: personData) => <Ranges ranges={row.Sunday} />,
+    render: (row: personData) => (
+      <Box pad={{ vertical: "xsmall" }}>
+        <Text>{row.name}</Text>
+        <Text size="10%">{row.programmingLanguages.join(", ")}</Text>
+      </Box>
+    ),
   },
 ]
+
+const otherColumns: Array<any> = listOfDays.map(day => ({
+  property: day,
+  header: day,
+  render: (row: personData) => <Ranges ranges={row[day]} />,
+}))
+
+const columns = [...nameColumn, ...otherColumns]
 
 const CandidatesTable: React.FC = () => {
   const [data, setData] = useState(SERVER_DATA)

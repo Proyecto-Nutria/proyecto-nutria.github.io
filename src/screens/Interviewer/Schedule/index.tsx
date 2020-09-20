@@ -8,7 +8,7 @@ import CandidatesTable from "./CandidatesTable"
 const Schedule = () => {
   return (
     <Grid gap="medium" margin="xlarge">
-      <Filter />
+      {/*<Filter />*/}
       <CandidatesTable />
     </Grid>
   )
