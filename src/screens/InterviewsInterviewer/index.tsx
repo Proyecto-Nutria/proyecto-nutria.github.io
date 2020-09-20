@@ -49,11 +49,9 @@ const data = [
 const InterviewsInterviewer = () => {
   console.log(data[1].timestamp)
   let [first, second] = Util.splitByTime(data, new Date())
-  let [incomingInterviews, setIncomingInterviews] = useState(
-    first.sort(Util.datesComparator).reverse()
-  )
+  let [incomingInterviews] = useState(first.sort(Util.datesComparator).reverse())
 
-  let [pastInterviews, setPastInterviews] = useState(second.sort(Util.datesComparator).reverse())
+  let [pastInterviews] = useState(second.sort(Util.datesComparator).reverse())
 
   return (
     <>

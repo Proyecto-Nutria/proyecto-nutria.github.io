@@ -16,7 +16,8 @@ import InterviewsInterviewer from "./screens/InterviewsInterviewer"
 import Landing from "./screens/Landing"
 import SignUp from "./screens/SignUp"
 import EditProfile from "./screens/Interviewee/EditProfile"
-import Schedule from "./screens/Interviewee/Schedule"
+import { default as ScheduleInterviewee } from "./screens/Interviewee/Schedule"
+import { default as ScheduleInterviewer } from "./screens/Interviewer/Schedule"
 import Testing from "./screens/TestingApollo"
 
 import theme from "./generalStyles/theme"
@@ -52,8 +53,11 @@ const Routes = () => {
             <Route path="/editProfile">
               <EditProfile />
             </Route>
-            <Route path="/schedule">
-              <Schedule />
+            <Route path="/scheduleInterviewee">
+              <ScheduleInterviewee />
+            </Route>
+            <Route path="/scheduleInterviewer">
+              <ScheduleInterviewer />
             </Route>
             <Route path="/testing">
               <Testing />
