@@ -11,8 +11,9 @@ import UserProvider, { UserContext } from "./providers/UserProvider"
 
 import Login from "./screens/Login"
 import Home from "./screens/Main"
-import InterviewsInterviewee from "./screens/InterviewsInterviewee"
-import InterviewsInterviewer from "./screens/InterviewsInterviewer"
+import InterviewsInterviewee from "./screens/InterviewsInterviewee/InterviewsInterviewee"
+import InterviewsInterviewer from "./screens/InterviewsInterviewer/InterviewsInterviewer"
+import IntervieweeDetails from "./screens/IntervieweeDetails/IntervieweeDetails"
 import Landing from "./screens/Landing"
 import SignUp from "./screens/SignUp"
 import EditProfile from "./screens/Interviewee/EditProfile"
@@ -44,6 +45,9 @@ const Routes = () => {
                 <Home />
               </Route>
             )}
+            <Route path="/intervieweeDetails">
+              <IntervieweeDetails />
+            </Route>
             <Route path="/interviewsInterviewee">
               <InterviewsInterviewee />
             </Route>

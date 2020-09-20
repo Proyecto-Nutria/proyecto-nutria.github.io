@@ -11,6 +11,7 @@ const data = [
     place: "room-4",
     confirmed: false,
     timestamp: new Date(2020, 8, 21, 15, 30),
+    score: "--"
   },
   {
     id: "2",
@@ -19,6 +20,7 @@ const data = [
     place: "room-2",
     confirmed: true,
     timestamp: new Date(2020, 8, 22, 13, 30),
+    score: "Undetermined"
   },
   {
     id: "3",
@@ -27,6 +29,7 @@ const data = [
     place: "room-4",
     confirmed: false,
     timestamp: new Date(2020, 8, 21, 14, 30),
+    score: "--"
   },
   {
     id: "4",
@@ -35,6 +38,7 @@ const data = [
     place: "room-5",
     confirmed: true,
     timestamp: new Date(2020, 8, 13, 14, 30),
+    score: "Strongly Hire"
   },
   {
     id: "5",
@@ -43,6 +47,7 @@ const data = [
     place: "room-1",
     confirmed: true,
     timestamp: new Date(2020, 8, 14, 14, 30),
+    score: "Hire"
   },
 ]
 

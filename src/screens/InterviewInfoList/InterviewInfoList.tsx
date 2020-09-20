@@ -9,6 +9,7 @@ export interface IInterviewInfo {
   document: string
   place: string
   confirmed: boolean
+  score: string
 }
 
 let compareChecked = (data1: IInterviewInfo, data2: IInterviewInfo) => {
@@ -115,6 +116,12 @@ const InterviewInfoList = (props: IInterviewInfoListProps) => {
             align: "center",
             property: "place",
             header: <Text>Place</Text>,
+            sortable: true,
+          },
+          {
+            align: "center",
+            property: "score",
+            header: <Text>Score</Text>,
             sortable: true,
           },
           {
