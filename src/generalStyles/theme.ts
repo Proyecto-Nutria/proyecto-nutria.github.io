@@ -9,6 +9,14 @@ const theme = {
           "dark": "#0099a2",
           "light": "#0099a2"
         },
+        "brand-1": {
+          "dark": "#007a7a",
+          "light": "#b8eaea"
+        },
+        "brand-2": {
+          "dark": "#002929",
+          "light": "#fffff"
+        },
         "background": {
           "dark": "#111111",
           "light": "#FFFFFF"
