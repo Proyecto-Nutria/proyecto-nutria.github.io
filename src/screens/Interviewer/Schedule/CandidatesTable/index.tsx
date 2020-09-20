@@ -3,7 +3,7 @@ import React, { useState } from "react"
 import { DataTable, Select, Box, Text, Button, Layer, Heading, Meter, Table, TableHeader, TableRow, TableCell, TableBody } from "grommet"
 
 import { day, hour } from "./../../../../general/values"
-import { QueryManager } from "@apollo/client/core/QueryManager"
+/* import { QueryManager } from "@apollo/client/core/QueryManager" */
 
 enum languages {
   "C" = "C",
@@ -163,7 +163,7 @@ const QUERY_DATA: Array<queryData> = [
 const Ranges: React.FC<{ ranges: Array<range> }> = ({ ranges }) => (
   <>
     {ranges.map(({ startHour, endHour }) => (
-      <Box pad={{ vertical: "xxsmall" }}>
+      <Box pad={{ vertical: "xxsmall" }} key={startHour}>
         <Text size="50%">
           {hourToDisplay(startHour)} - {hourToDisplay(endHour)}
         </Text>
@@ -387,7 +387,7 @@ const CandidatesTable: React.FC = () => {
                 </TableHeader>
                 <TableBody>
                   {queryAbout.realInterviews.map(realInterview => (
-                    <TableRow>
+                    <TableRow key={realInterview.company.toString()}>
                       <TableCell scope="row">
                         <strong>{realInterview.company}</strong>
                       </TableCell>
