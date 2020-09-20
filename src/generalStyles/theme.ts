@@ -22,11 +22,11 @@ const theme = {
           "light": "#FFFFFF"
         },
         "background-back": {
-          "dark": "#111111",
+          "dark": "#575757",
           "light": "#EEEEEE"
         },
         "background-front": {
-          "dark": "#222222",
+          "dark": "#424242",
           "light": "#FFFFFF"
         },
         "background-contrast": {

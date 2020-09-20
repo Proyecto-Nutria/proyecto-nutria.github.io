@@ -1,4 +1,4 @@
-import { Box, Heading } from "grommet"
+import { Anchor, Box, Heading } from "grommet"
 import React, { useState } from "react"
 import InterviewInfoList from "../InterviewInfoList/InterviewInfoList"
 import DetailField from "./DetailField"
@@ -11,7 +11,7 @@ const data = [
     place: "room-4",
     confirmed: false,
     timestamp: new Date(2020, 8, 21, 15, 30),
-    score: "--"
+    score: "--",
   },
   {
     id: "2",
@@ -20,7 +20,7 @@ const data = [
     place: "room-2",
     confirmed: true,
     timestamp: new Date(2020, 8, 22, 13, 30),
-    score: "Undetermined"
+    score: "Undetermined",
   },
   {
     id: "3",
@@ -29,7 +29,7 @@ const data = [
     place: "room-4",
     confirmed: false,
     timestamp: new Date(2020, 8, 21, 14, 30),
-    score: "--"
+    score: "--",
   },
   {
     id: "4",
@@ -38,7 +38,7 @@ const data = [
     place: "room-5",
     confirmed: true,
     timestamp: new Date(2020, 8, 13, 14, 30),
-    score: "Strongly Hire"
+    score: "Strongly Hire",
   },
   {
     id: "5",
@@ -47,7 +47,7 @@ const data = [
     place: "room-1",
     confirmed: true,
     timestamp: new Date(2020, 8, 14, 14, 30),
-    score: "Hire"
+    score: "Hire",
   },
 ]
 
@@ -57,11 +57,11 @@ const IntervieweeDetails = () => {
       <Heading level={2} margin="10px">
         Interviewee Details
       </Heading>
-      <Box flex={{shrink: 0}} background="background-front" round={true} pad="medium">
+      <Box flex={{ shrink: 0 }} background="background-front" round={true} pad="medium">
         <DetailField property="Name" value="Sergio G. Sanchez Valencia" />
         <DetailField property="Email" value="serchgabriel97@gmail.com" />
         <DetailField property="Phone #" value="+52 5512345678" />
-        <DetailField property="Resume" value={<a href={"/"}>Link</a>} />
+        <DetailField property="Resume" value={<Anchor color="brand" href={"/"} label="Link" />} />
         <DetailField property="Global Score" value="Strongly Hire" />
       </Box>
       <Heading level={2} margin="10px">

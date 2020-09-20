@@ -1,4 +1,4 @@
-import { Box, Text, DataTable, CheckBox, ColumnConfig } from "grommet"
+import { Box, Text, DataTable, CheckBox, ColumnConfig, Anchor } from "grommet"
 import React, { useState } from "react"
 import Util from "../../general/Util"
 
@@ -46,7 +46,7 @@ const InterviewInfoList = (props: IInterviewInfoListProps) => {
     <Box
       align="center"
       pad="small"
-      background="background-contrast"
+      background="background-front"
       alignSelf="center"
       round={true}
       flex={{ shrink: 0 }}
@@ -109,7 +109,7 @@ const InterviewInfoList = (props: IInterviewInfoListProps) => {
             header: <Text>Document</Text>,
             sortable: true,
             render: ({ document }) => {
-              return <a href={document}>Link</a>
+              return <Anchor color="brand" href={document} label="Link" />
             },
           },
           {

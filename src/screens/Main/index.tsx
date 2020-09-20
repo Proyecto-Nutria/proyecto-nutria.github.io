@@ -46,6 +46,13 @@ const Main = () => {
         >
           Check my interviews history (Interviewer)
         </Box>
+        <Box
+          background="brand"
+          className={styles.bigSectionButton}
+          onClick={() => history.push("/intervieweeDetails")}
+        >
+          Interviewee Profile
+        </Box>
         <Box background="brand" className={styles.bigSectionButton}>
           Endpoint
         </Box>
