@@ -35,4 +35,13 @@ enum day {
   Sunday = "Sunday",
 }
 
-export {day, hour}
+enum languages {
+  "C" = "C",
+  "C++" = "C++",
+  "Python" = "Python",
+  "Java" = "Java",
+  "JavaScript" = "JavaScript",
+  "Other" = "Other",
+}
+
+export {day, hour, languages}
