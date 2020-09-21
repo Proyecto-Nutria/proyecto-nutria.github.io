@@ -1,11 +1,13 @@
 import React, { useState } from "react"
 
-import { Grid } from "grommet"
+import { Grid, Box, Text } from "grommet"
 
 import Filter from "./Filter"
 import ModalConfirm from "./ModalConfirm"
 import ModalAbout from "./ModalAbout"
 import CandidatesTable from "./CandidatesTable"
+
+import styles from "./schedule.module.css"
 
 import { day, hour, languages } from "./../../../general/values"
 /* import { QueryManager } from "@apollo/client/core/QueryManager" */
@@ -41,6 +43,16 @@ const Schedule = () => {
   return (
     <Grid gap="medium" margin="xlarge">
       <Filter setData={(filterData: Array<personData>) => setData(filterData)} />
+      <Box direction="row-responsive" fill="horizontal" justify="start" gap="small">
+        <Box direction="row-responsive" justify="start" alignSelf="start" width="medium" gap="small">
+          <Box className={`${styles.box1} ${styles.stripe}`} ></Box>
+          <Text weight="bold" size="medium">&nbsp;Interview scheduled</Text>
+        </Box>
+        <Box direction="row-responsive" justify="start" alignSelf="start" width="medium" gap="small">
+          <Box className={styles.box2} border={{ color: 'brand', size: 'small' }} ></Box>
+          <Text weight="bold" size="medium">&nbsp;Has Real Interview</Text>
+        </Box>
+      </Box>
       <CandidatesTable 
         data={data}
         setQueryAbout={(newQueryAbout: queryData) => setQueryAbout(newQueryAbout)}

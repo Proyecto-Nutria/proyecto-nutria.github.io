@@ -61,22 +61,27 @@ const CandidatesTable = (props: {
       search: true,
       size: "small",
       render: (row: personData) => (
-        <Button 
-          key={row.uid.toString()}
-          size="small"
-          fill
-          primary
-          color={row.hasRealInterview ? "brand-2" : "brand"}
-          onClick={event => {
-            setQueryAbout(makeQuery(row.uid.toString()))
-            setShowAbout(true)
-          }} 
+        <Box 
+          border={{ color: row.hasRealInterview ? 'brand' : 'brand-2', size: 'small' }} 
+          background="background-contrast" 
+          round={true} 
+          fill={true}
         >
-          <Box pad={{ vertical: "xsmall" }} alignSelf="center" margin="small">
-            <Text>{row.name}</Text>
-            <Text size="50%">{row.programmingLanguages.join(", ")}</Text>
-          </Box>
-        </Button>
+          <Button 
+            key={row.uid.toString()}
+            size="small"
+            fill
+            onClick={event => {
+              setQueryAbout(makeQuery(row.uid.toString()))
+              setShowAbout(true)
+            }} 
+          >
+            <Box pad={{ vertical: "xsmall" }} alignSelf="center" margin="small">
+              <Text>{row.name}</Text>
+              <Text size="50%">{row.programmingLanguages.join(", ")}</Text>
+            </Box>
+          </Button>
+        </Box>
       ),
     },
   ]
@@ -88,7 +93,7 @@ const CandidatesTable = (props: {
     render: (row: personData) => 
       row[day].length !== 0 ?
         <Box 
-          border={{ color: row.hasRealInterview ? 'brand-2' : 'brand', size: 'small', "style": "dashed" }} 
+          border={{ color: row.hasRealInterview ? 'brand' : 'brand-2', size: 'small', "style": "dashed" }} 
           background={row.hasInterviews[dayToNumber(day)] ? "background-front" : "background-contrast"} 
           className={row.hasInterviews[dayToNumber(day)] ? styles.stripe : ""}
           round={true} 

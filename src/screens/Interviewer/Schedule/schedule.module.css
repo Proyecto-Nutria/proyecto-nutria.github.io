@@ -1,3 +1,13 @@
+.box1 {
+  width: 25px;
+  height: 25px;
+}
+
+.box2 {
+  width: 25px;
+  height: 25px;
+}
+
 .stripe {
   color: white;
   background: repeating-linear-gradient(
