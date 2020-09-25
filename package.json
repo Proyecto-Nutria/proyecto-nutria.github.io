@@ -25,15 +25,21 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-table": "^7.5.1",
+    "reason-react": "0.9.1",
     "styled-components": "^5.2.0",
-    "typescript": "~3.7.2"
+    "typescript": "^3.8"
   },
   "scripts": {
     "start": "react-scripts start",
     "start:arch": "BROWSER=google-chrome-stable yarn start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:reason": "bsb -make-world -clean-world",
+    "watch:reason": "bsb -make-world -clean-world -w",
+    "watch:relay": "reason-relay-compiler --watch",
+    "relay": "reason-relay-compiler",
+    "clean": "bsb -clean-world"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -49,5 +55,22 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@jsiebern/bs-material-ui": "^2.0.2",
+    "@material-ui/core": "^5.0.0-alpha.9",
+    "@material-ui/icons": "^4.9.1",
+    "bs-fetch": "^0.6.2",
+    "bs-platform": "8.2.0",
+    "bs-webapi": "^0.19.1",
+    "clipboard-polyfill": "^3.0.1",
+    "gentype": "3.35.0",
+    "graphql": "^15.3.0",
+    "react-relay": "0.0.0-experimental-183bdd28",
+    "reason-promise": "^1.1.1",
+    "reason-relay": "^0.11.0",
+    "relay-compiler": "10.0.1",
+    "relay-config": "10.0.1",
+    "relay-runtime": "10.0.1"
   }
 }

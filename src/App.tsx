@@ -20,12 +20,14 @@ import EditProfile from "./screens/Interviewee/EditProfile"
 import { default as ScheduleInterviewee } from "./screens/Interviewee/Schedule"
 import { default as ScheduleInterviewer } from "./screens/Interviewer/Schedule"
 import Testing from "./screens/TestingApollo"
+import MainFeedbackHelper from "./FeedbackHelper/MainFeedbackHelper.bs"
 
 import theme from "./generalStyles/theme"
 import AppHeader from "./screens/Main/Header"
 
 const Routes = () => {
   const user = useContext(UserContext)
+  const FeedbackHelper = MainFeedbackHelper.make;
   // todo: if user not logged redirect to /login"
 
   return (
@@ -43,7 +45,7 @@ const Routes = () => {
         {user && (
           <Fragment>
             <Box height="100%" width="100%" direction="column" background="background-back">
-              <AppHeader /> {/* todo: add conditions to decide when not to show the header */}
+              <AppHeader />
               <MainGrommet
                 flex={{ grow: 1, shrink: 1 }}
                 overflow={{ vertical: "auto" }}
@@ -69,6 +71,9 @@ const Routes = () => {
                 </Route>
                 <Route path="/scheduleInterviewer">
                   <ScheduleInterviewer />
+                </Route>
+                <Route path="/feedbackHelper">
+                  <FeedbackHelper />
                 </Route>
                 <Route path="/testing">
                   <Testing />

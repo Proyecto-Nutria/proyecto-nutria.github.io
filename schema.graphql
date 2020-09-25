@@ -1,0 +1,9 @@
+type Query {
+  interviewScores: [InterviewScore!]!
+}
+
+type InterviewScore {
+  id: ID!
+  value: Int!
+  description: String!
+}
