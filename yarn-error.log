@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /usr/bin/yarn clean
+  /usr/bin/node /usr/bin/yarn
 
 PATH: 
   /home/san/perl5/bin:/home/san/go/bin:/home/san/.poetry/bin:/opt/texlive/2019/bin/x86_64-linux:/home/san/ProgramFiles/Scripts:/home/san/ProgramFiles/springboot-script:/home/san/perl5/bin:/home/san/ProgramFiles/Anaconda/anaconda3/bin:/home/san/ProgramFiles/Anaconda/anaconda3/condabin:/home/san/go/bin:/home/san/.poetry/bin:/opt/texlive/2019/bin/x86_64-linux:/home/san/ProgramFiles/Scripts:/home/san/ProgramFiles/springboot-script:/home/san/.local/bin:/home/san/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/var/lib/snapd/snap/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
@@ -14,7 +14,7 @@ Platform:
   linux x64
 
 Trace: 
-  SyntaxError: /home/san/Projects/proyecto-nutria.github.io/package.json: Unexpected string in JSON at position 1367
+  SyntaxError: /home/san/Projects/proyecto-nutria.github.io/package.json: Unexpected token } in JSON at position 1964
       at JSON.parse (<anonymous>)
       at /usr/lib/node_modules/yarn/lib/cli.js:1625:59
       at Generator.next (<anonymous>)
@@ -28,7 +28,7 @@ npm manifest:
     "private": true,
     "homepage": "https://proyecto-nutria.github.io/",
     "dependencies": {
-      "@apollo/client": "^3.2.0",
+      "@apollo/client": "^3.2.5",
       "@testing-library/jest-dom": "^4.2.4",
       "@testing-library/react": "^9.3.2",
       "@testing-library/user-event": "^7.1.2",
@@ -51,20 +51,18 @@ npm manifest:
       "react-table": "^7.5.1",
       "reason-react": "0.9.1",
       "styled-components": "^5.2.0",
-      "typescript": "~3.7.2"
+      "typescript": "^3.8"
     },
     "scripts": {
       "start": "react-scripts start",
       "start:arch": "BROWSER=google-chrome-stable yarn start",
-      "build": "react-scripts build",
+      "build": "yarn build:reason && react-scripts build",
       "test": "react-scripts test",
       "eject": "react-scripts eject",
       "build:reason": "bsb -make-world -clean-world",
       "watch:reason": "bsb -make-world -clean-world -w",
-      "watch:relay": "reason-relay-compiler --watch",
-      "relay": "reason-relay-compiler",
       "clean": "bsb -clean-world"
-    }
+    },
     "eslintConfig": {
       "extends": "react-app"
     },
@@ -81,6 +79,7 @@ npm manifest:
       ]
     },
     "devDependencies": {
+      "@baransu/graphql_ppx_re": "^0.7.1",
       "@jsiebern/bs-material-ui": "^2.0.2",
       "@material-ui/core": "^5.0.0-alpha.9",
       "@material-ui/icons": "^4.9.1",
@@ -90,12 +89,7 @@ npm manifest:
       "clipboard-polyfill": "^3.0.1",
       "gentype": "3.35.0",
       "graphql": "^15.3.0",
-      "react-relay": "0.0.0-experimental-183bdd28",
       "reason-promise": "^1.1.1",
-      "reason-relay": "^0.11.0",
-      "relay-compiler": "10.0.1",
-      "relay-config": "10.0.1",
-      "relay-runtime": "10.0.1"
     }
   }
 
@@ -107,10 +101,10 @@ Lockfile:
   # yarn lockfile v1
   
   
-  "@apollo/client@^3.2.0":
-    version "3.2.0"
-    resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.2.0.tgz#d16ea4384a2126bf60e7d87b0a6c6df00382220b"
-    integrity sha512-6ISMYW9QpEykJAkN6ZZteTkXXwtYSPGbh+4iBZ478p/Eox1JOMGYlqosGgMGv2oduug9SnsR65y0iCAxKOFGiQ==
+  "@apollo/client@^3.2.5":
+    version "3.2.5"
+    resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.2.5.tgz#24e0a6faa1d231ab44807af237c6227410c75c4d"
+    integrity sha512-zpruxnFMz6K94gs2pqc3sidzFDbQpKT5D6P/J/I9s8ekHZ5eczgnRp6pqXC86Bh7+44j/btpmOT0kwiboyqTnA==
     dependencies:
       "@graphql-typed-document-node/core" "^3.0.0"
       "@types/zen-observable" "^0.8.0"
@@ -119,10 +113,9 @@ Lockfile:
       fast-json-stable-stringify "^2.0.0"
       graphql-tag "^2.11.0"
       hoist-non-react-statics "^3.3.2"
-      optimism "^0.12.1"
+      optimism "^0.13.0"
       prop-types "^15.7.2"
       symbol-observable "^2.0.0"
-      terser "^5.2.0"
       ts-invariant "^0.4.4"
       tslib "^1.10.0"
       zen-observable "^0.8.14"
@@ -1497,6 +1490,11 @@ Lockfile:
       "@babel/helper-validator-identifier" "^7.10.4"
       lodash "^4.17.19"
       to-fast-properties "^2.0.0"
+  
+  "@baransu/graphql_ppx_re@^0.7.1":
+    version "0.7.1"
+    resolved "https://registry.yarnpkg.com/@baransu/graphql_ppx_re/-/graphql_ppx_re-0.7.1.tgz#8146a36a94d56e65692d74488e2bd6cbd4eb8dc9"
+    integrity sha512-S9RYUWk8IkFxjE1Xl5eohRgbHJP5nCWOD6J1hMV3hY+D43igDrILq1doAXJatYB82BxcsrBC9V+VeU2LtCxIDw==
   
   "@cnakazawa/watch@^1.0.3":
     version "1.0.4"
@@ -8721,10 +8719,10 @@ Lockfile:
     dependencies:
       is-wsl "^1.1.0"
   
-  optimism@^0.12.1:
-    version "0.12.1"
-    resolved "https://registry.yarnpkg.com/optimism/-/optimism-0.12.1.tgz#933f9467b9aef0e601655adb9638f893e486ad02"
-    integrity sha512-t8I7HM1dw0SECitBYAqFOVHoBAHEQBTeKjIL9y9ImHzAVkdyPK4ifTgM4VJRDtTUY4r/u5Eqxs4XcGPHaoPkeQ==
+  optimism@^0.13.0:
+    version "0.13.0"
+    resolved "https://registry.yarnpkg.com/optimism/-/optimism-0.13.0.tgz#c08904e1439a0eb9e7f86183dafa06cc715ff351"
+    integrity sha512-6JAh3dH+YUE4QUdsgUw8nUQyrNeBKfAEKOHMlLkQ168KhIYFIxzPsHakWrRXDnTO+x61RJrS3/2uEt6W0xlocA==
     dependencies:
       "@wry/context" "^0.5.2"
   
@@ -11646,15 +11644,6 @@ Lockfile:
       source-map "~0.6.1"
       source-map-support "~0.5.12"
   
-  terser@^5.2.0:
-    version "5.3.1"
-    resolved "https://registry.yarnpkg.com/terser/-/terser-5.3.1.tgz#f50fe20ab48b15234fe9bdd86b10148ad5fca787"
-    integrity sha512-yD80f4hdwCWTH5mojzxe1q8bN1oJbsK/vfJGLcPZM/fl+/jItIVNKhFIHqqR71OipFWMLgj3Kc+GIp6CeIqfnA==
-    dependencies:
-      commander "^2.20.0"
-      source-map "~0.6.1"
-      source-map-support "~0.5.12"
-  
   test-exclude@^5.2.3:
     version "5.2.3"
     resolved "https://registry.yarnpkg.com/test-exclude/-/test-exclude-5.2.3.tgz#c3d3e1e311eb7ee405e092dac10aefd09091eac0"
@@ -11885,10 +11874,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
     integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
   
-  typescript@~3.7.2:
-    version "3.7.5"
-    resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.5.tgz#0692e21f65fd4108b9330238aac11dd2e177a1ae"
-    integrity sha512-/P5lkRXkWHNAbcJIiHPfRoKqyd7bsyCma1hZNUGfn20qm64T6ZBlrzprymeu918H+mB/0rIg2gGK/BXkhhYgBw==
+  typescript@^3.8:
+    version "3.9.7"
+    resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.7.tgz#98d600a5ebdc38f40cb277522f12dc800e9e25fa"
+    integrity sha512-BLbiRkiBzAwsjut4x/dsibSTB6yWpwT5qWmC2OfuCg3GgVQCSgMs4vEctYPhsaGtd0AeuuHMkjZ2h2WG8MSzRw==
   
   ua-parser-js@^0.7.18:
     version "0.7.22"

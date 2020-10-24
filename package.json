@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://proyecto-nutria.github.io/",
   "dependencies": {
-    "@apollo/client": "^3.2.0",
+    "@apollo/client": "^3.2.5",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -37,8 +37,6 @@
     "eject": "react-scripts eject",
     "build:reason": "bsb -make-world -clean-world",
     "watch:reason": "bsb -make-world -clean-world -w",
-    "watch:relay": "reason-relay-compiler --watch",
-    "relay": "reason-relay-compiler",
     "clean": "bsb -clean-world"
   },
   "eslintConfig": {
@@ -57,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "@baransu/graphql_ppx_re": "^0.7.1",
     "@jsiebern/bs-material-ui": "^2.0.2",
     "@material-ui/core": "^5.0.0-alpha.9",
     "@material-ui/icons": "^4.9.1",
@@ -66,11 +65,6 @@
     "clipboard-polyfill": "^3.0.1",
     "gentype": "3.35.0",
     "graphql": "^15.3.0",
-    "react-relay": "0.0.0-experimental-183bdd28",
-    "reason-promise": "^1.1.1",
-    "reason-relay": "^0.11.0",
-    "relay-compiler": "10.0.1",
-    "relay-config": "10.0.1",
-    "relay-runtime": "10.0.1"
+    "reason-promise": "^1.1.1"
   }
 }
