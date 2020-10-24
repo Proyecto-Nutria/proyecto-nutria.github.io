@@ -8,31 +8,36 @@
 ## Setup
 
 1. Install node 14.10.0
-
-```
-nvm install 14.10.0
-nvm use 14.10.0
-```
-
+    ```
+    nvm install 14.10.0
+    nvm use 14.10.0
+    ```
 1. Install react-scripts globally
-
-```
-yarn global add react-scripts --save --no-bin-links
-```
+    ```
+    yarn global add react-scripts --save --no-bin-links
+    ```
+1. Install ReasonML
+    ```
+    yarn global add bs-platform
+    ```
+1. Compile the ReasonML files to javascript
+    ```
+    yarn build:reason
+    ```
 
 ## Development
 
-1. Run 
+1. Start the project using:
+    ```
+    yarn start
+    ```
 
-```
-yarn start
-```
+    If you see ```System limit for number of file watchers```, you can solve the problem using:
 
-If you see ```System limit for number of file watchers```, you can solve the problem using:
-
-```
-sudo sysctl -w fs.inotify.max_user_watches=100000
-```
+    ```
+    sudo sysctl -w fs.inotify.max_user_watches=100000
+    ```
+ 1. You can see the frontend in ```localhost:8000```
 
 ### Yet An Otter System
 
