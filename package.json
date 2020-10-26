@@ -27,7 +27,7 @@
     "react-table": "^7.5.1",
     "reason-react": "0.9.1",
     "styled-components": "^5.2.0",
-    "typescript": "^4.0"
+    "typescript": "^3.8"
   },
   "scripts": {
     "start": "yarn build:reason && python scripts/removeUseStrictInInJsFiles.py && react-scripts start",
