@@ -27,12 +27,12 @@
     "react-table": "^7.5.1",
     "reason-react": "0.9.1",
     "styled-components": "^5.2.0",
-    "typescript": "^3.8"
+    "typescript": "^4.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "yarn build:reason && python scripts/removeUseStrictInInJsFiles.py && react-scripts start",
     "start:arch": "BROWSER=google-chrome-stable yarn start",
-    "build": "yarn build:reason && react-scripts build",
+    "build": "yarn build:reason && python scripts/removeUseStrictInInJsFiles.py && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:reason": "bsb -make-world -clean-world",
@@ -63,7 +63,7 @@
     "bs-platform": "8.2.0",
     "bs-webapi": "^0.19.1",
     "clipboard-polyfill": "^3.0.1",
-    "gentype": "3.35.0",
+    "gentype": "^3.37.0",
     "graphql": "^15.3.0",
     "reason-promise": "^1.1.1"
   }

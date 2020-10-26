@@ -1,4 +1,3 @@
-'use strict';
 
 var Curry = require("bs-platform/lib/js/curry.js");
 var React = require("react");
@@ -30,7 +29,13 @@ function SettingsDialog(Props) {
                   return currentEndTime;
                 }));
           
-        }), [_open]);
+        }), [
+        _open,
+        setNewTime,
+        setNewEndTime,
+        currentEndTime,
+        currentTime
+      ]);
   return React.createElement(Core.Dialog, {
               children: null,
               onClose: (function (param, param$1) {

@@ -5505,10 +5505,10 @@ gensync@^1.0.0-beta.1:
   resolved "https://registry.yarnpkg.com/gensync/-/gensync-1.0.0-beta.1.tgz#58f4361ff987e5ff6e1e7a210827aa371eaac269"
   integrity sha512-r8EC6NO1sngH/zdD9fiRDLdcgnbayXah+mLgManTaIZJqEC1MZstmnox8KpnI2/fxQwrp5OpCOYWLp4rBl4Jcg==
 
-gentype@3.35.0:
-  version "3.35.0"
-  resolved "https://registry.yarnpkg.com/gentype/-/gentype-3.35.0.tgz#ef59baf51ec3a63f826086aedcc3e54e170ed017"
-  integrity sha512-DuYx1r9LF1Un0j656eNFT0sUbUq503mgvT1/FCT5SdWQX3pHUfSbFjQVlXSctw1b2WUyFsvhoClhGfedQZZe1A==
+gentype@^3.37.0:
+  version "3.37.0"
+  resolved "https://registry.yarnpkg.com/gentype/-/gentype-3.37.0.tgz#8e68d03dc5fd465d25e6e1e838d3a94994605ee6"
+  integrity sha512-d8EaK1stgxAN+bWgxq42rHxCY9vEMK556rKZOCM1Pj1/RZtBemkAnUH9PuXtDkL74Kec9xsvZuIU2SXcBKoL/w==
 
 get-caller-file@^2.0.1:
   version "2.0.5"
@@ -11341,10 +11341,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^3.8:
-  version "3.9.7"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.7.tgz#98d600a5ebdc38f40cb277522f12dc800e9e25fa"
-  integrity sha512-BLbiRkiBzAwsjut4x/dsibSTB6yWpwT5qWmC2OfuCg3GgVQCSgMs4vEctYPhsaGtd0AeuuHMkjZ2h2WG8MSzRw==
+typescript@^4.0:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.0.3.tgz#153bbd468ef07725c1df9c77e8b453f8d36abba5"
+  integrity sha512-tEu6DGxGgRJPb/mVPIZ48e69xCn2yRmCgYmDugAVwmJ6o+0u1RI18eO7E7WBTLYLaEVVOhwQmcdhQHweux/WPg==
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"

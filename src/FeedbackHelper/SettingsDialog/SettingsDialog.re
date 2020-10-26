@@ -8,14 +8,13 @@ let make =
     ) => {
   let (newTime, setNewTime) = React.useState(() => currentTime);
   let (newEndTime, setNewEndTime) = React.useState(() => currentEndTime);
-
-  React.useEffect1(
+  React.useEffect5(
     () => {
       setNewTime(_ => currentTime);
       setNewEndTime(_ => currentEndTime);
       None;
     },
-    [|_open|],
+    (_open, setNewTime, setNewEndTime, currentEndTime, currentTime)
   );
   MaterialUi.(
     <Dialog _open onClose={(_, _) => onSave(~newTime, ~newEndTime)}>

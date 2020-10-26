@@ -8,7 +8,7 @@ let make = () => {
   let (isTimerActive, setIsTimerActive) = React.useState(() => false);
   let (isDarkTheme, setDarkTheme) = React.useState(() => true);
 
-  React.useEffect1(
+  React.useEffect3(
     () => {
       let intervalId: Pervasives.ref(option(Js.Global.intervalId)) =
         ref(None);
@@ -44,7 +44,7 @@ let make = () => {
       | None => None
       };
     },
-    [|isTimerActive|],
+    (isTimerActive, setGTime, startingPointInTime)
   );
 
   let onPlay = (): unit => {

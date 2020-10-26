@@ -1,4 +1,3 @@
-'use strict';
 
 var Util$Yaos = require("./Util.bs.js");
 

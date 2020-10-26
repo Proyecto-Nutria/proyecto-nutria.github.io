@@ -1,4 +1,3 @@
-'use strict';
 
 var Curry = require("bs-platform/lib/js/curry.js");
 var React = require("react");
@@ -67,7 +66,11 @@ function FeedbackHelper(Props) {
                     clearInterval(a$2);
                     
                   });
-        }), [isTimerActive]);
+        }), [
+        isTimerActive,
+        setGTime,
+        startingPointInTime
+      ]);
   var onPlay = function (param) {
     if (Caml_obj.caml_equal(gTime, Time$Yaos.newDuration(undefined))) {
       Curry._1(setStartingPointInTime, (function (param) {
