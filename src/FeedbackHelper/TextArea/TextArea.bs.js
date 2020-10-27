@@ -1,3 +1,4 @@
+'use strict';
 
 var $$Array = require("bs-platform/lib/js/array.js");
 var Curry = require("bs-platform/lib/js/curry.js");

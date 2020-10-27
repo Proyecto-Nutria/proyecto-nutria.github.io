@@ -1,3 +1,4 @@
+'use strict';
 
 var React = require("react");
 var FeedbackHelper$Yaos = require("./FeedbackHelper/FeedbackHelper.bs.js");

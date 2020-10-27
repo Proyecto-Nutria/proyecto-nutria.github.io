@@ -1,3 +1,4 @@
+'use strict';
 
 var React = require("react");
 var $$String = require("bs-platform/lib/js/string.js");

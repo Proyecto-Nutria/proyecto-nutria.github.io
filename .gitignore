@@ -27,6 +27,6 @@ yarn.lock
 .merlin
 .install
 .bsb.lock
-/lib
+lib/
 _build
 *.install
