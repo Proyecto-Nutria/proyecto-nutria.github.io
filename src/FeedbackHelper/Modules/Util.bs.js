@@ -31,7 +31,7 @@ function int_from_string(str) {
 function exactMatch(pattern, str) {
   var match_ = str.match(new RegExp(pattern));
   if (match_ !== null) {
-    return Caml_array.caml_array_get(match_, 0) === str;
+    return Caml_array.get(match_, 0) === str;
   } else {
     return false;
   }
@@ -54,8 +54,8 @@ function prettifyText(text) {
   var lines = text.split("\n");
   var ans = "";
   for(var i = 0 ,i_finish = lines.length; i < i_finish; ++i){
-    ans = matchRegex("\\s*\\[\\d+:\\d+\\]\\s*\\+\\.*", Caml_array.caml_array_get(lines, i)) ? ans + (positiveFormat(Caml_array.caml_array_get(lines, i)) + "<br/>") : (
-        matchRegex("\\s*\\[\\d+:\\d+\\]\\s*\\-\\.*", Caml_array.caml_array_get(lines, i)) ? ans + (negativeFormat(Caml_array.caml_array_get(lines, i)) + "<br/>") : ans + (Caml_array.caml_array_get(lines, i) + "<br/>")
+    ans = matchRegex("\\s*\\[\\d+:\\d+\\]\\s*\\+\\.*", Caml_array.get(lines, i)) ? ans + (positiveFormat(Caml_array.get(lines, i)) + "<br/>") : (
+        matchRegex("\\s*\\[\\d+:\\d+\\]\\s*\\-\\.*", Caml_array.get(lines, i)) ? ans + (negativeFormat(Caml_array.get(lines, i)) + "<br/>") : ans + (Caml_array.get(lines, i) + "<br/>")
       );
   }
   return ans;
