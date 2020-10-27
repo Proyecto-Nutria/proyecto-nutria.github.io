@@ -1,3 +1,4 @@
+'use strict';
 
 var React = require("react");
 var MaterialUi_Types = require("@jsiebern/bs-material-ui/src/MaterialUi_Types.bs.js");

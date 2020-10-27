@@ -1,3 +1,4 @@
+'use strict';
 
 var $$Array = require("bs-platform/lib/js/array.js");
 var Curry = require("bs-platform/lib/js/curry.js");
@@ -7,13 +8,13 @@ var Time$Yaos = require("../Modules/Time.bs.js");
 var Util$Yaos = require("../Modules/Util.bs.js");
 var Caml_array = require("bs-platform/lib/js/caml_array.js");
 var Caml_string = require("bs-platform/lib/js/caml_string.js");
-var ClipboardJs = require("./Clipboard.js");
+var ClipboardJs = require("./Clipboard.js").default;
 var Core = require("@material-ui/core");
 var MaterialUi_MenuItem = require("@jsiebern/bs-material-ui/src/MaterialUi_MenuItem.bs.js");
 var MaterialUi_TextField = require("@jsiebern/bs-material-ui/src/MaterialUi_TextField.bs.js");
 
 function copyToClipboard(prim, prim$1) {
-  ClipboardJs.default(prim, prim$1);
+  ClipboardJs(prim, prim$1);
   
 }
 
@@ -126,19 +127,19 @@ function TextArea(Props) {
   };
   var getInfo = function (param) {
     var problemsFormatted = problems.split(";").join("\n");
-    return "Interviewer: " + (interviewerName + ("\n\nVerdict: " + (Caml_array.caml_array_get(scoresArray, score).description + ("\n\nProblems: \n" + (problemsFormatted + "\n\n")))));
+    return "Interviewer: " + (interviewerName + ("\n\nVerdict: " + (Caml_array.get(scoresArray, score).description + ("\n\nProblems: \n" + (problemsFormatted + "\n\n")))));
   };
   var getFormattedInfo = function (param) {
     var problemsArray = problems.split(";");
     for(var i = 0 ,i_finish = problemsArray.length; i < i_finish; ++i){
-      if (Util$Yaos.isUrl(Caml_array.caml_array_get(problemsArray, i))) {
-        Caml_array.caml_array_set(problemsArray, i, "<li>" + (Util$Yaos.urlFormat(Caml_array.caml_array_get(problemsArray, i)) + "</li>"));
+      if (Util$Yaos.isUrl(Caml_array.get(problemsArray, i))) {
+        Caml_array.set(problemsArray, i, "<li>" + (Util$Yaos.urlFormat(Caml_array.get(problemsArray, i)) + "</li>"));
       } else {
-        Caml_array.caml_array_set(problemsArray, i, "<li>" + (Caml_array.caml_array_get(problemsArray, i) + "</li>"));
+        Caml_array.set(problemsArray, i, "<li>" + (Caml_array.get(problemsArray, i) + "</li>"));
       }
     }
     var problemsFormatted = "<ol>" + (problemsArray.join("") + "</ol>");
-    return "<b>Interviewer:</b> " + (interviewerName + ("\n\n<b>Verdict:</b> " + (Caml_array.caml_array_get(scoresArray, score).description + ("\n\n<b>Problems:</b>\n" + (problemsFormatted + "\n\n")))));
+    return "<b>Interviewer:</b> " + (interviewerName + ("\n\n<b>Verdict:</b> " + (Caml_array.get(scoresArray, score).description + ("\n\n<b>Problems:</b>\n" + (problemsFormatted + "\n\n")))));
   };
   var isFormValid = function (param) {
     var output = "";
@@ -295,7 +296,7 @@ function TextArea(Props) {
                                         }
                                         var prim = getInfo(undefined) + ("Feedback:\n" + feedback);
                                         var prim$1 = Util$Yaos.prettifyText(getFormattedInfo(undefined) + ("<b>Feedback:</b>\n" + feedback));
-                                        ClipboardJs.default(prim$1, prim);
+                                        ClipboardJs(prim$1, prim);
                                         
                                       }),
                                     style: {

@@ -5,6 +5,8 @@
   "homepage": "https://proyecto-nutria.github.io/",
   "dependencies": {
     "@apollo/client": "^3.2.5",
+    "@emotion/core": "^10.0.35",
+    "@emotion/styled": "^10.0.27",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -60,7 +62,7 @@
     "@material-ui/core": "^5.0.0-alpha.9",
     "@material-ui/icons": "^4.9.1",
     "bs-fetch": "^0.6.2",
-    "bs-platform": "8.2.0",
+    "bs-platform": "^8.3.1",
     "bs-webapi": "^0.19.1",
     "clipboard-polyfill": "^3.0.1",
     "gentype": "^3.37.0",
