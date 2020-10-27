@@ -5,6 +5,7 @@
   "homepage": "https://proyecto-nutria.github.io/",
   "dependencies": {
     "@apollo/client": "^3.2.5",
+    "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
