@@ -26,9 +26,10 @@ yarn.lock
 # ReasonMl / React compiler
 .merlin
 .install
-/lib/bs/
-/lib/js/
-/lib/ocaml/
+# TODO: Search if its is necesary to ignore the /lib
+# /lib/bs/
+# /lib/js/
+# /lib/ocaml/
 .bsb.lock
 _build
 *.install
