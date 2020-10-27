@@ -1,1 +1,34 @@
-node_modules
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Dependency directory
+node_modules/
+
+# Editors
+.idea/
+.vscode/
+
+# Build
+build
+
+# Logs
+lerna-debug.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Changes and dependencies
+/.changelog
+.npm/
+yarn.lock
+
+# ReasonMl / React compiler
+.merlin
+.install
+/lib/bs/
+/lib/js/
+/lib/ocaml/
+.bsb.lock
+_build
+*.install
