@@ -2,7 +2,7 @@ import React, { useState } from "react"
 
 import { Layer, Box, Heading, Select, Button } from "grommet"
 
-import { day, hour } from "./../../../../general/values"
+import { day, hour } from "./../../../../utils/constants/values"
 
 type range = { startHour: hour; endHour: hour }
 type interviewData = { uid: String; interviewDay: day; interviewHour: hour }

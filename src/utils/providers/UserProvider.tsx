@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect } from "react"
-import { auth } from "./../firebase"
+import { auth } from "../wrappers/firebaseWrapper"
 
 type maybeUser = firebase.User | null
 const UserContext = createContext<maybeUser>(null)

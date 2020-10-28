@@ -3,11 +3,11 @@ import { Box, Grommet, Main as MainGrommet, ThemeType } from "grommet"
 
 import { ApolloProvider } from "@apollo/client"
 
-import getClient from "./configGraphqlClient"
+import getClient from "./utils/configs/graphqlClientConfig"
 
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom"
 
-import UserProvider, { UserContext } from "./providers/UserProvider"
+import UserProvider, { UserContext } from "./utils/providers/UserProvider"
 
 import Login from "./screens/Login"
 import Main from "./screens/Main"

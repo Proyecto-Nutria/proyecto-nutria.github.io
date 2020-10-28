@@ -1,6 +1,6 @@
 import React from "react"
 import { Heading } from "grommet"
-import Util from "../../general/Util"
+import Util from "../../utils/helpers/Util"
 import InterviewInfoList from "../InterviewInfoList/InterviewInfoList"
 
 const data = [

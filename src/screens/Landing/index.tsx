@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 
 import { Main, Button, Heading } from "grommet"
-import { UserContext } from "../../providers/UserProvider"
+import { UserContext } from "../../utils/providers/UserProvider"
 import { useHistory } from "react-router-dom"
 
 const Login = () => {

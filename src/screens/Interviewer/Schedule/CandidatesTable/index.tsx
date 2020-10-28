@@ -2,7 +2,7 @@ import React from "react"
 
 import { DataTable, Box, Text, Button } from "grommet"
 
-import { day, hour, languages } from "./../../../../general/values"
+import { day, hour, languages } from "./../../../../utils/constants/values"
 /* import { QueryManager } from "@apollo/client/core/QueryManager" */
 
 import QUERY_DATA from "./../query_data"
