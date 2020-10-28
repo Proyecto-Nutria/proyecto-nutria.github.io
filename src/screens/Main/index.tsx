@@ -3,7 +3,7 @@ import React from "react"
 import styles from "./main.module.css"
 
 import { Grid, Box } from "grommet"
-import { signOutWithGoogle } from "./../../firebase"
+import { signOutWithGoogle } from "../../utils/wrappers/firebaseWrapper"
 import { useHistory } from "react-router-dom"
 
 const Main = () => {

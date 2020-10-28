@@ -7,8 +7,8 @@ import { Redirect } from "react-router-dom";
 
 import styles from "./login.module.css";
 
-import { signInWithGoogle } from "./../../firebase";
-import { UserContext } from "../../providers/UserProvider";
+import { signInWithGoogle } from "../../utils/wrappers/firebaseWrapper";
+import { UserContext } from "../../utils/providers/UserProvider";
 
 const Login = () => {
   const user = useContext(UserContext);

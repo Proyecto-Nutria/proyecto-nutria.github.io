@@ -1,6 +1,6 @@
 import { Box, Text, DataTable, CheckBox, ColumnConfig, Anchor } from "grommet"
 import React, { useState } from "react"
-import Util from "../../general/Util"
+import Util from "../../utils/helpers/Util"
 
 export interface IInterviewInfo {
   id: string

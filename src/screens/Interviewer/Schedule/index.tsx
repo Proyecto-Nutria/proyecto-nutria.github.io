@@ -9,7 +9,7 @@ import CandidatesTable from "./CandidatesTable"
 
 import styles from "./schedule.module.css"
 
-import { day, hour, languages } from "./../../../general/values"
+import { day, hour, languages } from "./../../../utils/constants/values"
 /* import { QueryManager } from "@apollo/client/core/QueryManager" */
 
 import SERVER_DATA from "./server_data"
