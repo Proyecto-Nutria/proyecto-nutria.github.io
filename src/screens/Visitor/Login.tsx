@@ -5,7 +5,8 @@ import { User, Google } from "grommet-icons";
 
 import { Redirect } from "react-router-dom";
 
-import styles from "./login.module.css";
+import styles from "components/Visitor/Login/Login.module.css";
+
 
 import { signInWithGoogle } from "../../utils/wrappers/firebaseWrapper";
 import { UserContext } from "../../utils/providers/UserProvider";

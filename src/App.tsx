@@ -9,12 +9,19 @@ import { HashRouter, Switch, Route, Redirect } from "react-router-dom"
 
 import UserProvider, { UserContext } from "./utils/providers/UserProvider"
 
-import Login from "./screens/Login"
+// Visitor
+import Landing from "screens/Visitor/Landing"
+import Login from "screens/Visitor/Login"
+
+// Interviewee
+// Interviewer
+// Root
+
 import Main from "./screens/Main"
 import InterviewsInterviewee from "./screens/InterviewsInterviewee/InterviewsInterviewee"
 import InterviewsInterviewer from "./screens/InterviewsInterviewer/InterviewsInterviewer"
 import IntervieweeDetails from "./screens/IntervieweeDetails/IntervieweeDetails"
-import Landing from "screens/Visitor/Landing"
+
 import SignUp from "./screens/SignUp"
 import EditProfile from "./screens/Interviewee/EditProfile"
 import { default as ScheduleInterviewee } from "./screens/Interviewee/Schedule"

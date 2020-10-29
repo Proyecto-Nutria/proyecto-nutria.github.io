@@ -4,7 +4,7 @@ import { UserContext } from "utils/providers/UserProvider"
 import { useHistory } from "react-router-dom"
 
 import UIButton from "components/UI/UIButton"
-import UIMainContainer from "components/UI/UIMainContainer"
+import UIMainContainer from "components/UI/UIBoxContainer"
 
 const Login = () => {
   const user = useContext(UserContext)
