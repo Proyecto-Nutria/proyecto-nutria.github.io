@@ -1,8 +1,7 @@
-import React, { useState } from "react"
+import React from "react"
 import { Heading } from "grommet"
 import Util from "../../utils/helpers/Util"
-import InterviewInfoList from "../InterviewInfoList/InterviewInfoList"
-import { useHistory } from "react-router-dom"
+import InterviewInfoList from "screens/User/InfoList"
 
 const data = [
   {
@@ -53,22 +52,25 @@ const data = [
 ]
 
 const InterviewsInterviewer = () => {
-  const history = useHistory()
   let [first, second] = Util.splitByTime(data, new Date())
-  let [incomingInterviews] = useState(first.sort(Util.datesComparator).reverse())
+  // let [incomingInterviews, setIncomingInterviews] = useState(
+  //   first.sort(Util.datesComparator).reverse()
+  // )
 
-  let [pastInterviews] = useState(second.sort(Util.datesComparator).reverse())
+  // let [pastInterviews, setPastInterviews] = useState(second.sort(Util.datesComparator).reverse())
+  const incomingInterviews = first.sort(Util.datesComparator).reverse();
+  const pastInterviews = second.sort(Util.datesComparator).reverse();
 
   return (
     <>
       <Heading level={2} margin="20px">
         Incoming Interviews
       </Heading>
-      <InterviewInfoList showName={true} info={incomingInterviews} onRowClick={_ => { history.push("/intervieweeDetails") }} />
+      <InterviewInfoList showName={false} info={incomingInterviews} onRowClick={_ => {}} />
       <Heading level={2} margin="20px">
         Past Interviews
       </Heading>
-      <InterviewInfoList showName={true} info={pastInterviews} onRowClick={_ => { history.push("/intervieweeDetails") }} />
+      <InterviewInfoList showName={false} info={pastInterviews} onRowClick={_ => {}} />
     </>
   )
 }

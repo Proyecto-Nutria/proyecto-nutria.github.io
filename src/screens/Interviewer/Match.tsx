@@ -2,17 +2,17 @@ import React, { useState } from "react"
 
 import { Grid, Box, Text } from "grommet"
 
-import Filter from "./Filter"
-import ModalConfirm from "./ModalConfirm"
-import ModalAbout from "./ModalAbout"
-import CandidatesTable from "./CandidatesTable"
+import Filter from "components/Interviewer/Match/Filter"
+import ModalConfirm from "components/Interviewer/Match/ModalConfirm"
+import ModalAbout from "../../components/Interviewer/Match/ModalAbout"
+import CandidatesTable from "components/Interviewer/Match/CandidateTable/CandidateTable"
 
-import styles from "./schedule.module.css"
+import styles from "components/Interviewer/Match/schedule.module.css"
 
-import { day, hour, languages } from "./../../../utils/constants/values"
+import { day, hour, languages } from "../../utils/constants/values"
 /* import { QueryManager } from "@apollo/client/core/QueryManager" */
 
-import SERVER_DATA from "./server_data"
+import SERVER_DATA from "components/Interviewer/Match/server_data"
 
 type range = { startHour: hour; endHour: hour }
 type ranges = { [key in day]: Array<range> }

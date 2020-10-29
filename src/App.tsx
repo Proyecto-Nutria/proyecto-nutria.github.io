@@ -9,28 +9,33 @@ import { HashRouter, Switch, Route, Redirect } from "react-router-dom"
 
 import UserProvider, { UserContext } from "./utils/providers/UserProvider"
 
+// UI
+import AppHeader from "components/UI/UIHeader"
+
 // Visitor
 import Landing from "screens/Visitor/Landing"
 import Login from "screens/Visitor/Login"
 
 // Interviewee
+import Main from "screens/Interviewee/Board"
+import InterviewsInterviewee from "screens/Interviewee/IncomingInterviews"
+import IntervieweeDetails from "screens/Interviewee/IntervieweeDetails"
+import { default as ScheduleInterviewee } from "screens/Interviewee/Schedule"
+import EditProfile from "screens/Interviewee/EditProfile"
+
 // Interviewer
+import SignUp from "screens/Interviewer/SignUp"
+import InterviewsInterviewer from "screens/Interviewer/IncomingInterviews"
+import { default as ScheduleInterviewer } from "screens/Interviewer/Match"
+
 // Root
 
-import Main from "./screens/Main"
-import InterviewsInterviewee from "./screens/InterviewsInterviewee/InterviewsInterviewee"
-import InterviewsInterviewer from "./screens/InterviewsInterviewer/InterviewsInterviewer"
-import IntervieweeDetails from "./screens/IntervieweeDetails/IntervieweeDetails"
 
-import SignUp from "./screens/SignUp"
-import EditProfile from "./screens/Interviewee/EditProfile"
-import { default as ScheduleInterviewee } from "./screens/Interviewee/Schedule"
-import { default as ScheduleInterviewer } from "./screens/Interviewer/Schedule"
 import Testing from "./screens/TestingApollo"
 import MainFeedbackHelper from "./FeedbackHelper/MainFeedbackHelper.bs"
 
 import theme from "./assets/themes/global"
-import AppHeader from "./screens/Main/Header"
+
 
 const Routes = () => {
   const user = useContext(UserContext)

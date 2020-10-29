@@ -1,4 +1,4 @@
-import { IInterviewInfo } from "../../screens/InterviewInfoList/InterviewInfoList"
+import { IInterviewInfo } from "screens/User/InfoList"
 
 export default class Util {
   static splitByTime(data: IInterviewInfo[], splitPoint: Date): [IInterviewInfo[], IInterviewInfo[]] {

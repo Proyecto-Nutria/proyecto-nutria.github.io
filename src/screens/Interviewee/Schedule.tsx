@@ -2,7 +2,7 @@ import React, { useState } from "react"
 
 import { Grid, Box, Select, Button } from "grommet"
 import { FormSubtract, Add } from "grommet-icons"
-import { day, hour } from "../../../utils/constants/values"
+import { day, hour } from "../../utils/constants/values"
 
 const listOfDays = Object.values(day)
 const listOfHours = Object.values(hour)

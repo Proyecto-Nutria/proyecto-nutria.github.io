@@ -1,6 +1,6 @@
 import React from "react"
 
-import styles from "./main.module.css"
+import styles from "components/Interviewee/Board/board.module.css"
 
 import { Grid, Box } from "grommet"
 import { signOutWithGoogle } from "../../utils/wrappers/firebaseWrapper"

@@ -2,9 +2,9 @@ import React from "react"
 
 import { Box, Text, Select } from "grommet"
 
-import { day, hour, languages } from "./../../../../utils/constants/values"
+import { day, hour, languages } from "../../../utils/constants/values"
 
-import SERVER_DATA from "./../server_data"
+import SERVER_DATA from "./server_data"
 
 const listOfDays = Object.values(day)
 const listOfHours = Object.values(hour)

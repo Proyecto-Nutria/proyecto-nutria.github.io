@@ -1,4 +1,4 @@
-import { languages } from "./../../../utils/constants/values"
+import { languages } from "../../../utils/constants/values"
 
 type realInterviewData = { company: String; rol: String; date: String }
 type queryData = { name: String; linkResume: String; programmingLanguages: Array<languages>; score: Number; position: String, realInterviews: Array<realInterviewData> }

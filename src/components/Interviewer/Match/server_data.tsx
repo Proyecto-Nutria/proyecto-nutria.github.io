@@ -1,4 +1,4 @@
-import { day, hour, languages } from "./../../../utils/constants/values"
+import { day, hour, languages } from "../../../utils/constants/values"
 
 type range = { startHour: hour; endHour: hour }
 type ranges = { [key in day]: Array<range> }

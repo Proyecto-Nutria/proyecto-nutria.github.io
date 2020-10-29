@@ -2,12 +2,12 @@ import React from "react"
 
 import { DataTable, Box, Text, Button } from "grommet"
 
-import { day, hour, languages } from "./../../../../utils/constants/values"
+import { day, hour, languages } from "../../../../utils/constants/values"
 /* import { QueryManager } from "@apollo/client/core/QueryManager" */
 
-import QUERY_DATA from "./../query_data"
+import QUERY_DATA from "./query_data"
 
-import styles from "./candidatesTable.module.css"
+import styles from "./candidateTable.module.css"
 
 const listOfDays = Object.values(day)
 

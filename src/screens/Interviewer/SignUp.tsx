@@ -2,7 +2,7 @@ import React, { useState } from "react"
 
 import { Grid, TextInput, Box, CheckBox, TextArea, Button } from "grommet"
 
-import style from "./signUp.module.css"
+import style from "components/Interviewer/SignUp/signUp.module.css"
 
 const SignUp = () => {
   const [valueName, setNameValue] = useState("")
