@@ -22,7 +22,7 @@ import { default as ScheduleInterviewer } from "./screens/Interviewer/Schedule"
 import Testing from "./screens/TestingApollo"
 import MainFeedbackHelper from "./FeedbackHelper/MainFeedbackHelper.bs"
 
-import theme from "./generalStyles/theme"
+import theme from "./assets/themes/global"
 import AppHeader from "./screens/Main/Header"
 
 const Routes = () => {
