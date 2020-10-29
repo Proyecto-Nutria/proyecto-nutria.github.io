@@ -3,11 +3,11 @@ import { Button } from "grommet"
 
 const UIButton = (props:any) => (
     <Button
+        primary
         style={{ maxWidth: "15rem" }}
         label={props.label}
-        primary
-        onClick={props.fn}
-  />
+        onClick={props.onClick}
+    />
 )
 
 export default UIButton
