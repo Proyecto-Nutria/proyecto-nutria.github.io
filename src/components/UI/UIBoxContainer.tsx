@@ -3,7 +3,6 @@ import { Box } from "grommet"
 
 const UIMainContainer = (props:any) => (
     <Box
-    fill
     {...props}
     />
 )
