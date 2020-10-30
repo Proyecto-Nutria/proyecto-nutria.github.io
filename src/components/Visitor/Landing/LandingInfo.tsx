@@ -24,7 +24,7 @@ const VisitorInfo = (props:any) => (
             primary
             style={{ maxWidth: "15rem" }}
             label="Sign Up"
-            onClick={props.signUponClick}
+            onClick={props.signUpOnClick}
             />
         </Box>
         <Box

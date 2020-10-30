@@ -4,11 +4,11 @@ import { UserContext } from "utils/providers/UserProvider"
 import { Redirect, useHistory } from "react-router-dom"
 
 import UIMainContainer from "components/UI/UIBoxContainer"
-import VisitorHeader from "components/Visitor/VisitorHeader"
-import VisitorInfo from "components/Visitor/VisitorInfo"
-import VisitorFooter from "components/Visitor/VisitorFooter"
-import VisitorAbout from "components/Visitor/VisitorAbout"
-import VisitorContributor from "components/Visitor/VisitorContributors"
+import VisitorHeader from "components/Visitor/Landing/LandingHeader"
+import VisitorInfo from "components/Visitor/Landing/LandingInfo"
+import VisitorFooter from "components/Visitor/Landing/LandingFooter"
+import VisitorAbout from "components/Visitor/Landing/LandingAbout"
+import VisitorContributor from "components/Visitor/Landing/LandingContributors"
 
 const Login = () => {
   const user = useContext(UserContext)
@@ -21,7 +21,7 @@ const Login = () => {
   return (
     <UIMainContainer>
       <VisitorHeader />
-      <VisitorInfo signUponClick={()=> history.push("/home")} />
+      <VisitorInfo signUpOnClick={()=> history.push("/home")} />
       <VisitorAbout />
       <VisitorContributor />
       <VisitorFooter />
