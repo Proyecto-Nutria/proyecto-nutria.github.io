@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom"
 
 import UIButton from "components/UI/UIButton"
 import UIMainContainer from "components/UI/UIBoxContainer"
+import VisitorHeader from "components/Visitor/VisitorHeader"
 
 const Login = () => {
   const user = useContext(UserContext)
@@ -12,6 +13,7 @@ const Login = () => {
 
   return (
     <UIMainContainer>
+      <VisitorHeader />
       {user ? (
         <UIButton
           label="Go to home"

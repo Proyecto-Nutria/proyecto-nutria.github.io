@@ -4,11 +4,8 @@ import { Box } from "grommet"
 const UIMainContainer = (props:any) => (
     <Box
     fill
-    align="center"
-    justify="center"
-    background="background-back">
-        {props.children}
-    </Box>
+    {...props}
+    />
 )
 
 export default UIMainContainer
