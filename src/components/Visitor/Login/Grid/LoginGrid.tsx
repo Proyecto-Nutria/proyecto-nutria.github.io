@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 
 import { Grid, Box, Image, Heading, Button, ResponsiveContext } from "grommet"
-import { User, Google } from "grommet-icons"
+import { Google } from "grommet-icons"
 import styles from "components/Visitor/Login/Grid/LoginGrid.module.css"
 
 const LoginGrid = (props: any) => {

@@ -1,24 +1,31 @@
 import React, { useState } from "react"
 
-import { Grid, Box, Text } from "grommet"
-
-import Filter from "components/Interviewer/Match/Filter"
-import ModalConfirm from "components/Interviewer/Match/ModalConfirm"
-import ModalAbout from "../../components/Interviewer/Match/ModalAbout"
-import CandidatesTable from "components/Interviewer/Match/CandidateTable/CandidateTable"
-
-import styles from "components/Interviewer/Match/schedule.module.css"
-
-import { day, hour, languages } from "../../utils/constants/values"
+import { day, hour, languages } from "utils/constants/values"
 /* import { QueryManager } from "@apollo/client/core/QueryManager" */
 
 import SERVER_DATA from "components/Interviewer/Match/server_data"
 
+import UIMainContainer from "components/UI/UIBoxContainer"
+import InterviewerMatchGrid from "components/Interviewer/Match/Grid/MatchGrid"
+
 type range = { startHour: hour; endHour: hour }
 type ranges = { [key in day]: Array<range> }
-type personData = ranges & { uid: String; name: String; programmingLanguages: Array<languages>; hasRealInterview: Boolean; hasInterviews: Array<Boolean> }
+type personData = ranges & {
+  uid: String
+  name: String
+  programmingLanguages: Array<languages>
+  hasRealInterview: Boolean
+  hasInterviews: Array<Boolean>
+}
 type realInterviewData = { company: String; rol: String; date: String }
-type queryData = { name: String; linkResume: String; programmingLanguages: Array<languages>; score: Number; position: String, realInterviews: Array<realInterviewData> }
+type queryData = {
+  name: String
+  linkResume: String
+  programmingLanguages: Array<languages>
+  score: Number
+  position: String
+  realInterviews: Array<realInterviewData>
+}
 type interviewData = { uid: String; interviewDay: day; interviewHour: hour }
 
 const defaultRanges: Array<range> = [{ startHour: hour.h0, endHour: hour.h23 }]
@@ -30,7 +37,11 @@ const defaultQueryData: queryData = {
   position: "",
   realInterviews: [],
 }
-const defaultInterviewData: interviewData = { uid: "", interviewDay: day.Monday, interviewHour: hour.h0}
+const defaultInterviewData: interviewData = {
+  uid: "",
+  interviewDay: day.Monday,
+  interviewHour: hour.h0,
+}
 
 const Schedule = () => {
   const [data, setData] = useState<Array<personData>>(SERVER_DATA)
@@ -39,45 +50,25 @@ const Schedule = () => {
   const [availableHours, setAvailableHours] = useState<Array<range>>(defaultRanges)
   const [newInterviewData, setNewInterviewData] = useState<interviewData>(defaultInterviewData)
   const [showConfirm, setShowConfirm] = useState<Boolean>(false)
+  const allData = {
+    data,
+    setData,
+    queryAbout,
+    setQueryAbout,
+    showAbout,
+    setShowAbout,
+    availableHours,
+    setAvailableHours,
+    newInterviewData,
+    setNewInterviewData,
+    showConfirm,
+    setShowConfirm,
+  }
 
   return (
-    <Grid gap="medium" margin="xlarge">
-      <Filter setData={(filterData: Array<personData>) => setData(filterData)} />
-      <Box direction="row-responsive" fill="horizontal" justify="start" gap="small">
-        <Box direction="row-responsive" justify="start" alignSelf="start" width="medium" gap="small">
-          <Box className={`${styles.box1} ${styles.stripe}`} ></Box>
-          <Text weight="bold" size="medium">&nbsp;Interview scheduled</Text>
-        </Box>
-        <Box direction="row-responsive" justify="start" alignSelf="start" width="medium" gap="small">
-          <Box className={styles.box2} border={{ color: 'brand', size: 'small' }} ></Box>
-          <Text weight="bold" size="medium">&nbsp;Has Real Interview</Text>
-        </Box>
-      </Box>
-      <CandidatesTable 
-        data={data}
-        setQueryAbout={(newQueryAbout: queryData) => setQueryAbout(newQueryAbout)}
-        setShowAbout={(newShowAbout: Boolean) => setShowAbout(newShowAbout)} 
-        setAvailableHours={(newAvailableHours: Array<range>) => setAvailableHours(newAvailableHours)} 
-        setNewInterviewData={(updatedInterviewData: interviewData) => setNewInterviewData(updatedInterviewData)} 
-        setShowConfirm={(newShowConfirm: Boolean) => setShowConfirm(newShowConfirm)} 
-      />
-      { 
-        showAbout && (
-          <ModalAbout 
-            setShowAbout={(newShowAbout: Boolean) => setShowAbout(newShowAbout)} 
-            queryAbout={queryAbout}
-          />
-        )}
-      { 
-        showConfirm && (
-          <ModalConfirm 
-            setShowConfirm={(newShowConfirm: Boolean) => setShowConfirm(newShowConfirm)} 
-            setNewInterviewData={(updatedInterviewData: interviewData) => setNewInterviewData(updatedInterviewData)}
-            pastInterviewData={newInterviewData}
-            availableHours={availableHours}
-          />
-        )}
-    </Grid>
+    <UIMainContainer>
+      <InterviewerMatchGrid data={allData} />
+    </UIMainContainer>
   )
 }
 
