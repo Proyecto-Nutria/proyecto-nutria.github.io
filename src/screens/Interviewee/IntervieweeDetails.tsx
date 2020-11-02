@@ -1,6 +1,6 @@
 import { Anchor, Box, Heading } from "grommet"
 import React from "react"
-import InterviewInfoList from "screens/User/InfoList"
+import InterviewInfoList from "components/Interview/Info"
 import DetailField from "components/Interviewee/DetailField"
 
 const data = [

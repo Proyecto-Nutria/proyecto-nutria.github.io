@@ -1,8 +1,9 @@
 import React, { useState } from "react"
-import { Heading } from "grommet"
-import Util from "../../utils/helpers/Util"
-import InterviewInfoList from "screens/User/InfoList"
+import Util from "utils/helpers/Util"
 import { useHistory } from "react-router-dom"
+
+import UIMainContainer from "components/UI/UIBoxContainer"
+import IncomingInterviewTable from "components/Interviewer/Interviews/InterviewsTable"
 
 const data = [
   {
@@ -12,7 +13,7 @@ const data = [
     place: "room-4",
     confirmed: false,
     timestamp: new Date(2020, 8, 21, 15, 30),
-    score: "--"
+    score: "--",
   },
   {
     id: "2",
@@ -21,7 +22,7 @@ const data = [
     place: "room-2",
     confirmed: true,
     timestamp: new Date(2020, 8, 22, 13, 30),
-    score: "Undetermined"
+    score: "Undetermined",
   },
   {
     id: "3",
@@ -30,7 +31,7 @@ const data = [
     place: "room-4",
     confirmed: false,
     timestamp: new Date(2020, 8, 21, 14, 30),
-    score: "--"
+    score: "--",
   },
   {
     id: "4",
@@ -39,7 +40,7 @@ const data = [
     place: "room-5",
     confirmed: true,
     timestamp: new Date(2020, 8, 13, 14, 30),
-    score: "Strongly Hire"
+    score: "Strongly Hire",
   },
   {
     id: "5",
@@ -48,7 +49,7 @@ const data = [
     place: "room-1",
     confirmed: true,
     timestamp: new Date(2020, 8, 14, 14, 30),
-    score: "Hire"
+    score: "Hire",
   },
 ]
 
@@ -60,16 +61,13 @@ const InterviewsInterviewer = () => {
   let [pastInterviews] = useState(second.sort(Util.datesComparator).reverse())
 
   return (
-    <>
-      <Heading level={2} margin="20px">
-        Incoming Interviews
-      </Heading>
-      <InterviewInfoList showName={true} info={incomingInterviews} onRowClick={_ => { history.push("/intervieweeDetails") }} />
-      <Heading level={2} margin="20px">
-        Past Interviews
-      </Heading>
-      <InterviewInfoList showName={true} info={pastInterviews} onRowClick={_ => { history.push("/intervieweeDetails") }} />
-    </>
+    <UIMainContainer>
+      <IncomingInterviewTable
+        incomingInterviews={incomingInterviews}
+        pastInterviews={pastInterviews}
+        history={history}
+      />
+    </UIMainContainer>
   )
 }
 
