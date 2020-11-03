@@ -1,7 +1,8 @@
 import React from "react"
-import { Heading } from "grommet"
 import Util from "utils/helpers/Util"
-import InterviewInfoList from "components/Interview/Info"
+
+import UIMainContainer from "components/UI/UIBoxContainer"
+import IntervieweeInterviews from "components/Interviewee/Interview/InterviewInfo"
 
 const data = [
   {
@@ -60,18 +61,12 @@ const InterviewsInterviewer = () => {
   // let [pastInterviews, setPastInterviews] = useState(second.sort(Util.datesComparator).reverse())
   const incomingInterviews = first.sort(Util.datesComparator).reverse()
   const pastInterviews = second.sort(Util.datesComparator).reverse()
+  const allData = { data, incomingInterviews, pastInterviews }
 
   return (
-    <>
-      <Heading level={2} margin="20px">
-        Incoming Interviews
-      </Heading>
-      <InterviewInfoList showName={false} info={incomingInterviews} onRowClick={_ => {}} />
-      <Heading level={2} margin="20px">
-        Past Interviews
-      </Heading>
-      <InterviewInfoList showName={false} info={pastInterviews} onRowClick={_ => {}} />
-    </>
+    <UIMainContainer>
+      <IntervieweeInterviews data={allData} />
+    </UIMainContainer>
   )
 }
 
