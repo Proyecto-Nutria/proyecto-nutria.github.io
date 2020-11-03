@@ -1,14 +1,6 @@
-import React from "react";
+import React from "react"
 import { Box } from "grommet"
 
-const UIMainContainer = (props:any) => (
-    <Box
-    fill
-    align="center"
-    justify="center"
-    background="background-back">
-        {props.children}
-    </Box>
-)
+const UIMainContainer = (props: any) => <Box {...props} />
 
 export default UIMainContainer

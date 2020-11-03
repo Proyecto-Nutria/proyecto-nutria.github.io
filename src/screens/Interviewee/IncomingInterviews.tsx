@@ -1,7 +1,8 @@
 import React from "react"
-import { Heading } from "grommet"
-import Util from "../../utils/helpers/Util"
-import InterviewInfoList from "screens/User/InfoList"
+import Util from "utils/helpers/Util"
+
+import UIMainContainer from "components/UI/UIBoxContainer"
+import IntervieweeInterviews from "components/Interviewee/Interview/InterviewInfo"
 
 const data = [
   {
@@ -11,7 +12,7 @@ const data = [
     place: "room-4",
     confirmed: false,
     timestamp: new Date(2020, 8, 21, 15, 30),
-    score: "--"
+    score: "--",
   },
   {
     id: "2",
@@ -20,7 +21,7 @@ const data = [
     place: "room-2",
     confirmed: true,
     timestamp: new Date(2020, 8, 22, 13, 30),
-    score: "Undetermined"
+    score: "Undetermined",
   },
   {
     id: "3",
@@ -29,7 +30,7 @@ const data = [
     place: "room-4",
     confirmed: false,
     timestamp: new Date(2020, 8, 21, 14, 30),
-    score: "--"
+    score: "--",
   },
   {
     id: "4",
@@ -38,7 +39,7 @@ const data = [
     place: "room-5",
     confirmed: true,
     timestamp: new Date(2020, 8, 13, 14, 30),
-    score: "Strongly Hire"
+    score: "Strongly Hire",
   },
   {
     id: "5",
@@ -47,7 +48,7 @@ const data = [
     place: "room-1",
     confirmed: true,
     timestamp: new Date(2020, 8, 14, 14, 30),
-    score: "Hire"
+    score: "Hire",
   },
 ]
 
@@ -58,20 +59,14 @@ const InterviewsInterviewer = () => {
   // )
 
   // let [pastInterviews, setPastInterviews] = useState(second.sort(Util.datesComparator).reverse())
-  const incomingInterviews = first.sort(Util.datesComparator).reverse();
-  const pastInterviews = second.sort(Util.datesComparator).reverse();
+  const incomingInterviews = first.sort(Util.datesComparator).reverse()
+  const pastInterviews = second.sort(Util.datesComparator).reverse()
+  const allData = { data, incomingInterviews, pastInterviews }
 
   return (
-    <>
-      <Heading level={2} margin="20px">
-        Incoming Interviews
-      </Heading>
-      <InterviewInfoList showName={false} info={incomingInterviews} onRowClick={_ => {}} />
-      <Heading level={2} margin="20px">
-        Past Interviews
-      </Heading>
-      <InterviewInfoList showName={false} info={pastInterviews} onRowClick={_ => {}} />
-    </>
+    <UIMainContainer>
+      <IntervieweeInterviews data={allData} />
+    </UIMainContainer>
   )
 }
 

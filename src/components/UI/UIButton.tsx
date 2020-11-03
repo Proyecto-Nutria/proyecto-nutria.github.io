@@ -7,6 +7,7 @@ const UIButton = (props:any) => (
         style={{ maxWidth: "15rem" }}
         label={props.label}
         onClick={props.onClick}
+        size={props.size}
     />
 )
 
