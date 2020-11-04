@@ -1,13 +1,15 @@
 import React, { useContext, Fragment } from "react"
-import { Box, Grommet, Main as MainGrommet, ThemeType } from "grommet"
+import { HashRouter, Switch, Route, Redirect } from "react-router-dom"
+
+import { Grommet, ThemeType } from "grommet"
 
 import { ApolloProvider } from "@apollo/client"
 
-import getClient from "./utils/configs/graphqlClientConfig"
+import getClient from "utils/configs/graphqlClientConfig"
 
-import { HashRouter, Switch, Route, Redirect } from "react-router-dom"
+import UserProvider, { UserContext } from "utils/providers/UserProvider"
 
-import UserProvider, { UserContext } from "./utils/providers/UserProvider"
+import yaosTheme from "assets/themes/yaos"
 
 // UI
 import AppHeader from "components/UI/UIHeader"
@@ -30,16 +32,12 @@ import { default as ScheduleInterviewer } from "screens/Interviewer/Match"
 
 // Root
 
-
-import Testing from "./screens/TestingApollo"
-import MainFeedbackHelper from "./FeedbackHelper/MainFeedbackHelper.bs"
-
-import theme from "./assets/themes/global"
-
+import Testing from "screens/TestingApollo"
+import MainFeedbackHelper from "FeedbackHelper/MainFeedbackHelper.bs"
 
 const Routes = () => {
   const user = useContext(UserContext)
-  const FeedbackHelper = MainFeedbackHelper.make;
+  const FeedbackHelper = MainFeedbackHelper.make
   // todo: if user not logged redirect to /login"
 
   return (
@@ -56,42 +54,34 @@ const Routes = () => {
         </Route>
         {user && (
           <Fragment>
-            <Box height="100%" width="100%" direction="column" background="background-back">
-              <AppHeader />
-              <MainGrommet
-                flex={{ grow: 1, shrink: 1 }}
-                overflow={{ vertical: "auto" }}
-                pad="medium"
-              >
-                <Route path="/home">
-                  <Main />
-                </Route>
-                <Route path="/intervieweeDetails">
-                  <IntervieweeDetails />
-                </Route>
-                <Route path="/interviewsInterviewee">
-                  <InterviewsInterviewee />
-                </Route>
-                <Route path="/interviewsInterviewer">
-                  <InterviewsInterviewer />
-                </Route>
-                <Route path="/editProfile">
-                  <EditProfile />
-                </Route>
-                <Route path="/scheduleInterviewee">
-                  <ScheduleInterviewee />
-                </Route>
-                <Route path="/scheduleInterviewer">
-                  <ScheduleInterviewer />
-                </Route>
-                <Route path="/feedbackHelper">
-                  <FeedbackHelper />
-                </Route>
-                <Route path="/testing">
-                  <Testing />
-                </Route>
-              </MainGrommet>
-            </Box>
+            <AppHeader />
+            <Route path="/home">
+              <Main />
+            </Route>
+            <Route path="/intervieweeDetails">
+              <IntervieweeDetails />
+            </Route>
+            <Route path="/interviewsInterviewee">
+              <InterviewsInterviewee />
+            </Route>
+            <Route path="/interviewsInterviewer">
+              <InterviewsInterviewer />
+            </Route>
+            <Route path="/editProfile">
+              <EditProfile />
+            </Route>
+            <Route path="/scheduleInterviewee">
+              <ScheduleInterviewee />
+            </Route>
+            <Route path="/scheduleInterviewer">
+              <ScheduleInterviewer />
+            </Route>
+            <Route path="/feedbackHelper">
+              <FeedbackHelper />
+            </Route>
+            <Route path="/testing">
+              <Testing />
+            </Route>
           </Fragment>
         )}
         <Redirect to="/" />
@@ -103,7 +93,7 @@ const Routes = () => {
 const client = getClient()
 const App: React.FunctionComponent = () => {
   return (
-    <Grommet theme={theme as ThemeType} full={true}>
+    <Grommet theme={yaosTheme as ThemeType}>
       <UserProvider>
         <ApolloProvider client={client}>
           <Routes />

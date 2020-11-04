@@ -18,6 +18,13 @@
     z-index: 1;  
 }
 
+@media (min-width: 600px) {
+    .backgroundBox {
+        background-image: url("https://i.imgur.com/Ra7l3vW.png") !important;
+    }
+  }
+
+
 .backgroundBox::before {
     content: "";
     display: block;

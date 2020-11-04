@@ -1,10 +1,12 @@
 import React from "react"
-import {Anchor, Footer} from 'grommet'
+import { Text, Footer } from "grommet"
 
 const VisitorFooter = () => (
-    <Footer background="light-1" pad="medium" justify="end">
-        <Anchor label="Copyright" />
-    </Footer>
+  <Footer background="light-1" justify="center" pad="small">
+    <Text textAlign="center" size="small">
+      © 2020 Copyright Nutria
+    </Text>
+  </Footer>
 )
 
 export default VisitorFooter
