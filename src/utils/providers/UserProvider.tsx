@@ -1,11 +1,11 @@
 import React, { useState, createContext, useEffect } from "react"
-import { auth } from "../wrappers/firebaseWrapper"
+import { auth } from "services/firebaseService"
 
 type maybeUser = firebase.User | null
 const UserContext = createContext<maybeUser>(null)
 
 const saveToken = async (currentUser: firebase.User) => {
-  const token = await currentUser?.getIdToken()
+  const token = await currentUser?.getIdToken(true)
   localStorage.setItem("token", token)
 }
 

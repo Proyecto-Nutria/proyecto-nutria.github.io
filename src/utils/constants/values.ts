@@ -1,3 +1,5 @@
+const HOUR_IN_MILLISECONDS=3600000
+
 enum hour {
     h0 = 0,
     h1 = 1,
@@ -44,4 +46,4 @@ enum hour {
     "Other" = "Other",
   }
 
-export {day, hour, languages}
+export {HOUR_IN_MILLISECONDS, day, hour, languages}

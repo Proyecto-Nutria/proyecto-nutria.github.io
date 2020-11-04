@@ -5,7 +5,7 @@ import { Grommet, ThemeType } from "grommet"
 
 import { ApolloProvider } from "@apollo/client"
 
-import getClient from "utils/configs/graphqlClientConfig"
+import getClient from "services/graphqlService"
 
 import UserProvider, { UserContext } from "utils/providers/UserProvider"
 
@@ -31,8 +31,6 @@ import InterviewsInterviewer from "screens/Interviewer/IncomingInterviews"
 import { default as ScheduleInterviewer } from "screens/Interviewer/Match"
 
 // Root
-
-import Testing from "screens/TestingApollo"
 import MainFeedbackHelper from "FeedbackHelper/MainFeedbackHelper.bs"
 
 const Routes = () => {
@@ -78,9 +76,6 @@ const Routes = () => {
             </Route>
             <Route path="/feedbackHelper">
               <FeedbackHelper />
-            </Route>
-            <Route path="/testing">
-              <Testing />
             </Route>
           </Fragment>
         )}
