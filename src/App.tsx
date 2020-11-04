@@ -12,7 +12,7 @@ import UserProvider, { UserContext } from "utils/providers/UserProvider"
 import yaosTheme from "assets/themes/yaos"
 
 // UI
-import AppHeader from "components/UI/UIHeader"
+import AppHeader from "components/User/UserHeader"
 
 // Visitor
 import Landing from "screens/Visitor/Landing"

@@ -4,7 +4,6 @@ import { useQuery } from "@apollo/client"
 import UIMainContainer from "components/UI/UIBoxContainer"
 import IntervieweeBoard from "components/Interviewee/Board/IntervieweeBoard"
 import { HOUR_IN_MILLISECONDS } from "utils/constants/values"
-import { signOutWithGoogle } from "services/firebaseService"
 import { useHistory } from "react-router-dom"
 
 import { VIEW_POOL } from "utils/constants/api"
@@ -24,7 +23,7 @@ const Main = () => {
 
   return (
     <UIMainContainer>
-      <IntervieweeBoard history={history} signOutWithGoogle={signOutWithGoogle} />
+      <IntervieweeBoard history={history} />
       {data.viewPool.map(({ type }: { type: string }) => (
         <h1 key={type}> {type}</h1>
       ))}

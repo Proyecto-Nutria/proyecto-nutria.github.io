@@ -46,19 +46,6 @@ const IntervieweeBoard = (props: any) => (
     >
       Interviewee Profile
     </Box>
-    <Box background="brand" className={styles.bigSectionButton}>
-      Endpoint
-    </Box>
-    <Box
-      background="brand"
-      className={styles.bigSectionButton}
-      onClick={() => {
-        props.signOutWithGoogle()
-        props.history.push("/login")
-      }}
-    >
-      Log Out
-    </Box>
   </Grid>
 )
 
