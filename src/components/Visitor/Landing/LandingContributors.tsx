@@ -1,34 +1,32 @@
 import React from "react"
-import { Avatar, Box, Heading, Paragraph } from 'grommet'
+import { Avatar, Box } from "grommet"
+import BoxResponsive from "components/Visitor/Landing/LandingBoxResponsive"
+import TextSection from "components/Visitor/Landing/LandingTextSection"
 
 const VisitorContributors = () => (
-    <Box
-    direction="column"
-    align='center'
-    justify='center'
-    height="25em"
-    border={{ color: 'brand'}}>
-        <Heading margin="none" level="3" >Contributors</Heading>
-        <Paragraph margin="none">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut
-        labore et dolore magna aliqua.
-        </Paragraph>
-        <Box direction="row" pad="large" align="center" gap="small">
+  <BoxResponsive background="">
+    <TextSection
+      level={"3"}
+      gap={""}
+      title={"Contributors"}
+      text={"Lorem ipsum dolor sit amet, consectetur adipiscing elit,"}
+    >
+      <Box direction="row" pad="medium" align="center" gap="small" justify="center">
         <Avatar background="dark-2" size="xlarge">
           S
         </Avatar>
         <Avatar background="dark-2" size="xlarge">
-          LS
+          R
         </Avatar>
         <Avatar background="dark-2" size="xlarge">
-          JF
+          D
         </Avatar>
         <Avatar background="dark-2" size="xlarge">
-          SY
+          A
         </Avatar>
       </Box>
-    </Box>
+    </TextSection>
+  </BoxResponsive>
 )
 
 export default VisitorContributors

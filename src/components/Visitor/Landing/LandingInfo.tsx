@@ -1,39 +1,26 @@
 import React from "react"
-import { Button, Paragraph, Heading, Box } from 'grommet'
+import { Button, Image, Box } from "grommet"
+import UIBoxResponsive from "components/Visitor/Landing/LandingBoxResponsive"
+import TextSection from "components/Visitor/Landing/LandingTextSection"
 
-const VisitorInfo = (props:any) => (
-    <Box
-    direction="row"
-    height="25em"
-    border={{ color: 'brand'}}>
-        <Box
-        flex align='center'
-        justify='center'
-        gap="2em">
-            <Heading
-            margin="none"
-            level="2" >
-                Believe in your otter side
-            </Heading>
-            <Paragraph margin="none">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-            tempor incididunt ut
-            labore et dolore magna aliqua.
-            </Paragraph>
-            <Button
-            primary
-            style={{ maxWidth: "15rem" }}
-            label="Sign Up"
-            onClick={props.signUpOnClick}
-            />
-        </Box>
-        <Box
-        flex
-        background='light-2'
-        align='center'
-        justify='center'>
-        </Box>
+import infoImage from "assets/imgs/Visitor/info.png"
+
+const VisitorInfo = (props: any) => (
+  <UIBoxResponsive background="light-1">
+    <TextSection
+      gap={"2em"}
+      level={"1"}
+      title={"Believe in your otter side"}
+      text={
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      }
+    >
+      <Button primary label="Sign Up" onClick={props.signUpOnClick} />
+    </TextSection>
+    <Box flex align="center" justify="center">
+      <Image fit="contain" src={infoImage} />
     </Box>
+  </UIBoxResponsive>
 )
 
 export default VisitorInfo
