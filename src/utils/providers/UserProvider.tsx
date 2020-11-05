@@ -1,12 +1,15 @@
 import React, { useState, createContext, useEffect } from "react"
 import { auth } from "services/firebaseService"
+import { ROLE_KEY, TOKEN_KEY, INTERVIEWEE_ROLE } from "utils/constants/values"
 
 type maybeUser = firebase.User | null
 const UserContext = createContext<maybeUser>(null)
 
 const saveToken = async (currentUser: firebase.User) => {
   const token = await currentUser?.getIdToken(true)
-  localStorage.setItem("token", token)
+  localStorage.setItem(TOKEN_KEY, token)
+  //TODO: Store the correct type of user
+  localStorage.setItem(ROLE_KEY, INTERVIEWEE_ROLE)
 }
 
 const Provider = UserContext.Provider

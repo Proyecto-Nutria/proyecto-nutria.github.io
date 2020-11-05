@@ -1,5 +1,10 @@
 const HOUR_IN_MILLISECONDS=3600000
 
+const ROLE_KEY = "role"
+const INTERVIEWEE_ROLE = "interviewee"
+const INTERVIEWER_ROLE = "interviewer"
+const TOKEN_KEY = "token"
+
 enum hour {
     h0 = 0,
     h1 = 1,
@@ -46,4 +51,4 @@ enum hour {
     "Other" = "Other",
   }
 
-export {HOUR_IN_MILLISECONDS, day, hour, languages}
+export {HOUR_IN_MILLISECONDS, INTERVIEWER_ROLE, ROLE_KEY, TOKEN_KEY, INTERVIEWEE_ROLE, day, hour, languages}
