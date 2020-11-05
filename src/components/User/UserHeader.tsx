@@ -14,7 +14,9 @@ const AppHeader = () => {
     <Header background="dark-1" pad="medium">
       <Anchor color="light" onClick={() => history.push("/home")} label="YAOS" />
       <Nav direction="row">
-        {isInterviewee && <Button secondary label="Profile" />}
+        {isInterviewee && (
+          <Button secondary label="Profile" onClick={() => history.push("/intervieweeDetails")} />
+        )}
         {isInterviewer && <Button secondary label="Profile" />}
         <Button
           secondary
