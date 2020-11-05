@@ -1,16 +1,16 @@
 import React from "react"
-import { useQuery } from "@apollo/client"
+// import { useQuery } from "@apollo/client"
 
 import UIMainContainer from "components/UI/UIBoxContainer"
 import IntervieweeBoard from "components/User/Board/UserBoard"
-import { HOUR_IN_MILLISECONDS } from "utils/constants/values"
+// import { HOUR_IN_MILLISECONDS } from "utils/constants/values"
 import { useHistory } from "react-router-dom"
 
 import scheduleImage from "assets/imgs/Interviewee/schedule.png"
 import logImage from "assets/imgs/Interviewee/log.png"
 import incomingImage from "assets/imgs/Interviewee/incoming.png"
 
-import { VIEW_POOL } from "utils/constants/api"
+// import { VIEW_POOL } from "utils/constants/api"
 
 const Main = () => {
   const history = useHistory()
