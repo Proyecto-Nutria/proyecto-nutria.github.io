@@ -30,19 +30,19 @@ enum hour {
     h21 = 21,
     h22 = 22,
     h23 = 23,
-  }
+}
 
-  enum day {
-    Monday = "Monday",
-    Tuesday = "Tuesday",
-    Wednesday = "Wednesday",
-    Thursday = "Thursday",
-    Friday = "Friday",
-    Saturday = "Saturday",
-    Sunday = "Sunday",
-  }
+enum day {
+  Monday = "Monday",
+  Tuesday = "Tuesday",
+  Wednesday = "Wednesday",
+  Thursday = "Thursday",
+  Friday = "Friday",
+  Saturday = "Saturday",
+  Sunday = "Sunday",
+}
 
-  enum languages {
+enum languages {
     "C" = "C",
     "C++" = "C++",
     "Python" = "Python",
@@ -51,4 +51,48 @@ enum hour {
     "Other" = "Other",
   }
 
-export {HOUR_IN_MILLISECONDS, INTERVIEWER_ROLE, ROLE_KEY, TOKEN_KEY, INTERVIEWEE_ROLE, day, hour, languages}
+
+const PROGRAMMING_LANGUAGES:{ [string: string]: string } = {
+  "C":"",
+  "C++":"",
+  "Python" :"",
+  "Java" :"",
+  "JavaScript":"",
+  "Other" :"",
+}
+
+const TYPES_OF_INTERVIEW:{ [string: string]: string } = {
+  "Software Engineer": "se",
+  "Machine Learning": "ml",
+  "Reliability Engineering": "re",
+  "Data Science": "ds",
+}
+
+const INTERVIEW_ROLES:{ [string: string]: string } = {
+  "Internship": "Intern",
+  "Full Time": "FTE",
+  "Explore/STEP": "STEP",
+}
+
+enum COMPANIES {
+  Amazon = "",
+  Facebook = "",
+  Github = "",
+  Google = "",
+  Microsoft = "",
+  Netflix = "",
+  Twitter = "",
+}
+
+
+export {
+  PROGRAMMING_LANGUAGES,
+  INTERVIEW_ROLES,
+  COMPANIES,
+  TYPES_OF_INTERVIEW,
+  HOUR_IN_MILLISECONDS,
+  INTERVIEWER_ROLE,
+  ROLE_KEY,
+  TOKEN_KEY,
+  INTERVIEWEE_ROLE, day, hour, languages
+}

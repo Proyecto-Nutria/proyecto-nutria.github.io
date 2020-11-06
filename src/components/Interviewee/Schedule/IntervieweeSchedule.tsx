@@ -1,59 +1,78 @@
 import React from "react"
 
-import { Text, Box, Select, Button, Heading } from "grommet"
+import {
+  Box,
+  Select,
+  Button,
+  Heading,
+  Form,
+  FormField,
+  CheckBoxGroup,
+} from "grommet"
 import { /*FormSubtract,*/ Add } from "grommet-icons"
 
 const IntervieweeSchedule = (props: any) => {
   const mutationFunction = props.mutation
+  const mapper = props.mapper
 
-  let myData: any
-  const info = {
-    companies: ["Google"],
-    availability: [
-      {
-        day: "monday",
-        interval: ["12-14", "14-16"],
-      },
-      {
-        day: "friday",
-        interval: ["12-14", "14-16"],
-      },
-    ],
-    language: ["python"],
-    pending: 10,
-    role: "FTE",
-    type: "se",
-  }
   return (
     <Box pad="xlarge">
       <Heading>Mock Interview</Heading>
-      <Box pad="large" gap="large" round background="light-1">
-        <Box gap="small">
-          <Text>Type of Interview</Text>
-          <Select
-            placeholder="Select one"
-            options={["Explorer/STEP", "Internship", "FullTime"]}
-            value={props.data.rol}
-            onChange={({ option }) => props.data.setRolValue(option)}
-          />
-        </Box>
-        <Box>
-          <form
-            onSubmit={e => {
-              e.preventDefault()
-              mutationFunction({ variables: { preferences: myData.value /*info*/ } })
-            }}
-          >
-            <input
-              ref={node => {
-                myData = node
-              }}
+      <Box round background="light-1" pad="large">
+        <Form
+          onSubmit={e => {
+            e.preventDefault()
+            mapper()
+            /*
+            mutationFunction(
+              mapper() //{ variables: { preferences: myData.value  } }
+            )*/
+          }}
+        >
+          <Box gap="medium">
+            {props.inputs.map((input: any) => {
+              const type = input.type
+              if (type === "Select") {
+                return (
+                  <FormField label={input.label}>
+                    <Select
+                      placeholder="Select one"
+                      options={input.values}
+                      value={input.state}
+                      onChange={({ option }) => input.setter(option)}
+                    />
+                  </FormField>
+                )
+              } else if (type === "Check") {
+                return (
+                  <FormField label={input.label}>
+                    <CheckBoxGroup
+                      id="check-box-group-id"
+                      name="controlled"
+                      value={input.state}
+                      //@ts-expect-error
+                      onChange={({ value: nextValue }) =>
+                        input.setter(nextValue)
+                      }
+                      options={input.values}
+                    />
+                  </FormField>
+                )
+              }
+            })}
+          </Box>
+          <Box margin={{ top: "medium" }}>
+            <Button
+              alignSelf="start"
+              type="submit"
+              primary
+              label="Schedule Mock"
             />
-            <button type="submit">Add Todo</button>
-          </form>
-        </Box>
-        {props.onMutationError && <p>Error :( Please try again</p>}
+          </Box>
+        </Form>
       </Box>
+
+      {props.onMutationError && <p>Error :( Please try again</p>}
     </Box>
   )
 }
