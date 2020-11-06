@@ -12,4 +12,10 @@ const VIEW_POOL = gql`
 }
 `
 
-export  {VIEW_POOL}
+const ENTER_POOL = gql`
+mutation enterToPool($preferences: PoolInput!) {
+      enterToPool(preferences: $preferences)
+}
+`
+
+export  {VIEW_POOL, ENTER_POOL}

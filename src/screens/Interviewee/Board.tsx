@@ -18,7 +18,7 @@ const Main = () => {
     {
       img: scheduleImage,
       label: "Schedule a Mock Interview",
-      onClick: () => history.push("/scheduleInterviewer"),
+      onClick: () => history.push("/scheduleInterviewee"),
     },
     {
       img: incomingImage,

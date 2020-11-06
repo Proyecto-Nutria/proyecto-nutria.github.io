@@ -5,6 +5,9 @@ import { day, hour } from "utils/constants/values"
 import UIMainContainer from "components/UI/UIBoxContainer"
 import IntervieweeSchedule from "components/Interviewee/Schedule/IntervieweeSchedule"
 
+import { useMutation } from "@apollo/client"
+import { ENTER_POOL } from "utils/constants/api"
+
 const listOfDays = Object.values(day)
 const listOfHours = Object.values(hour)
 
@@ -47,9 +50,11 @@ const Schedule = () => {
     hour,
   }
 
+  const [enterToPool, { error: mutationError }] = useMutation(ENTER_POOL)
+
   return (
     <UIMainContainer>
-      <IntervieweeSchedule data={data} />
+      <IntervieweeSchedule mutation={enterToPool} onMutationError={mutationError} data={data} />
     </UIMainContainer>
   )
 }
