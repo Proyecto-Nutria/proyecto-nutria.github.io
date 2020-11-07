@@ -1,5 +1,4 @@
 import React from "react"
-
 import {
   Box,
   Select,
@@ -9,7 +8,8 @@ import {
   FormField,
   CheckBoxGroup,
 } from "grommet"
-import { /*FormSubtract,*/ Add } from "grommet-icons"
+import { Add } from "grommet-icons"
+import FormTime from "components/Interviewee/Schedule/Form/FormTime"
 
 const IntervieweeSchedule = (props: any) => {
   const mutationFunction = props.mutation
@@ -61,6 +61,26 @@ const IntervieweeSchedule = (props: any) => {
               }
             })}
           </Box>
+
+          <Button
+            icon={<Add />}
+            hoverIndicator
+            onClick={() => {
+              props.data.setCount(props.data.count + 1)
+            }}
+          />
+
+          {Array(props.data.count)
+            .fill(0)
+            .map((_, id) => {
+              if (!(id in props.data.dynamic)) {
+                let copyFoo = { ...props.data.dynamic }
+                copyFoo[id] = {}
+                props.data.setDynamic(copyFoo)
+              }
+              return <FormTime data={props.data} id={id} />
+            })}
+
           <Box margin={{ top: "medium" }}>
             <Button
               alignSelf="start"

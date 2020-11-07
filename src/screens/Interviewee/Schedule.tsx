@@ -45,9 +45,11 @@ const listOfHoursDisplay = listOfHours
 type range = { startHour: hour; endHour: hour }
 type ranges = Record<day, Array<range>>
 
+let state = []
+
 const defaultRange: ranges = {
   [day.Monday]: [],
-  [day.Tuesday]: [{ startHour: hour.h13, endHour: hour.h15 }],
+  [day.Tuesday]: [],
   [day.Wednesday]: [],
   [day.Thursday]: [],
   [day.Friday]: [],
@@ -55,15 +57,21 @@ const defaultRange: ranges = {
   [day.Sunday]: [],
 }
 
+const defstate = { id: 1, name: "Some Name" }
+
 const Schedule = () => {
+  const numberOfInterviews = [1, 2, 3]
   const [interviewType, setInterviewTypeValue] = useState("")
   const [rol, setRolValue] = useState("")
   const [numberInterviews, setNumberInterviewsValue] = useState("")
   const [languages, setLanguagesValue] = useState("")
   const [company, setCompanyValue] = useState("")
 
+  const [rangesOfTime, setRangesOfTime] = useState<ranges>(defaultRange)
+  const [count, setCount] = useState(0)
+  const [dynamic, setDynamic] = useState({})
+
   const [typeInterview, setTypeInterviewValue] = useState("")
-  const numberOfInterviews = [1, 2, 3]
 
   const allInputs = [
     {
@@ -107,8 +115,6 @@ const Schedule = () => {
     companies: "",
   }
 
-  const [rangesOfTime, setRangesOfTime] = useState<ranges>(defaultRange)
-
   const inputData = TYPES_OF_INTERVIEW
 
   const mapValues = () => {
@@ -119,6 +125,8 @@ const Schedule = () => {
   }
 
   const data = {
+    setCount,
+    count,
     rol,
     setRolValue,
     company,
@@ -132,6 +140,8 @@ const Schedule = () => {
     listOfHoursDisplay,
     day,
     hour,
+    dynamic,
+    setDynamic,
   }
 
   const [enterToPool, { error: mutationError }] = useMutation(ENTER_POOL)
@@ -144,6 +154,7 @@ const Schedule = () => {
         mutation={enterToPool}
         onMutationError={mutationError}
         data={data}
+        defstate={defstate}
       />
     </UIMainContainer>
   )
