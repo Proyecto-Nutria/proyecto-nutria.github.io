@@ -8,13 +8,13 @@ import {
   FormField,
   CheckBoxGroup,
 } from "grommet"
+
 import { Add } from "grommet-icons"
 import FormTime from "components/Interviewee/Schedule/Form/FormTime"
 
 const IntervieweeSchedule = (props: any) => {
   const mutationFunction = props.mutation
-  const mapper = props.mapper
-
+  const mapFunction = props.mapFunction
   return (
     <Box pad="xlarge">
       <Heading>Mock Interview</Heading>
@@ -22,7 +22,7 @@ const IntervieweeSchedule = (props: any) => {
         <Form
           onSubmit={e => {
             e.preventDefault()
-            const mappedValues = mapper()
+            const mappedValues = mapFunction()
             mutationFunction({ variables: { preferences: mappedValues } })
           }}
         >
@@ -54,7 +54,7 @@ const IntervieweeSchedule = (props: any) => {
                   </FormField>
                 )
               }
-              return <p></p>
+              return <></>
             })}
           </Box>
 
@@ -62,19 +62,19 @@ const IntervieweeSchedule = (props: any) => {
             icon={<Add />}
             hoverIndicator
             onClick={() => {
-              props.data.setCount(props.data.count + 1)
+              props.dynamicInput.countSetter(props.dynamicInput.countState + 1)
             }}
           />
 
-          {Array(props.data.count)
+          {Array(props.dynamicInput.countState)
             .fill(0)
             .map((_, id) => {
-              if (!(id in props.data.dynamic)) {
-                let copyFoo = { ...props.data.dynamic }
-                copyFoo[id] = {}
-                props.data.setDynamic(copyFoo)
+              if (!(id in props.dynamicInput.state)) {
+                let copiedInformation = { ...props.dynamicInput.state }
+                copiedInformation[id] = {}
+                props.dynamicInput.setter(copiedInformation)
               }
-              return <FormTime data={props.data} id={id} />
+              return <FormTime dynamicInput={props.dynamicInput} id={id} />
             })}
 
           <Box margin={{ top: "medium" }}>
