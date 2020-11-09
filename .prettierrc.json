@@ -5,7 +5,7 @@
   "jsx-bracket-same-line": true,
   "jsx-single-quote": true,
   "singleQuote": false,
-  "printWidth": 100,
+  "printWidth": 80,
   "arrowParens": "avoid",
   "object-property-newline": "allowAllPropertiesOnSameLine"
 }

@@ -1,55 +1,138 @@
 import React, { useState } from "react"
 
-import { day, hour } from "utils/constants/values"
-
 import UIMainContainer from "components/UI/UIBoxContainer"
 import IntervieweeSchedule from "components/Interviewee/Schedule/IntervieweeSchedule"
 
-const listOfDays = Object.values(day)
-const listOfHours = Object.values(hour)
+import { useMutation } from "@apollo/client"
+import { ENTER_POOL } from "utils/constants/endpoints"
 
-const hourToDisplay = (hour: number | string) => `${hour < 10 ? "0" : ""}${hour}:00 PT`
-const listOfHoursDisplay = listOfHours.filter(h => typeof h !== "string").map(hourToDisplay)
+import DateTime from "utils/helpers/DateTime"
+import {
+  TYPES_OF_INTERVIEW,
+  INTERVIEW_ROLES,
+  PROGRAMMING_LANGUAGES,
+  COMPANIES,
+} from "utils/constants/values"
 
-type range = { startHour: hour; endHour: hour }
-type ranges = Record<day, Array<range>>
-
-const defaultRange: ranges = {
-  [day.Monday]: [],
-  [day.Tuesday]: [{ startHour: hour.h13, endHour: hour.h15 }],
-  [day.Wednesday]: [],
-  [day.Thursday]: [],
-  [day.Friday]: [],
-  [day.Saturday]: [],
-  [day.Sunday]: [],
-}
+const listOfDays = DateTime.getDaysOfWeek()
+const listOfHours = DateTime.getHoursToScheduleMock()
 
 const Schedule = () => {
+  // API
+  const [enterToPool, { error: mutationError }] = useMutation(ENTER_POOL)
+
+  // States
+  const [interviewType, setInterviewTypeValue] = useState("")
   const [rol, setRolValue] = useState("")
-  const [company, setCompanyValue] = useState("")
-  const [typeInterview, setTypeInterviewValue] = useState("")
+  const [numberInterviews, setNumberInterviewsValue] = useState(1)
+  const [languages, setLanguagesValue] = useState()
+  const [company, setCompanyValue] = useState()
+  const [count, setCount] = useState(0)
+  const [dynamic, setDynamic] = useState({})
 
-  const [rangesOfTime, setRangesOfTime] = useState<ranges>(defaultRange)
+  // Inputs
+  const staticInputs = [
+    {
+      label: "Type Of Interview",
+      type: "Select",
+      values: Object.keys(TYPES_OF_INTERVIEW),
+      state: interviewType,
+      setter: setInterviewTypeValue,
+      apiMap: "type",
+    },
+    {
+      label: "Role applying to",
+      type: "Select",
+      values: Object.keys(INTERVIEW_ROLES),
+      state: rol,
+      setter: setRolValue,
+      apiMap: "role",
+    },
+    {
+      label: "Number Of Interviews",
+      type: "Select",
+      values: [1, 2, 3],
+      state: numberInterviews,
+      setter: setNumberInterviewsValue,
+      apiMap: "pending",
+    },
+    {
+      label: "Programming languages to use in the interview",
+      type: "Check",
+      values: Object.keys(PROGRAMMING_LANGUAGES),
+      state: languages,
+      setter: setLanguagesValue,
+      apiMap: "language",
+    },
+    {
+      label: "Companies applying to",
+      type: "Check",
+      values: Object.keys(COMPANIES),
+      state: company,
+      setter: setCompanyValue,
+      apiMap: "companies",
+    },
+  ]
+  const dynamicInput = {
+    label: "Time to schedule a mock",
+    values: {
+      days: listOfDays,
+      hours: listOfHours,
+    },
+    state: dynamic,
+    setter: setDynamic,
+    countState: count,
+    countSetter: setCount,
+  }
 
-  const data = {
-    rol,
-    setRolValue,
-    company,
-    setCompanyValue,
-    typeInterview,
-    setTypeInterviewValue,
-    rangesOfTime,
-    setRangesOfTime,
-    listOfDays,
-    hourToDisplay,
-    listOfHoursDisplay,
-    day,
-    hour,
+  // Map to API values
+  const mapValues = () => {
+    const mappedValues = { availability: [] }
+
+    for (const element of staticInputs) {
+      let value = null
+      if (element.apiMap === "role") {
+        //@ts-expect-error
+        value = INTERVIEW_ROLES[element.state]
+      } else if (element.apiMap === "type") {
+        //@ts-expect-error
+        value = TYPES_OF_INTERVIEW[element.state]
+      } else {
+        value = element.state
+      }
+      //@ts-expect-error
+      mappedValues[element.apiMap] = value
+    }
+
+    for (const id in dynamic) {
+      const intervals = []
+
+      //@ts-expect-error
+      for (const interval of dynamic[id].interval) {
+        intervals.push(interval.replace(" PT", ""))
+      }
+
+      let prev = mappedValues.availability
+      prev.push({
+        //@ts-expect-error
+        day: dynamic[id]["day"],
+        //@ts-expect-error
+        interval: intervals,
+      })
+    }
+
+    return mappedValues
   }
 
   return (
     <UIMainContainer>
-      <IntervieweeSchedule data={data} />
+      <IntervieweeSchedule
+        mapFunction={mapValues}
+        inputs={staticInputs}
+        dynamicInput={dynamicInput}
+        mutation={enterToPool}
+        onMutationError={mutationError}
+      />
     </UIMainContainer>
   )
 }
