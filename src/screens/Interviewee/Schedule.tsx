@@ -1,13 +1,14 @@
 import React, { useState } from "react"
 
-import { day, hour } from "utils/constants/values"
-
 import UIMainContainer from "components/UI/UIBoxContainer"
 import IntervieweeSchedule from "components/Interviewee/Schedule/IntervieweeSchedule"
 
 import { useMutation } from "@apollo/client"
-import { ENTER_POOL } from "utils/constants/api"
+import { ENTER_POOL } from "utils/constants/endpoints"
 
+import { ranges } from "types/timeTypes"
+
+import DateTime from "utils/helpers/DateTime"
 import {
   TYPES_OF_INTERVIEW,
   INTERVIEW_ROLES,
@@ -15,47 +16,8 @@ import {
   COMPANIES,
 } from "utils/constants/values"
 
-const info = {
-  companies: ["Google"],
-  availability: [
-    {
-      day: "monday",
-      interval: ["12-14", "14-16"],
-    },
-    {
-      day: "friday",
-      interval: ["12-14", "14-16"],
-    },
-  ],
-  language: ["python"],
-  pending: 10, //input
-  role: "FTE",
-  type: "se",
-}
-
-const listOfDays = Object.values(day)
-const listOfHours = Object.values(hour)
-
-const hourToDisplay = (hour: number | string) =>
-  `${hour < 10 ? "0" : ""}${hour}-00 PT`
-const listOfHoursDisplay = listOfHours
-  .filter(h => typeof h !== "string")
-  .map(hourToDisplay)
-
-type range = { startHour: hour; endHour: hour }
-type ranges = Record<day, Array<range>>
-
-let state = []
-
-const defaultRange: ranges = {
-  [day.Monday]: [],
-  [day.Tuesday]: [],
-  [day.Wednesday]: [],
-  [day.Thursday]: [],
-  [day.Friday]: [],
-  [day.Saturday]: [],
-  [day.Sunday]: [],
-}
+const listOfDays = DateTime.getDaysOfWeek()
+const listOfHoursDisplay = DateTime.getHoursToScheduleMock()
 
 const Schedule = () => {
   const [enterToPool, { error: mutationError }] = useMutation(ENTER_POOL)
@@ -67,7 +29,9 @@ const Schedule = () => {
   const [languages, setLanguagesValue] = useState()
   const [company, setCompanyValue] = useState()
 
-  const [rangesOfTime, setRangesOfTime] = useState<ranges>(defaultRange)
+  const [rangesOfTime, setRangesOfTime] = useState<ranges>(
+    DateTime.getDefaultDayTimeRanges
+  )
   const [count, setCount] = useState(0)
   const [dynamic, setDynamic] = useState({})
 
@@ -116,12 +80,6 @@ const Schedule = () => {
     },
   ]
 
-  const fval = {
-    companies: "",
-  }
-
-  const inputData = TYPES_OF_INTERVIEW
-
   const mapValues = () => {
     const mappedValues = { availability: [] }
 
@@ -142,8 +100,6 @@ const Schedule = () => {
 
     for (const id in dynamic) {
       const intervals = []
-      //@ts-expect-error
-      const values = dynamic[id]
 
       //@ts-expect-error
       for (const interval of dynamic[id].interval) {
@@ -174,10 +130,7 @@ const Schedule = () => {
     rangesOfTime,
     setRangesOfTime,
     listOfDays,
-    hourToDisplay,
     listOfHoursDisplay,
-    day,
-    hour,
     dynamic,
     setDynamic,
     languages,
