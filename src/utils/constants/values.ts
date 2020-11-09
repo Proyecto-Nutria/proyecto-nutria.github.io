@@ -53,9 +53,9 @@ enum languages {
 
 
 const PROGRAMMING_LANGUAGES:{ [string: string]: string } = {
-  "C":"",
-  "C++":"",
-  "Python" :"",
+  "c":"",
+  "c++":"",
+  "python" :"",
   "Java" :"",
   "JavaScript":"",
   "Other" :"",
@@ -74,16 +74,15 @@ const INTERVIEW_ROLES:{ [string: string]: string } = {
   "Explore/STEP": "STEP",
 }
 
-enum COMPANIES {
-  Amazon = "",
-  Facebook = "",
-  Github = "",
-  Google = "",
-  Microsoft = "",
-  Netflix = "",
-  Twitter = "",
+const COMPANIES:{ [string: string]: string } = {
+  "Amazon" : "",
+  "Facebook" : "",
+  "Github" : "",
+  "Google" : "",
+  "Microsoft" : "",
+  "Netflix" : "",
+  "Twitter" : "",
 }
-
 
 export {
   PROGRAMMING_LANGUAGES,

@@ -37,7 +37,7 @@ const listOfDays = Object.values(day)
 const listOfHours = Object.values(hour)
 
 const hourToDisplay = (hour: number | string) =>
-  `${hour < 10 ? "0" : ""}${hour}:00 PT`
+  `${hour < 10 ? "0" : ""}${hour}-00 PT`
 const listOfHoursDisplay = listOfHours
   .filter(h => typeof h !== "string")
   .map(hourToDisplay)
@@ -57,15 +57,15 @@ const defaultRange: ranges = {
   [day.Sunday]: [],
 }
 
-const defstate = { id: 1, name: "Some Name" }
-
 const Schedule = () => {
+  const [enterToPool, { error: mutationError }] = useMutation(ENTER_POOL)
+
   const numberOfInterviews = [1, 2, 3]
   const [interviewType, setInterviewTypeValue] = useState("")
   const [rol, setRolValue] = useState("")
-  const [numberInterviews, setNumberInterviewsValue] = useState("")
-  const [languages, setLanguagesValue] = useState("")
-  const [company, setCompanyValue] = useState("")
+  const [numberInterviews, setNumberInterviewsValue] = useState(1)
+  const [languages, setLanguagesValue] = useState()
+  const [company, setCompanyValue] = useState()
 
   const [rangesOfTime, setRangesOfTime] = useState<ranges>(defaultRange)
   const [count, setCount] = useState(0)
@@ -80,6 +80,7 @@ const Schedule = () => {
       values: Object.keys(TYPES_OF_INTERVIEW),
       state: interviewType,
       setter: setInterviewTypeValue,
+      apiMap: "type",
     },
     {
       label: "Role applying to",
@@ -87,6 +88,7 @@ const Schedule = () => {
       values: Object.keys(INTERVIEW_ROLES),
       state: rol,
       setter: setRolValue,
+      apiMap: "role",
     },
     {
       label: "Number Of Interviews",
@@ -94,6 +96,7 @@ const Schedule = () => {
       values: numberOfInterviews,
       state: numberInterviews,
       setter: setNumberInterviewsValue,
+      apiMap: "pending",
     },
     {
       label: "Programming languages to use in the interview",
@@ -101,6 +104,7 @@ const Schedule = () => {
       values: Object.keys(PROGRAMMING_LANGUAGES),
       state: languages,
       setter: setLanguagesValue,
+      apiMap: "language",
     },
     {
       label: "Companies applying to",
@@ -108,6 +112,7 @@ const Schedule = () => {
       values: Object.keys(COMPANIES),
       state: company,
       setter: setCompanyValue,
+      apiMap: "companies",
     },
   ]
 
@@ -118,10 +123,43 @@ const Schedule = () => {
   const inputData = TYPES_OF_INTERVIEW
 
   const mapValues = () => {
-    console.log(languages)
+    const mappedValues = { availability: [] }
 
-    //console.log(languages)
-    //return { variables: { preferences: rol } }
+    for (const element of allInputs) {
+      let value = null
+      if (element.apiMap === "role") {
+        //@ts-expect-error
+        value = INTERVIEW_ROLES[element.state]
+      } else if (element.apiMap === "type") {
+        //@ts-expect-error
+        value = TYPES_OF_INTERVIEW[element.state]
+      } else {
+        value = element.state
+      }
+      //@ts-expect-error
+      mappedValues[element.apiMap] = value
+    }
+
+    for (const id in dynamic) {
+      const intervals = []
+      //@ts-expect-error
+      const values = dynamic[id]
+
+      //@ts-expect-error
+      for (const interval of dynamic[id].interval) {
+        intervals.push(interval.replace(" PT", ""))
+      }
+
+      let prev = mappedValues.availability
+      prev.push({
+        //@ts-expect-error
+        day: dynamic[id]["day"],
+        //@ts-expect-error
+        interval: intervals,
+      })
+    }
+
+    return mappedValues
   }
 
   const data = {
@@ -142,9 +180,9 @@ const Schedule = () => {
     hour,
     dynamic,
     setDynamic,
+    languages,
+    setLanguagesValue,
   }
-
-  const [enterToPool, { error: mutationError }] = useMutation(ENTER_POOL)
 
   return (
     <UIMainContainer>
@@ -154,7 +192,6 @@ const Schedule = () => {
         mutation={enterToPool}
         onMutationError={mutationError}
         data={data}
-        defstate={defstate}
       />
     </UIMainContainer>
   )

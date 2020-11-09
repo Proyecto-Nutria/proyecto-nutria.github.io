@@ -32,7 +32,6 @@ const FormTime = (props: any) => {
             const finalInterval = [...interval, option]
             copyFoo[props.id]["interval"] = finalInterval
             props.data.setDynamic(copyFoo)
-            console.log(props.data.dynamic)
           }}
         />
       </Box>
@@ -48,7 +47,6 @@ const FormTime = (props: any) => {
             const finalInterval = [...interval, option]
             copyFoo[props.id]["interval"] = finalInterval
             props.data.setDynamic(copyFoo)
-            console.log(props.data.dynamic)
           }}
         />
       </Box>

@@ -22,11 +22,8 @@ const IntervieweeSchedule = (props: any) => {
         <Form
           onSubmit={e => {
             e.preventDefault()
-            mapper()
-            /*
-            mutationFunction(
-              mapper() //{ variables: { preferences: myData.value  } }
-            )*/
+            const mappedValues = mapper()
+            mutationFunction({ variables: { preferences: mappedValues } })
           }}
         >
           <Box gap="medium">
@@ -47,8 +44,6 @@ const IntervieweeSchedule = (props: any) => {
                 return (
                   <FormField label={input.label}>
                     <CheckBoxGroup
-                      id="check-box-group-id"
-                      name="controlled"
                       value={input.state}
                       //@ts-expect-error
                       onChange={({ value: nextValue }) =>
@@ -59,6 +54,7 @@ const IntervieweeSchedule = (props: any) => {
                   </FormField>
                 )
               }
+              return <p></p>
             })}
           </Box>
 
