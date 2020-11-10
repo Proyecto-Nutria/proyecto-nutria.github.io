@@ -1,10 +1,12 @@
 import React from "react"
 import Util from "utils/helpers/Util"
+import { useQuery } from "@apollo/client"
+import { INCOMING_INTERVIEWS } from "utils/constants/endpoints"
 
 import UIMainContainer from "components/UI/UIBoxContainer"
 import IntervieweeInterviews from "components/Interviewee/Interview/InterviewInfo"
 
-const data = [
+const dataA = [
   {
     id: "1",
     name: "Jose Manuel Calva Hernandez",
@@ -53,7 +55,7 @@ const data = [
 ]
 
 const InterviewsInterviewer = () => {
-  let [first, second] = Util.splitByTime(data, new Date())
+  let [first, second] = Util.splitByTime(dataA, new Date())
   // let [incomingInterviews, setIncomingInterviews] = useState(
   //   first.sort(Util.datesComparator).reverse()
   // )
@@ -61,11 +63,24 @@ const InterviewsInterviewer = () => {
   // let [pastInterviews, setPastInterviews] = useState(second.sort(Util.datesComparator).reverse())
   const incomingInterviews = first.sort(Util.datesComparator).reverse()
   const pastInterviews = second.sort(Util.datesComparator).reverse()
-  const allData = { data, incomingInterviews, pastInterviews }
+  const allData = { dataA, incomingInterviews, pastInterviews }
+
+  const { loading, error, data } = useQuery(INCOMING_INTERVIEWS)
+
+  if (loading) return <p>Loading...</p>
+  if (error) {
+    console.log(error)
+    return <p>Error :(</p>
+  }
 
   return (
     <UIMainContainer>
       <IntervieweeInterviews data={allData} />
+      {data.getIncomingInterviews.map((interview: any) => (
+        <h1>
+          {interview.confirmed.toString()} {interview.date}
+        </h1>
+      ))}
     </UIMainContainer>
   )
 }
