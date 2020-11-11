@@ -44,6 +44,7 @@ const InterviewsIncoming = (props: IIncomingInterviewsProps) => {
           data={props.data}
           sort={props.sort}
           onSort={props.onSort}
+          primaryKey={false}
           columns={[
             ...nameColumn,
             {

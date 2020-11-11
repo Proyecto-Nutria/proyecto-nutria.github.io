@@ -1,5 +1,6 @@
 import React from "react"
 import { IIncomingInterviewsData } from "structure/interfaces/IIncomingInterviews"
+import Data from "utils/helpers/Data"
 
 import { useQuery, useMutation } from "@apollo/client"
 import {
@@ -30,52 +31,31 @@ const IncomingInterviews = () => {
   if (loading) return <p> Loading </p>
   if (error) return <p> Error </p>
 
-  let finalData: IIncomingInterviewsData[] = []
-  let counter = 0
-  for (var value of data.getIncomingInterviews) {
-    const currentTime = new Date(value.date)
-    console.log(value)
-    let elem: IIncomingInterviewsData = {
-      id: value.uid,
-      name: "Unknown",
-      date: `${currentTime.getMonth()}/${currentTime.getDate()}/${currentTime.getFullYear()}`,
-      time: `${currentTime.getHours()}:${currentTime.getMinutes()}`,
-      timestamp: value.date.toString(),
-      document: "Link",
-      place: counter.toString(10),
-      confirmed: value.confirmed,
-      score: counter.toString(10),
-    }
-    counter += 10
-    finalData.push(elem)
-  }
+  let incomingInterviews: IIncomingInterviewsData[] = Data.fromAPItoInput(data)
 
   // API
   const confirmInterview = (id: string, timestamp: string) => {
     //TODO: Change in the api to not retrieve the interviewee/wer uid
-    const confirmationData = {
-      interviewUid: id,
-      intervieweeUid: "",
-      interviewDate: timestamp,
-    }
-    console.log(confirmationData)
-    confirmation({ variables: { confirmation: confirmationData } })
+    confirmation({
+      variables: {
+        confirmation: Data.fromInputToConfirmInterview(id, timestamp),
+      },
+    })
   }
 
   const cancelInterview = (id: string, timestamp: string) => {
     //TODO: See if exposing the id of the interviewer is a potential risk
-    const cancellationData = {
-      interviewUid: id,
-      interviewerUid: "",
-      interviewDate: timestamp,
-    }
-    cancellation({ variables: { cancellation: cancellationData } })
+    cancellation({
+      variables: {
+        cancellation: Data.fromInputToCancelInterview(id, timestamp),
+      },
+    })
   }
 
   return (
     <UIMainContainer>
       <InterviewsIncoming
-        data={finalData}
+        data={incomingInterviews}
         showName={false}
         onSort={setSort}
         sort={sort}
