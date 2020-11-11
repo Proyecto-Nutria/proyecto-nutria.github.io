@@ -1,73 +1,69 @@
 import React from "react"
-import Util from "utils/helpers/Util"
+import { IIncomingInterviewsData } from "structure/interfaces/IIncomingInterviews"
+import Data from "utils/helpers/Data"
+
+import { useQuery, useMutation } from "@apollo/client"
+import {
+  INCOMING_INTERVIEWS,
+  CONFIRM_INTERVIEW,
+  CANCEL_INTERVIEW,
+} from "utils/constants/endpoints"
 
 import UIMainContainer from "components/UI/UIBoxContainer"
-import IntervieweeInterviews from "components/Interviewee/Interview/InterviewInfo"
+import InterviewsIncoming from "components/User/Interviews/Incoming/InterviewsIncoming"
 
-const data = [
-  {
-    id: "1",
-    name: "Jose Manuel Calva Hernandez",
-    document: "Link",
-    place: "room-4",
-    confirmed: false,
-    timestamp: new Date(2020, 8, 21, 15, 30),
-    score: "--",
-  },
-  {
-    id: "2",
-    name: "Sergio Gabriel Sanchez Valencia",
-    document: "Link",
-    place: "room-2",
-    confirmed: true,
-    timestamp: new Date(2020, 8, 22, 13, 30),
-    score: "Undetermined",
-  },
-  {
-    id: "3",
-    name: "Abigail Nicolas Sayago",
-    document: "Link",
-    place: "room-4",
-    confirmed: false,
-    timestamp: new Date(2020, 8, 21, 14, 30),
-    score: "--",
-  },
-  {
-    id: "4",
-    name: "Roberto Reyes Fragoso",
-    document: "Link",
-    place: "room-5",
-    confirmed: true,
-    timestamp: new Date(2020, 8, 13, 14, 30),
-    score: "Strongly Hire",
-  },
-  {
-    id: "5",
-    name: "Hugo Duhart",
-    document: "Link",
-    place: "room-1",
-    confirmed: true,
-    timestamp: new Date(2020, 8, 14, 14, 30),
-    score: "Hire",
-  },
-]
+const IncomingInterviews = () => {
+  const { loading, error, data } = useQuery(INCOMING_INTERVIEWS)
+  // eslint-disable-next-line
+  const [confirmation, { error: confirmationMutationError }] = useMutation(
+    CONFIRM_INTERVIEW
+  )
+  // eslint-disable-next-line
+  const [cancellation, { error: cancellationMutationError }] = useMutation(
+    CANCEL_INTERVIEW
+  )
 
-const InterviewsInterviewer = () => {
-  let [first, second] = Util.splitByTime(data, new Date())
-  // let [incomingInterviews, setIncomingInterviews] = useState(
-  //   first.sort(Util.datesComparator).reverse()
-  // )
+  const [sort, setSort] = React.useState({
+    property: "name",
+    direction: "desc",
+  })
 
-  // let [pastInterviews, setPastInterviews] = useState(second.sort(Util.datesComparator).reverse())
-  const incomingInterviews = first.sort(Util.datesComparator).reverse()
-  const pastInterviews = second.sort(Util.datesComparator).reverse()
-  const allData = { data, incomingInterviews, pastInterviews }
+  if (loading) return <p> Loading </p>
+  if (error) return <p> Error </p>
+
+  let incomingInterviews: IIncomingInterviewsData[] = Data.fromAPItoInput(data)
+
+  // API
+  const confirmInterview = (id: string, timestamp: string) => {
+    //TODO: Change in the api to not retrieve the interviewee/wer uid
+    confirmation({
+      variables: {
+        confirmation: Data.fromInputToConfirmInterview(id, timestamp),
+      },
+    })
+  }
+
+  const cancelInterview = (id: string, timestamp: string) => {
+    //TODO: See if exposing the id of the interviewer is a potential risk
+    cancellation({
+      variables: {
+        cancellation: Data.fromInputToCancelInterview(id, timestamp),
+      },
+    })
+  }
 
   return (
     <UIMainContainer>
-      <IntervieweeInterviews data={allData} />
+      <InterviewsIncoming
+        data={incomingInterviews}
+        showName={false}
+        onSort={setSort}
+        sort={sort}
+        confirmMutation={confirmInterview}
+        cancelMutation={cancelInterview}
+      />
     </UIMainContainer>
   )
 }
 
-export default InterviewsInterviewer
+export default IncomingInterviews

@@ -11,7 +11,7 @@ const MatchGrid = (props: any) => (
     <InterviewInfoList
       showName={true}
       info={props.incomingInterviews}
-      onRowClick={_ => {
+      onRowClick={(_: any) => {
         props.history.push("/intervieweeDetails")
       }}
     />
@@ -21,7 +21,7 @@ const MatchGrid = (props: any) => (
     <InterviewInfoList
       showName={true}
       info={props.pastInterviews}
-      onRowClick={_ => {
+      onRowClick={(_: any) => {
         props.history.push("/intervieweeDetails")
       }}
     />

@@ -23,7 +23,7 @@ const Main = () => {
     {
       img: incomingImage,
       label: "Incoming Interviews",
-      onClick: () => history.push("/scheduleInterviewee"),
+      onClick: () => history.push("/interviewsInterviewee"),
     },
     {
       img: logImage,
