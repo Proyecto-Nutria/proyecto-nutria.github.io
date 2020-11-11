@@ -2,6 +2,7 @@ import React from "react"
 import {
   Heading,
   Box,
+  Button,
   Text,
   DataTable,
   CheckBox,
@@ -41,7 +42,6 @@ const InterviewsIncoming = (props: IIncomingInterviewsProps) => {
         <DataTable
           size="medium"
           data={props.data}
-          onClickRow={event => props.onRowClick(event.datum)}
           sort={props.sort}
           onSort={props.onSort}
           columns={[
@@ -73,10 +73,31 @@ const InterviewsIncoming = (props: IIncomingInterviewsProps) => {
             {
               property: "confirmed",
               header: <Text>Confirmed</Text>,
-              render: ({ confirmed }) => (
-                <Box>
-                  <CheckBox checked={confirmed} />
-                </Box>
+              render: ({ confirmed }) => <CheckBox checked={confirmed} />,
+            },
+            {
+              property: "confirm",
+              sortable: false,
+              render: ({ confirmed, id, timestamp }) => {
+                if (confirmed === false) {
+                  return (
+                    <Button
+                      label="confirm"
+                      onClick={() => props.confirmMutation(id, timestamp)}
+                    />
+                  )
+                }
+                return <></>
+              },
+            },
+            {
+              property: "cancel",
+              sortable: false,
+              render: ({ id, timestamp }) => (
+                <Button
+                  label="cancel"
+                  onClick={() => props.cancelMutation(id, timestamp)}
+                />
               ),
             },
           ]}

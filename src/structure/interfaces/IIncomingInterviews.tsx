@@ -1,7 +1,7 @@
 export interface IIncomingInterviewsData {
   id: string
   name?: string
-  timestamp?: Date
+  timestamp?: string
   date: string
   time: string
   document: string
@@ -13,9 +13,8 @@ export interface IIncomingInterviewsData {
 export interface IIncomingInterviewsProps {
   data: IIncomingInterviewsData[]
   showName: boolean
-  onRowClick: (info: IIncomingInterviewsData) => void
-  state: any
-  setter: any
   onSort: any
   sort: any
+  confirmMutation: any
+  cancelMutation: any
 }
