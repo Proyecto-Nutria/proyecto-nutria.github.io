@@ -1,11 +1,11 @@
-import React, { useState } from "react"
-import DateTime from "utils/helpers/DateTime"
-import { useHistory } from "react-router-dom"
+import React from "react"
+//import DateTime from "utils/helpers/DateTime"
+//import { useHistory } from "react-router-dom"
 
 import UIMainContainer from "components/UI/UIBoxContainer"
-import IncomingInterviewTable from "components/Interviewer/Interviews/InterviewsTable"
+//import IncomingInterviewTable from "components/Interviewer/Interviews/InterviewsTable"
 
-const data = [
+/*const data = [
   {
     id: "1",
     name: "Jose Manuel Calva Hernandez",
@@ -51,10 +51,10 @@ const data = [
     timestamp: new Date(2020, 8, 14, 14, 30),
     score: "Hire",
   },
-]
+]*/
 
 const InterviewsInterviewer = () => {
-  const history = useHistory()
+  //const history = useHistory()
   /*let [first, second] = DateTime.splitByTime(data, new Date())
   let [incomingInterviews] = useState(
     first.sort(DateTime.datesComparator).reverse()

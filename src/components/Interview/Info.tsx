@@ -1,5 +1,5 @@
-import { Box, Text, DataTable, CheckBox, ColumnConfig, Anchor } from "grommet"
-import React, { useState } from "react"
+import { Box } from "grommet"
+import React from "react"
 
 const InterviewInfoList = (props: any) => {
   return (
