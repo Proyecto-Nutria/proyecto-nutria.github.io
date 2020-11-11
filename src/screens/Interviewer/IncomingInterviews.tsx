@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import Util from "utils/helpers/Util"
+import DateTime from "utils/helpers/DateTime"
 import { useHistory } from "react-router-dom"
 
 import UIMainContainer from "components/UI/UIBoxContainer"
@@ -55,20 +55,25 @@ const data = [
 
 const InterviewsInterviewer = () => {
   const history = useHistory()
-  let [first, second] = Util.splitByTime(data, new Date())
-  let [incomingInterviews] = useState(first.sort(Util.datesComparator).reverse())
+  /*let [first, second] = DateTime.splitByTime(data, new Date())
+  let [incomingInterviews] = useState(
+    first.sort(DateTime.datesComparator).reverse()
+  )
 
-  let [pastInterviews] = useState(second.sort(Util.datesComparator).reverse())
+  let [pastInterviews] = useState(
+    second.sort(DateTime.datesComparator).reverse()
+  )*/
 
-  return (
-    <UIMainContainer>
-      <IncomingInterviewTable
+  /*  
+  
+        <IncomingInterviewTable
         incomingInterviews={incomingInterviews}
         pastInterviews={pastInterviews}
         history={history}
       />
-    </UIMainContainer>
-  )
+      
+      */
+  return <UIMainContainer></UIMainContainer>
 }
 
 export default InterviewsInterviewer

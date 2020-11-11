@@ -1,6 +1,6 @@
 import React from "react"
 import { Box, ResponsiveContext } from "grommet"
-import type { Direction } from "types/groometTypes"
+import type { Direction } from "structure/types/groometTypes"
 
 const LandingBoxResponsive = (props: any) => (
   <ResponsiveContext.Consumer>

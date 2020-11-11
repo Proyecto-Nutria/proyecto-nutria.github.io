@@ -12,7 +12,6 @@ const VIEW_POOL = gql`
 }
 `
 
-
 const INCOMING_INTERVIEWS =  gql`
 {
  getIncomingInterviews{

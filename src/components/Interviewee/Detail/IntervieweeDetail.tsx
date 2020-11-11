@@ -8,17 +8,29 @@ const IntervieweeDetail = (props: any) => (
     <Heading level={2} margin="10px">
       Interviewee Details
     </Heading>
-    <Box flex={{ shrink: 0 }} background="background-front" round={true} pad="medium">
+    <Box
+      flex={{ shrink: 0 }}
+      background="background-front"
+      round={true}
+      pad="medium"
+    >
       <DetailField property="Name" value="Sergio G. Sanchez Valencia" />
       <DetailField property="Email" value="serchgabriel97@gmail.com" />
       <DetailField property="Phone #" value="+52 5512345678" />
-      <DetailField property="Resume" value={<Anchor color="brand" href={"/"} label="Link" />} />
+      <DetailField
+        property="Resume"
+        value={<Anchor color="brand" href={"/"} label="Link" />}
+      />
       <DetailField property="Global Score" value="Strongly Hire" />
     </Box>
     <Heading level={2} margin="10px">
       Past Interviews
     </Heading>
-    <InterviewInfoList showName={false} info={props.data} onRowClick={_ => {}} />
+    <InterviewInfoList
+      showName={false}
+      info={props.data}
+      onRowClick={(_: any) => {}}
+    />
   </Box>
 )
 
