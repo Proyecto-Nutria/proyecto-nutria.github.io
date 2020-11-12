@@ -11,6 +11,7 @@ import {
   WEE_DETAIL_PATH,
   WEE_INTERVIEWS_PATH,
   WEE_MOCK_PATH,
+  WER_BOARD_PATH,
   WER_INTERVIEWS_PATH,
   WER_MATCH_PATH,
   HELPER_PATH,
@@ -59,6 +60,7 @@ const Routes = () => {
         {user && (
           <Fragment>
             <AppHeader />
+
             <Route path={WEE_BOARD_PATH}>
               <IntervieweeMain />
             </Route>
@@ -77,6 +79,10 @@ const Routes = () => {
             <Route path={WEE_MOCK_PATH}>
               <ScheduleInterviewee />
             </Route>
+
+            <Route path={WER_BOARD_PATH}>
+              <InterviewerMain />
+            </Route>
             <Route path={WER_MATCH_PATH}>
               <ScheduleInterviewer />
             </Route>
@@ -85,7 +91,7 @@ const Routes = () => {
             </Route>
           </Fragment>
         )}
-        <Redirect to="/" />
+        <Redirect to={LANDING_PATH} />
       </Switch>
     </HashRouter>
   )

@@ -14,17 +14,17 @@ const InterviewerMain = () => {
     {
       img: scheduleImage,
       label: "Match",
-      onClick: () => history.push("/scheduleInterviewee"),
+      onClick: () => history.push("/"),
     },
     {
       img: incomingImage,
       label: "Incoming Interviews",
-      onClick: () => history.push("/interviewsInterviewee"),
+      onClick: () => history.push("/"),
     },
     {
       img: logImage,
       label: "Previous Interviews",
-      onclick: () => history.push("/interviewsInterviewee"),
+      onclick: () => history.push("/"),
     },
   ]
 

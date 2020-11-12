@@ -10,6 +10,7 @@ export const WEE_DETAIL_PATH = "/intervieweeDetails"
 export const WEE_INTERVIEWS_PATH = "/interviewsInterviewee"
 export const WEE_MOCK_PATH = "/scheduleInterviewee"
 
+export const WER_BOARD_PATH = "/interviewerHome"
 export const WER_INTERVIEWS_PATH = "/interviewsInterviewer"
 export const WER_MATCH_PATH = "/scheduleInterviewer"
 
