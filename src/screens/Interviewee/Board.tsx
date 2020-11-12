@@ -2,7 +2,7 @@ import React from "react"
 // import { useQuery } from "@apollo/client"
 
 import UIMainContainer from "components/UI/UIBoxContainer"
-import IntervieweeBoard from "components/User/Board/UserBoard"
+import UserBoard from "components/User/Board/UserBoard"
 // import { HOUR_IN_MILLISECONDS } from "utils/constants/values"
 import { useHistory } from "react-router-dom"
 
@@ -12,7 +12,7 @@ import incomingImage from "assets/imgs/Interviewee/incoming.png"
 
 // import { VIEW_POOL } from "utils/constants/api"
 
-const Main = () => {
+const IntervieweeMain = () => {
   const history = useHistory()
   const boardElements = [
     {
@@ -52,9 +52,9 @@ const Main = () => {
 
   return (
     <UIMainContainer>
-      <IntervieweeBoard heading={"Interviews"} elements={boardElements} />
+      <UserBoard heading={"Interviews"} elements={boardElements} />
     </UIMainContainer>
   )
 }
 
-export default Main
+export default IntervieweeMain

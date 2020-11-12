@@ -3,7 +3,7 @@ import React from "react"
 import { Heading, Box } from "grommet"
 import BoardItem from "components/User/Board/UserBoardItem"
 
-const IntervieweeBoard = (props: any) => (
+const UserBoard = (props: any) => (
   <Box pad="xlarge">
     <Heading level="4">{props.heading}</Heading>
     <Box direction="column" gap="small">
@@ -19,4 +19,4 @@ const IntervieweeBoard = (props: any) => (
   </Box>
 )
 
-export default IntervieweeBoard
+export default UserBoard

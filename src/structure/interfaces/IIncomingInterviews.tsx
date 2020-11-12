@@ -15,6 +15,7 @@ export interface IIncomingInterviewsProps {
   showName: boolean
   onSort: any
   sort: any
-  confirmMutation: any
+  confirmMutation?: any
   cancelMutation: any
+  isInterviewee: boolean
 }
