@@ -16,14 +16,24 @@ import {
 } from "structure/interfaces/IIncomingInterviews"
 
 const InterviewsIncoming = (props: IIncomingInterviewsProps) => {
-  const nameColumn: ColumnConfig<IIncomingInterviewsData>[] = props.showName
+  const confirmationColumn: ColumnConfig<
+    IIncomingInterviewsData
+  >[] = props.isInterviewee
     ? [
         {
-          align: "center",
-          property: "name",
-          header: <Text>Interviewee</Text>,
+          property: "confirm",
           sortable: false,
-          search: true,
+          render: ({ confirmed, id, timestamp }) => {
+            if (confirmed === false) {
+              return (
+                <Button
+                  label="confirm"
+                  onClick={() => props.confirmMutation(id, timestamp)}
+                />
+              )
+            }
+            return <></>
+          },
         },
       ]
     : []
@@ -46,7 +56,6 @@ const InterviewsIncoming = (props: IIncomingInterviewsProps) => {
           onSort={props.onSort}
           primaryKey={false}
           columns={[
-            ...nameColumn,
             {
               property: "date",
               header: <Text>Day</Text>,
@@ -76,21 +85,7 @@ const InterviewsIncoming = (props: IIncomingInterviewsProps) => {
               header: <Text>Confirmed</Text>,
               render: ({ confirmed }) => <CheckBox checked={confirmed} />,
             },
-            {
-              property: "confirm",
-              sortable: false,
-              render: ({ confirmed, id, timestamp }) => {
-                if (confirmed === false) {
-                  return (
-                    <Button
-                      label="confirm"
-                      onClick={() => props.confirmMutation(id, timestamp)}
-                    />
-                  )
-                }
-                return <></>
-              },
-            },
+            ...confirmationColumn,
             {
               property: "cancel",
               sortable: false,

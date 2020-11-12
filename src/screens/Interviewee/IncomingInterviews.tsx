@@ -61,6 +61,7 @@ const IncomingInterviews = () => {
         sort={sort}
         confirmMutation={confirmInterview}
         cancelMutation={cancelInterview}
+        isInterviewee={true}
       />
     </UIMainContainer>
   )
