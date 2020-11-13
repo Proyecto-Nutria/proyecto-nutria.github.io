@@ -1,40 +1,16 @@
 import React from "react"
 
+import type { interviewData, personData } from "structure/types/dataTypes"
+import DateTime from "utils/helpers/DateTime"
+
 import { DataTable, Box, Text, Button } from "grommet"
 
-import { day, hour, languages } from "../../../../utils/constants/values"
-/* import { QueryManager } from "@apollo/client/core/QueryManager" */
-
+// TODO
 import QUERY_DATA from "../Table/query_data"
 
-const listOfDays = Object.values(day)
-
-const hourToDisplay = (hour: number | string) =>
-  `${hour < 10 ? "0" : ""}${hour}:00 PT`
 const makeQuery = (key: string) => {
   return QUERY_DATA[parseInt(key, 10) - 1]
 }
-
-type range = { startHour: hour; endHour: hour }
-type ranges = { [key in day]: Array<range> }
-type personData = ranges & {
-  uid: String
-  name: String
-  programmingLanguages: Array<languages>
-}
-type interviewData = { uid: String; interviewDay: day; interviewHour: hour }
-
-const Ranges: React.FC<{ ranges: Array<range> }> = ({ ranges }) => (
-  <>
-    {ranges.map(({ startHour, endHour }) => (
-      <Box pad={{ vertical: "xxsmall" }} key={startHour}>
-        <Text size="50%">
-          {hourToDisplay(startHour)} - {hourToDisplay(endHour)}
-        </Text>
-      </Box>
-    ))}
-  </>
-)
 
 const MatchTable = (props: {
   data: Array<personData>
@@ -53,46 +29,7 @@ const MatchTable = (props: {
     setShowConfirm,
   } = props
 
-  const nameColumn: Array<any> = [
-    {
-      property: "name",
-      header: (
-        <Text weight="bold" size="large">
-          Interviewee
-        </Text>
-      ),
-      search: true,
-      size: "small",
-      render: (row: personData) => (
-        <Box
-          border={{
-            color: "brand",
-            size: "small",
-          }}
-          background="background-contrast"
-          round={true}
-          fill={true}
-        >
-          <Button
-            key={row.uid.toString()}
-            size="small"
-            fill
-            onClick={event => {
-              setQueryAbout(makeQuery(row.uid.toString()))
-              setShowAbout(true)
-            }}
-          >
-            <Box pad={{ vertical: "xsmall" }} alignSelf="center" margin="small">
-              <Text>{row.name}</Text>
-              <Text size="50%">{row.programmingLanguages.join(", ")}</Text>
-            </Box>
-          </Button>
-        </Box>
-      ),
-    },
-  ]
-
-  const otherColumns: Array<any> = listOfDays.map(day => ({
+  const otherColumns: Array<any> = DateTime.getDaysOfWeek().map(day => ({
     property: day,
     header: <strong>{day}</strong>,
     align: "center",
@@ -125,7 +62,13 @@ const MatchTable = (props: {
               setShowConfirm(true)
             }}
           >
-            <Ranges ranges={row[day]} />
+            {row[day].map(({ startHour, endHour }) => (
+              <Box pad={{ vertical: "xxsmall" }} key={startHour}>
+                <Text size="50%">
+                  {startHour} - {endHour}
+                </Text>
+              </Box>
+            ))}
           </Button>
         </Box>
       ) : (
@@ -138,7 +81,49 @@ const MatchTable = (props: {
       primaryKey={false}
       sortable={true}
       size="large"
-      columns={[...nameColumn, ...otherColumns]}
+      columns={[
+        {
+          property: "name",
+          header: (
+            <Text weight="bold" size="large">
+              Interviewee
+            </Text>
+          ),
+          search: true,
+          size: "small",
+          render: (row: personData) => (
+            <Box
+              border={{
+                color: "brand",
+                size: "small",
+              }}
+              background="background-contrast"
+              round={true}
+              fill={true}
+            >
+              <Button
+                key={row.uid.toString()}
+                size="small"
+                fill
+                onClick={_ => {
+                  setQueryAbout(makeQuery(row.uid.toString()))
+                  setShowAbout(true)
+                }}
+              >
+                <Box
+                  pad={{ vertical: "xsmall" }}
+                  alignSelf="center"
+                  margin="small"
+                >
+                  <Text>{row.name}</Text>
+                  <Text size="50%">{row.programmingLanguages.join(", ")}</Text>
+                </Box>
+              </Button>
+            </Box>
+          ),
+        },
+        ...otherColumns,
+      ]}
       data={data}
     />
   )

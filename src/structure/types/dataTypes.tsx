@@ -7,8 +7,8 @@ export type personData = ranges & {
   uid: String
   name: String
   programmingLanguages: Array<languages>
-  hasRealInterview: Boolean
-  hasInterviews: Array<Boolean>
+  hasRealInterview?: Boolean
+  hasInterviews?: Array<Boolean>
 }
 
 export type queryData = {
