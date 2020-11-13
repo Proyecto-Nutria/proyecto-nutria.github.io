@@ -5,9 +5,9 @@ import { DataTable, Box, Text, Button } from "grommet"
 import { day, hour, languages } from "../../../../utils/constants/values"
 /* import { QueryManager } from "@apollo/client/core/QueryManager" */
 
-import QUERY_DATA from "./query_data"
+import QUERY_DATA from "../Table/query_data"
 
-import styles from "./candidateTable.module.css"
+import styles from "../Candidate/candidateTable.module.css"
 
 const listOfDays = Object.values(day)
 
@@ -49,7 +49,7 @@ const Ranges: React.FC<{ ranges: Array<range> }> = ({ ranges }) => (
   </>
 )
 
-const CandidatesTable = (props: {
+const MatchTable = (props: {
   data: Array<personData>
   setQueryAbout: Function
   setShowAbout: Function
@@ -157,14 +157,8 @@ const CandidatesTable = (props: {
   const columns = [...nameColumn, ...otherColumns]
 
   return (
-    <Box
-      round={true}
-      background="background-front"
-      /* overflow="scroll" */
-    >
-      <DataTable sortable={true} size="large" columns={columns} data={data} />
-    </Box>
+    <DataTable sortable={true} size="large" columns={columns} data={data} />
   )
 }
 
-export default CandidatesTable
+export default MatchTable
