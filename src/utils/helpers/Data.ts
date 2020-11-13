@@ -1,3 +1,4 @@
+import { IMatch } from "structure/interfaces/IMatch"
 import { IIncomingInterviewsData } from "structure/interfaces/IIncomingInterviews"
 
 export default class Data{
@@ -35,6 +36,30 @@ export default class Data{
                 score: counter.toString(10),
             }
             counter += 10
+            parsedData.push(parsed)
+        }
+        return parsedData
+    }
+
+    static fromAPItoMatch(data:any){
+        let parsedData: IMatch[] = []
+        for (var elem of data.viewPool) {
+            let parsed: IMatch = {
+                uid: elem.uid,
+                name: "Unknown",
+                programmingLanguages: elem.language,
+                interviewType: elem.type
+            }
+            for(var available of elem.availability){
+                const day = available.day
+                const capitalizedDay  = day.charAt(0).toUpperCase() + day.slice(1)
+
+                //@ts-expect-error
+                parsed[capitalizedDay] = available.interval.map((interval:any) => {
+                    const intervals = interval.split('-')
+                    return {startHour:intervals[0], endHour:intervals[1]}
+                })
+            }
             parsedData.push(parsed)
         }
         return parsedData

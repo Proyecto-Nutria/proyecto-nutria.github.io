@@ -7,23 +7,12 @@ import { day, hour, languages } from "../../../../utils/constants/values"
 
 import QUERY_DATA from "../Table/query_data"
 
-import styles from "../Candidate/candidateTable.module.css"
-
 const listOfDays = Object.values(day)
 
 const hourToDisplay = (hour: number | string) =>
   `${hour < 10 ? "0" : ""}${hour}:00 PT`
 const makeQuery = (key: string) => {
   return QUERY_DATA[parseInt(key, 10) - 1]
-}
-const dayToNumber = (key: day) => {
-  const days = Object.values(day)
-  for (let i = 0; i < days.length; i++) {
-    if (key === days[i]) {
-      return i
-    }
-  }
-  return 0
 }
 
 type range = { startHour: hour; endHour: hour }
@@ -32,8 +21,6 @@ type personData = ranges & {
   uid: String
   name: String
   programmingLanguages: Array<languages>
-  hasRealInterview: Boolean
-  hasInterviews: Array<Boolean>
 }
 type interviewData = { uid: String; interviewDay: day; interviewHour: hour }
 
@@ -74,13 +61,12 @@ const MatchTable = (props: {
           Interviewee
         </Text>
       ),
-      primary: true,
       search: true,
       size: "small",
       render: (row: personData) => (
         <Box
           border={{
-            color: row.hasRealInterview ? "brand" : "brand-2",
+            color: "brand",
             size: "small",
           }}
           background="background-contrast"
@@ -111,27 +97,20 @@ const MatchTable = (props: {
     header: <strong>{day}</strong>,
     align: "center",
     render: (row: personData) =>
-      row[day].length !== 0 ? (
+      typeof row[day] != "undefined" ? (
         <Box
           border={{
-            color: row.hasRealInterview ? "brand" : "brand-2",
+            color: "brand",
             size: "small",
             style: "dashed",
           }}
-          background={
-            row.hasInterviews[dayToNumber(day)]
-              ? "background-front"
-              : "background-contrast"
-          }
-          className={row.hasInterviews[dayToNumber(day)] ? styles.stripe : ""}
+          background="background-front"
           round={true}
-          fill={true}
         >
           <Button
             key={row.uid.toString()}
             size="small"
             fill
-            disabled={row.hasInterviews[dayToNumber(day)] ? true : false}
             onClick={() => {
               // @ts-ignore
               setNewInterviewData(pastInterviewData => {
@@ -154,10 +133,14 @@ const MatchTable = (props: {
       ),
   }))
 
-  const columns = [...nameColumn, ...otherColumns]
-
   return (
-    <DataTable sortable={true} size="large" columns={columns} data={data} />
+    <DataTable
+      primaryKey={false}
+      sortable={true}
+      size="large"
+      columns={[...nameColumn, ...otherColumns]}
+      data={data}
+    />
   )
 }
 

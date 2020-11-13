@@ -27,7 +27,7 @@ const InterviewerMatch = (props: any) => (
       </Box>
 
       <MatchTable
-        data={props.data.data}
+        data={props.data.pool}
         setQueryAbout={(newQueryAbout: any) =>
           props.data.setQueryAbout(newQueryAbout)
         }

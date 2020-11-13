@@ -3,7 +3,10 @@ import { gql } from '@apollo/client'
 const VIEW_POOL = gql`
 {
   viewPool {
+    uid
     type
+    role
+    language
     availability {
       day
       interval
