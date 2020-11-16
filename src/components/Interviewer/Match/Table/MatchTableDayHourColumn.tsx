@@ -2,7 +2,7 @@ import React from "react"
 
 import { Box, Text, Button } from "grommet"
 
-import type { interviewData, personData } from "structure/types/dataTypes"
+import type { personData } from "structure/types/dataTypes"
 import DateTime from "utils/helpers/DateTime"
 
 const MatchTableDayHourColumn = (

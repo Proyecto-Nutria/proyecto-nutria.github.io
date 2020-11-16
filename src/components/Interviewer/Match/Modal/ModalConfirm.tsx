@@ -42,12 +42,14 @@ const ModalConfirm = (props: {
   setNewInterviewData: Function
   pastInterviewData: interviewData
   availableHours: Array<range>
+  createInterview: Function
 }) => {
   const {
     setShowConfirm,
     setNewInterviewData,
     pastInterviewData,
     availableHours,
+    createInterview,
   } = props
   const [newData, setNewData] = useState<interviewData>(defaultInterviewData)
 
@@ -85,11 +87,10 @@ const ModalConfirm = (props: {
           margin="medium"
           type="submit"
           onClick={() => {
-            // @ts-ignore
-            console.log(
-              `New Interview Scheduled with ${
-                newData.uid
-              } at ${newData.interviewDay.toString()} ${newData.interviewHour}`
+            createInterview(
+              newData.uid,
+              newData.interviewDay,
+              newData.interviewHour
             )
             setShowConfirm(false)
           }}

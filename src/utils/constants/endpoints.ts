@@ -21,6 +21,12 @@ const ENTER_POOL = gql`
   }
 `
 
+const CREATE_INTERVIEW = gql`
+  mutation createInterview($interview: InterviewInput!) {
+    createInterview(interview: $interview)
+  }
+`
+
 const INCOMING_INTERVIEWS =  gql`
 {
  getIncomingInterviews{
@@ -48,6 +54,7 @@ const CANCEL_INTERVIEW = gql`
 export  {
   VIEW_POOL,
   ENTER_POOL,
+  CREATE_INTERVIEW,
   INCOMING_INTERVIEWS,
   CONFIRM_INTERVIEW,
   CANCEL_INTERVIEW

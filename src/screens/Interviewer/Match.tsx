@@ -1,9 +1,10 @@
 import React, { useState } from "react"
 
-import { useQuery } from "@apollo/client"
-import { VIEW_POOL } from "utils/constants/endpoints"
+import { useQuery, useMutation } from "@apollo/client"
+import { VIEW_POOL, CREATE_INTERVIEW } from "utils/constants/endpoints"
 
 import Data from "utils/helpers/Data"
+import DateTime from "utils/helpers/DateTime"
 
 import UIMainContainer from "components/UI/UIBoxContainer"
 import InterviewerMatch from "components/Interviewer/Match/InterviewerMatch"
@@ -31,6 +32,10 @@ const defaultInterviewData: interviewData = {
 
 const Match = () => {
   const { loading, error, data } = useQuery(VIEW_POOL)
+  // eslint-disable-next-line
+  const [creation, { error: cancellationMutationError }] = useMutation(
+    CREATE_INTERVIEW
+  )
 
   const [queryAbout, setQueryAbout] = useState<queryData>(defaultQueryData)
   const [showAbout, setShowAbout] = useState<Boolean>(false)
@@ -47,6 +52,20 @@ const Match = () => {
 
   let pool = Data.fromAPItoMatch(data)
 
+  const createInterview = (id: string, day: string, hour: string) => {
+    //TODO: See if exposing the id of the interviewer is a potential risk
+    creation({
+      variables: {
+        interview: Data.fromInputToCreateInterview(
+          id,
+          id,
+          DateTime.getDateOfMatchInterview(day, hour),
+          2
+        ),
+      },
+    })
+  }
+
   const allData = {
     pool,
     queryAbout,
@@ -59,6 +78,7 @@ const Match = () => {
     setNewInterviewData,
     showConfirm,
     setShowConfirm,
+    createInterview,
   }
 
   return (

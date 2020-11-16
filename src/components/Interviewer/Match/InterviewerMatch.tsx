@@ -62,6 +62,7 @@ const InterviewerMatch = (props: any) => (
           }
           pastInterviewData={props.data.newInterviewData}
           availableHours={props.data.availableHours}
+          createInterview={props.data.createInterview}
         />
       )}
     </Box>

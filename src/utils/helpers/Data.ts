@@ -18,6 +18,15 @@ export default class Data{
           }
     }
 
+    static fromInputToCreateInterview(id:string, userId:string, timestamp:string, pending:number){
+        return {
+            intervieweeUid: userId,
+            date: "1608768000000",
+            poolId: "-MJn6ApzSRLpgmB_-R6i",
+            pending: pending
+        }
+    }
+
     static fromAPItoInput(data:any){
         // TODO: Erase the hardcoded values, used only to test the endpoint
         let parsedData: IIncomingInterviewsData[] = []
