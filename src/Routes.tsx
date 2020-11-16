@@ -35,7 +35,7 @@ import EditProfile from "screens/Interviewee/EditProfile"
 import InterviewerMain from "screens/Interviewer/Board"
 import SignUp from "screens/Interviewer/SignUp"
 import InterviewsInterviewer from "screens/Interviewer/IncomingInterviews"
-import { default as ScheduleInterviewer } from "screens/Interviewer/Match"
+import Match from "screens/Interviewer/Match"
 
 // Root
 import MainFeedbackHelper from "FeedbackHelper/MainFeedbackHelper.bs"
@@ -84,7 +84,7 @@ const Routes = () => {
               <InterviewerMain />
             </Route>
             <Route path={WER_MATCH_PATH}>
-              <ScheduleInterviewer />
+              <Match />
             </Route>
             <Route path={HELPER_PATH}>
               <FeedbackHelper />

@@ -3,7 +3,10 @@ import { gql } from '@apollo/client'
 const VIEW_POOL = gql`
 {
   viewPool {
+    uid
     type
+    role
+    language
     availability {
       day
       interval
@@ -15,6 +18,12 @@ const VIEW_POOL = gql`
 const ENTER_POOL = gql`
   mutation enterToPool($preferences: PoolInput!) {
     enterToPool(preferences: $preferences)
+  }
+`
+
+const CREATE_INTERVIEW = gql`
+  mutation createInterview($interview: InterviewInput!) {
+    createInterview(interview: $interview)
   }
 `
 
@@ -45,6 +54,7 @@ const CANCEL_INTERVIEW = gql`
 export  {
   VIEW_POOL,
   ENTER_POOL,
+  CREATE_INTERVIEW,
   INCOMING_INTERVIEWS,
   CONFIRM_INTERVIEW,
   CANCEL_INTERVIEW
