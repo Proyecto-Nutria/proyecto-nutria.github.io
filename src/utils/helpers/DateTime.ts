@@ -28,4 +28,16 @@ export default class DateTime {
       [day.Sunday]: [],
     }
   }
+
+  static getDateOfMatchInterview(day:string, hour:string){
+    // TODO: Create algorithm to schedule in the correct day
+    console.log(day, hour)
+    var tomorrow = new Date();
+    tomorrow.setDate(new Date().getDate()+1);
+    return DateTime.dateToTimestamp(tomorrow)
+  }
+
+  static dateToTimestamp(date:any){
+   return date.getTime();
+  }
 }

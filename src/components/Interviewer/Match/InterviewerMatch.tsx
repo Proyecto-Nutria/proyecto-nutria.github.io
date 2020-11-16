@@ -4,7 +4,6 @@ import { Heading, Box, Text } from "grommet"
 import ModalConfirm from "components/Interviewer/Match/Modal/ModalConfirm"
 import ModalAbout from "components/Interviewer/Match/Modal/ModalAbout"
 import MatchTable from "components/Interviewer/Match/Table/MatchTable"
-// import Filter from "components/Interviewer/Match/Filter/TableFilter"
 
 //TODO: The filters are going to render in an infinite way the data from the API
 // <Filter setData={(filterData: any) => props.data.setData(filterData)} />
