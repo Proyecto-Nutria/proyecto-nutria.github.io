@@ -1,5 +1,9 @@
 import React from "react"
-// import { useQuery } from "@apollo/client"
+import {
+  WEE_MOCK_PATH,
+  WEE_INTERVIEWS_PATH,
+  USER_PAST_INTERVIEWS_PATH,
+} from "utils/constants/paths"
 
 import UIMainContainer from "components/UI/UIBoxContainer"
 import UserBoard from "components/User/Board/UserBoard"
@@ -18,37 +22,19 @@ const IntervieweeMain = () => {
     {
       img: scheduleImage,
       label: "Schedule a Mock Interview",
-      onClick: () => history.push("/scheduleInterviewee"),
+      onClick: () => history.push(WEE_MOCK_PATH),
     },
     {
       img: incomingImage,
       label: "Incoming Interviews",
-      onClick: () => history.push("/interviewsInterviewee"),
+      onClick: () => history.push(WEE_INTERVIEWS_PATH),
     },
     {
       img: logImage,
       label: "Previous Interviews",
-      onclick: () => history.push("/interviewsInterviewee"),
+      onclick: () => history.push(USER_PAST_INTERVIEWS_PATH),
     },
   ]
-
-  /*
-  const { loading, error, data } = useQuery(VIEW_POOL, {
-    pollInterval: HOUR_IN_MILLISECONDS,
-  })
-
-
-  if (loading) return <p>Loading...</p>
-  if (error) {
-    console.log(error)
-    return <p>Error :(</p>
-  }
-
-
-  {data.viewPool.map(({ type }: { type: string }) => (
-        <h1 key={type}> {type}</h1>
-      ))}
-  */
 
   return (
     <UIMainContainer>

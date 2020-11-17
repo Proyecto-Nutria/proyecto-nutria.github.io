@@ -10,7 +10,7 @@ import {
 } from "utils/constants/endpoints"
 
 import UIMainContainer from "components/UI/UIBoxContainer"
-import InterviewsIncoming from "components/User/Interviews/Incoming/InterviewsIncoming"
+import InterviewsIncoming from "components/User/Interviews/InterviewsIncoming"
 
 const IncomingInterviews = () => {
   const { loading, error, data } = useQuery(INCOMING_INTERVIEWS)

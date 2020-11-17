@@ -9,11 +9,18 @@ const BoardItem = (props: any) => (
     </Box>
     <Box justify="center" gap="large">
       <Text>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati veniam tempora quam
-        molestias, distinctio maiores veritatis officiis? Qui dolorem, voluptatem excepturi
-        necessitatibus doloremque placeat, laboriosam, quisquam amet vitae soluta natus!
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati
+        veniam tempora quam molestias, distinctio maiores veritatis officiis?
+        Qui dolorem, voluptatem excepturi necessitatibus doloremque placeat,
+        laboriosam, quisquam amet vitae soluta natus!
       </Text>
-      <Button fill={false} primary alignSelf="start" label={props.label} onClick={props.onClick} />
+      <Button
+        fill={false}
+        primary
+        alignSelf="start"
+        label={props.label}
+        onClick={props.onClick}
+      />
     </Box>
   </Box>
 )
