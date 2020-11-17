@@ -16,10 +16,8 @@ firebase.initializeApp(firebaseConfig)
 
 const provider = new firebase.auth.GoogleAuthProvider()
 
-const signInWithGoogle = () => auth.signInWithPopup(provider)
-const signOutWithGoogle = () => auth.signOut()
+const firebaseAuth = firebase.auth()
+const signInWithGoogle = () => firebaseAuth.signInWithRedirect(provider)
+const signOutWithGoogle = () => firebaseAuth.signOut()
 
-const auth = firebase.auth()
-const firestore = firebase.firestore()
-
-export { signInWithGoogle, signOutWithGoogle, auth, firestore }
+export { firebaseAuth, signInWithGoogle, signOutWithGoogle }

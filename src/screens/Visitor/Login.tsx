@@ -7,11 +7,11 @@ import { UserContext } from "utils/providers/UserProvider"
 import UIMainContainer from "components/UI/UIBoxContainer"
 import LoginGrid from "components/Visitor/Login/Grid/LoginGrid"
 
-const Login = () => {
-  const user = useContext(UserContext)
+import Auth from "utils/helpers/Auth"
 
-  if (user) {
-    return <Redirect to={{ pathname: "/home" }} />
+const Login = () => {
+  if (useContext(UserContext)) {
+    return <Redirect to={{ pathname: Auth.getPathToRedirectUser() }} />
   }
 
   return (

@@ -4,6 +4,10 @@ const ROLE_KEY = "role"
 const INTERVIEWEE_ROLE = "interviewee"
 const INTERVIEWER_ROLE = "interviewer"
 const TOKEN_KEY = "token"
+const FIRST_TIME_KEY = "first"
+
+const TRUE_VALUE = "1"
+const FALSE_VALUE = "0"
 
 enum hour {
     h0 = 0,
@@ -90,7 +94,10 @@ export {
   COMPANIES,
   TYPES_OF_INTERVIEW,
   HOUR_IN_MILLISECONDS,
+  TRUE_VALUE,
+  FALSE_VALUE,
   INTERVIEWER_ROLE,
+  FIRST_TIME_KEY,
   ROLE_KEY,
   TOKEN_KEY,
   INTERVIEWEE_ROLE, day, hour, languages

@@ -47,7 +47,6 @@ import MainFeedbackHelper from "FeedbackHelper/MainFeedbackHelper.bs"
 const Routes = () => {
   const user = useContext(UserContext)
   const FeedbackHelper = MainFeedbackHelper.make
-  // TODO: if user not logged redirect to /login"
 
   return (
     <HashRouter>
