@@ -5,7 +5,6 @@ export default class Data{
     static fromInputToConfirmInterview(id:string, timestamp:string ){
         return {
             interviewUid: id,
-            intervieweeUid: "",
             interviewDate: timestamp,
           }
     }
@@ -13,16 +12,15 @@ export default class Data{
     static fromInputToCancelInterview(id:string, timestamp:string ){
         return {
             interviewUid: id,
-            interviewerUid: "",
             interviewDate: timestamp,
           }
     }
 
     static fromInputToCreateInterview(id:string, userId:string, timestamp:string, pending:number){
         return {
+            poolId: id,
             intervieweeUid: userId,
-            date: "1608768000000",
-            poolId: "-MJn6ApzSRLpgmB_-R6i",
+            date: timestamp,
             pending: pending
         }
     }
