@@ -30,7 +30,11 @@ export default class Auth{
             })
             .then((apolloResult) => {
                 const result = apolloResult.data.getUserTypeOrCreate
-                localStorage.setItem(FIRST_TIME_KEY, TRUE_VALUE)
+                if ( result.firstTime !== true ){
+                    localStorage.setItem(FIRST_TIME_KEY, TRUE_VALUE)
+                }else{
+                    localStorage.setItem(FIRST_TIME_KEY, FALSE_VALUE)
+                }
                 localStorage.setItem(ROLE_KEY, result)
             })
             .catch((err) => {
