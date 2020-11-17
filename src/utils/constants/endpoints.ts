@@ -1,5 +1,14 @@
 import { gql } from '@apollo/client'
 
+const GET_USER_TYPE = gql`
+{
+  getUserTypeOrCreate{
+    role,
+    firstTime
+  }
+}
+`
+
 const VIEW_POOL = gql`
 {
   viewPool {
@@ -61,6 +70,7 @@ const CANCEL_INTERVIEW = gql`
 `
 
 export  {
+  GET_USER_TYPE,
   VIEW_POOL,
   ENTER_POOL,
   CREATE_INTERVIEW,
