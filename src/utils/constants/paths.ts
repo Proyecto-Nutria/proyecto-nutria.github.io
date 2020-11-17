@@ -5,6 +5,8 @@ export const LOGIN_PATH = "/login"
 export const SIGNUP_PATH = "/signUp"
 export const EDIT_PATH = "/editProfile"
 
+export const USER_PAST_INTERVIEWS_PATH = "/pastsInterviews"
+
 export const WEE_BOARD_PATH = "/home"
 export const WEE_DETAIL_PATH = "/intervieweeDetails"
 export const WEE_INTERVIEWS_PATH = "/interviewsInterviewee"

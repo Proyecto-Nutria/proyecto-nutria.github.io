@@ -39,6 +39,15 @@ const INCOMING_INTERVIEWS =  gql`
 }
 `
 
+const PAST_INTERVIEWS = gql`
+{
+  getPastsInterviews{
+    date,
+    doc,
+  }
+}
+`
+
 const CONFIRM_INTERVIEW = gql`
   mutation confirmInterview($confirmation: ConfirmationInput!){
     confirmInterview(confirmation:$confirmation)
@@ -55,6 +64,7 @@ export  {
   VIEW_POOL,
   ENTER_POOL,
   CREATE_INTERVIEW,
+  PAST_INTERVIEWS,
   INCOMING_INTERVIEWS,
   CONFIRM_INTERVIEW,
   CANCEL_INTERVIEW

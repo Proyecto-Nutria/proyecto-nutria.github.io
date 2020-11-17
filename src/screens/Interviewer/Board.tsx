@@ -1,5 +1,9 @@
 import React from "react"
-import { WER_INTERVIEWS_PATH, WER_MATCH_PATH } from "utils/constants/paths"
+import {
+  WER_INTERVIEWS_PATH,
+  WER_MATCH_PATH,
+  USER_PAST_INTERVIEWS_PATH,
+} from "utils/constants/paths"
 
 import UIMainContainer from "components/UI/UIBoxContainer"
 import UserBoard from "components/User/Board/UserBoard"
@@ -24,8 +28,8 @@ const InterviewerMain = () => {
     },
     {
       img: logImage,
-      label: "Previous Interviews",
-      onclick: () => history.push("/"),
+      label: "Past Interviews",
+      onClick: () => history.push(USER_PAST_INTERVIEWS_PATH),
     },
   ]
 

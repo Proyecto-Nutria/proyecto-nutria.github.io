@@ -15,6 +15,7 @@ import {
   WER_INTERVIEWS_PATH,
   WER_MATCH_PATH,
   HELPER_PATH,
+  USER_PAST_INTERVIEWS_PATH,
 } from "utils/constants/paths"
 
 // UI
@@ -24,12 +25,15 @@ import AppHeader from "components/User/UserHeader"
 import Landing from "screens/Visitor/Landing"
 import Login from "screens/Visitor/Login"
 
+//User
+import PastInterviews from "screens/User/PastInterviews"
+
 // Interviewee
 import IntervieweeMain from "screens/Interviewee/Board"
 import InterviewsInterviewee from "screens/Interviewee/IncomingInterviews"
 import IntervieweeDetails from "screens/Interviewee/IntervieweeDetails"
 import { default as ScheduleInterviewee } from "screens/Interviewee/Schedule"
-import EditProfile from "screens/Interviewee/EditProfile"
+import EditProfile from "screens/Interviewee/SignUp"
 
 // Interviewer
 import InterviewerMain from "screens/Interviewer/Board"
@@ -60,6 +64,10 @@ const Routes = () => {
         {user && (
           <Fragment>
             <AppHeader />
+
+            <Route path={USER_PAST_INTERVIEWS_PATH}>
+              <PastInterviews />
+            </Route>
 
             <Route path={WEE_BOARD_PATH}>
               <IntervieweeMain />

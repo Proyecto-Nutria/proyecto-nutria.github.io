@@ -1,5 +1,6 @@
 import { IMatch } from "structure/interfaces/IMatch"
 import { IIncomingInterviewsData } from "structure/interfaces/IIncomingInterviews"
+import { IPastInterviewsData } from "structure/interfaces/IPastInterviews"
 
 export default class Data{
     static fromInputToConfirmInterview(id:string, timestamp:string ){
@@ -66,6 +67,18 @@ export default class Data{
                     const intervals = interval.split('-')
                     return {startHour:intervals[0], endHour:intervals[1]}
                 })
+            }
+            parsedData.push(parsed)
+        }
+        return parsedData
+    }
+
+    static fromAPItoPast(data:any){
+        let parsedData: IPastInterviewsData[] = []
+        for (var elem of data.getPastsInterviews) {
+            let parsed: IPastInterviewsData = {
+                date: elem.date,
+                document: "Link",
             }
             parsedData.push(parsed)
         }
