@@ -34,12 +34,20 @@ export default class Data{
 
     static fromInputToCreateInterviewee(file:any, school:string){
         return {
-            interviewee:
-                {
+            interviewee: {
                     resume: file,
                     school: SCHOOLS[school]
                 }
             }
+    }
+
+    static fromInputToCreateInterviewer(mentioned:boolean, description:string){
+        return{
+            interviewer: {
+                isMentioned: mentioned,
+                description: description
+            }
+        }
     }
 
     static fromAPItoInput(data:any){

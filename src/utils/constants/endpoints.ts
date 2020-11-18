@@ -14,6 +14,12 @@ const CREATE_INTERVIEWEE = gql`
   }
 `
 
+const CREATE_INTERVIEWER = gql`
+mutation createInterviewer($interviewer: InterviewerInput!) {
+  createInterviewer(interviewer: $interviewer)
+}
+`
+
 const VIEW_POOL = gql`
 {
   viewPool {
@@ -77,6 +83,7 @@ const CANCEL_INTERVIEW = gql`
 export  {
   GET_USER_TYPE,
   CREATE_INTERVIEWEE,
+  CREATE_INTERVIEWER,
   VIEW_POOL,
   ENTER_POOL,
   CREATE_INTERVIEW,
