@@ -121,7 +121,11 @@ const Schedule = () => {
       })
     }
 
-    return mappedValues
+    return {
+      variables: {
+        preferences: mappedValues,
+      },
+    }
   }
 
   return (

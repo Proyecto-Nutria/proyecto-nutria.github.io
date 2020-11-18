@@ -4,6 +4,7 @@ import { GET_USER_TYPE } from "utils/constants/endpoints"
 
 import {
     SIGNUP_PATH,
+    EDIT_PATH,
     WEE_BOARD_PATH,
     WER_BOARD_PATH,
   } from "utils/constants/paths"
@@ -45,6 +46,9 @@ export default class Auth{
 
     static getPathToRedirectUser(){
         if (localStorage.getItem(FIRST_TIME_KEY) === TRUE_VALUE) {
+            if (localStorage.getItem(ROLE_KEY) === INTERVIEWEE_ROLE) {
+                return EDIT_PATH
+            }
             return SIGNUP_PATH
         } else if (localStorage.getItem(FIRST_TIME_KEY) === FALSE_VALUE) {
             if (localStorage.getItem(ROLE_KEY) === INTERVIEWEE_ROLE) {

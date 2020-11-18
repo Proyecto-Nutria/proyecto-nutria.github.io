@@ -8,6 +8,17 @@ const GET_USER_TYPE = gql`
   }
 }
 `
+const CREATE_INTERVIEWEE = gql`
+  mutation createInterviewee($interviewee: IntervieweeInput!) {
+    createInterviewee(interviewee: $interviewee)
+  }
+`
+
+const CREATE_INTERVIEWER = gql`
+mutation createInterviewer($interviewer: InterviewerInput!) {
+  createInterviewer(interviewer: $interviewer)
+}
+`
 
 const VIEW_POOL = gql`
 {
@@ -71,6 +82,8 @@ const CANCEL_INTERVIEW = gql`
 
 export  {
   GET_USER_TYPE,
+  CREATE_INTERVIEWEE,
+  CREATE_INTERVIEWER,
   VIEW_POOL,
   ENTER_POOL,
   CREATE_INTERVIEW,

@@ -88,7 +88,15 @@ const COMPANIES:{ [string: string]: string } = {
   "Twitter" : "",
 }
 
+const SCHOOLS:{ [string: string]: string } = {
+  "IPN" : "IPN",
+  "UNAM" : "UNAM",
+  "CIMAT" : "CIMAT",
+  "Other" : "NONLISTED",
+}
+
 export {
+  SCHOOLS,
   PROGRAMMING_LANGUAGES,
   INTERVIEW_ROLES,
   COMPANIES,

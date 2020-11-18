@@ -1,72 +1,60 @@
 import React from "react"
 
-import { Grid, TextInput, Box, Select, Button } from "grommet"
+import { Form, Box, Select, Button, Heading } from "grommet"
 import { DocumentUpload } from "grommet-icons"
 
-const IntervieweeProfile = (props: any) => (
-  <>
-    <Grid gap="medium" margin="xlarge">
-      <Box basis="medium">
-        <TextInput
-          placeholder="Name"
-          value={props.data.valueName}
-          onChange={event => props.data.setNameValue(event.target.value)}
-        />
-      </Box>
-      <Box>
-        School:
-        <Select
-          placeholder="Select one"
-          options={["ESCOM", "UNAM", "Other"]}
-          value={props.data.school}
-          onChange={({ option }) => props.data.setSchoolValue(option)}
-        />
-      </Box>
-      <Box>
-        Programming Languages:
-        <Select
-          multiple={true}
-          placeholder="Select your programming languages"
-          options={["C", "C++", "Python", "Java", "JavaScript", "Other"]}
-          value={props.data.programming}
-          onChange={({ option }) => {
-            let exists = false
-            const programming = props.data.programming
-            for (let i = 0; i < programming.length; i++) {
-              if (programming[i] === option) {
-                exists = true
-                break
-              }
-            }
-            if (exists) {
-              props.data.setProgrammingValues(programming.filter((elem: any) => elem !== option))
-            } else {
-              props.data.setProgrammingValues([...programming, option])
-            }
+const IntervieweeProfile = (props: any) => {
+  const mutationFunction = props.mutation
+  let inputFile: HTMLInputElement | null = null
+
+  // Triggers input file click
+  const uploadClick = (event: any) => {
+    event.preventDefault()
+    //@ts-expect-error
+    inputFile.click()
+  }
+
+  return (
+    <Box pad="xlarge">
+      <Heading>Nutri Profile</Heading>
+      <Box round background="light-1" pad="large">
+        <Form
+          onSubmit={event => {
+            event.preventDefault()
+            mutationFunction()
           }}
-        />
+        >
+          <Box direction="column" gap="small">
+            <Select
+              placeholder="School"
+              options={props.data.schoolsOptions}
+              value={props.data.school}
+              onChange={({ option }) => props.data.setSchoolValue(option)}
+            />
+
+            <input
+              type="file"
+              id="file"
+              style={{ display: "none" }}
+              onChange={props.data.onFileChange}
+              ref={input => {
+                inputFile = input as HTMLInputElement
+              }}
+            />
+
+            <Button
+              alignSelf="start"
+              icon={<DocumentUpload size="medium" />}
+              label="Upload Resume"
+              onClick={uploadClick}
+            />
+
+            <Button alignSelf="start" type="submit" label="Submit" primary />
+          </Box>
+        </Form>
       </Box>
-      <Box direction="row">
-        <Box pad="small" alignContent="start">
-          Upload Resume:
-        </Box>
-        <Button
-          icon={<DocumentUpload size="medium" />}
-          label="Upload"
-          size="medium"
-          onClick={() => {}}
-        />
-      </Box>
-      <Box
-      // justify="center"
-      // align="center"
-      // height="100px"
-      // width="auto"
-      >
-        <Button label="Update" onClick={() => {}} size="large" primary />
-      </Box>
-    </Grid>
-  </>
-)
+    </Box>
+  )
+}
 
 export default IntervieweeProfile

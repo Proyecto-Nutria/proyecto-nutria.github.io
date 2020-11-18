@@ -37,7 +37,7 @@ import EditProfile from "screens/Interviewee/SignUp"
 
 // Interviewer
 import InterviewerMain from "screens/Interviewer/Board"
-import SignUp from "screens/Interviewer/SignUp"
+import SignUp from "screens/Interviewer/Profile"
 import InterviewsInterviewer from "screens/Interviewer/IncomingInterviews"
 import Match from "screens/Interviewer/Match"
 
