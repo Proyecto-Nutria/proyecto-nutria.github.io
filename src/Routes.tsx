@@ -1,7 +1,10 @@
 import React, { useContext, Fragment } from "react"
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom"
 
+import Auth from "utils/helpers/Auth"
+import { INTERVIEWER_ROLE, INTERVIEWEE_ROLE } from "utils/constants/values"
 import { UserContext } from "utils/providers/UserProvider"
+
 import {
   LANDING_PATH,
   LOGIN_PATH,
@@ -40,12 +43,11 @@ import InterviewerMain from "screens/Interviewer/Board"
 import SignUp from "screens/Interviewer/Profile"
 import InterviewsInterviewer from "screens/Interviewer/IncomingInterviews"
 import Match from "screens/Interviewer/Match"
-
-// Root
 import MainFeedbackHelper from "FeedbackHelper/MainFeedbackHelper.bs"
 
 const Routes = () => {
   const user = useContext(UserContext)
+  const { visitor, interviewer, interviewee } = Auth.getRole()
   const FeedbackHelper = MainFeedbackHelper.make
 
   return (
@@ -60,7 +62,8 @@ const Routes = () => {
         <Route path={SIGNUP_PATH}>
           <SignUp />
         </Route>
-        {user && (
+
+        {user && interviewee && (
           <Fragment>
             <AppHeader />
 
@@ -77,16 +80,26 @@ const Routes = () => {
             <Route path={WEE_INTERVIEWS_PATH}>
               <InterviewsInterviewee />
             </Route>
-            <Route path={WER_INTERVIEWS_PATH}>
-              <InterviewsInterviewer />
-            </Route>
             <Route path={EDIT_PATH}>
               <EditProfile />
             </Route>
             <Route path={WEE_MOCK_PATH}>
               <ScheduleInterviewee />
             </Route>
+          </Fragment>
+        )}
 
+        {user && interviewer && (
+          <Fragment>
+            <AppHeader />
+
+            <Route path={USER_PAST_INTERVIEWS_PATH}>
+              <PastInterviews />
+            </Route>
+
+            <Route path={WER_INTERVIEWS_PATH}>
+              <InterviewsInterviewer />
+            </Route>
             <Route path={WER_BOARD_PATH}>
               <InterviewerMain />
             </Route>

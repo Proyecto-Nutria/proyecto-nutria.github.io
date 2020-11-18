@@ -11,7 +11,7 @@ import Auth from "utils/helpers/Auth"
 
 const Login = () => {
   if (useContext(UserContext)) {
-    return <Redirect to={{ pathname: Auth.getPathToRedirectUser() }} />
+    return <Redirect to={{ pathname: Auth.getPathToRedirect() }} />
   }
 
   return (
