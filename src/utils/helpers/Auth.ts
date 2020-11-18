@@ -45,8 +45,10 @@ export default class Auth{
     }
 
     static getPathToRedirectUser(){
-        return SIGNUP_PATH
         if (localStorage.getItem(FIRST_TIME_KEY) === TRUE_VALUE) {
+            if (localStorage.getItem(ROLE_KEY) === INTERVIEWEE_ROLE) {
+                return EDIT_PATH
+            }
             return SIGNUP_PATH
         } else if (localStorage.getItem(FIRST_TIME_KEY) === FALSE_VALUE) {
             if (localStorage.getItem(ROLE_KEY) === INTERVIEWEE_ROLE) {
