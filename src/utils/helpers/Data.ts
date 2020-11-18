@@ -1,8 +1,14 @@
+import { SCHOOLS } from "utils/constants/values"
+
 import { IMatch } from "structure/interfaces/IMatch"
 import { IIncomingInterviewsData } from "structure/interfaces/IIncomingInterviews"
 import { IPastInterviewsData } from "structure/interfaces/IPastInterviews"
 
 export default class Data{
+    static getSchools(){
+        return Object.keys(SCHOOLS)
+    }
+
     static fromInputToConfirmInterview(id:string, timestamp:string ){
         return {
             interviewUid: id,
@@ -24,6 +30,16 @@ export default class Data{
             date: timestamp,
             pending: pending
         }
+    }
+
+    static fromInputToCreateInterviewee(file:any, school:string){
+        return {
+            interviewee:
+                {
+                    resume: file,
+                    school: SCHOOLS[school]
+                }
+            }
     }
 
     static fromAPItoInput(data:any){

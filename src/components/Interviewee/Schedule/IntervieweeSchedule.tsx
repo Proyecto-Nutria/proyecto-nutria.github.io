@@ -22,8 +22,7 @@ const IntervieweeSchedule = (props: any) => {
         <Form
           onSubmit={e => {
             e.preventDefault()
-            const mappedValues = mapFunction()
-            mutationFunction({ variables: { preferences: mappedValues } })
+            mutationFunction(mapFunction())
           }}
         >
           <Box gap="medium">

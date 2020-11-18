@@ -1,70 +1,59 @@
 import React from "react"
 
-import { Grid, Form, Box, Select, Button } from "grommet"
+import { Form, Box, Select, Button, Heading } from "grommet"
 import { DocumentUpload } from "grommet-icons"
 
 const IntervieweeProfile = (props: any) => {
-  // will hold a reference for our real input file
+  const mutationFunction = props.mutation
   let inputFile: HTMLInputElement | null = null
 
-  // function to trigger our input file click
-  const uploadClick = (e: any) => {
-    e.preventDefault()
+  // Triggers input file click
+  const uploadClick = (event: any) => {
+    event.preventDefault()
     //@ts-expect-error
     inputFile.click()
   }
 
   return (
-    <Form
-      onSubmit={e => {
-        // Create an object of formData
-        const formData = new FormData()
+    <Box pad="xlarge">
+      <Heading>Nutri Profile</Heading>
+      <Box round background="light-1" pad="large">
+        <Form
+          onSubmit={event => {
+            event.preventDefault()
+            mutationFunction()
+          }}
+        >
+          <Box direction="column" gap="small">
+            <Select
+              placeholder="School"
+              options={props.data.schoolsOptions}
+              value={props.data.school}
+              onChange={({ option }) => props.data.setSchoolValue(option)}
+            />
 
-        // Update the formData object
-        formData.append("myFile", props.data.resume, props.data.resume.name)
+            <input
+              type="file"
+              id="file"
+              style={{ display: "none" }}
+              onChange={props.data.onFileChange}
+              ref={input => {
+                inputFile = input as HTMLInputElement
+              }}
+            />
 
-        // Details of the uploaded file
-        console.log(props.data.resume)
+            <Button
+              alignSelf="start"
+              icon={<DocumentUpload size="medium" />}
+              label="Upload Resume"
+              onClick={uploadClick}
+            />
 
-        //Post
-      }}
-    >
-      <Grid gap="medium" margin="xlarge">
-        <Box>
-          School:
-          <Select
-            placeholder="Select one"
-            options={["ESCOM", "UNAM", "Other"]}
-            value={props.data.school}
-            onChange={({ option }) => props.data.setSchoolValue(option)}
-          />
-        </Box>
-        <Box direction="row">
-          <Box pad="small" alignContent="start">
-            Your Resume:
+            <Button alignSelf="start" type="submit" label="Submit" primary />
           </Box>
-          <input
-            type="file"
-            id="file"
-            style={{ display: "none" }}
-            onChange={props.data.onFileChange}
-            ref={input => {
-              // assigns a reference so we can trigger it later
-              inputFile = input as HTMLInputElement
-            }}
-          />
-          <Button
-            icon={<DocumentUpload size="medium" />}
-            label="Upload"
-            size="medium"
-            onClick={uploadClick}
-          />
-        </Box>
-        <Box>
-          <Button type="submit" label="Update" size="large" primary />
-        </Box>
-      </Grid>
-    </Form>
+        </Form>
+      </Box>
+    </Box>
   )
 }
 

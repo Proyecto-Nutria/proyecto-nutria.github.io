@@ -45,7 +45,7 @@ export default class Auth{
     }
 
     static getPathToRedirectUser(){
-        return EDIT_PATH
+        //return EDIT_PATH
         if (localStorage.getItem(FIRST_TIME_KEY) === TRUE_VALUE) {
             return SIGNUP_PATH
         } else if (localStorage.getItem(FIRST_TIME_KEY) === FALSE_VALUE) {
