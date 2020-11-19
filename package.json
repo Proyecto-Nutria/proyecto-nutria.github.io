@@ -43,6 +43,9 @@
     "clean": "bsb -clean-world",
     "format": "prettier --write src/**/*.ts{,x}"
   },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
