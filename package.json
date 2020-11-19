@@ -40,8 +40,7 @@
     "eject": "react-scripts eject",
     "build:reason": "bsb -make-world -clean-world",
     "watch:reason": "bsb -make-world -clean-world -w",
-    "clean": "bsb -clean-world",
-    "format": "prettier --write src/**/*.ts{,x}"
+    "clean": "bsb -clean-world"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -68,7 +67,6 @@
     "bs-webapi": "^0.19.1",
     "clipboard-polyfill": "^3.0.1",
     "gentype": "^3.37.0",
-    "prettier": "^2.1.2",
     "reason-promise": "^1.1.1"
   }
 }
