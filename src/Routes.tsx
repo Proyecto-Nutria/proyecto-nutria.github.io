@@ -2,20 +2,16 @@ import React, { useContext, Fragment } from "react"
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom"
 
 import Auth from "utils/helpers/Auth"
-import { INTERVIEWER_ROLE, INTERVIEWEE_ROLE } from "utils/constants/values"
 import { UserContext } from "utils/providers/UserProvider"
 
 import {
   LANDING_PATH,
   LOGIN_PATH,
-  SIGNUP_PATH,
+  HOME_PATH,
   EDIT_PATH,
-  WEE_BOARD_PATH,
-  WEE_DETAIL_PATH,
-  WEE_INTERVIEWS_PATH,
+  WEE_INCOMING_INTERVIEWS_PATH,
   WEE_MOCK_PATH,
-  WER_BOARD_PATH,
-  WER_INTERVIEWS_PATH,
+  WER_INCOMING_INTERVIEWS_PATH,
   WER_MATCH_PATH,
   HELPER_PATH,
   USER_PAST_INTERVIEWS_PATH,
@@ -33,21 +29,22 @@ import PastInterviews from "screens/User/PastInterviews"
 
 // Interviewee
 import IntervieweeMain from "screens/Interviewee/Board"
-import InterviewsInterviewee from "screens/Interviewee/IncomingInterviews"
-import IntervieweeDetails from "screens/Interviewee/IntervieweeDetails"
-import { default as ScheduleInterviewee } from "screens/Interviewee/Schedule"
-import EditProfile from "screens/Interviewee/SignUp"
+import IntervieweeIncomingInterviews from "screens/Interviewee/IncomingInterviews"
+import IntervieweeMock from "screens/Interviewee/Schedule"
+import IntervieweeEditProfile from "screens/Interviewee/Profile"
+// import IntervieweeDetails from "screens/Interviewee/IntervieweeDetails" // ?
 
 // Interviewer
 import InterviewerMain from "screens/Interviewer/Board"
-import SignUp from "screens/Interviewer/Profile"
-import InterviewsInterviewer from "screens/Interviewer/IncomingInterviews"
-import Match from "screens/Interviewer/Match"
+import InterviewerMatchInterview from "screens/Interviewer/Match"
+import InterviewerIncomingInterviews from "screens/Interviewer/IncomingInterviews"
+import InterviewerEditProfile from "screens/Interviewer/Profile"
+
 import MainFeedbackHelper from "FeedbackHelper/MainFeedbackHelper.bs"
 
 const Routes = () => {
   const user = useContext(UserContext)
-  const { visitor, interviewer, interviewee } = Auth.getRole()
+  const { interviewer, interviewee } = Auth.getRole()
   const FeedbackHelper = MainFeedbackHelper.make
 
   return (
@@ -59,32 +56,26 @@ const Routes = () => {
         <Route path={LOGIN_PATH}>
           <Login />
         </Route>
-        <Route path={SIGNUP_PATH}>
-          <SignUp />
-        </Route>
 
         {user && interviewee && (
           <Fragment>
             <AppHeader />
 
+            <Route path={HOME_PATH}>
+              <IntervieweeMain />
+            </Route>
+            <Route path={WEE_MOCK_PATH}>
+              <IntervieweeMock />
+            </Route>
+            <Route path={WEE_INCOMING_INTERVIEWS_PATH}>
+              <IntervieweeIncomingInterviews />
+            </Route>
             <Route path={USER_PAST_INTERVIEWS_PATH}>
               <PastInterviews />
             </Route>
 
-            <Route path={WEE_BOARD_PATH}>
-              <IntervieweeMain />
-            </Route>
-            <Route path={WEE_DETAIL_PATH}>
-              <IntervieweeDetails />
-            </Route>
-            <Route path={WEE_INTERVIEWS_PATH}>
-              <InterviewsInterviewee />
-            </Route>
             <Route path={EDIT_PATH}>
-              <EditProfile />
-            </Route>
-            <Route path={WEE_MOCK_PATH}>
-              <ScheduleInterviewee />
+              <IntervieweeEditProfile />
             </Route>
           </Fragment>
         )}
@@ -93,19 +84,23 @@ const Routes = () => {
           <Fragment>
             <AppHeader />
 
+            <Route path={HOME_PATH}>
+              <InterviewerMain />
+            </Route>
+            <Route path={WER_MATCH_PATH}>
+              <InterviewerMatchInterview />
+            </Route>
+            <Route path={WER_INCOMING_INTERVIEWS_PATH}>
+              <InterviewerIncomingInterviews />
+            </Route>
             <Route path={USER_PAST_INTERVIEWS_PATH}>
               <PastInterviews />
             </Route>
 
-            <Route path={WER_INTERVIEWS_PATH}>
-              <InterviewsInterviewer />
+            <Route path={EDIT_PATH}>
+              <InterviewerEditProfile />
             </Route>
-            <Route path={WER_BOARD_PATH}>
-              <InterviewerMain />
-            </Route>
-            <Route path={WER_MATCH_PATH}>
-              <Match />
-            </Route>
+
             <Route path={HELPER_PATH}>
               <FeedbackHelper />
             </Route>

@@ -8,7 +8,7 @@ import { CREATE_INTERVIEWEE } from "utils/constants/endpoints"
 import UIMainContainer from "components/UI/UIBoxContainer"
 import IntervieweeProfile from "components/Interviewee/Profile/IntervieweeProfile"
 
-const EditProfile = () => {
+const IntervieweeEditProfile = () => {
   const [uploadInterviewee, { error: mutationError }] = useMutation(
     CREATE_INTERVIEWEE
   )
@@ -46,4 +46,4 @@ const EditProfile = () => {
   )
 }
 
-export default EditProfile
+export default IntervieweeEditProfile

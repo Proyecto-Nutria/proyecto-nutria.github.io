@@ -1,6 +1,6 @@
 import React from "react"
 import {
-  WER_INTERVIEWS_PATH,
+  WER_INCOMING_INTERVIEWS_PATH,
   WER_MATCH_PATH,
   USER_PAST_INTERVIEWS_PATH,
 } from "utils/constants/paths"
@@ -24,7 +24,7 @@ const InterviewerMain = () => {
     {
       img: incomingImage,
       label: "Incoming Interviews",
-      onClick: () => history.push(WER_INTERVIEWS_PATH),
+      onClick: () => history.push(WER_INCOMING_INTERVIEWS_PATH),
     },
     {
       img: logImage,

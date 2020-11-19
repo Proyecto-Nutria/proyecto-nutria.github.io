@@ -30,7 +30,7 @@ const defaultInterviewData: interviewData = {
   interviewHour: hour.h0,
 }
 
-const Match = () => {
+const InterviewerMatchInterview = () => {
   const { loading, error, data } = useQuery(VIEW_POOL)
   // eslint-disable-next-line
   const [creation, { error: cancellationMutationError }] = useMutation(
@@ -88,4 +88,4 @@ const Match = () => {
   )
 }
 
-export default Match
+export default InterviewerMatchInterview

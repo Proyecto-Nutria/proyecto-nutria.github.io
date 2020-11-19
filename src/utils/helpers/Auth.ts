@@ -4,10 +4,8 @@ import { GET_USER_TYPE } from "utils/constants/endpoints"
 
 import {
     LANDING_PATH,
-    SIGNUP_PATH,
     EDIT_PATH,
-    WEE_BOARD_PATH,
-    WER_BOARD_PATH,
+    HOME_PATH
   } from "utils/constants/paths"
 
 import {
@@ -47,27 +45,19 @@ export default class Auth{
     }
 
     static getRole(){
-        let visitor = false
         let interviewer = false
         let interviewee = false
         const role = localStorage.getItem(ROLE_KEY)
-        if (role === null) visitor = true
-        else if (role === INTERVIEWEE_ROLE) interviewee = true
+        if (role === INTERVIEWEE_ROLE) interviewee = true
         else if (role === INTERVIEWER_ROLE) interviewer = true
-        return { visitor, interviewer, interviewee }
+        return { interviewer, interviewee }
     }
 
     static getPathToRedirect(){
         if (localStorage.getItem(FIRST_TIME_KEY) === TRUE_VALUE) {
-            if (localStorage.getItem(ROLE_KEY) === INTERVIEWEE_ROLE) {
-                return EDIT_PATH
-            }
-            return SIGNUP_PATH
+            return EDIT_PATH
         } else if (localStorage.getItem(FIRST_TIME_KEY) === FALSE_VALUE) {
-            if (localStorage.getItem(ROLE_KEY) === INTERVIEWEE_ROLE) {
-                return WEE_BOARD_PATH
-            }
-            return WER_BOARD_PATH
+            return HOME_PATH
         }
         return LANDING_PATH
     }

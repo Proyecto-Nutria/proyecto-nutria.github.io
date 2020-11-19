@@ -17,7 +17,7 @@ import {
 const listOfDays = DateTime.getDaysOfWeek()
 const listOfHours = DateTime.getHoursToScheduleMock()
 
-const Schedule = () => {
+const IntervieweeMock = () => {
   // API
   const [enterToPool, { error: mutationError }] = useMutation(ENTER_POOL)
 
@@ -141,4 +141,4 @@ const Schedule = () => {
   )
 }
 
-export default Schedule
+export default IntervieweeMock

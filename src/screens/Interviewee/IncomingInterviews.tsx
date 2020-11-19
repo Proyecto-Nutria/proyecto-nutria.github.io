@@ -12,7 +12,7 @@ import {
 import UIMainContainer from "components/UI/UIBoxContainer"
 import InterviewsIncoming from "components/User/Interviews/InterviewsIncoming"
 
-const IncomingInterviews = () => {
+const IntervieweeIncomingInterviews = () => {
   const { loading, error, data } = useQuery(INCOMING_INTERVIEWS)
   // eslint-disable-next-line
   const [confirmation, { error: confirmationMutationError }] = useMutation(
@@ -67,4 +67,4 @@ const IncomingInterviews = () => {
   )
 }
 
-export default IncomingInterviews
+export default IntervieweeIncomingInterviews

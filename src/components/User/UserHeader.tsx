@@ -1,8 +1,15 @@
 import React from "react"
-import { Button, Header, Nav, Anchor } from "grommet"
 import { useHistory } from "react-router-dom"
-import { ROLE_KEY, INTERVIEWEE_ROLE, INTERVIEWER_ROLE } from "utils/constants/values"
+
 import { signOutWithGoogle } from "services/firebaseService"
+import { HOME_PATH } from "utils/constants/paths"
+import {
+  ROLE_KEY,
+  INTERVIEWEE_ROLE,
+  INTERVIEWER_ROLE,
+} from "utils/constants/values"
+
+import { Button, Header, Nav, Anchor } from "grommet"
 
 const AppHeader = () => {
   const history = useHistory()
@@ -12,10 +19,18 @@ const AppHeader = () => {
 
   return (
     <Header background="dark-1" pad="medium">
-      <Anchor color="light" onClick={() => history.push("/home")} label="YAOS" />
+      <Anchor
+        color="light"
+        onClick={() => history.push(HOME_PATH)}
+        label="YAOS"
+      />
       <Nav direction="row">
         {isInterviewee && (
-          <Button secondary label="Profile" onClick={() => history.push("/intervieweeDetails")} />
+          <Button
+            secondary
+            label="Profile"
+            onClick={() => history.push("/intervieweeDetails")}
+          />
         )}
         {isInterviewer && <Button secondary label="Profile" />}
         <Button

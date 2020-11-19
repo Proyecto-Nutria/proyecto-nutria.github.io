@@ -1,7 +1,7 @@
 import React from "react"
 import {
   WEE_MOCK_PATH,
-  WEE_INTERVIEWS_PATH,
+  WEE_INCOMING_INTERVIEWS_PATH,
   USER_PAST_INTERVIEWS_PATH,
 } from "utils/constants/paths"
 
@@ -24,7 +24,7 @@ const IntervieweeMain = () => {
     {
       img: incomingImage,
       label: "Incoming Interviews",
-      onClick: () => history.push(WEE_INTERVIEWS_PATH),
+      onClick: () => history.push(WEE_INCOMING_INTERVIEWS_PATH),
     },
     {
       img: logImage,
