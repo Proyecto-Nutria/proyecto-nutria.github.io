@@ -14,7 +14,6 @@ import FormTime from "components/Interviewee/Schedule/Form/FormTime"
 
 const IntervieweeSchedule = (props: any) => {
   const mutationFunction = props.mutation
-  const mapFunction = props.mapFunction
   return (
     <Box pad="xlarge">
       <Heading>Mock Interview</Heading>
@@ -22,7 +21,7 @@ const IntervieweeSchedule = (props: any) => {
         <Form
           onSubmit={e => {
             e.preventDefault()
-            mutationFunction(mapFunction())
+            mutationFunction()
           }}
         >
           <Box gap="medium">

@@ -1,11 +1,9 @@
 import React, { useState } from "react"
 
-import UIMainContainer from "components/UI/UIBoxContainer"
-import IntervieweeSchedule from "components/Interviewee/Schedule/IntervieweeSchedule"
-
 import { useMutation } from "@apollo/client"
 import { ENTER_POOL } from "utils/constants/endpoints"
 
+import Data from "utils/helpers/Data"
 import DateTime from "utils/helpers/DateTime"
 import {
   TYPES_OF_INTERVIEW,
@@ -14,14 +12,12 @@ import {
   COMPANIES,
 } from "utils/constants/values"
 
-const listOfDays = DateTime.getDaysOfWeek()
-const listOfHours = DateTime.getHoursToScheduleMock()
+import UIMainContainer from "components/UI/UIBoxContainer"
+import IntervieweeSchedule from "components/Interviewee/Schedule/IntervieweeSchedule"
 
 const IntervieweeMock = () => {
-  // API
   const [enterToPool, { error: mutationError }] = useMutation(ENTER_POOL)
 
-  // States
   const [interviewType, setInterviewTypeValue] = useState("")
   const [rol, setRolValue] = useState("")
   const [numberInterviews, setNumberInterviewsValue] = useState(1)
@@ -30,7 +26,6 @@ const IntervieweeMock = () => {
   const [count, setCount] = useState(0)
   const [dynamic, setDynamic] = useState({})
 
-  // Inputs
   const staticInputs = [
     {
       label: "Type Of Interview",
@@ -73,11 +68,11 @@ const IntervieweeMock = () => {
       apiMap: "companies",
     },
   ]
-  const dynamicInput = {
+  const dynamicInputs = {
     label: "Time to schedule a mock",
     values: {
-      days: listOfDays,
-      hours: listOfHours,
+      days: DateTime.getDaysOfWeek(),
+      hours: DateTime.getHoursToScheduleMock(),
     },
     state: dynamic,
     setter: setDynamic,
@@ -85,56 +80,18 @@ const IntervieweeMock = () => {
     countSetter: setCount,
   }
 
-  // Map to API values
-  const mapValues = () => {
-    const mappedValues = { availability: [] }
-
-    for (const element of staticInputs) {
-      let value = null
-      if (element.apiMap === "role") {
-        //@ts-expect-error
-        value = INTERVIEW_ROLES[element.state]
-      } else if (element.apiMap === "type") {
-        //@ts-expect-error
-        value = TYPES_OF_INTERVIEW[element.state]
-      } else {
-        value = element.state
-      }
-      //@ts-expect-error
-      mappedValues[element.apiMap] = value
-    }
-
-    for (const id in dynamic) {
-      const intervals = []
-
-      //@ts-expect-error
-      for (const interval of dynamic[id].interval) {
-        intervals.push(interval.replace(" PT", ""))
-      }
-
-      let prev = mappedValues.availability
-      prev.push({
-        //@ts-expect-error
-        day: dynamic[id]["day"],
-        //@ts-expect-error
-        interval: intervals,
-      })
-    }
-
-    return {
-      variables: {
-        preferences: mappedValues,
-      },
-    }
+  const createMock = () => {
+    enterToPool({
+      variables: Data.fromInputToMock(staticInputs, dynamicInputs),
+    })
   }
 
   return (
     <UIMainContainer>
       <IntervieweeSchedule
-        mapFunction={mapValues}
         inputs={staticInputs}
-        dynamicInput={dynamicInput}
-        mutation={enterToPool}
+        dynamicInput={dynamicInputs}
+        mutation={createMock}
         onMutationError={mutationError}
       />
     </UIMainContainer>

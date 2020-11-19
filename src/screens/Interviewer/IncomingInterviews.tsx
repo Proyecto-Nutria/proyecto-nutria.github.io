@@ -28,13 +28,9 @@ const InterviewerIncomingInterviews = () => {
 
   let incomingInterviews: IIncomingInterviewsData[] = Data.fromAPItoInput(data)
 
-  // API
   const cancelInterview = (id: string, timestamp: string) => {
-    //TODO: See if exposing the id of the interviewer is a potential risk
     cancellation({
-      variables: {
-        cancellation: Data.fromInputToCancelInterview(id, timestamp),
-      },
+      variables: Data.fromInputToCancelInterview(id, timestamp),
     })
   }
 

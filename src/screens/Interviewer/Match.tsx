@@ -53,16 +53,13 @@ const InterviewerMatchInterview = () => {
   let pool = Data.fromAPItoMatch(data)
 
   const createInterview = (id: string, day: string, hour: string) => {
-    //TODO: See if exposing the id of the interviewer is a potential risk
     creation({
-      variables: {
-        interview: Data.fromInputToCreateInterview(
-          id,
-          id,
-          DateTime.getDateOfMatchInterview(day, hour),
-          2
-        ),
-      },
+      variables: Data.fromInputToCreateInterview(
+        id,
+        id,
+        DateTime.getDateOfMatchInterview(day, hour),
+        2
+      ),
     })
   }
 

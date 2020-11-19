@@ -1,9 +1,9 @@
 import React from "react"
 
-import Data from "utils/helpers/Data"
-
 import { useMutation } from "@apollo/client"
 import { CREATE_INTERVIEWEE } from "utils/constants/endpoints"
+
+import Data from "utils/helpers/Data"
 
 import UIMainContainer from "components/UI/UIBoxContainer"
 import IntervieweeProfile from "components/Interviewee/Profile/IntervieweeProfile"
@@ -17,8 +17,8 @@ const IntervieweeEditProfile = () => {
   const [school, setSchoolValue] = React.useState("")
   const schoolsOptions = Data.getSchools()
 
-  const onFileChange = (e: any) => {
-    setResume(e.target.files[0])
+  const onFileChange = (event: any) => {
+    setResume(event.target.files[0])
   }
 
   const createNewInterviewer = () => {
@@ -35,6 +35,7 @@ const IntervieweeEditProfile = () => {
     onFileChange,
     schoolsOptions,
   }
+
   return (
     <UIMainContainer>
       <IntervieweeProfile
