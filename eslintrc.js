@@ -9,7 +9,7 @@ module.exports = {
     "prettier/@typescript-eslint",
     "plugin:prettier/recommended",
   ],
-  plugins: ["react", "@typescript-eslint"],
+  plugins: ["react", "@typescript-eslint", "jest"],
   env: {
     browser: true,
     es6: true,
@@ -19,10 +19,11 @@ module.exports = {
     Atomics: "readonly",
     SharedArrayBuffer: "readonly",
   },
-  parser: "@typescript-eslint/parser",
+  parser: "babel-eslint",
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
+      modules: true,
     },
     ecmaVersion: 2018,
     sourceType: "module",
