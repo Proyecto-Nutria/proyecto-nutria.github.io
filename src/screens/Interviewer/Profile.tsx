@@ -1,4 +1,5 @@
 import React from "react"
+import { useHistory } from "react-router-dom"
 
 import Data from "utils/helpers/Data"
 
@@ -13,6 +14,7 @@ const InterviewerEditProfile = () => {
     CREATE_INTERVIEWER
   )
 
+  const history = useHistory()
   const [appear, setAppearValue] = React.useState(false)
   const [about, setAboutValue] = React.useState("")
 

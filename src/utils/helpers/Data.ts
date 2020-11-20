@@ -1,4 +1,8 @@
-import { SCHOOLS } from "utils/constants/values"
+import {
+  SCHOOLS,
+  INTERVIEW_ROLES,
+  TYPES_OF_INTERVIEW,
+} from "utils/constants/values"
 
 import { HOME_PATH } from "utils/constants/paths"
 import { IMatch } from "structure/interfaces/IMatch"
@@ -19,8 +23,8 @@ export default class Data {
       variables: parameters,
     })
       .then(() => history.push(HOME_PATH))
-      .catch(() => {
-        console.error("Error ocurred")
+      .catch((error: any) => {
+        console.error(error)
       })
   }
 
@@ -29,10 +33,8 @@ export default class Data {
     for (const element of staticInputs) {
       let value = null
       if (element.apiMap === "role") {
-        //@ts-expect-error
         value = INTERVIEW_ROLES[element.state]
       } else if (element.apiMap === "type") {
-        //@ts-expect-error
         value = TYPES_OF_INTERVIEW[element.state]
       } else {
         value = element.state
@@ -41,16 +43,15 @@ export default class Data {
       mappedValues[element.apiMap] = value
     }
 
-    for (const id in dynamicInputs) {
+    for (const id in dynamicInputs.state) {
       const intervals = []
-      //@ts-expect-error
-      for (const interval of dynamic[id].interval) {
+      for (const interval of dynamicInputs.state[id].interval) {
         intervals.push(interval.replace(" PT", ""))
       }
       let prev = mappedValues.availability
       prev.push({
         //@ts-expect-error
-        day: dynamic[id]["day"],
+        day: dynamicInputs.state[id]["day"],
         //@ts-expect-error
         interval: intervals,
       })

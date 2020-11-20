@@ -1,4 +1,6 @@
 import React from "react"
+import { useHistory } from "react-router-dom"
+
 import {
   WER_INCOMING_INTERVIEWS_PATH,
   WER_MATCH_PATH,
@@ -7,7 +9,6 @@ import {
 
 import UIMainContainer from "components/UI/UIBoxContainer"
 import UserBoard from "components/User/Board/UserBoard"
-import { useHistory } from "react-router-dom"
 
 import scheduleImage from "assets/imgs/Interviewee/schedule.png"
 import logImage from "assets/imgs/Interviewee/log.png"

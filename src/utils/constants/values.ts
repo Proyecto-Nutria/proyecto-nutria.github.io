@@ -57,7 +57,7 @@ enum languages {
 
 const PROGRAMMING_LANGUAGES: { [string: string]: string } = {
   c: "",
-  "c++": "",
+  cpp: "",
   python: "",
   Java: "",
   JavaScript: "",

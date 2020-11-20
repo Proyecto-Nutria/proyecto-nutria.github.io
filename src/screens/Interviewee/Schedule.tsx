@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { useHistory } from "react-router-dom"
 
 import { useMutation } from "@apollo/client"
 import { ENTER_POOL } from "utils/constants/endpoints"
@@ -18,6 +19,7 @@ import IntervieweeSchedule from "components/Interviewee/Schedule/IntervieweeSche
 const IntervieweeMock = () => {
   const [enterToPool, { error: mutationError }] = useMutation(ENTER_POOL)
 
+  const history = useHistory()
   const [interviewType, setInterviewTypeValue] = useState("")
   const [rol, setRolValue] = useState("")
   const [numberInterviews, setNumberInterviewsValue] = useState(1)
@@ -88,6 +90,7 @@ const IntervieweeMock = () => {
     )
   }
 
+  //TODO: Fix Cannot update a component (`IntervieweeMock`) while rendering a different component (`IntervieweeSchedule`).
   return (
     <UIMainContainer>
       <IntervieweeSchedule
