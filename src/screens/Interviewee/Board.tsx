@@ -1,20 +1,17 @@
 import React from "react"
-import {
-  WEE_MOCK_PATH,
-  WEE_INTERVIEWS_PATH,
-  USER_PAST_INTERVIEWS_PATH,
-} from "utils/constants/paths"
-
-import UIMainContainer from "components/UI/UIBoxContainer"
-import UserBoard from "components/User/Board/UserBoard"
-// import { HOUR_IN_MILLISECONDS } from "utils/constants/values"
 import { useHistory } from "react-router-dom"
 
+import {
+  WEE_MOCK_PATH,
+  WEE_INCOMING_INTERVIEWS_PATH,
+  USER_PAST_INTERVIEWS_PATH,
+} from "utils/constants/paths"
 import scheduleImage from "assets/imgs/Interviewee/schedule.png"
 import logImage from "assets/imgs/Interviewee/log.png"
 import incomingImage from "assets/imgs/Interviewee/incoming.png"
 
-// import { VIEW_POOL } from "utils/constants/api"
+import UIMainContainer from "components/UI/UIBoxContainer"
+import UserBoard from "components/User/Board/UserBoard"
 
 const IntervieweeMain = () => {
   const history = useHistory()
@@ -27,7 +24,7 @@ const IntervieweeMain = () => {
     {
       img: incomingImage,
       label: "Incoming Interviews",
-      onClick: () => history.push(WEE_INTERVIEWS_PATH),
+      onClick: () => history.push(WEE_INCOMING_INTERVIEWS_PATH),
     },
     {
       img: logImage,

@@ -1,4 +1,5 @@
 import React from "react"
+import { useHistory } from "react-router-dom"
 
 import Data from "utils/helpers/Data"
 
@@ -8,18 +9,21 @@ import { CREATE_INTERVIEWER } from "utils/constants/endpoints"
 import UIMainContainer from "components/UI/UIBoxContainer"
 import InterviewerProfileForm from "components/Interviewer/Profile/InterviewerProfileForm"
 
-const InterviewerProfile = () => {
+const InterviewerEditProfile = () => {
   const [uploadInterviewer, { error: mutationError }] = useMutation(
     CREATE_INTERVIEWER
   )
 
+  const history = useHistory()
   const [appear, setAppearValue] = React.useState(false)
   const [about, setAboutValue] = React.useState("")
 
   const createNewInterviewer = () => {
-    uploadInterviewer({
-      variables: Data.fromInputToCreateInterviewer(appear, about),
-    })
+    Data.callMutationAndRedirectToHome(
+      uploadInterviewer,
+      Data.fromInputToCreateInterviewer(appear, about),
+      history
+    )
   }
 
   const data = {
@@ -40,4 +44,4 @@ const InterviewerProfile = () => {
   )
 }
 
-export default InterviewerProfile
+export default InterviewerEditProfile

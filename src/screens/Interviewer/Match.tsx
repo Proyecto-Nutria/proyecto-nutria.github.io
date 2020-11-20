@@ -30,7 +30,7 @@ const defaultInterviewData: interviewData = {
   interviewHour: hour.h0,
 }
 
-const Match = () => {
+const InterviewerMatchInterview = () => {
   const { loading, error, data } = useQuery(VIEW_POOL)
   // eslint-disable-next-line
   const [creation, { error: cancellationMutationError }] = useMutation(
@@ -53,16 +53,13 @@ const Match = () => {
   let pool = Data.fromAPItoMatch(data)
 
   const createInterview = (id: string, day: string, hour: string) => {
-    //TODO: See if exposing the id of the interviewer is a potential risk
     creation({
-      variables: {
-        interview: Data.fromInputToCreateInterview(
-          id,
-          id,
-          DateTime.getDateOfMatchInterview(day, hour),
-          2
-        ),
-      },
+      variables: Data.fromInputToCreateInterview(
+        id,
+        id,
+        DateTime.getDateOfMatchInterview(day, hour),
+        2
+      ),
     })
   }
 
@@ -88,4 +85,4 @@ const Match = () => {
   )
 }
 
-export default Match
+export default InterviewerMatchInterview

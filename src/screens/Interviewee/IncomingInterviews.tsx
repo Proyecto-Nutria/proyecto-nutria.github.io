@@ -1,6 +1,7 @@
 import React from "react"
-import { IIncomingInterviewsData } from "structure/interfaces/IIncomingInterviews"
+
 import Data from "utils/helpers/Data"
+import { IIncomingInterviewsData } from "structure/interfaces/IIncomingInterviews"
 
 import { useQuery, useMutation } from "@apollo/client"
 import {
@@ -12,7 +13,7 @@ import {
 import UIMainContainer from "components/UI/UIBoxContainer"
 import InterviewsIncoming from "components/User/Interviews/InterviewsIncoming"
 
-const IncomingInterviews = () => {
+const IntervieweeIncomingInterviews = () => {
   const { loading, error, data } = useQuery(INCOMING_INTERVIEWS)
   // eslint-disable-next-line
   const [confirmation, { error: confirmationMutationError }] = useMutation(
@@ -32,19 +33,14 @@ const IncomingInterviews = () => {
   if (error) return <p> Error </p>
 
   let incomingInterviews: IIncomingInterviewsData[] = Data.fromAPItoInput(data)
-
-  // API
   const confirmInterview = (id: string, timestamp: string) => {
-    //TODO: Change in the api to not retrieve the interviewee/wer uid
     confirmation({
       variables: {
         confirmation: Data.fromInputToConfirmInterview(id, timestamp),
       },
     })
   }
-
   const cancelInterview = (id: string, timestamp: string) => {
-    //TODO: See if exposing the id of the interviewer is a potential risk
     cancellation({
       variables: {
         cancellation: Data.fromInputToCancelInterview(id, timestamp),
@@ -67,4 +63,4 @@ const IncomingInterviews = () => {
   )
 }
 
-export default IncomingInterviews
+export default IntervieweeIncomingInterviews

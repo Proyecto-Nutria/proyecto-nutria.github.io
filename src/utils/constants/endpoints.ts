@@ -1,12 +1,12 @@
-import { gql } from '@apollo/client'
+import { gql } from "@apollo/client"
 
 const GET_USER_TYPE = gql`
-{
-  getUserTypeOrCreate{
-    role,
-    firstTime
+  {
+    getUserTypeOrCreate {
+      role
+      firstTime
+    }
   }
-}
 `
 const CREATE_INTERVIEWEE = gql`
   mutation createInterviewee($interviewee: IntervieweeInput!) {
@@ -15,24 +15,24 @@ const CREATE_INTERVIEWEE = gql`
 `
 
 const CREATE_INTERVIEWER = gql`
-mutation createInterviewer($interviewer: InterviewerInput!) {
-  createInterviewer(interviewer: $interviewer)
-}
+  mutation createInterviewer($interviewer: InterviewerInput!) {
+    createInterviewer(interviewer: $interviewer)
+  }
 `
 
 const VIEW_POOL = gql`
-{
-  viewPool {
-    uid
-    type
-    role
-    language
-    availability {
-      day
-      interval
+  {
+    viewPool {
+      uid
+      type
+      role
+      language
+      availability {
+        day
+        interval
+      }
     }
   }
-}
 `
 
 const ENTER_POOL = gql`
@@ -47,40 +47,40 @@ const CREATE_INTERVIEW = gql`
   }
 `
 
-const INCOMING_INTERVIEWS =  gql`
-{
- getIncomingInterviews{
-    uid,
-    date,
-    confirmed,
-    room,
-    doc,
+const INCOMING_INTERVIEWS = gql`
+  {
+    getIncomingInterviews {
+      uid
+      date
+      confirmed
+      room
+      doc
+    }
   }
-}
 `
 
 const PAST_INTERVIEWS = gql`
-{
-  getPastsInterviews{
-    date,
-    doc,
+  {
+    getPastsInterviews {
+      date
+      doc
+    }
   }
-}
 `
 
 const CONFIRM_INTERVIEW = gql`
-  mutation confirmInterview($confirmation: ConfirmationInput!){
-    confirmInterview(confirmation:$confirmation)
+  mutation confirmInterview($confirmation: ConfirmationInput!) {
+    confirmInterview(confirmation: $confirmation)
   }
 `
 
 const CANCEL_INTERVIEW = gql`
-  mutation cancelInterview($cancellation:CancellationInput!){
-    cancelInterview(cancellation:$cancellation)
+  mutation cancelInterview($cancellation: CancellationInput!) {
+    cancelInterview(cancellation: $cancellation)
   }
 `
 
-export  {
+export {
   GET_USER_TYPE,
   CREATE_INTERVIEWEE,
   CREATE_INTERVIEWER,
@@ -90,5 +90,5 @@ export  {
   PAST_INTERVIEWS,
   INCOMING_INTERVIEWS,
   CONFIRM_INTERVIEW,
-  CANCEL_INTERVIEW
+  CANCEL_INTERVIEW,
 }

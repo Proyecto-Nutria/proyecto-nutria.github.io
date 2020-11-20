@@ -67,7 +67,6 @@
     "bs-webapi": "^0.19.1",
     "clipboard-polyfill": "^3.0.1",
     "gentype": "^3.37.0",
-    "graphql": "^15.3.0",
     "reason-promise": "^1.1.1"
   }
 }

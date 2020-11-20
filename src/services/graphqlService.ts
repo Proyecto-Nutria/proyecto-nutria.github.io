@@ -1,5 +1,10 @@
-import { ApolloClient, ApolloLink, createHttpLink, InMemoryCache } from "@apollo/client"
-import { onError } from "@apollo/client/link/error";
+import {
+  ApolloClient,
+  ApolloLink,
+  createHttpLink,
+  InMemoryCache,
+} from "@apollo/client"
+import { onError } from "@apollo/client/link/error"
 
 const getClient = () => {
   const uri = "https://us-central1-nutria-system.cloudfunctions.net/graphql"
@@ -12,11 +17,11 @@ const getClient = () => {
     if (graphQLErrors)
       graphQLErrors.map(({ message, locations, path }) =>
         console.log(
-          `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-        ),
-      );
-    if (networkError) console.log(`[Network error]: ${networkError}`);
-  });
+          `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+        )
+      )
+    if (networkError) console.log(`[Network error]: ${networkError}`)
+  })
 
   const authMiddleware = new ApolloLink((operation, forward) => {
     const token = localStorage.getItem("token")

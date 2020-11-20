@@ -1,13 +1,14 @@
 import React from "react"
+import { useHistory } from "react-router-dom"
+
 import {
-  WER_INTERVIEWS_PATH,
+  WER_INCOMING_INTERVIEWS_PATH,
   WER_MATCH_PATH,
   USER_PAST_INTERVIEWS_PATH,
 } from "utils/constants/paths"
 
 import UIMainContainer from "components/UI/UIBoxContainer"
 import UserBoard from "components/User/Board/UserBoard"
-import { useHistory } from "react-router-dom"
 
 import scheduleImage from "assets/imgs/Interviewee/schedule.png"
 import logImage from "assets/imgs/Interviewee/log.png"
@@ -24,7 +25,7 @@ const InterviewerMain = () => {
     {
       img: incomingImage,
       label: "Incoming Interviews",
-      onClick: () => history.push(WER_INTERVIEWS_PATH),
+      onClick: () => history.push(WER_INCOMING_INTERVIEWS_PATH),
     },
     {
       img: logImage,

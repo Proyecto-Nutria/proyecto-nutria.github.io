@@ -11,7 +11,7 @@ const UserProvider: React.FunctionComponent = ({ children }) => {
   useEffect(() => {
     firebaseAuth.onAuthStateChanged(userAuth => {
       setUser(userAuth)
-      userAuth && Auth.saveToken(userAuth)
+      userAuth && Auth.saveTokenAndRole(userAuth)
     })
   }, [])
 

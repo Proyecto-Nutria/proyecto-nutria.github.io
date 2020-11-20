@@ -14,7 +14,6 @@ import FormTime from "components/Interviewee/Schedule/Form/FormTime"
 
 const IntervieweeSchedule = (props: any) => {
   const mutationFunction = props.mutation
-  const mapFunction = props.mapFunction
   return (
     <Box pad="xlarge">
       <Heading>Mock Interview</Heading>
@@ -22,7 +21,7 @@ const IntervieweeSchedule = (props: any) => {
         <Form
           onSubmit={e => {
             e.preventDefault()
-            mutationFunction(mapFunction())
+            mutationFunction()
           }}
         >
           <Box gap="medium">
@@ -30,7 +29,7 @@ const IntervieweeSchedule = (props: any) => {
               const type = input.type
               if (type === "Select") {
                 return (
-                  <FormField label={input.label}>
+                  <FormField key={input.label} label={input.label}>
                     <Select
                       placeholder="Select one"
                       options={input.values}
@@ -41,7 +40,7 @@ const IntervieweeSchedule = (props: any) => {
                 )
               } else if (type === "Check") {
                 return (
-                  <FormField label={input.label}>
+                  <FormField key={input.label} label={input.label}>
                     <CheckBoxGroup
                       value={input.state}
                       //@ts-expect-error
@@ -73,7 +72,9 @@ const IntervieweeSchedule = (props: any) => {
                 copiedInformation[id] = {}
                 props.dynamicInput.setter(copiedInformation)
               }
-              return <FormTime dynamicInput={props.dynamicInput} id={id} />
+              return (
+                <FormTime key={id} dynamicInput={props.dynamicInput} id={id} />
+              )
             })}
 
           <Box margin={{ top: "medium" }}>
