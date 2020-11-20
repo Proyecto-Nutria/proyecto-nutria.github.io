@@ -17,9 +17,11 @@ const InterviewerEditProfile = () => {
   const [about, setAboutValue] = React.useState("")
 
   const createNewInterviewer = () => {
-    uploadInterviewer({
-      variables: Data.fromInputToCreateInterviewer(appear, about),
-    })
+    Data.callMutationAndRedirectToHome(
+      uploadInterviewer,
+      Data.fromInputToCreateInterviewer(appear, about),
+      history
+    )
   }
 
   const data = {

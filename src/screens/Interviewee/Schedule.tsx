@@ -81,9 +81,11 @@ const IntervieweeMock = () => {
   }
 
   const createMock = () => {
-    enterToPool({
-      variables: Data.fromInputToMock(staticInputs, dynamicInputs),
-    })
+    Data.callMutationAndRedirectToHome(
+      enterToPool,
+      Data.fromInputToMock(staticInputs, dynamicInputs),
+      history
+    )
   }
 
   return (
