@@ -14,8 +14,6 @@ import { Button, Header, Nav, Anchor } from "grommet"
 const AppHeader = () => {
   const history = useHistory()
   const userRole = localStorage.getItem(ROLE_KEY)
-  const isInterviewee = userRole === INTERVIEWEE_ROLE
-  const isInterviewer = userRole === INTERVIEWER_ROLE
 
   return (
     <Header background="dark-1" pad="medium">
@@ -25,14 +23,7 @@ const AppHeader = () => {
         label="YAOS"
       />
       <Nav direction="row">
-        {isInterviewee && (
-          <Button
-            secondary
-            label="Profile"
-            onClick={() => history.push("/intervieweeDetails")}
-          />
-        )}
-        {isInterviewer && <Button secondary label="Profile" />}
+        <Button secondary label="Profile" onClick={() => {}} />
         <Button
           secondary
           label="Log Out"
