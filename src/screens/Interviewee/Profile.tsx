@@ -10,10 +10,9 @@ import UIMainContainer from "components/UI/UIBoxContainer"
 import IntervieweeProfile from "components/Interviewee/Profile/IntervieweeProfile"
 
 const IntervieweeEditProfile = () => {
-  const [
-    uploadInterviewee,
-    { loading: mutationLoading, error: mutationError },
-  ] = useMutation(CREATE_INTERVIEWEE)
+  const [uploadInterviewee, { error: mutationError }] = useMutation(
+    CREATE_INTERVIEWEE
+  )
 
   const history = useHistory()
   const [resume, setResume] = React.useState(null)
