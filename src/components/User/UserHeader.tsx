@@ -9,7 +9,6 @@ import { Button, Header, Nav, Anchor } from "grommet"
 
 const AppHeader = () => {
   const history = useHistory()
-  const userRole = localStorage.getItem(ROLE_KEY)
 
   return (
     <Header background="dark-1" pad="medium">
