@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom"
 
 import { signOutWithGoogle } from "services/firebaseService"
 import { HOME_PATH } from "utils/constants/paths"
-import { ROLE_KEY } from "utils/constants/values"
 
 import { Button, Header, Nav, Anchor } from "grommet"
 
