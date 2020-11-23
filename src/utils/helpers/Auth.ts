@@ -28,7 +28,7 @@ export default class Auth {
           } else {
             localStorage.setItem(FIRST_TIME_KEY, FALSE_VALUE)
           }
-          localStorage.setItem(ROLE_KEY, result)
+          localStorage.setItem(ROLE_KEY, result.role)
         })
         .catch(err => {
           console.log(err)
