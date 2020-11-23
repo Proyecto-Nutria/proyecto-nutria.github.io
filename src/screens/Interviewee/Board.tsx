@@ -29,7 +29,7 @@ const IntervieweeMain = () => {
     {
       img: logImage,
       label: "Previous Interviews",
-      onclick: () => history.push(USER_PAST_INTERVIEWS_PATH),
+      onClick: () => history.push(USER_PAST_INTERVIEWS_PATH),
     },
   ]
 

@@ -4,7 +4,7 @@ import { Heading, Box, Text, DataTable, Anchor } from "grommet"
 const InterviewsPast = (props: any) => {
   return (
     <Box pad="xlarge">
-      <Heading>Incoming Interviews</Heading>
+      <Heading>Past Interviews</Heading>
       <Box
         round
         pad="large"
