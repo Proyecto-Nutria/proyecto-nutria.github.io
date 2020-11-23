@@ -95,6 +95,17 @@ export default class Data {
   }
 
   static fromInputToCreateInterviewee(file: any, school: string) {
+    // TODO: Debug why the file is getting corrupted in the server
+    return {
+      interviewee: {
+        resume: file,
+        school: SCHOOLS[school],
+      },
+    }
+  }
+
+  static fromInputToUpdateInterviewee(file: any, school: string) {
+    // TODO: Validate when the user does not provide a school
     return {
       interviewee: {
         resume: file,
@@ -104,6 +115,15 @@ export default class Data {
   }
 
   static fromInputToCreateInterviewer(mentioned: boolean, description: string) {
+    return {
+      interviewer: {
+        isMentioned: mentioned,
+        description: description,
+      },
+    }
+  }
+
+  static fromInputToUpdateInterviewer(mentioned: boolean, description: string) {
     return {
       interviewer: {
         isMentioned: mentioned,
