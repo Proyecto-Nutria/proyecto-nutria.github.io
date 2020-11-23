@@ -10,11 +10,11 @@ import VisitorFooter from "components/Visitor/Landing/LandingFooter"
 import VisitorAbout from "components/Visitor/Landing/LandingAbout"
 import VisitorContributor from "components/Visitor/Landing/LandingContributors"
 
-import Auth from "utils/helpers/Auth"
+import Path from "utils/helpers/Path"
 
 const Login = () => {
   if (useContext(UserContext)) {
-    return <Redirect to={{ pathname: Auth.getPathToRedirect() }} />
+    return <Redirect to={{ pathname: Path.getPathToRedirect() }} />
   }
 
   return (

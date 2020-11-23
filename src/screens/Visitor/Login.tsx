@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { Redirect } from "react-router-dom"
 
-import Auth from "utils/helpers/Auth"
+import Path from "utils/helpers/Path"
 import { signInWithGoogle } from "services/firebaseService"
 import { UserContext } from "utils/providers/UserProvider"
 
@@ -10,7 +10,7 @@ import LoginGrid from "components/Visitor/Login/Grid/LoginGrid"
 
 const Login = () => {
   if (useContext(UserContext)) {
-    return <Redirect to={{ pathname: Auth.getPathToRedirect() }} />
+    return <Redirect to={{ pathname: Path.getPathToRedirect() }} />
   }
 
   return (
