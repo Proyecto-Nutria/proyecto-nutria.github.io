@@ -1,14 +1,15 @@
-import {
-  ApolloClient,
-  ApolloLink,
-  createHttpLink,
-  InMemoryCache,
-} from "@apollo/client"
+import { ApolloClient, ApolloLink, InMemoryCache } from "@apollo/client"
 import { onError } from "@apollo/client/link/error"
+
+// Because the type contracts aren’t nominally equivalent between the official Apollo
+// Client and the object created by createUploadLink (at the moment), we need to use
+// @ts-ignore to prevent type error.
+//@ts-ignore
+import { createUploadLink } from "apollo-upload-client"
 
 const getClient = () => {
   const uri = "https://us-central1-nutria-system.cloudfunctions.net/graphql"
-  const httpLink = createHttpLink({
+  const httpLink = createUploadLink({
     uri,
   })
 
