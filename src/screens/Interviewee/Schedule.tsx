@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useReducer, useState } from "react"
 import { useHistory } from "react-router-dom"
 
 import { useMutation } from "@apollo/client"
@@ -16,6 +16,58 @@ import {
 import UIMainContainer from "components/UI/UIBoxContainer"
 import IntervieweeSchedule from "components/Interviewee/Schedule/IntervieweeSchedule"
 
+type schedule = Record<
+  number,
+  { day: string | null; interval: [string | null, string | null] }
+>
+type action =
+  | { type: "create" }
+  | { type: "updateDay"; id: number; day: string }
+  | { type: "updateStart"; id: number; start: string }
+  | { type: "updateEnd"; id: number; end: string }
+  | { type: "delete"; id: number }
+
+const reducer = (currentSchedule: schedule, action: action): schedule => {
+  switch (action.type) {
+    case "create": {
+      const newSchedule = JSON.parse(
+        JSON.stringify(currentSchedule)
+      ) as schedule
+      const indexes = (Object.keys(currentSchedule) as unknown) as Array<number>
+      const newIndex = indexes.length === 0 ? 0 : Math.max(...indexes) + 1
+      newSchedule[newIndex] = { day: null, interval: [null, null] }
+
+      return newSchedule
+    }
+
+    case "delete": {
+      const newSchedule = JSON.parse(JSON.stringify(currentSchedule))
+      delete newSchedule[action.id]
+      return newSchedule as schedule
+    }
+
+    case "updateStart": {
+      const newSchedule = JSON.parse(
+        JSON.stringify(currentSchedule)
+      ) as schedule
+      newSchedule[action.id].interval[0] = action.start
+
+      return newSchedule
+    }
+
+    case "updateDay": {
+      const newSchedule = JSON.parse(
+        JSON.stringify(currentSchedule)
+      ) as schedule
+      newSchedule[action.id].day = action.day
+
+      return newSchedule
+    }
+  }
+
+  throw new Error("usaste mal el reducer jejejej")
+}
+
 const IntervieweeMock = () => {
   const [enterToPool, { error: mutationError }] = useMutation(ENTER_POOL)
 
@@ -25,8 +77,7 @@ const IntervieweeMock = () => {
   const [numberInterviews, setNumberInterviewsValue] = useState(1)
   const [languages, setLanguagesValue] = useState()
   const [company, setCompanyValue] = useState()
-  const [count, setCount] = useState(0)
-  const [dynamic, setDynamic] = useState({})
+  const [schedule, dispatchSchedule] = useReducer(reducer, {})
 
   const staticInputs = [
     {
@@ -70,16 +121,15 @@ const IntervieweeMock = () => {
       apiMap: "companies",
     },
   ]
+
   const dynamicInputs = {
     label: "Time to schedule a mock",
     values: {
       days: DateTime.getDaysOfWeek(),
       hours: DateTime.getHoursToScheduleMock(),
     },
-    state: dynamic,
-    setter: setDynamic,
-    countState: count,
-    countSetter: setCount,
+    state: schedule,
+    setter: dispatchSchedule,
   }
 
   const createMock = () => {
@@ -102,5 +152,7 @@ const IntervieweeMock = () => {
     </UIMainContainer>
   )
 }
+
+export type { action }
 
 export default IntervieweeMock

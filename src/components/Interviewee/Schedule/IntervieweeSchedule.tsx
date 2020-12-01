@@ -59,23 +59,25 @@ const IntervieweeSchedule = (props: any) => {
           <Button
             icon={<Add />}
             hoverIndicator
-            onClick={() => {
-              props.dynamicInput.countSetter(props.dynamicInput.countState + 1)
-            }}
+            onClick={() => props.dynamicInput.setter({ type: "create" })}
           />
 
-          {Array(props.dynamicInput.countState)
-            .fill(0)
-            .map((_, id) => {
-              if (!(id in props.dynamicInput.state)) {
-                let copiedInformation = { ...props.dynamicInput.state }
-                copiedInformation[id] = {}
-                props.dynamicInput.setter(copiedInformation)
-              }
-              return (
-                <FormTime key={id} dynamicInput={props.dynamicInput} id={id} />
-              )
-            })}
+          {Object.entries(props.dynamicInput.state).map(([id, data]) => {
+            const current = props.dynamicInput.state[id]
+            const { day, interval } = current
+            const [start, end] = interval
+            return (
+              <FormTime
+                values={props.dynamicInput.values}
+                key={id}
+                updater={props.dynamicInput.setter}
+                day={day}
+                start={start}
+                end={end}
+                id={+id}
+              />
+            )
+          })}
 
           <Box margin={{ top: "medium" }}>
             <Button
