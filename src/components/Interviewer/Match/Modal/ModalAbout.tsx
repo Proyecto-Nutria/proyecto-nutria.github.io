@@ -32,8 +32,10 @@ const ModalAbout = (props: {
       }}
     >
       <Box
+        round
+        background="main-box"
+        elevation="large"
         width="large"
-        background="background-contrast"
         pad="medium"
         justify="center"
         align="center"

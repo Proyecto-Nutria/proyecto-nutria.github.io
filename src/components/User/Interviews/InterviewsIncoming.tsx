@@ -16,9 +16,7 @@ import {
 } from "structure/interfaces/IIncomingInterviews"
 
 const InterviewsIncoming = (props: IIncomingInterviewsProps) => {
-  const confirmationColumn: ColumnConfig<
-    IIncomingInterviewsData
-  >[] = props.isInterviewee
+  const confirmationColumn: ColumnConfig<IIncomingInterviewsData>[] = props.isInterviewee
     ? [
         {
           property: "confirm",
@@ -40,12 +38,13 @@ const InterviewsIncoming = (props: IIncomingInterviewsProps) => {
 
   return (
     <Box pad="xlarge">
-      <Heading>Incoming Interviews</Heading>
+      <Heading level="3">Incoming Interviews</Heading>
       <Box
         round
         pad="large"
         align="center"
-        background="dark-1"
+        background="main-box"
+        elevation="large"
         alignSelf="center"
         flex={{ shrink: 0 }}
       >

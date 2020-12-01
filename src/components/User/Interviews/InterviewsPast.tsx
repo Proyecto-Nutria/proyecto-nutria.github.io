@@ -4,12 +4,13 @@ import { Heading, Box, Text, DataTable, Anchor } from "grommet"
 const InterviewsPast = (props: any) => {
   return (
     <Box pad="xlarge">
-      <Heading>Past Interviews</Heading>
+      <Heading level="3">Past Interviews</Heading>
       <Box
         round
         pad="large"
         align="center"
-        background="dark-1"
+        background="main-box"
+        elevation="large"
         alignSelf="center"
         flex={{ shrink: 0 }}
       >

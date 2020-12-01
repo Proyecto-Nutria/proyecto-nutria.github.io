@@ -10,7 +10,7 @@ const AppHeader = () => {
   const history = useHistory()
 
   return (
-    <Header background="dark-1" pad="medium">
+    <Header background="main-box" elevation="medium" pad="medium">
       <Anchor
         color="light"
         onClick={() => history.push(HOME_PATH)}

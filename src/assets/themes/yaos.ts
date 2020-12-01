@@ -10,11 +10,11 @@ const theme = {
         light: "background-back",
       },
       background: {
-        dark: "#262E4E",
+        dark: "#172451",
         light: "#FFFFFF",
       },
       "background-back": {
-        dark: "#262E4E",
+        dark: "#172451",
         light: "#333333",
       },
       "background-front": {
@@ -42,10 +42,11 @@ const theme = {
         light: "#666666",
       },
       border: {
-        dark: "#444444",
-        light: "#CCCCCC",
+        dark: "#d1d1d1",
+        light: "#d1d1d1",
       },
       control: "brand",
+      "main-box": "#232c67",
       "active-background": "background-contrast",
       "active-text": "text-strong",
       "selected-background": "brand",
@@ -157,6 +158,24 @@ const theme = {
       xlarge: "960px",
       xxlarge: "1280px",
       full: "100%",
+    },
+    elevation: {
+      light: {
+        none: "none",
+        xsmall: "0px 1px 2px rgba(0, 0, 0, 0.20)",
+        small: "0px 2px 4px rgba(0, 0, 0, 0.20)",
+        medium: "0px 4px 8px rgba(0, 0, 0, 0.20)",
+        large: "0px 8px 16px rgba(0, 0, 0, 0.20)",
+        xlarge: "0px 12px 24px rgba(0, 0, 0, 0.20)",
+      },
+      dark: {
+        none: "none",
+        xsmall: "0px 1px 2px rgba(0, 0, 0, 0.20)",
+        small: "0px 2px 4px rgba(0, 0, 0, 0.20)",
+        medium: "0px 4px 8px rgba(0, 0, 0, 0.20)",
+        large: "0px 8px 16px rgba(0, 0, 0, 0.20)",
+        xlarge: "0px 12px 24px rgba(0, 0, 0, 0.20)",
+      },
     },
   },
   chart: {},

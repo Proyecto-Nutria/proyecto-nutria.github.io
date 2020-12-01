@@ -63,9 +63,11 @@ const ModalConfirm = (props: {
       }}
     >
       <Box
+        round
+        background="main-box"
+        elevation="large"
         width="medium"
         gap="medium"
-        background="background-contrast"
         pad="medium"
       >
         <Heading textAlign="center" level={4}>

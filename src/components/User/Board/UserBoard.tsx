@@ -5,7 +5,7 @@ import BoardItem from "components/User/Board/UserBoardItem"
 
 const UserBoard = (props: any) => (
   <Box pad="xlarge">
-    <Heading level="4">{props.heading}</Heading>
+    <Heading level="3">{props.heading}</Heading>
     <Box direction="column" gap="small">
       {props.elements.map((information: any) => (
         <BoardItem

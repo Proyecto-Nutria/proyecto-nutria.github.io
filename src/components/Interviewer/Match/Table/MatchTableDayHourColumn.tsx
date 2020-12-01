@@ -17,17 +17,16 @@ const MatchTableDayHourColumn = (
     render: (row: personData) =>
       typeof row[day] != "undefined" ? (
         <Box
+          round
+          pad="small"
           border={{
             color: "brand",
             size: "small",
             style: "dashed",
           }}
-          background="background-front"
-          round={true}
         >
           <Button
             key={row.uid.toString()}
-            size="small"
             fill
             onClick={() => {
               // @ts-ignore

@@ -3,7 +3,14 @@ import React from "react"
 import { Image, Box, Text, Button } from "grommet"
 
 const BoardItem = (props: any) => (
-  <Box direction="row" gap="medium">
+  <Box
+    round
+    direction="row"
+    pad="medium"
+    gap="medium"
+    elevation="large"
+    background="main-box"
+  >
     <Box height="medium" width="large">
       <Image fit="contain" fill src={props.img} />
     </Box>

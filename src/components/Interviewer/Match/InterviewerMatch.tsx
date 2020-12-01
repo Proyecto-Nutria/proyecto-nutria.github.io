@@ -10,7 +10,7 @@ import MatchTable from "components/Interviewer/Match/Table/MatchTable"
 const InterviewerMatch = (props: any) => (
   <Box pad="xlarge">
     <Heading>Match Interviewees</Heading>
-    <Box round background="dark-1" pad="large" gap="medium">
+    <Box round background="main-box" elevation="large" pad="large" gap="medium">
       <Box
         direction="row-responsive"
         fill="horizontal"

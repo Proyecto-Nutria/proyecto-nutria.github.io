@@ -17,7 +17,7 @@ const IntervieweeSchedule = (props: any) => {
   return (
     <Box pad="xlarge">
       <Heading>Mock Interview</Heading>
-      <Box round background="light-1" pad="large">
+      <Box round background="main-box" elevation="large" pad="large">
         <Form
           onSubmit={e => {
             e.preventDefault()
