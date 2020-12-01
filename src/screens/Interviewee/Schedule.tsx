@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from "react"
+import React, { useReducer, useState } from "react"
 import { useHistory } from "react-router-dom"
 
 import { useMutation } from "@apollo/client"
@@ -12,27 +12,20 @@ import {
   PROGRAMMING_LANGUAGES,
   COMPANIES,
 } from "utils/constants/values"
+import { actionData, scheduleData } from "structure/types/dataTypes"
 
 import UIMainContainer from "components/UI/UIBoxContainer"
 import IntervieweeSchedule from "components/Interviewee/Schedule/IntervieweeSchedule"
 
-type schedule = Record<
-  number,
-  { day: string | null; interval: [string | null, string | null] }
->
-type action =
-  | { type: "create" }
-  | { type: "updateDay"; id: number; day: string }
-  | { type: "updateStart"; id: number; start: string }
-  | { type: "updateEnd"; id: number; end: string }
-  | { type: "delete"; id: number }
-
-const reducer = (currentSchedule: schedule, action: action): schedule => {
+const reducer = (
+  currentSchedule: scheduleData,
+  action: actionData
+): scheduleData => {
   switch (action.type) {
     case "create": {
       const newSchedule = JSON.parse(
         JSON.stringify(currentSchedule)
-      ) as schedule
+      ) as scheduleData
       const indexes = (Object.keys(currentSchedule) as unknown) as Array<number>
       const newIndex = indexes.length === 0 ? 0 : Math.max(...indexes) + 1
       newSchedule[newIndex] = { day: null, interval: [null, null] }
@@ -43,13 +36,13 @@ const reducer = (currentSchedule: schedule, action: action): schedule => {
     case "delete": {
       const newSchedule = JSON.parse(JSON.stringify(currentSchedule))
       delete newSchedule[action.id]
-      return newSchedule as schedule
+      return newSchedule as scheduleData
     }
 
     case "updateStart": {
       const newSchedule = JSON.parse(
         JSON.stringify(currentSchedule)
-      ) as schedule
+      ) as scheduleData
       newSchedule[action.id].interval[0] = action.start
 
       return newSchedule
@@ -58,14 +51,14 @@ const reducer = (currentSchedule: schedule, action: action): schedule => {
     case "updateDay": {
       const newSchedule = JSON.parse(
         JSON.stringify(currentSchedule)
-      ) as schedule
+      ) as scheduleData
       newSchedule[action.id].day = action.day
 
       return newSchedule
     }
   }
 
-  throw new Error("usaste mal el reducer jejejej")
+  throw new Error("Bad action")
 }
 
 const IntervieweeMock = () => {
@@ -140,7 +133,6 @@ const IntervieweeMock = () => {
     )
   }
 
-  //TODO: Fix Cannot update a component (`IntervieweeMock`) while rendering a different component (`IntervieweeSchedule`).
   return (
     <UIMainContainer>
       <IntervieweeSchedule
@@ -152,7 +144,5 @@ const IntervieweeMock = () => {
     </UIMainContainer>
   )
 }
-
-export type { action }
 
 export default IntervieweeMock

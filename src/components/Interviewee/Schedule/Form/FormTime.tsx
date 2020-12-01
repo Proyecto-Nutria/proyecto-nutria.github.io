@@ -2,8 +2,8 @@ import React, { FunctionComponent as FC } from "react"
 import { FormSubtract } from "grommet-icons"
 import { Box, Select, Button } from "grommet"
 
-import { action } from "screens/Interviewee/Schedule"
-
+import { formTimeProp } from "structure/types/propsTypes"
+/*
 type props = {
   updater: (action: action) => void
   day: string
@@ -11,9 +11,16 @@ type props = {
   end: string
   id: number
   values: any
-}
+}*/
 
-const FormTime: FC<props> = ({ updater, day, start, end, id, values }) => {
+const FormTime: FC<formTimeProp> = ({
+  updater,
+  day,
+  start,
+  end,
+  id,
+  values,
+}) => {
   return (
     <Box direction="row-responsive" flex={true} gap="medium">
       <Box justify="center">On</Box>

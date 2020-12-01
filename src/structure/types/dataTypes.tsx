@@ -25,3 +25,15 @@ export type interviewData = {
   interviewDay: day
   interviewHour: hour
 }
+
+export type scheduleData = Record<
+  number,
+  { day: string | null; interval: [string | null, string | null] }
+>
+
+export type actionData =
+  | { type: "create" }
+  | { type: "updateDay"; id: number; day: string }
+  | { type: "updateStart"; id: number; start: string }
+  | { type: "updateEnd"; id: number; end: string }
+  | { type: "delete"; id: number }
