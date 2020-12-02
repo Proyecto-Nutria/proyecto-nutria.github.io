@@ -32,7 +32,6 @@ import IntervieweeMain from "screens/Interviewee/Board"
 import IntervieweeIncomingInterviews from "screens/Interviewee/IncomingInterviews"
 import IntervieweeMock from "screens/Interviewee/Schedule"
 import IntervieweeEditProfile from "screens/Interviewee/Profile"
-// import IntervieweeDetails from "screens/Interviewee/IntervieweeDetails" // ?
 
 // Interviewer
 import InterviewerMain from "screens/Interviewer/Board"
