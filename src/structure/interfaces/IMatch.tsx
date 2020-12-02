@@ -1,8 +1,10 @@
 export interface IMatch {
   uid: string
-  name?: string
-  programmingLanguages?: Array<String>
+  name: string
+  languages?: Array<String>
   interviewType: string
+  role: string
+  folder: string
   monday?: Array<any>
   tuesday?: Array<any>
   wednesday?: Array<any>

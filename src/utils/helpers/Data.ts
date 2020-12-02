@@ -160,9 +160,11 @@ export default class Data {
     for (var elem of data.viewPool) {
       let parsed: IMatch = {
         uid: elem.uid,
-        name: "Unknown",
-        programmingLanguages: elem.language,
+        name: elem.person,
+        languages: elem.language,
         interviewType: elem.type,
+        role: elem.role,
+        folder: elem.folder,
       }
       for (var available of elem.availability) {
         const day = available.day

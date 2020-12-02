@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client"
+import { gql } from '@apollo/client'
 
 const GET_USER_TYPE = gql`
   {
@@ -39,6 +39,8 @@ const VIEW_POOL = gql`
       type
       role
       language
+      folder
+      person
       availability {
         day
         interval
@@ -104,5 +106,5 @@ export {
   PAST_INTERVIEWS,
   INCOMING_INTERVIEWS,
   CONFIRM_INTERVIEW,
-  CANCEL_INTERVIEW,
+  CANCEL_INTERVIEW
 }
