@@ -4,6 +4,7 @@ import {
   TYPES_OF_INTERVIEW,
 } from "utils/constants/values"
 
+import DateTime from "utils/helpers/DateTime"
 import { HOME_PATH } from "utils/constants/paths"
 import { IMatch } from "structure/interfaces/IMatch"
 import { IIncomingInterviewsData } from "structure/interfaces/IIncomingInterviews"
@@ -132,22 +133,20 @@ export default class Data {
     }
   }
 
-  static fromAPItoInput(data: any) {
+  static fromAPItoIncoming(data: any) {
     // TODO: Erase the hardcoded values, used only to test the endpoint
     let parsedData: IIncomingInterviewsData[] = []
     let counter = 0
     for (var elem of data.getIncomingInterviews) {
-      const currentTime = new Date(elem.date)
+      const currentTime = DateTime.timestampToDate(elem.date)
       let parsed: IIncomingInterviewsData = {
         id: elem.uid,
         name: "Unknown",
-        date: `${currentTime.getMonth()}/${currentTime.getDate()}/${currentTime.getFullYear()}`,
-        time: `${currentTime.getHours()}:${currentTime.getMinutes()}`,
-        timestamp: elem.date.toString(),
+        date: DateTime.formatDateToDay(currentTime),
+        time: DateTime.formatDateToHours(currentTime),
         document: "Link",
         place: counter.toString(10),
         confirmed: elem.confirmed,
-        score: counter.toString(10),
       }
       counter += 10
       parsedData.push(parsed)
@@ -185,7 +184,7 @@ export default class Data {
     let parsedData: IPastInterviewsData[] = []
     for (var elem of data.getPastsInterviews) {
       let parsed: IPastInterviewsData = {
-        date: elem.date,
+        date: DateTime.formatDateToDay(DateTime.timestampToDate(elem.date)),
         document: "Link",
       }
       parsedData.push(parsed)

@@ -32,7 +32,9 @@ const IntervieweeIncomingInterviews = () => {
   if (loading) return <p> Loading </p>
   if (error) return <p> Error </p>
 
-  let incomingInterviews: IIncomingInterviewsData[] = Data.fromAPItoInput(data)
+  let incomingInterviews: IIncomingInterviewsData[] = Data.fromAPItoIncoming(
+    data
+  )
   const confirmInterview = (id: string, timestamp: string) => {
     confirmation({
       variables: {

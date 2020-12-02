@@ -7,7 +7,6 @@ export interface IIncomingInterviewsData {
   document: string
   place: string
   confirmed: boolean
-  score: string
 }
 
 export interface IIncomingInterviewsProps {

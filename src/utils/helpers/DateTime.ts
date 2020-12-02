@@ -38,4 +38,16 @@ export default class DateTime {
   static dateToTimestamp(date: any) {
     return date.getTime()
   }
+
+  static timestampToDate(timestamp: string) {
+    return new Date(parseInt(timestamp, 10))
+  }
+
+  static formatDateToHours(currentDate: Date) {
+    return `${currentDate.getHours()}:${currentDate.getMinutes()}`
+  }
+
+  static formatDateToDay(currentDate: Date) {
+    return `${currentDate.getMonth()}/${currentDate.getDate()}/${currentDate.getFullYear()}`
+  }
 }

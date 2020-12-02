@@ -26,7 +26,9 @@ const InterviewerIncomingInterviews = () => {
   if (loading) return <p> Loading </p>
   if (error) return <p> Error </p>
 
-  let incomingInterviews: IIncomingInterviewsData[] = Data.fromAPItoInput(data)
+  let incomingInterviews: IIncomingInterviewsData[] = Data.fromAPItoIncoming(
+    data
+  )
 
   const cancelInterview = (id: string, timestamp: string) => {
     cancellation({
