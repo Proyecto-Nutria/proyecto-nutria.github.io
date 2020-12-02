@@ -67,9 +67,17 @@ const InterviewsIncoming = (props: IIncomingInterviewsProps) => {
               property: "document",
               header: <Text>Document</Text>,
               sortable: false,
-              render: ({ document }) => (
-                <Anchor color="brand" href={document} label="Link" />
-              ),
+              render: ({ document }) =>
+                document !== "" ? (
+                  <Anchor
+                    color="brand"
+                    target="_blank"
+                    href={document}
+                    label="Link"
+                  />
+                ) : (
+                  <></>
+                ),
             },
             {
               property: "place",

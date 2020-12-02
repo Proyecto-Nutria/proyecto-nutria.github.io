@@ -1,19 +1,18 @@
 import React from "react"
 
-import { Button } from "grommet"
+import { Anchor } from "grommet"
 
 const MatchTableInfoColumn = () => {
   return {
     property: "folder",
     size: "small",
     render: (row: any) => (
-      <Button
+      <Anchor
         alignSelf="center"
         label="Resume"
-        href={"https://drive.google.com/drive/folders/" + row.folder}
+        href={row.folder}
         target="_blank"
         size="small"
-        secondary
       />
     ),
   }

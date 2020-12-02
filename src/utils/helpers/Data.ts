@@ -15,6 +15,14 @@ export default class Data {
     return Object.keys(SCHOOLS)
   }
 
+  static getFolderUrl(id: string) {
+    return `https://drive.google.com/drive/folders/${id}`
+  }
+
+  static getDocumentUrl(id: string) {
+    return id ? `https://docs.google.com/document/d/${id}` : ""
+  }
+
   static callMutationAndRedirectToHome(
     mutation: any,
     parameters: any,
@@ -133,27 +141,6 @@ export default class Data {
     }
   }
 
-  static fromAPItoIncoming(data: any) {
-    // TODO: Erase the hardcoded values, used only to test the endpoint
-    let parsedData: IIncomingInterviewsData[] = []
-    let counter = 0
-    for (var elem of data.getIncomingInterviews) {
-      const currentTime = DateTime.timestampToDate(elem.date)
-      let parsed: IIncomingInterviewsData = {
-        id: elem.uid,
-        name: "Unknown",
-        date: DateTime.formatDateToDay(currentTime),
-        time: DateTime.formatDateToHours(currentTime),
-        document: "Link",
-        place: counter.toString(10),
-        confirmed: elem.confirmed,
-      }
-      counter += 10
-      parsedData.push(parsed)
-    }
-    return parsedData
-  }
-
   static fromAPItoMatch(data: any) {
     let parsedData: IMatch[] = []
     for (var elem of data.viewPool) {
@@ -163,7 +150,7 @@ export default class Data {
         languages: elem.language,
         interviewType: elem.type,
         role: elem.role,
-        folder: elem.folder,
+        folder: Data.getFolderUrl(elem.folder),
       }
       for (var available of elem.availability) {
         const day = available.day
@@ -180,12 +167,30 @@ export default class Data {
     return parsedData
   }
 
+  static fromAPItoIncoming(data: any) {
+    let parsedData: IIncomingInterviewsData[] = []
+    for (var elem of data.getIncomingInterviews) {
+      const currentTime = DateTime.timestampToDate(elem.date)
+      let parsed: IIncomingInterviewsData = {
+        id: elem.uid,
+        name: "Unknown", //TODO: Check if is necessary to get the name of the person
+        date: DateTime.formatDateToDay(currentTime),
+        time: DateTime.formatDateToHours(currentTime),
+        document: Data.getDocumentUrl(elem.doc),
+        place: elem.room,
+        confirmed: elem.confirmed,
+      }
+      parsedData.push(parsed)
+    }
+    return parsedData
+  }
+
   static fromAPItoPast(data: any) {
     let parsedData: IPastInterviewsData[] = []
     for (var elem of data.getPastsInterviews) {
       let parsed: IPastInterviewsData = {
         date: DateTime.formatDateToDay(DateTime.timestampToDate(elem.date)),
-        document: "Link",
+        document: Data.getDocumentUrl(elem.doc),
       }
       parsedData.push(parsed)
     }
