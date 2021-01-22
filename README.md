@@ -19,13 +19,18 @@
    ```
    npm install -g yarn
    ```
+1. Install BuckleScript
+   ```
+   yarn global add bs-platform
+   ```
 1. Install react-scripts globally
    ```
    yarn global add react-scripts --save --no-bin-links
    ```
-1. Install ReasonML
-   ```
-   yarn global add bs-platform
+1. Install packages from package.json
+   ```shell
+   > cd proyecto-nutria.github.io
+   > yarn install
    ```
 1. Compile the ReasonML files to javascript
    ```
