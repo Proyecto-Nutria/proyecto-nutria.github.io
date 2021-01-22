@@ -1,16 +1,22 @@
 # YAOS
 
-## Pre requisites
-
-1. [nvm](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04#installing-using-nvm)
-1. [yarn](https://classic.yarnpkg.com/en/docs/install/)
-
 ## Setup
 
-1. Install node 14.10.0
+1. Install node 14.10.0 or later 
+   **Option 1:** Using **n**ode **v**ersion **m**anager
+   1. Install **nvm** from https://github.com/nvm-sh/nvm
+   1. Run below commands
    ```
    nvm install 14.10.0
    nvm use 14.10.0
+   ```
+   **Option 2:** Installing nodejs and npm directly
+   - Debian: https://github.com/nodesource/distributions
+   - Arch Linux: `pacman -S npm` (this will install both *node* and *npm*)
+   - Windows: https://nodejs.org/en/download/ (remember to add installation path to environment variables)
+1. Install yarn
+   ```
+   npm install -g yarn
    ```
 1. Install react-scripts globally
    ```
