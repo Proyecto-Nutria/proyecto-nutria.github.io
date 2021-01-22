@@ -2,7 +2,8 @@
 
 ## Setup
 
-1. Install node 14.10.0 or later 
+1. Install node 14.10.0 or later
+
    **Option 1:** Using **n**ode **v**ersion **m**anager
    1. Install **nvm** from https://github.com/nvm-sh/nvm
    1. Run below commands
