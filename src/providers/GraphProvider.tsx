@@ -1,14 +1,29 @@
+import React from "react"
 import {
+  ApolloProvider,
   ApolloClient,
   ApolloLink,
-  InMemoryCache,
   HttpLink,
+  InMemoryCache,
 } from "@apollo/client"
 import { onError } from "@apollo/client/link/error"
+import { setContext } from "@apollo/client/link/context"
+import { useAuth0 } from "@auth0/auth0-react"
 
-const getApolloClient = () => {
+const GraphProvider: React.FunctionComponent = ({ children }) => {
   const httpLink = new HttpLink({
     uri: "https://nutria-core-backend.herokuapp.com/v1/graphql",
+  })
+
+  const { getAccessTokenSilently } = useAuth0()
+
+  const authLink = setContext(async () => {
+    const token = await getAccessTokenSilently()
+    return {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
   })
 
   // TODO: Crate a method to enable/disable errorLink, it only be enable in dev
@@ -22,22 +37,12 @@ const getApolloClient = () => {
     if (networkError) console.log(`[Network error]: ${networkError}`)
   })
 
-  //TODO: Change to Auth0
-  const authMiddleware = new ApolloLink((operation, forward) => {
-    const token = localStorage.getItem("token")
-    operation.setContext({
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-
-    return forward(operation)
-  })
-
-  return new ApolloClient({
-    link: ApolloLink.from([errorLink, authMiddleware.concat(httpLink)]),
+  const client = new ApolloClient({
+    link: ApolloLink.from([errorLink, authLink.concat(httpLink)]),
     cache: new InMemoryCache(),
   })
+
+  return <ApolloProvider client={client}>{children}</ApolloProvider>
 }
 
-export default getApolloClient
+export default GraphProvider
