@@ -1,16 +1,9 @@
-import { ApolloClient, ApolloLink, InMemoryCache } from "@apollo/client"
+import { ApolloClient, ApolloLink, InMemoryCache, HttpLink} from "@apollo/client"
 import { onError } from "@apollo/client/link/error"
 
-// Because the type contracts aren’t nominally equivalent between the official Apollo
-// Client and the object created by createUploadLink (at the moment), we need to use
-// @ts-ignore to prevent type error.
-//@ts-ignore
-import { createUploadLink } from "apollo-upload-client"
-
-const getClient = () => {
-  const uri = "https://us-central1-nutria-system.cloudfunctions.net/graphql"
-  const httpLink = createUploadLink({
-    uri,
+const getApolloClient = () => {
+  const httpLink = new HttpLink ({
+    uri: "https://nutria-core-backend.herokuapp.com/v1/graphql"
   })
 
   // TODO: Crate a method to enable/disable errorLink, it only be enable in dev
@@ -24,23 +17,22 @@ const getClient = () => {
     if (networkError) console.log(`[Network error]: ${networkError}`)
   })
 
+  //TODO: Change to Auth0
   const authMiddleware = new ApolloLink((operation, forward) => {
     const token = localStorage.getItem("token")
     operation.setContext({
       headers: {
-        Authorization: token,
+        Authorization: `Bearer ${token}`,
       },
     })
 
     return forward(operation)
   })
 
-  const client = new ApolloClient({
+  return new ApolloClient({
     link: ApolloLink.from([errorLink, authMiddleware.concat(httpLink)]),
     cache: new InMemoryCache(),
   })
-
-  return client
 }
 
-export default getClient
+export default getApolloClient
