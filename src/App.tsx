@@ -6,17 +6,17 @@ import yaosTheme from "assets/themes/yaos"
 import { ApolloProvider } from "@apollo/client"
 import getApolloClient from "services/graphqlService"
 
-import UserProvider from "utils/providers/UserProvider"
+import AuthProvider from "providers/AuthProvider"
 import Routes from "Routes"
 
 const App: React.FunctionComponent = () => {
   return (
     <Grommet theme={yaosTheme as ThemeType}>
-      <UserProvider>
+      <AuthProvider>
         <ApolloProvider client={getApolloClient()}>
           <Routes />
         </ApolloProvider>
-      </UserProvider>
+      </AuthProvider>
     </Grommet>
   )
 }
