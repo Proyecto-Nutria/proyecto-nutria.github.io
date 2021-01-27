@@ -1,5 +1,6 @@
-import { gql } from '@apollo/client'
+import { gql } from "@apollo/client"
 
+// TODO: Not used anymore
 const GET_USER_TYPE = gql`
   {
     getUserTypeOrCreate {
@@ -31,19 +32,18 @@ const UPDATE_INTERVIEWER = gql`
     updateInterviewer(interviewer: $interviewer)
   }
 `
-
+// TODO: Create join to get the folder of the interviewee
 const VIEW_POOL = gql`
   {
-    viewPool {
-      uid
-      type
-      role
+    pools {
+      awaiting
+      availability
+      job
       language
-      folder
-      person
-      availability {
-        day
-        interval
+      position
+      company
+      interviewee {
+        folder
       }
     }
   }
@@ -60,24 +60,24 @@ const CREATE_INTERVIEW = gql`
     createInterview(interview: $interview)
   }
 `
-
+// TODO: $lt: timestamp = ""
 const INCOMING_INTERVIEWS = gql`
   {
-    getIncomingInterviews {
-      uid
+    interviews {
+      id
       date
       confirmed
       room
-      doc
+      document
     }
   }
 `
-
+// TODO: $_gt: timestamp = ""
 const PAST_INTERVIEWS = gql`
   {
     getPastsInterviews {
       date
-      doc
+      document
     }
   }
 `
@@ -106,5 +106,5 @@ export {
   PAST_INTERVIEWS,
   INCOMING_INTERVIEWS,
   CONFIRM_INTERVIEW,
-  CANCEL_INTERVIEW
+  CANCEL_INTERVIEW,
 }

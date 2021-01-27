@@ -1,60 +1,31 @@
 import React, { useContext } from "react"
-
-import { Grid, Box, Image, Heading, Button, ResponsiveContext } from "grommet"
-import { Google } from "grommet-icons"
-import styles from "components/Visitor/Login/Grid/LoginGrid.module.css"
+import { useAuth0 } from "@auth0/auth0-react"
 
 const LoginGrid = (props: any) => {
-  const size = useContext(ResponsiveContext)
-  const end_left_c = size === "small" ? 1 : 0
-  const end_left_r = size === "small" ? 0 : 1
-  const start_right_c = size === "small" ? 0 : 1
-  const start_right_r = size === "small" ? 1 : 0
+  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0()
   return (
-    <Box justify="center" height="100vh" className={styles.backgroundBox}>
-      <Grid
-        margin="xlarge"
-        justifyContent="center"
-        responsive={true}
-        rows={["small", "small"]}
-        columns={["1/4", "1/3"]}
-        areas={[
-          { name: "loginLeft", start: [0, 0], end: [end_left_c, end_left_r] },
-          { name: "loginRight", start: [start_right_c, start_right_r], end: [1, 1] },
-        ]}
-      >
-        <Box
-          gridArea="loginLeft"
-          justify="center"
-          align="center"
-          className={size === "small" ? styles.boxTop : styles.boxLeft}
-        >
-          <Image src="./images/nutria_transparente.png" fit="contain" className={styles.leftImg} />
-        </Box>
-        <Box
-          gridArea="loginRight"
-          justify="center"
-          align="center"
-          gap="medium"
-          className={size === "small" ? styles.boxBottom : styles.boxRight}
-        >
-          <Box justify="center" align="center">
-            <Heading margin="none" color="white">
-              Nutria Login
-            </Heading>
-          </Box>
-          <Box justify="center" align="center">
-            <Button
-              icon={<Google size="medium" />}
-              label="Sign In"
-              size="large"
-              onClick={props.signUpOnClick}
-              primary
-            />
-          </Box>
-        </Box>
-      </Grid>
-    </Box>
+    <div>
+      <button className="auth-button" onClick={() => loginWithRedirect({})}>
+        Log in
+      </button>
+
+      {isAuthenticated && (
+        <>
+          <span className="anchor">
+            medatada:
+            {user["https://hasura.io/jwt/claims"].role}
+            {user["https://hasura.io/jwt/claims"].firstTime.toString()}
+            <p>
+              {user.nickname} {user.app_metadata} {user.accessToken} {user.role}
+            </p>
+          </span>
+          <span> &nbsp;|&nbsp; </span>
+          <button className="auth-button" onClick={() => logout()}>
+            Log out
+          </button>
+        </>
+      )}
+    </div>
   )
 }
 
