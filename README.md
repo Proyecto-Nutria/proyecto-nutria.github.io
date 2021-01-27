@@ -39,7 +39,7 @@
 
 ## Development
 
-1. Start the project using:
+1. Run the project using:
 
    ```
    yarn start
