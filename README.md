@@ -19,7 +19,7 @@
    ```
    npm install -g yarn
    ```
-1. Install BuckleScript
+1. Install BuckleScript globally
    ```
    yarn global add bs-platform
    ```
@@ -39,7 +39,7 @@
 
 ## Development
 
-1. Start the project using:
+1. Run the project using:
 
    ```
    yarn start
