@@ -5,7 +5,7 @@ const LoginGrid = (props: any) => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0()
   return (
     <div>
-      <button className="auth-button" onClick={() => loginWithRedirect({})}>
+      <button className="auth-button" onClick={() => loginWithRedirect()}>
         Log in
       </button>
 

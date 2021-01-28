@@ -43,7 +43,7 @@ import MainFeedbackHelper from "FeedbackHelper/MainFeedbackHelper.bs"
 
 const Routes = () => {
   const user = useContext(UserContext)
-  const { interviewer, interviewee } = Auth.getRole()
+  // const { interviewer, interviewee } = Auth.getRole()
   const FeedbackHelper = MainFeedbackHelper.make
 
   return (
