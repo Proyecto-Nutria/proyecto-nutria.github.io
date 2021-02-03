@@ -43,39 +43,25 @@ import MainFeedbackHelper from "FeedbackHelper/MainFeedbackHelper.bs"
 
 const Routes = () => {
   const user = useContext(UserContext)
-  // const { interviewer, interviewee } = Auth.getRole()
+  const { interviewer, interviewee } = Auth.getRole()
   const FeedbackHelper = MainFeedbackHelper.make
 
   return (
     <HashRouter>
       <Switch>
-        <Route exact={true} path={LANDING_PATH}>
-          <Landing />
-        </Route>
-        <Route path={LOGIN_PATH}>
-          <Login />
-        </Route>
+        <Route exact={true} path={LANDING_PATH} component={Landing}/>
+        <Route path={LOGIN_PATH} component={Login}/>
 
         {user && interviewee && (
           <Fragment>
             <AppHeader />
 
-            <Route path={HOME_PATH}>
-              <IntervieweeMain />
-            </Route>
-            <Route path={WEE_MOCK_PATH}>
-              <IntervieweeMock />
-            </Route>
-            <Route path={WEE_INCOMING_INTERVIEWS_PATH}>
-              <IntervieweeIncomingInterviews />
-            </Route>
-            <Route path={USER_PAST_INTERVIEWS_PATH}>
-              <PastInterviews />
-            </Route>
+            <Route path={HOME_PATH} component={IntervieweeMain}/>
+            <Route path={WEE_MOCK_PATH} component={IntervieweeMock}/>
+            <Route path={WEE_INCOMING_INTERVIEWS_PATH} component={IntervieweeIncomingInterviews}/>
+            <Route path={USER_PAST_INTERVIEWS_PATH} component={PastInterviews}/>
 
-            <Route path={EDIT_PATH}>
-              <IntervieweeEditProfile />
-            </Route>
+            <Route path={EDIT_PATH} component={IntervieweeEditProfile}/>
           </Fragment>
         )}
 
@@ -83,26 +69,14 @@ const Routes = () => {
           <Fragment>
             <AppHeader />
 
-            <Route path={HOME_PATH}>
-              <InterviewerMain />
-            </Route>
-            <Route path={WER_MATCH_PATH}>
-              <InterviewerMatchInterview />
-            </Route>
-            <Route path={WER_INCOMING_INTERVIEWS_PATH}>
-              <InterviewerIncomingInterviews />
-            </Route>
-            <Route path={USER_PAST_INTERVIEWS_PATH}>
-              <PastInterviews />
-            </Route>
+            <Route path={HOME_PATH} component={InterviewerMain}/>
+            <Route path={WER_MATCH_PATH} component={InterviewerMatchInterview}/>
+            <Route path={WER_INCOMING_INTERVIEWS_PATH} component={InterviewerIncomingInterviews}/>
+            <Route path={USER_PAST_INTERVIEWS_PATH} component={PastInterviews}/>
 
-            <Route path={EDIT_PATH}>
-              <InterviewerEditProfile />
-            </Route>
+            <Route path={EDIT_PATH} component={InterviewerEditProfile}/>
 
-            <Route path={HELPER_PATH}>
-              <FeedbackHelper />
-            </Route>
+            <Route path={HELPER_PATH} component={FeedbackHelper}/>
           </Fragment>
         )}
         <Redirect to={LANDING_PATH} />
