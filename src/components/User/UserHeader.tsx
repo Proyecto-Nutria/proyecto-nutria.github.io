@@ -1,4 +1,5 @@
 import React from "react"
+import { withRouter } from "react-router";
 import { useHistory } from "react-router-dom"
 
 import { signOutWithGoogle } from "services/firebaseService"
@@ -42,4 +43,4 @@ const AppHeader = () => {
   )
 }
 
-export default AppHeader
+export default withRouter(AppHeader);
