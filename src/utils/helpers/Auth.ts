@@ -36,12 +36,4 @@ export default class Auth {
     }
   }
 
-  static getRole() {
-    let interviewer = false
-    let interviewee = false
-    const role = localStorage.getItem(ROLE_KEY)
-    if (role === INTERVIEWEE_ROLE) interviewee = true
-    else if (role === INTERVIEWER_ROLE) interviewer = true
-    return { interviewer, interviewee }
-  }
 }

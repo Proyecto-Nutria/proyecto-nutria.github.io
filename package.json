@@ -66,7 +66,6 @@
     "bs-platform": "^8.3.1",
     "bs-webapi": "^0.19.1",
     "clipboard-polyfill": "^3.0.1",
-    "eslint": "^7.18.0",
     "eslint-plugin-react": "^7.22.0",
     "gentype": "^3.37.0",
     "reason-promise": "^1.1.1"

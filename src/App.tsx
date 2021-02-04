@@ -1,11 +1,11 @@
-import React from "react"
+import React from 'react';
 
-import { Grommet, ThemeType } from "grommet"
-import yaosTheme from "assets/themes/yaos"
+import { Grommet, ThemeType } from 'grommet';
+import yaosTheme from 'assets/themes/yaos';
 
-import AuthProvider from "providers/AuthProvider"
-import GraphProvider from "providers/GraphProvider"
-import Routes from "Routes"
+import AuthProvider from 'providers/AuthProvider';
+import GraphProvider from 'providers/GraphProvider';
+import Routes from 'routes/Routes';
 
 const App: React.FunctionComponent = () => {
   return (
@@ -16,7 +16,7 @@ const App: React.FunctionComponent = () => {
         </GraphProvider>
       </AuthProvider>
     </Grommet>
-  )
-}
+  );
+};
 
-export default App
+export default App;

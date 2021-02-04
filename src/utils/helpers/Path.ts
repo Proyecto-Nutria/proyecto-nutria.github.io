@@ -1,4 +1,4 @@
-import { LANDING_PATH, EDIT_PATH, HOME_PATH } from "utils/constants/paths"
+import { LANDING_PATH, EDIT_PATH, HOME_PATH } from "routes/paths"
 import { FIRST_TIME_KEY, TRUE_VALUE, FALSE_VALUE } from "utils/constants/values"
 
 export default class Path {

@@ -1,14 +1,14 @@
-import React from "react"
-import { withRouter } from "react-router";
-import { useHistory } from "react-router-dom"
+import React from 'react';
+import { withRouter } from 'react-router';
+import { useHistory } from 'react-router-dom';
 
-import { signOutWithGoogle } from "services/firebaseService"
-import { HOME_PATH, LANDING_PATH, EDIT_PATH } from "utils/constants/paths"
+import { signOutWithGoogle } from 'services/firebaseService';
+import { HOME_PATH, LANDING_PATH, EDIT_PATH } from 'routes/paths';
 
-import { Button, Header, Nav, Anchor } from "grommet"
+import { Button, Header, Nav, Anchor } from 'grommet';
 
 const AppHeader = () => {
-  const history = useHistory()
+  const history = useHistory();
 
   return (
     <Header background="main-box" elevation="medium" pad="medium">
@@ -34,13 +34,13 @@ const AppHeader = () => {
           secondary
           label="Log Out"
           onClick={() => {
-            signOutWithGoogle()
-            history.push(LANDING_PATH)
+            signOutWithGoogle();
+            history.push(LANDING_PATH);
           }}
         />
       </Nav>
     </Header>
-  )
-}
+  );
+};
 
 export default withRouter(AppHeader);

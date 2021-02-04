@@ -4,7 +4,14 @@ import { UserRole } from '../structure/types/userTypes';
 export function useUserRole(): UserRole {
   const { isAuthenticated, user } = useAuth0();
   if (isAuthenticated) {
-    return user['https://hasura.io/jwt/claims'].role;
+    const userRole: UserRole = user['https://hasura.io/jwt/claims'].role;
+    const validRoles = Object.values(UserRole);
+    if (!validRoles.includes(userRole)) {
+      throw new Error(
+        `Role ${userRole} which was received from the server doesn't match with any local role`
+      );
+    }
+    return userRole;
   } else {
     return UserRole.Visitor;
   }

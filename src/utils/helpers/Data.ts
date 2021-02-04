@@ -5,7 +5,7 @@ import {
 } from "utils/constants/values"
 
 import DateTime from "utils/helpers/DateTime"
-import { HOME_PATH } from "utils/constants/paths"
+import { HOME_PATH } from "routes/paths"
 import { IMatch } from "structure/interfaces/IMatch"
 import { IIncomingInterviewsData } from "structure/interfaces/IIncomingInterviews"
 import { IPastInterviewsData } from "structure/interfaces/IPastInterviews"
