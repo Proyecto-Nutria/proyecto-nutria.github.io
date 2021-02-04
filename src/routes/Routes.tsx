@@ -13,7 +13,7 @@ import {
   WEE_MOCK_PATH,
   WER_INCOMING_INTERVIEWS_PATH,
   WER_MATCH_PATH,
-  HELPER_PATH,
+  FEEDBACK_HELPER_PATH,
   USER_PAST_INTERVIEWS_PATH,
 } from 'routes/paths';
 
@@ -92,7 +92,7 @@ const Routes = () => {
 
             <Route path={EDIT_PATH} component={InterviewerEditProfile} />
 
-            <Route path={HELPER_PATH} component={FeedbackHelper} />
+            <Route path={FEEDBACK_HELPER_PATH} component={FeedbackHelper} />
           </Fragment>
         )}
         <Redirect to={LANDING_PATH} />
