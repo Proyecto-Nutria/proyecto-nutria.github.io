@@ -52,9 +52,8 @@ const CREATE_INTERVIEW = gql`
   }
 `;
 
-// TODO: $lt: timestamp = ""
 const INCOMING_INTERVIEWS = gql`
-  query Incoming($now: timestamp) {
+  query IncomingInterviews($now: timestamp) {
     interviews(where: { date: { _gt: $now } }) {
       document
       date
@@ -63,10 +62,10 @@ const INCOMING_INTERVIEWS = gql`
     }
   }
 `;
-// TODO: $_gt: timestamp = ""
+
 const PAST_INTERVIEWS = gql`
-  {
-    getPastsInterviews {
+  query PastInterviews($now: timestamp) {
+    interviews(where: { date: { _lt: $now } }) {
       date
       document
     }

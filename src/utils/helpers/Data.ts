@@ -188,7 +188,7 @@ export default class Data {
 
   static fromAPItoPast(data: any) {
     let parsedData: IPastInterviewsData[] = [];
-    for (var elem of data.getPastsInterviews) {
+    for (var elem of data.interviews) {
       let parsed: IPastInterviewsData = {
         date: DateTime.formatDateToDay(DateTime.timestampToDate(elem.date)),
         document: Data.getDocumentUrl(elem.doc),
