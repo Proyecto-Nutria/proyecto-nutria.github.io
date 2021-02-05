@@ -1,8 +1,5 @@
-import React, { useContext, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
-
-import Auth from 'utils/helpers/Auth';
-import { UserContext } from 'utils/providers/UserProvider';
 
 import {
   LANDING_PATH,
@@ -22,7 +19,6 @@ import AppHeader from 'components/User/UserHeader';
 
 // Visitor
 import Landing from 'screens/Visitor/Landing';
-import Login from 'screens/Visitor/Login';
 
 //User
 import PastInterviews from 'screens/User/PastInterviews';
@@ -40,7 +36,7 @@ import InterviewerIncomingInterviews from 'screens/Interviewer/IncomingInterview
 import InterviewerEditProfile from 'screens/Interviewer/Profile';
 
 import MainFeedbackHelper from 'FeedbackHelper/MainFeedbackHelper.bs';
-import { useUserRole } from 'hooks/userHooks';
+import { useUserRole } from 'hooks/UserHooks';
 import { UserRole } from 'structure/types/userTypes';
 
 const Routes = () => {
@@ -51,7 +47,6 @@ const Routes = () => {
     <HashRouter>
       <Switch>
         <Route exact={true} path={LANDING_PATH} component={Landing} />
-        <Route path={LOGIN_PATH} component={Login} />
 
         {userRole == UserRole.Interviewee && (
           <Fragment>
