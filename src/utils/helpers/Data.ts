@@ -53,10 +53,11 @@ export default class Data {
     }
 
     for (const id in dynamicInputs.state) {
-      const intervals = [];
+      const intervals: any = [];
+      /*
       for (const interval of dynamicInputs.state[id].interval) {
         intervals.push(interval.replace(' PT', ''));
-      }
+      }*/
       let prev = mappedValues.availability;
       prev.push({
         //@ts-expect-error

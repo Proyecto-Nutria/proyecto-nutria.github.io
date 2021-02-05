@@ -9,12 +9,15 @@ import infoImage from 'assets/imgs/Visitor/info.png';
 import { useAuth0 } from '@auth0/auth0-react';
 
 const VisitorInfo = (props: any) => {
-  const { loginWithRedirect } = useAuth0();
+  const { logout, loginWithRedirect } = useAuth0();
 
   return (
     <UIBoxResponsive background="light-1">
       <button className="auth-button" onClick={() => loginWithRedirect({})}>
         Log in
+      </button>
+      <button className="auth-button" onClick={() => logout()}>
+        Log out
       </button>
       <TextSection
         gap={'2em'}

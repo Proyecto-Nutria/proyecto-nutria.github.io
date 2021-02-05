@@ -23,7 +23,7 @@ const UPDATE_INTERVIEWER = gql`
     updateInterviewer(interviewer: $interviewer)
   }
 `;
-// TODO: Create join to get the folder of the interviewee
+
 const VIEW_POOL = gql`
   {
     pools {
@@ -41,8 +41,10 @@ const VIEW_POOL = gql`
 `;
 
 const ENTER_POOL = gql`
-  mutation enterToPool($preferences: PoolInput!) {
-    enterToPool(preferences: $preferences)
+  mutation MyMutation($preferences: pools_insert_input!) {
+    insert_pools_one(object: $preferences) {
+      awaiting
+    }
   }
 `;
 

@@ -2,7 +2,6 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { useHistory } from 'react-router-dom';
 
-import { signOutWithGoogle } from 'services/firebaseService';
 import { HOME_PATH, LANDING_PATH, EDIT_PATH } from 'routes/paths';
 
 import { Button, Header, Nav, Anchor } from 'grommet';
@@ -30,14 +29,7 @@ const AppHeader = () => {
             })
           }
         />
-        <Button
-          secondary
-          label="Log Out"
-          onClick={() => {
-            signOutWithGoogle();
-            history.push(LANDING_PATH);
-          }}
-        />
+        <Button secondary label="Log Out" onClick={() => {}} />
       </Nav>
     </Header>
   );
