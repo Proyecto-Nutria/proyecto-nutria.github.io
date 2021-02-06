@@ -11,8 +11,12 @@ const CREATE_INTERVIEWEE = gql`
 
 // TODO: Test mutation, Missing GET_INTERVIEWER and Re Upload resume
 const UPDATE_INTERVIEWEE = gql`
-  mutation updateInterviewee($interviewee: IntervieweeUpdateInput!) {
-    updateInterviewee(interviewee: $interviewee)
+  mutation updateInterviewee($id: Int!, $information: interviewees_set_input!) {
+    update_interviewees(where: { id: { _eq: $id } }, _set: $information) {
+      returning {
+        school
+      }
+    }
   }
 `;
 
