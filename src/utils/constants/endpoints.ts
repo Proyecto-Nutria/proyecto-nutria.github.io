@@ -1,5 +1,13 @@
 import { gql } from '@apollo/client';
 
+const UPLOAD_FOLDER = gql`
+  mutation uploadFolder($resume: String!) {
+    upload_resume_and_create_folder(resume: $resume) {
+      id
+    }
+  }
+`;
+
 // TODO: Test mutation
 const CREATE_INTERVIEWEE = gql`
   mutation createInterviewee($information: interviewees_insert_input!) {
@@ -117,6 +125,7 @@ const CANCEL_INTERVIEW = gql`
 `;
 
 export {
+  UPLOAD_FOLDER,
   CREATE_INTERVIEWEE,
   UPDATE_INTERVIEWEE,
   CREATE_INTERVIEWER,
