@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 const UPLOAD_FOLDER = gql`
-  mutation uploadFolder($resume: String!) {
+  query getIdOfResume($resume: String!) {
     upload_resume_and_create_folder(resume: $resume) {
       id
     }
