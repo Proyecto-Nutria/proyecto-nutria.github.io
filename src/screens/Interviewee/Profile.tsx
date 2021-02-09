@@ -28,6 +28,9 @@ const IntervieweeEditProfile = () => {
   );*/
 
   const [uploadResume, { loading, data }] = useLazyQuery(UPLOAD_FOLDER);
+  const [createInterviewee, { error: mutationError }] = useMutation(
+    CREATE_INTERVIEWEE
+  );
 
   const [resume, setResume] = React.useState(null);
   const [school, setSchoolValue] = React.useState('');
@@ -69,8 +72,13 @@ const IntervieweeEditProfile = () => {
   if (loading) return <p>Loading ...</p>;
 
   if (data) {
-    console.log('File uploaded');
-    console.log(data.upload_resume_and_create_folder.id);
+    const information = {
+      folder: data.upload_resume_and_create_folder.id,
+      school: 'UNAM',
+    };
+    createInterviewee({
+      variables: { information },
+    });
   }
 
   const allData = {
