@@ -1,6 +1,6 @@
-import React from "react"
-import { Box } from "grommet"
+import React from 'react';
+import Container from '@material-ui/core/Container';
 
-const UIMainContainer = (props: any) => <Box {...props} />
+const UIMainContainer = (props: any) => <Container {...props} />;
 
-export default UIMainContainer
+export default UIMainContainer;
