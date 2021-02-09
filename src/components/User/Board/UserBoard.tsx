@@ -27,7 +27,6 @@ const UserBoard = (props: any) => {
   const classes = useStyles();
   return (
     <div>
-      <h2>{props.heading}</h2>
       {props.elements.map((information: any) => (
         <div className={classes.root}>
           <Paper className={classes.paper}>
