@@ -1,113 +1,45 @@
-import React from "react"
-import {
-  Heading,
-  Box,
-  Button,
-  Text,
-  DataTable,
-  CheckBox,
-  ColumnConfig,
-  Anchor,
-} from "grommet"
+import React from 'react';
+
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 import {
   IIncomingInterviewsData,
   IIncomingInterviewsProps,
-} from "structure/interfaces/IIncomingInterviews"
+} from 'structure/interfaces/IIncomingInterviews';
 
 const InterviewsIncoming = (props: IIncomingInterviewsProps) => {
-  const confirmationColumn: ColumnConfig<IIncomingInterviewsData>[] = props.isInterviewee
-    ? [
-        {
-          property: "confirm",
-          sortable: false,
-          render: ({ confirmed, id, timestamp }) => {
-            if (confirmed === false) {
-              return (
-                <Button
-                  label="confirm"
-                  onClick={() => props.confirmMutation(id, timestamp)}
-                />
-              )
-            }
-            return <></>
-          },
-        },
-      ]
-    : []
-
   return (
-    <Box pad="xlarge">
-      <Heading level="3">Incoming Interviews</Heading>
-      <Box
-        round
-        pad="large"
-        align="center"
-        background="main-box"
-        elevation="large"
-        alignSelf="center"
-        flex={{ shrink: 0 }}
-      >
-        <DataTable
-          size="medium"
-          data={props.data}
-          sort={props.sort}
-          onSort={props.onSort}
-          primaryKey={false}
-          columns={[
-            {
-              property: "date",
-              header: <Text>Day</Text>,
-            },
-            {
-              property: "time",
-              header: <Text>Hour (24 hrs)</Text>,
-            },
-            {
-              property: "document",
-              header: <Text>Document</Text>,
-              sortable: false,
-              render: ({ document }) =>
-                document !== "" ? (
-                  <Anchor
-                    color="brand"
-                    target="_blank"
-                    href={document}
-                    label="Link"
-                  />
-                ) : (
-                  <></>
-                ),
-            },
-            {
-              property: "place",
-              header: <Text>Place</Text>,
-            },
-            {
-              property: "score",
-              header: <Text>Score</Text>,
-            },
-            {
-              property: "confirmed",
-              header: <Text>Confirmed</Text>,
-              render: ({ confirmed }) => <CheckBox checked={confirmed} />,
-            },
-            ...confirmationColumn,
-            {
-              property: "cancel",
-              sortable: false,
-              render: ({ id, timestamp }) => (
-                <Button
-                  label="cancel"
-                  onClick={() => props.cancelMutation(id, timestamp)}
-                />
-              ),
-            },
-          ]}
-        />
-      </Box>
-    </Box>
-  )
-}
+    <TableContainer component={Paper}>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell align="right">Day</TableCell>
+            <TableCell align="right">Hour (24hrs)</TableCell>
+            <TableCell align="right">Document</TableCell>
+            <TableCell align="right">Place</TableCell>
+            <TableCell align="right">Confirmed</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {props.data.map(row => (
+            <TableRow key={row.name}>
+              <TableCell align="right">{row.date}</TableCell>
+              <TableCell align="right">{row.time}</TableCell>
+              <TableCell align="right">{row.document}</TableCell>
+              <TableCell align="right">{row.place}</TableCell>
+              <TableCell align="right">{row.confirmed}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+};
 
-export default InterviewsIncoming
+export default InterviewsIncoming;
