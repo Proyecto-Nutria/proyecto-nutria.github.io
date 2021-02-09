@@ -27,8 +27,8 @@ const InterviewsIncoming = (props: IIncomingInterviewsProps) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.data.map(row => (
-            <TableRow key={row.name}>
+          {props.data.map((row: any, id: any) => (
+            <TableRow key={id}>
               <TableCell align="right">{row.date}</TableCell>
               <TableCell align="right">{row.time}</TableCell>
               <TableCell align="right">{row.document}</TableCell>

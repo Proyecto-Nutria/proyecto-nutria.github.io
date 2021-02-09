@@ -20,8 +20,8 @@ const InterviewsPast = (props: any) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.data.map((row: any) => (
-            <TableRow key={row.name}>
+          {props.data.map((row: any, id: any) => (
+            <TableRow key={id}>
               <TableCell>{row.date}</TableCell>
               <TableCell align="right">
                 <a href={row.document}>

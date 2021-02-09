@@ -150,19 +150,23 @@ export default class Data {
         uid: elem.uid,
         name: elem.person,
         languages: elem.language,
-        interviewType: elem.type,
-        role: elem.role,
+        interviewType: elem.job,
+        role: elem.position,
         folder: Data.getFolderUrl(elem.folder),
       };
+      // TODO: Fix the problem with the new date format
+      // console.log(elem.availability);
       for (var available of elem.availability) {
         const day = available.day;
-        const capitalizedDay = day.charAt(0).toUpperCase() + day.slice(1);
+        if (typeof day !== 'undefined') {
+          const capitalizedDay = day.charAt(0).toUpperCase() + day.slice(1);
 
-        //@ts-expect-error
-        parsed[capitalizedDay] = available.interval.map((interval: any) => {
-          const intervals = interval.split('-');
-          return { startHour: intervals[0], endHour: intervals[1] };
-        });
+          //@ts-expect-error
+          parsed[capitalizedDay] = available.interval.map((interval: any) => {
+            const intervals = interval.split('-');
+            return { startHour: intervals[0], endHour: intervals[1] };
+          });
+        }
       }
       parsedData.push(parsed);
     }

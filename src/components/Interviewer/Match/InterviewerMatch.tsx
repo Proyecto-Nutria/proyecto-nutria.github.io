@@ -1,41 +1,39 @@
-import React from "react"
-import { Heading, Box } from "grommet"
+import React from 'react';
+import { Heading, Box } from 'grommet';
 
-import ModalConfirm from "components/Interviewer/Match/Modal/ModalConfirm"
-import MatchTable from "components/Interviewer/Match/Table/MatchTable"
+import ModalConfirm from 'components/Interviewer/Match/Modal/ModalConfirm';
+import MatchTable from 'components/Interviewer/Match/Table/MatchTable';
 
 const InterviewerMatch = (props: any) => (
   <Box pad="xlarge">
     <Heading>Match Interviewees</Heading>
-    <Box round background="main-box" elevation="large" pad="large" gap="medium">
-      <MatchTable
-        data={props.data.pool}
-        setAvailableHours={(newAvailableHours: any) =>
-          props.data.setAvailableHours(newAvailableHours)
+    <MatchTable
+      data={props.data.pool}
+      setAvailableHours={(newAvailableHours: any) =>
+        props.data.setAvailableHours(newAvailableHours)
+      }
+      setNewInterviewData={(updatedInterviewData: any) =>
+        props.data.setNewInterviewData(updatedInterviewData)
+      }
+      setShowConfirm={(newShowConfirm: Boolean) =>
+        props.data.setShowConfirm(newShowConfirm)
+      }
+    />
+
+    {props.data.showConfirm && (
+      <ModalConfirm
+        setShowConfirm={(newShowConfirm: Boolean) =>
+          props.data.setShowConfirm(newShowConfirm)
         }
         setNewInterviewData={(updatedInterviewData: any) =>
           props.data.setNewInterviewData(updatedInterviewData)
         }
-        setShowConfirm={(newShowConfirm: Boolean) =>
-          props.data.setShowConfirm(newShowConfirm)
-        }
+        pastInterviewData={props.data.newInterviewData}
+        availableHours={props.data.availableHours}
+        createInterview={props.data.createInterview}
       />
-
-      {props.data.showConfirm && (
-        <ModalConfirm
-          setShowConfirm={(newShowConfirm: Boolean) =>
-            props.data.setShowConfirm(newShowConfirm)
-          }
-          setNewInterviewData={(updatedInterviewData: any) =>
-            props.data.setNewInterviewData(updatedInterviewData)
-          }
-          pastInterviewData={props.data.newInterviewData}
-          availableHours={props.data.availableHours}
-          createInterview={props.data.createInterview}
-        />
-      )}
-    </Box>
+    )}
   </Box>
-)
+);
 
-export default InterviewerMatch
+export default InterviewerMatch;

@@ -27,8 +27,8 @@ const UserBoard = (props: any) => {
   const classes = useStyles();
   return (
     <div>
-      {props.elements.map((information: any) => (
-        <div className={classes.root}>
+      {props.elements.map((information: any, id: any) => (
+        <div className={classes.root} key={id}>
           <Paper className={classes.paper}>
             <Grid container spacing={3}>
               <img className={classes.img} src={information.img} />
