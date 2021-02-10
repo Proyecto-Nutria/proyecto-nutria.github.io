@@ -74,6 +74,7 @@ const IntervieweeMock = () => {
   const [company, setCompanyValue] = useState();
   const [schedule, dispatchSchedule] = useReducer(reducer, {});
 
+  //TODO: Change the state to methods to work with MaterialUI
   const staticInputs = [
     {
       label: 'Type Of Interview',
