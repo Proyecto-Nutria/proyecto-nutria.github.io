@@ -38,6 +38,7 @@
   "scripts": {
     "start": "react-scripts start",
     "start:chromium": "BROWSER=chromium yarn start",
+    "start:brave": "BROWSER=brave yarn start",
     "build": "yarn build:reason && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

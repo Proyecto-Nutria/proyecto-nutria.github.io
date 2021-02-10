@@ -90,7 +90,8 @@ const Routes = () => {
             <Route path={FEEDBACK_HELPER_PATH} component={FeedbackHelper} />
           </Fragment>
         )}
-        <Redirect to={LANDING_PATH} />
+        {/* TODO: find out how redirection works together with auth0 */}
+        {/* <Redirect to={LANDING_PATH} /> */}
       </Switch>
     </HashRouter>
   );

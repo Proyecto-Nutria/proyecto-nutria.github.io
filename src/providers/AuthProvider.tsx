@@ -1,17 +1,14 @@
-import React from "react"
-import { Auth0Provider } from "@auth0/auth0-react"
+import React from 'react';
+import { AppState, Auth0Provider } from '@auth0/auth0-react';
 
 const AuthProvider: React.FunctionComponent = ({ children }) => {
-  const onRedirectCallback = (appState: any) => {
-    //TODO: Create logic to redirect to corresponding screen
+  const onRedirectCallback = (appState: AppState) => {
     window.history.replaceState(
       {},
       document.title,
-      appState && appState.targetUrl
-        ? appState.targetUrl
-        : window.location.pathname
-    )
-  }
+      window.location.origin + '/#/home'
+    );
+  };
 
   //TODO:Use useEffect to get the user metadata
 
@@ -20,12 +17,12 @@ const AuthProvider: React.FunctionComponent = ({ children }) => {
       domain="nutria-project.us.auth0.com"
       clientId="lUu4je56sqk7yOnBJbb1ssvxSZOxby91"
       audience="https://nutria-core-backend.herokuapp.com/v1/graphql"
-      redirectUri={window.location.origin}
+      redirectUri={window.location.origin + '/#/home'}
       onRedirectCallback={onRedirectCallback}
     >
       {children}
     </Auth0Provider>
-  )
-}
+  );
+};
 
-export default AuthProvider
+export default AuthProvider;
