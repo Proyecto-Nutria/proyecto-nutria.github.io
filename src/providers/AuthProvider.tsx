@@ -2,7 +2,7 @@ import React from 'react';
 import { AppState, Auth0Provider } from '@auth0/auth0-react';
 
 const AuthProvider: React.FunctionComponent = ({ children }) => {
-  const onRedirectCallback = (appState: AppState) => {
+  const onRedirectCallback = (_: AppState) => {
     window.history.replaceState(
       {},
       document.title,
