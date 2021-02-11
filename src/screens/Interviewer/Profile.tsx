@@ -28,8 +28,6 @@ const InterviewerEditProfile = () => {
   const [about, setAboutValue] = React.useState('');
 
   const editInterviewer = () => {
-    console.log(appear, about);
-    /*
     if (update) {
       Data.callMutationAndRedirectToHome(
         modifyInterviewee,
@@ -42,7 +40,6 @@ const InterviewerEditProfile = () => {
         Data.fromInputToCreateInterviewer(appear, about),
         history
       )
-    }*/
   };
 
   const data = {
