@@ -33,13 +33,14 @@ const InterviewerEditProfile = () => {
         modifyInterviewee,
         Data.fromInputToUpdateInterviewee(appear, about),
         history
-      )
+      );
     } else {
       Data.callMutationAndRedirectToHome(
         modifyInterviewee,
         Data.fromInputToCreateInterviewer(appear, about),
         history
-      )
+      );
+    }
   };
 
   const data = {
