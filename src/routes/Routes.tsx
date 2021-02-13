@@ -91,7 +91,7 @@ const Routes = () => {
           </Fragment>
         )}
         {/* TODO: find out how redirection works together with auth0 */}
-        {/* <Redirect to={LANDING_PATH} /> */}
+        <Redirect to={LANDING_PATH} />
       </Switch>
     </HashRouter>
   );
