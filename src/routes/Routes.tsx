@@ -95,6 +95,7 @@ const Routes = () => {
             </Switch>
           </Fragment>
         )}
+        {/*TODO: use a 404 page instead of Landing when a route is not found*/}
         <Route component={Landing} />
       </Switch>
     </HashRouter>
