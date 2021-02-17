@@ -51,19 +51,21 @@ const Routes = () => {
         {userRole == UserRole.Interviewee && (
           <Fragment>
             <AppHeader />
+            <Switch>
+              <Route path={HOME_PATH} component={IntervieweeMain} />
+              <Route path={WEE_MOCK_PATH} component={IntervieweeMock} />
+              <Route
+                path={WEE_INCOMING_INTERVIEWS_PATH}
+                component={IntervieweeIncomingInterviews}
+              />
+              <Route
+                path={USER_PAST_INTERVIEWS_PATH}
+                component={PastInterviews}
+              />
 
-            <Route path={HOME_PATH} component={IntervieweeMain} />
-            <Route path={WEE_MOCK_PATH} component={IntervieweeMock} />
-            <Route
-              path={WEE_INCOMING_INTERVIEWS_PATH}
-              component={IntervieweeIncomingInterviews}
-            />
-            <Route
-              path={USER_PAST_INTERVIEWS_PATH}
-              component={PastInterviews}
-            />
-
-            <Route path={EDIT_PATH} component={IntervieweeEditProfile} />
+              <Route path={EDIT_PATH} component={IntervieweeEditProfile} />
+              <Redirect to={LANDING_PATH} push={true} />
+            </Switch>
           </Fragment>
         )}
 
@@ -71,27 +73,29 @@ const Routes = () => {
           <Fragment>
             <AppHeader />
 
-            <Route path={HOME_PATH} component={InterviewerMain} />
-            <Route
-              path={WER_MATCH_PATH}
-              component={InterviewerMatchInterview}
-            />
-            <Route
-              path={WER_INCOMING_INTERVIEWS_PATH}
-              component={InterviewerIncomingInterviews}
-            />
-            <Route
-              path={USER_PAST_INTERVIEWS_PATH}
-              component={PastInterviews}
-            />
+            <Switch>
+              <Route path={HOME_PATH} component={InterviewerMain} />
+              <Route
+                path={WER_MATCH_PATH}
+                component={InterviewerMatchInterview}
+              />
+              <Route
+                path={WER_INCOMING_INTERVIEWS_PATH}
+                component={InterviewerIncomingInterviews}
+              />
+              <Route
+                path={USER_PAST_INTERVIEWS_PATH}
+                component={PastInterviews}
+              />
 
-            <Route path={EDIT_PATH} component={InterviewerEditProfile} />
+              <Route path={EDIT_PATH} component={InterviewerEditProfile} />
 
-            <Route path={FEEDBACK_HELPER_PATH} component={FeedbackHelper} />
+              <Route path={FEEDBACK_HELPER_PATH} component={FeedbackHelper} />
+              <Redirect to={LANDING_PATH} push={true} />
+            </Switch>
           </Fragment>
         )}
-        {/* TODO: find out how redirection works together with auth0 */}
-        <Redirect to={LANDING_PATH} />
+        <Route component={Landing} />
       </Switch>
     </HashRouter>
   );
