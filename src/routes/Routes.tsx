@@ -36,17 +36,35 @@ import InterviewerIncomingInterviews from 'screens/Interviewer/IncomingInterview
 import InterviewerEditProfile from 'screens/Interviewer/Profile';
 
 import MainFeedbackHelper from 'FeedbackHelper/MainFeedbackHelper.bs';
-import { useUserRole } from 'hooks/UserHooks';
+import { useIsFirstLogin, useUserRole } from 'hooks/UserHooks';
 import { UserRole } from 'structure/types/userTypes';
 
 const Routes = () => {
   const userRole = useUserRole();
+  const isFirstLogin = useIsFirstLogin();
   const FeedbackHelper = MainFeedbackHelper.make;
 
   return (
     <HashRouter>
       <Switch>
         <Route exact={true} path={LANDING_PATH} component={Landing} />
+
+        {isFirstLogin && (
+          <Fragment>
+            <AppHeader />
+            <Switch>
+              <Route
+                path={EDIT_PATH}
+                component={
+                  userRole == UserRole.Interviewee
+                    ? IntervieweeEditProfile
+                    : InterviewerEditProfile
+                }
+              />
+              <Redirect to={EDIT_PATH} push={true} />
+            </Switch>
+          </Fragment>
+        )}
 
         {userRole == UserRole.Interviewee && (
           <Fragment>

@@ -16,3 +16,12 @@ export function useUserRole(): UserRole {
     return UserRole.Visitor;
   }
 }
+
+export function useIsFirstLogin(): boolean {
+  const { isAuthenticated, user } = useAuth0();
+  if (isAuthenticated) {
+    return user['https://hasura.io/jwt/claims'].firstTime;
+  } else {
+    return false;
+  }
+}
