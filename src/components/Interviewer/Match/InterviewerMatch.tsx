@@ -1,39 +1,40 @@
 import React from 'react';
-import { Heading, Box } from 'grommet';
+import Box from '@material-ui/core/Box';
 
-import ModalConfirm from 'components/Interviewer/Match/Modal/ModalConfirm';
-import MatchTable from 'components/Interviewer/Match/Table/MatchTable';
+import { DataGrid } from '@material-ui/data-grid';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 const InterviewerMatch = (props: any) => (
-  <Box pad="xlarge">
-    <Heading>Match Interviewees</Heading>
-    <MatchTable
-      data={props.data.pool}
-      setAvailableHours={(newAvailableHours: any) =>
-        props.data.setAvailableHours(newAvailableHours)
-      }
-      setNewInterviewData={(updatedInterviewData: any) =>
-        props.data.setNewInterviewData(updatedInterviewData)
-      }
-      setShowConfirm={(newShowConfirm: Boolean) =>
-        props.data.setShowConfirm(newShowConfirm)
-      }
-    />
-
-    {props.data.showConfirm && (
-      <ModalConfirm
-        setShowConfirm={(newShowConfirm: Boolean) =>
-          props.data.setShowConfirm(newShowConfirm)
-        }
-        setNewInterviewData={(updatedInterviewData: any) =>
-          props.data.setNewInterviewData(updatedInterviewData)
-        }
-        pastInterviewData={props.data.newInterviewData}
-        availableHours={props.data.availableHours}
-        createInterview={props.data.createInterview}
-      />
-    )}
-  </Box>
+  <TableContainer component={Paper}>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Candidate</TableCell>
+            <TableCell align="right">Resume</TableCell>
+            <TableCell align="right">Availability</TableCell>
+            <TableCell align="right">Header&nbsp;(g)</TableCell>
+            <TableCell align="right">Header&nbsp;(g)</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+        {props.data.pool.map((row: any, id: any) => (
+            <TableRow key={row.id}>
+              <TableCell component="th" scope="row">
+              {row.name} {row.languages} {row.interviewType} - {row.role}
+              </TableCell>
+              <TableCell align="right">{row.folder}</TableCell>
+              <TableCell align="right">{row.availability}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
 );
 
 export default InterviewerMatch;

@@ -63,4 +63,21 @@ const MatchTable = (props: {
   );
 };
 
+/*
+Usage:
+
+<MatchTable
+      data={props.data.pool}
+      setAvailableHours={(newAvailableHours: any) =>
+        props.data.setAvailableHours(newAvailableHours)
+      }
+      setNewInterviewData={(updatedInterviewData: any) =>
+        props.data.setNewInterviewData(updatedInterviewData)
+      }
+      setShowConfirm={(newShowConfirm: Boolean) =>
+        props.data.setShowConfirm(newShowConfirm)
+      }
+    />
+*/
+
 export default MatchTable;
