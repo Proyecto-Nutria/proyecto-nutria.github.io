@@ -1,7 +1,11 @@
 import React from "react"
 
-import { Form, Box, Select, Button, Heading } from "grommet"
-import { DocumentUpload } from "grommet-icons"
+import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
+import Button from '@material-ui/core/Button';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from '@material-ui/core/InputLabel';
 
 const IntervieweeProfile = (props: any) => {
   const mutationFunction = props.mutation
@@ -15,22 +19,30 @@ const IntervieweeProfile = (props: any) => {
   }
 
   return (
-    <Box pad="xlarge">
-      <Heading>Nutri Profile</Heading>
-      <Box round background="light-1" pad="large">
-        <Form
+    <Container >
+        <form
           onSubmit={event => {
             event.preventDefault()
             mutationFunction()
           }}
         >
-          <Box direction="column" gap="small">
-            <Select
-              placeholder="School"
-              options={props.data.schoolsOptions}
-              value={props.data.school}
-              onChange={({ option }) => props.data.setSchoolValue(option)}
-            />
+          <Box>
+
+ 
+          <InputLabel id="demo-simple-select-label">School</InputLabel>
+          <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={props.data.school}
+          onChange={ option => props.data.setSchoolValue(option)}
+        >
+
+        {props.data.schoolsOptions.map((name: any) => (
+                      <MenuItem key={name} value={name}>
+                        {name}
+                      </MenuItem>
+                    ))}
+        </Select>
 
             <input
               type="file"
@@ -43,17 +55,17 @@ const IntervieweeProfile = (props: any) => {
             />
 
             <Button
-              alignSelf="start"
-              icon={<DocumentUpload size="medium" />}
-              label="Upload Resume"
               onClick={uploadClick}
-            />
+          >
+            Upload
+            </Button>
 
-            <Button alignSelf="start" type="submit" label="Submit" primary />
+            <Button type="submit">
+              Submit
+            </Button>
           </Box>
-        </Form>
-      </Box>
-    </Box>
+        </form >
+      </Container>
   )
 }
 
