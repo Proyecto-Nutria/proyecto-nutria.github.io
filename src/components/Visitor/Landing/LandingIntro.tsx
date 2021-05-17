@@ -68,7 +68,7 @@ const VisitorIntro = (props: any) => {
                     </strong>
                   </Typography>
                 )}
-              <img src={'/images/Intro/intro_header.webp'} className={classes.phone} alt="illustration" />
+              <img src={'/images/Intro/intro_header.png'} className={classes.phone} alt="illustration" />
             </div>
           </div>
         </Grid>

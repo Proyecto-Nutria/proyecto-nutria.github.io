@@ -1,5 +1,5 @@
 import { makeStyles, fade } from '@material-ui/core/styles';
-import footerBackground from './../../../assets/imgs/Visitor/footer-background.webp';
+import footerBackground from './../../../assets/imgs/Visitor/footer-background.png';
 
 const footerStyles = makeStyles(theme => ({
   link: {
