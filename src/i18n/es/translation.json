@@ -1,0 +1,89 @@
+{
+    "header":{
+        "intro": "Bienvenido a",
+        "phrase": "Una comunidad para ayudarte a alcanzar tus metas y desarrollarte"
+    },
+    "about":{
+        "who":{
+            "title": "¿Quiénes somos?",
+            "text": "Somos un proyecto comunitario que busca motivar y ayudar a más personas que busquen trabajar en las Big Tech Companies como Microsoft, Facebook, Google, etc. Tenemos la filosofía de que cualquier persona con ganas y motivación puede conseguirlo, así que buscamos guiarlos y ayudarlos a practicar todo lo posible para que más personas tengan la oportunidad para que se desarrollen profesional y personalmente."
+        },
+        "mission":{
+            "title": "Misión",
+            "text": "Empoderar a los talentos emergentes de América Latina para que se conviertan en los próximos pasantes en las grandes empresas de tecnología." 
+        },
+        "why":{
+            "title": "¿Por qué lo hacemos?",
+            "text": "Nuestra historia comienza en 2019, convencidos de que nuestros compañeros y amigos tenían la capacidad de conseguir sus trabajos de ensueño con el apoyo y la guía necesaria. Proyecto Nutria nace ahí, queremos que sean más nuestros amigos que sean capaces de alcanzar sus metas y sueños. ÚNETE A NUTRIA Y CONSIGUE TU INTERN!" 
+        }
+    },
+    "contributors":{
+        "title": "Colaboradores",
+        "text": "Gracias a toda la gente que hace posible esto",
+        "team": "Nuestro equipo"
+    },
+    "sections":{
+        "title": "Secciones",
+        "activities":{
+            "workshop":{
+                "title": "Talleres",
+                "description": "Desde nuestra experiencia hemos preparados distintos talleres útiles para ustedes, dos veces al año les enseñamos cómo es el proceso de entrevistas en las grandes compañías tecnológicas y cómo hacerlo bien en ellas. Otro de ellos está enfocado en ser una mentoría durante su internship, desde qué esperar hasta tips para triunfar durante el mismo. El último es acerca System Design, un tema especialmente útil para los interesados en posiciones de tiempo completo."
+            },
+            "webinar":{
+                "title": "Conferencias",
+                "description": "Constantemente tenemos pláticas con personas de la industria para compartir sus experiencias, recomendaciones, responder sus preguntas para motivarlos y ayudarlos en su presentación."
+            },
+            "resume":{
+                "title": "Revisión Resume",
+                "description": "Si quieres otro punto de vista sobre tu resume, mándanoslo. Será un placer ayudarte con nuestra perspectiva, sólo recuerda que esto es personal y las recomendaciones que damos son opcionales, puedes o no tomarlas."
+            },
+            "mock":{
+                "title": "Entrevistas Práctica",
+                "description": "Puedes agendar entrevistas para practicar con nosotros antes de tu entrevista real, nuestros entrevistadores son personas que trabajan o han trabajado en las grandes compañías tecnológicas por lo tanto conocen el proceso, así que ellos pueden darte retroalimentación adecuada acerca de tu rendimiento en las entrevistas."
+            },
+            "english":{
+                "title": "Club Inglés",
+                "description": "Somos conscientes de que a veces no es posible practicar el inglés, es por ello que quisimos crear diferentes actividades para ayudarte. Tenemos un Club de Conversación donde charlamos sobre temas al azar, también tenemos pláticas 1:1 con nosotros si eres alguien más tímido y quieres una charla privada, y revisiones de entrevistas donde nos enfocamos en generar anotaciones acerca de los errores en su comunicación en inglés."
+            },
+            "community":{
+                "title": "Comunidad",
+                "description": "La parte más importante: somos una comunidad donde todos queremos apoyarnos, las personas que la conforman son amables y están dispuestos a responder tus preguntas, colaborar contigo, compartir información útil que será útil para tu desarrollo profesional / personal, además de organizar más actividades que les ayudarán en su preparación."
+            }
+        }
+    },
+    "progress":{
+        "title": "Personas Ayudadas",
+        "subtitle": "Algunos datos acerca de nosotros",
+        "count1": "Entrevistas",
+        "count2": "Resumes",
+        "count3_1": "Personas",
+        "count3_2": "dentro",
+        "quote": "Lo más importante: ¡Es gratis!"
+    },
+    "faq": {
+        "title": "Preguntas frecuentes",
+        "text": "¿Tienes alguna otra pregunta? ¡No dudes en preguntarnos a tráves de nuestros medios de contacto!",
+        "questions":[
+            {
+                "question": "Pregunta #1", 
+                "answer": "Respuesta #1"
+            },
+            {
+                "question": "Pregunta #2", 
+                "answer": "Respuesta #2"
+            },
+            {
+                "question": "Pregunta #3", 
+                "answer": "Respuesta #3"
+            }
+        ]
+    },
+    "contact":{
+        "copyright": "Todos los Derechos Reservados",
+        "text": "Contáctanos:\n",
+        "sections":{
+            "0": "Recursos",
+            "1": "Redes Sociales"
+        }
+    }
+}

@@ -22,7 +22,8 @@
     "baseUrl": "src"
   },
   "include": [
-    "src"
+    "src",
+    "@types",
   ],
   "exclude": ["node_modules/clipboard-polyfill/*", "**/*.spec.ts"]
 }

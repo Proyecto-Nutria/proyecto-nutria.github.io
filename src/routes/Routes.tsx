@@ -39,7 +39,7 @@ import MainFeedbackHelper from 'FeedbackHelper/MainFeedbackHelper.bs';
 import { useIsFirstLogin, useUserRole } from 'hooks/UserHooks';
 import { UserRole } from 'structure/types/userTypes';
 
-const Routes = () => {
+const Routes = ({ onToggleDark }: { onToggleDark: Function }) => {
   const userRole = useUserRole();
   const isFirstLogin = useIsFirstLogin();
   const FeedbackHelper = MainFeedbackHelper.make;
@@ -47,7 +47,9 @@ const Routes = () => {
   return (
     <HashRouter>
       <Switch>
-        <Route exact={true} path={LANDING_PATH} component={Landing} />
+        <Route exact={true} path={LANDING_PATH}>
+          <Landing onToggleDark={onToggleDark}/>
+        </Route>
 
         {isFirstLogin && (
           <Fragment>

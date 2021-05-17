@@ -1,32 +1,38 @@
-import React from 'react';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
-import { purple } from '@material-ui/core/colors';
+import React, { useState } from 'react';
+import {
+  ThemeProvider,
+  createMuiTheme,
+} from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 import AuthProvider from 'providers/AuthProvider';
 import GraphProvider from 'providers/GraphProvider';
 import Routes from 'routes/Routes';
+import './i18n/config';
 
-// TODO: Migrate the theme to a proper file
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      // Purple and green play nicely together.
-      main: purple[500],
-    },
-    secondary: {
-      // This is green.A700 as hex.
-      main: '#11cb5f',
-    },
-  },
-});
+import themeOptions from './assets/themes/yaos';
 
 const App: React.FunctionComponent = () => {
+  const [theme, setTheme] = useState({
+    ...themeOptions(typeof Storage !== 'undefined' ? (localStorage.getItem('themeMode') === 'light' ? 'light' : 'dark') : 'light'),
+  });
+
+  const toggleDarkTheme = () => {
+    const newPaletteType = theme.palette?.type === 'light' ? 'dark' : 'light';
+    localStorage.setItem('themeMode', theme.palette?.type === 'light' ? 'dark' : 'light');
+    setTheme({
+      ...themeOptions(newPaletteType),
+    });
+  };
+
+  const muiTheme = createMuiTheme(theme);
+
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={muiTheme}>
       <AuthProvider>
         <GraphProvider>
-          <Routes />
+          <CssBaseline />
+          <Routes onToggleDark={toggleDarkTheme}/>
         </GraphProvider>
       </AuthProvider>
     </ThemeProvider>
