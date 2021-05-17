@@ -59,7 +59,7 @@ function VisitorFAQ() {
                     </svg>
                   </div>
                 </div>
-                <img src='/images/Intro/faq.png' alt="illustration" />
+                <img src='/images/Intro/faq.webp' alt="illustration" />
               </div>
             </Hidden>
           </Grid>

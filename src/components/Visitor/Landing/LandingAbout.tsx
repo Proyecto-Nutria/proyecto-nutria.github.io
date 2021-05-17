@@ -13,17 +13,17 @@ import { useTranslation } from 'react-i18next';
 
 const sliderData = [
   {
-    image: '/images/About/about-1.png',
+    image: '/images/About/about-1.webp',
     namespace: 'who',
     title: 'Who we are?',
   },
   {
-    image: '/images/About/about-3.png',
+    image: '/images/About/about-3.webp',
     namespace: 'mission',
     title: 'Our Mission',
   },
   {
-    image: '/images/About/about-2.png',
+    image: '/images/About/about-2.webp',
     namespace: 'why',
     title: 'Why do we do this?',
   },
