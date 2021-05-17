@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import pattern from './../../../assets/imgs/Visitor/about-background.png';
+import pattern from './../../../assets/imgs/Visitor/about-background.webp';
 
 const aboutStyles = makeStyles(theme => ({
   root: {

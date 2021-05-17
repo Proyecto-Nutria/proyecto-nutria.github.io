@@ -41,7 +41,7 @@ const progressStyles = makeStyles(theme => ({
     }
   },
   bgImg: {
-    backgroundImage: `url('/images/Intro/progress_bg.png')`,
+    backgroundImage: `url('/images/Intro/progress_bg.webp')`,
   },
   numsWrap: {
     alignSelf: 'center',
