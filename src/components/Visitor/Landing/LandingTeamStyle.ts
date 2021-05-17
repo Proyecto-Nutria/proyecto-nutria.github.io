@@ -84,12 +84,11 @@ const teamStyles = makeStyles(theme => ({
     '& figure': {
       borderRadius: '0 0 50px 0',
       overflow: 'hidden',
-      height: 170,
+      height: 200,
       margin: 0,
       marginBottom: theme.spacing(3),
       '& img': {
-        height: '100%',
-        minWidth: '100%'
+        width: '100%'
       }
     },
     '& $button': {
@@ -105,7 +104,7 @@ const teamStyles = makeStyles(theme => ({
       borderRadius: '20px 0 0 0'
     },
     '& h6': {
-      marginBottom: theme.spacing(2),
+      marginBottom: theme.spacing(1.2),
     },
     '& p': {
       height: 70,

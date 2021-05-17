@@ -8,64 +8,76 @@ export const MENU_SECTIONS = [
 
 export const TEAM = [
   {
-      "name": "Person1",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "avatar": "/images/Intro/avatar.svg",
-      "link": "https://www.linkedin.com/company/proyectonutria/"
+      "name": "Manuel Calva",
+      "text": "Student of Computer Systems and Data Science enthusiast. At the moment, dummy programmer looking to improve, voice clips hater in my free time.",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C4E03AQHLsRh2qSwk0g/profile-displayphoto-shrink_800_800/0/1590902040599?e=1626912000&v=beta&t=Gh1DXkr-V8lxY0U8fxfzwY_9-MDOXy_8vTX1IQgQyHY",
+      "link": "https://www.linkedin.com/in/jmch7795/"
   },
   {
-      "name": "Person2",
-      "text": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "avatar": "/images/Intro/avatar.svg",
-      "link": "https://www.linkedin.com/company/proyectonutria/"
+      "name": "Sergio Sánchez",
+      "text": "",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C5603AQEXiPV4l9CWbg/profile-displayphoto-shrink_800_800/0/1615350184418?e=1626912000&v=beta&t=U2K4zIG4CF_aPkqsgUpqwPehvZj8OMxqXJFMl6uqklg",
+      "link": "https://media-exp1.licdn.com/dms/image/C5603AQEXiPV4l9CWbg/profile-displayphoto-shrink_800_800/0/1615350184418?e=1626912000&v=beta&t=U2K4zIG4CF_aPkqsgUpqwPehvZj8OMxqXJFMl6uqklg"
   },
   {
-      "name": "Person3",
-      "text": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-      "avatar": "/images/Intro/avatar.svg",
-      "link": "https://www.linkedin.com/company/proyectonutria/"
+      "name": "Abigail Nicolás",
+      "text": "",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C5603AQE1MiiS5R402g/profile-displayphoto-shrink_800_800/0/1608237735806?e=1626912000&v=beta&t=ZTE1Elf7alyB-pLGoA1PSoidWJvCRV0bIidIAFuUW1E",
+      "link": "https://www.linkedin.com/in/abigail-nic-say/"
   },
   {
-      "name": "Person4",
-      "text": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "avatar": "/images/Intro/avatar.svg",
-      "link": "https://www.linkedin.com/company/proyectonutria/"
+      "name": "Erick Vargas",
+      "text": "",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C4E03AQHopZRUQcqFfA/profile-displayphoto-shrink_800_800/0/1539406326900?e=1626912000&v=beta&t=UMHkXJVwUbLLtVWAlzlHf8069YsWXW99YUkdOU4c4W8",
+      "link": "https://www.linkedin.com/in/eerick1997/"
   },
   {
-      "name": "Person5",
-      "text": "Vestibulum faucibus eget erat eget pretium. Donec commodo convallis eget suscipit orci.",
-      "avatar": "/images/Intro/avatar.svg",
-      "link": "https://www.linkedin.com/company/proyectonutria/"
+      "name": "Roberto Reyes",
+      "text": "I'm very interested in data engineering and distributed algorithms. Besides my technical background I also used to work as a user experience designer, which gives me a good understanding of user interface design.",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C4E03AQHa8-51aSRcWw/profile-displayphoto-shrink_800_800/0/1587060654597?e=1626912000&v=beta&t=Iq0vS0GNIHSNoX4kFkHIqA1riv89o0gL3dYeIvhAAbY",
+      "link": "https://www.linkedin.com/in/roberto-reyes-fragoso/"
   },
   {
-      "name": "Person6",
-      "text": "Vestibulum faucibus eget erat eget pretium. Donec commodo convallis eget suscipit orci.",
-      "avatar": "/images/Intro/avatar.svg",
-      "link": "https://www.linkedin.com/company/proyectonutria/"
+      "name": "Andrés Rodarte",
+      "text": "I am a Computer Systems Engineering Student from México. I like to develop web apps for all kinds of solutions from games to personal blogs.",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C5603AQGGQxOAvVUIxg/profile-displayphoto-shrink_800_800/0/1620963319318?e=1626912000&v=beta&t=C2FhUvlokKNuLAsj_9bxqmsYZsE7HN-1JeEUFnxlgcw",
+      "link": "https://www.linkedin.com/in/andr%C3%A9s-rodarte-l%C3%B3pez/"
   },
   {
-      "name": "Person7",
-      "text": "Vestibulum faucibus eget erat eget pretium. Donec commodo convallis eget suscipit orci.",
-      "avatar": "/images/Intro/avatar.svg",
-      "link": "https://www.linkedin.com/company/proyectonutria/"
+      "name": "Duhart Jiménez",
+      "text": "",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C4E03AQE77RphSZuEXg/profile-displayphoto-shrink_800_800/0/1598132634291?e=1626912000&v=beta&t=9z8-ZmhVPla4lTd7S6PkGePHmRWrAqlFtjUXnOVFEL4",
+      "link": "https://www.linkedin.com/in/vhjd"
   },
   {
-      "name": "Person8",
-      "text": "Vestibulum faucibus eget erat eget pretium. Donec commodo convallis eget suscipit orci.",
-      "avatar": "/images/Intro/avatar.svg",
-      "link": "https://www.linkedin.com/company/proyectonutria/"
+      "name": "Carlos Paredes",
+      "text": "Computer Systems Engineering student that likes helping others build their programming and social skills throught many growing student-based ogranizations. Aiming to be a global life changing factor building software that everyone can use regardless their capabilities.",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C4E03AQFx8xWkMkX2pw/profile-displayphoto-shrink_800_800/0/1613021671072?e=1626912000&v=beta&t=8x5unH57rt7TiX4MuNtvRyEmQdW5YeBfDP4_oGrDiis",
+      "link": "https://www.linkedin.com/in/carlosparedescid"
   },
   {
-      "name": "Person9",
-      "text": "Vestibulum faucibus eget erat eget pretium. Donec commodo convallis eget suscipit orci.",
-      "avatar": "/images/Intro/avatar.svg",
-      "link": "https://www.linkedin.com/company/proyectonutria/"
+      "name": "Óscar Rosas",
+      "text": "Computer Science student at UNAM | Computer Systems at ESCOM IPN. Former Software Engineer Intern at Facebook; Incoming SWE intern at Microsoft.",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C4E03AQHRwtSCl3rb2w/profile-displayphoto-shrink_800_800/0/1619201646943?e=1626912000&v=beta&t=xyqi5_Kk2RGY5BOYapPAeE4nMnKterQO230p8C1fvzM",
+      "link": "https://www.linkedin.com/in/soyoscarrh"
   },
   {
-      "name": "Person10",
-      "text": "Vestibulum faucibus eget erat eget pretium. Donec commodo convallis eget suscipit orci.",
-      "avatar": "/images/Intro/avatar.svg",
-      "link": "https://www.linkedin.com/company/proyectonutria/"
+      "name": "Daniela Vera",
+      "text": "",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C5603AQHyX3lRB8Ijzg/profile-displayphoto-shrink_800_800/0/1613790705206?e=1626912000&v=beta&t=443BH5A6LT0JcIlpv1QXiemlVsvLRtLCGVhKdmTNKhw",
+      "link": "https://www.linkedin.com/in/daniela-vera-garc%C3%ADa-70766a207/"
+  },
+  {
+      "name": "Alberto Esquivel",
+      "text": "",
+      "avatar": "https://scontent-dfw5-1.xx.fbcdn.net/v/t1.6435-9/72650239_2495946783785482_1474312971063656448_n.jpg?_nc_cat=103&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeG8-MH7zHGb6CEnoaJjAY4poOIoHGAGhNmg4igcYAaE2cqmQwUiufbUdsUR1DQwxhc&_nc_ohc=sHg2kBk3-mUAX-LY6aK&_nc_ht=scontent-dfw5-1.xx&oh=8a470b010ae60f0903661eceeb077427&oe=60C91ACA",
+      "link": "https://www.linkedin.com/in/aesquivelv/"
+  },
+  {
+      "name": "Juan Carlos Medina",
+      "text": "",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C4E03AQG7qxUxpSNW4A/profile-displayphoto-shrink_800_800/0/1597694026107?e=1626912000&v=beta&t=HdtoyJmqRGrlaO9kyfbm2DiwPATFEmMDKroBiNdb77I",
+      "link": "https://www.linkedin.com/in/medinajcarlos/"
   }
 ];
 
