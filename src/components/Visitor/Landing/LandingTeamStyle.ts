@@ -117,6 +117,9 @@ const contributorsStyles = makeStyles(theme => ({
     padding: theme.spacing(0, 2.5)
   },
   button: {},
+  linkButton: {
+    color: 'white',
+  },
   iconDeco: {
     [theme.breakpoints.up('lg')]: {
       width: 350,

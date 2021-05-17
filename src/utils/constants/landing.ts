@@ -11,61 +11,61 @@ export const TEAM = [
       "name": "Person1",
       "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "link": "https://www.linkedin.com/company/proyectonutria/"
   },
   {
       "name": "Person2",
       "text": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "link": "https://www.linkedin.com/company/proyectonutria/"
   },
   {
       "name": "Person3",
       "text": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
       "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "link": "https://www.linkedin.com/company/proyectonutria/"
   },
   {
       "name": "Person4",
       "text": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "link": "https://www.linkedin.com/company/proyectonutria/"
   },
   {
       "name": "Person5",
       "text": "Vestibulum faucibus eget erat eget pretium. Donec commodo convallis eget suscipit orci.",
       "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "link": "https://www.linkedin.com/company/proyectonutria/"
   },
   {
       "name": "Person6",
       "text": "Vestibulum faucibus eget erat eget pretium. Donec commodo convallis eget suscipit orci.",
       "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "link": "https://www.linkedin.com/company/proyectonutria/"
   },
   {
       "name": "Person7",
       "text": "Vestibulum faucibus eget erat eget pretium. Donec commodo convallis eget suscipit orci.",
       "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "link": "https://www.linkedin.com/company/proyectonutria/"
   },
   {
       "name": "Person8",
       "text": "Vestibulum faucibus eget erat eget pretium. Donec commodo convallis eget suscipit orci.",
       "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "link": "https://www.linkedin.com/company/proyectonutria/"
   },
   {
       "name": "Person9",
       "text": "Vestibulum faucibus eget erat eget pretium. Donec commodo convallis eget suscipit orci.",
       "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "link": "https://www.linkedin.com/company/proyectonutria/"
   },
   {
       "name": "Person10",
       "text": "Vestibulum faucibus eget erat eget pretium. Donec commodo convallis eget suscipit orci.",
       "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "link": "https://www.linkedin.com/company/proyectonutria/"
   }
 ];
 

@@ -7,6 +7,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
+import Link from "@material-ui/core/Link";
 import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 import PrevIcon from '@material-ui/icons/ArrowBack';
@@ -20,7 +21,7 @@ type teamType = {
   name: string;
   text: string;
   avatar: string;
-  title: string;
+  link: string;
 };
 
 const VisitorTeam = () => {
@@ -87,7 +88,9 @@ const VisitorTeam = () => {
                     <Typography component="p">{item.text}</Typography>
                   </div>
                   <Button variant="contained" color="secondary" className={classes.button}>
-                    {"random text"}
+                    <Link href={item.link} target="_blank" rel="noreferrer" className={classes.linkButton}>
+                    {"Social Media"}
+                    </Link>
                   </Button>
                 </Paper>
               </div>
