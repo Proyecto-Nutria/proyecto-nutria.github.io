@@ -10,10 +10,10 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Avatar from '@material-ui/core/Avatar';
-import { COLLABORATORS } from './../../../utils/constants/landing';
+import { COLLABORATORS } from '../../../utils/constants/landing';
 import { useTranslation } from 'react-i18next';
 import { useText } from './LandingCommonStyle';
-import useStyle from './LandingContributorsStyle';
+import useStyle from './LandingCollaboratorsStyle';
 
 type collaboratorType = {
   name: string;
@@ -42,7 +42,7 @@ const getCollaborators = () => {
   return result;
 };
 
-const VisitorContributor = () => {
+const VisitorCollaborator = () => {
   const classes = useStyle();
   const text = useText();
   const theme = useTheme();
@@ -83,12 +83,12 @@ const VisitorContributor = () => {
         <div className={classes.title}>
           <Typography variant="h3">
             <strong>
-                {t('contributors.title')}
+                {t('collaborators.title')}
             </strong>
           </Typography>
         </div>
         <Typography className={text.subtitle2} align="center" component="p">
-            {t('contributors.text')}
+            {t('collaborators.text')}
         </Typography>
         <Grid container spacing={6} justify="center">
           <Grid item md={10} xs={12}>
@@ -147,4 +147,4 @@ const VisitorContributor = () => {
     </div>
 )}
 
-export default VisitorContributor
+export default VisitorCollaborator

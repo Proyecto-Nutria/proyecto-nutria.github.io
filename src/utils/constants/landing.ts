@@ -1,6 +1,6 @@
 export const MENU_SECTIONS = [
   { name: 'About', path: 'about'},
-  { name: 'Contributors', path: 'contributors'},
+  { name: 'Collaborators', path: 'Collaborators'},
   { name: 'Sections', path: 'sections'},
   { name: 'Progress', path: 'progress'},
   { name: 'FAQ', path: 'faq'},
@@ -71,123 +71,93 @@ export const TEAM = [
 
 export const COLLABORATORS = [
   {
-      "name": "Person1",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "name": "Filiberto Fuentes Hernandez",
+      "text": "Passionate about competitive programming. 2 times World Finalist ICPC.",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C5603AQGl1psB8qldUQ/profile-displayphoto-shrink_800_800/0/1589823724872?e=1626912000&v=beta&t=C60WiMxGZ9RY0pMbPwmnl6YSCe4lc3Ps4PTdR1Tujx8",
+      "title": "Software Engineer @ Microsoft"
   },
   {
-      "name": "Person2",
-      "text": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "name": "Carlos Laguna",
+      "text": "My main interest is Machine Learning and Data Engineering.",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C4D03AQFNy4dmY1c8Gg/profile-displayphoto-shrink_800_800/0/1516632039257?e=1626912000&v=beta&t=diegOz8JWx6VHrGavi44NH8q7BJ5neoA3TZX1ev555c",
+      "title": "Data Engineer @ Microsoft"
   },
   {
-      "name": "Person3",
-      "text": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-      "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "name": "Antonio Feregrino",
+      "text": "Data scientist with software development experience.",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C5603AQErJaL2AWOq-g/profile-displayphoto-shrink_800_800/0/1614812167805?e=1626912000&v=beta&t=BRmsBWagQt05bchjj-Whm9t-dxBzDIsZkLSBOQVdyho",
+      "title": "Data Science + Software Development @ Simply Business."
   },
   {
-      "name": "Person4",
-      "text": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "name": "Antonio Sanchez",
+      "text": "I'm a software engineer passionate about autonomous driving. I'm currently working on advanced driver-assistance systems (ADAS), optimizing algorithms for object detection. I'm excited to combine my experience in control theory with my software development skills at Continental. Skills: C, C++, Python, Matlab, Simulink.",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C4E03AQEPabpKbgo64Q/profile-displayphoto-shrink_800_800/0/1610220222508?e=1626912000&v=beta&t=DuXlWe66dC-1dF3abz8BROrMiXtQ6MrqE6CMDaqK8bs",
+      "title": "Sr. Algorithm Engineer @ Continental"
   },
   {
-      "name": "Person5",
-      "text": "Vestibulum faucibus eget erat eget pretium. Donec commodo convallis eget suscipit orci.",
-      "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "name": "Rafa Díaz",
+      "text": "Aimed to help my community by working on projects that promote education, Computer Science, and empower young students from diverse backgrounds.",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C4D03AQFH9MsL1f9aqA/profile-displayphoto-shrink_800_800/0/1516860267050?e=1626912000&v=beta&t=qi1iop0CuCHdokE2yI2E_XRQ_uiIXH5zpgdXsGq3tr0",
+      "title": "SWE @ Google, Director @ OmegaUp, Artist"
   },
   {
-      "name": "Person6",
-      "text": "Nulla a condimentum nibh. Mauris neque turpis, dictum sed diam et, sagittis vulputate dui. Praesent sollicitudin scelerisque porta. Praesent sodales tempus ullamcorper.",
-      "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "name": "Pablo Domínguez Durán",
+      "text": "Incoming SWE intern @google. Google DSC Lead @dscipnupiita. Mechatronics Eng. student at IPNmx.",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C4E03AQH0aaOayD44TQ/profile-displayphoto-shrink_800_800/0/1539137397831?e=1626912000&v=beta&t=h7UU12cPkAzIxNGfrz03bl95mWZYuMKnNJ_wFFcQK8o",
+      "title": "Incoming STEP Intern @ Google, Student @ UPIITA-IPN"
   },
   {
-      "name": "Person7",
-      "text": "Etiam vel felis nulla. Sed eget euismod dolor, eu blandit velit. Aenean vehicula aliquam libero sit amet efficitur.",
-      "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "name": "Miguel Ángel Morales Vázquez",
+      "text": "",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C4D03AQER5-erF-NqJg/profile-displayphoto-shrink_800_800/0/1597703833322?e=1626912000&v=beta&t=-VOkNNGAQN077iWip1HoBcWWYeNVMi6ctfh48png97g",
+      "title": "Student @ UPIITA-IPN"
   },
   {
-      "name": "Person8",
-      "text": "Aliquam erat volutpat. Praesent quam orci, auctor ac est malesuada, condimentum hendrerit mauris.",
-      "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "name": "Enya Quetzalli Gómez Rodríguez",
+      "text": "Student of the Superior School of Computer Sciences (ESCOM-IPN) and a member (+teacher) of the ESCOM's Algorithmic Club where I like to organize events, contest and activities with the purpose of help.",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C4E03AQFgCC7RZ4aU8A/profile-displayphoto-shrink_800_800/0/1535350085791?e=1626912000&v=beta&t=Sdz1cww-5Mc6wwT7e14vzVopD7UNHZYAZcsvqqazSxU",
+      "title": "Incoming SWE Intern @ Microsoft"
   },
   {
-      "name": "Person9",
-      "text": "Nam imperdiet consectetur metus. Praesent enim sem, sagittis vitae lectus id, vulputate egestas quam. Suspendisse vitae sodales neque.",
-      "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "name": "Oswaldo Leyva Barrientos",
+      "text": "Computational Systems Engineering student with experience in software development.",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C4E03AQHZhjXTTRSrDg/profile-displayphoto-shrink_800_800/0/1594791336826?e=1626912000&v=beta&t=tOX57YAC_Q9uQto0ZU7TCrLd7cGEziXmCHQ5i1-HQi4",
+      "title": "Student @ ESCOM-IPN"
   },
   {
-      "name": "Person10",
-      "text": "Nullam nisi odio, tincidunt id consequat vitae, fermentum feugiat lacus. Vestibulum nec mollis leo. Nunc sit amet dui finibus justo aliquet gravida at ut sem.",
-      "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "name": "Jesús Kaimorts Díaz Medina",
+      "text": "Computer Systems Engineering Student at ESCOM-IPN ¡Enjoy the road! ;)",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C5603AQFHKxEUEZ_sEQ/profile-displayphoto-shrink_800_800/0/1620884649342?e=1626912000&v=beta&t=G1oQCU2B6y-wee4lF7h-OGHOUqX4Mn-RvmoX59_iUJ4",
+      "title": "Systems Analyst @ Banco de México"
   },
   {
-      "name": "Person11",
-      "text": "Morbi tellus urna, gravida sit amet efficitur ac, hendrerit vel metus. In pharetra augue ac dolor vulputate, ut cursus eros aliquet.",
-      "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "name": "Samuel Salas",
+      "text": "I am a CS junior who seeks to find ways to solve problems.",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C4E03AQEOI3vkUccU6A/profile-displayphoto-shrink_800_800/0/1604774964532?e=1626912000&v=beta&t=b1ZIZ2GxuEZL67uKjRJL1uNqktmHVberXOICNudq6DU",
+      "title": "Computer Science Student @ UNAM"
   },
   {
-      "name": "Person12",
-      "text": "Integer congue magna quis magna cursus aliquam ac et erat. Aenean posuere mattis elit, sed vulputate est lobortis quis.",
-      "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "name": "Uriel Rivas",
+      "text": "Very practical person who will find a way to fit in anywhere he's assigned to. I'm willing to demonstrate my skills and partnership when the opportunity come. I'm currently acquiring Frontend experience using React and focusing on the user experience and.",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C5603AQHZnOU_WPpERA/profile-displayphoto-shrink_800_800/0/1600115313516?e=1626912000&v=beta&t=pQBeb8H2bCmPJnhcBqddlFQKg4llknGKrDonB6lTAvA",
+      "title": "Incoming SWE Intern @ Facebook"
   },
   {
-      "name": "Person13",
-      "text": "Sed massa leo, molestie eu fermentum eu, semper dignissim diam. Proin enim nunc, venenatis non elit ut, efficitur pretium augue.",
-      "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "name": "David Vega Ramírez",
+      "text": "",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C5603AQGb6Cre8nY6uQ/profile-displayphoto-shrink_800_800/0/1591154895847?e=1626912000&v=beta&t=tuc17t6bwMLuPGrZhJT4MgKlh90vykbH93yXeDLGDWA",
+      "title": "Software Engineer @ Microsoft"
   },
   {
-      "name": "Person14",
-      "text": "Fusce ex augue, euismod eget ultrices ac, ultricies nec elit. Nunc non augue in nisi luctus volutpat eu non neque.",
-      "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "name": "Miguel Angel Maya Hernández",
+      "text": "",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C4E03AQH0tH2dnuammQ/profile-displayphoto-shrink_800_800/0/1548028280913?e=1626912000&v=beta&t=QRTNx-fgHRQ4iOnnw8GL5k1J6E_pGtKr0lh0dCzf7q4",
+      "title": "Software Engineer @ Facebook"
   },
   {
-      "name": "Person15",
-      "text": "Morbi tempor elit ac ante luctus posuere. Integer non felis vitae lectus euismod viverra et nec mi. In odio mauris, consectetur sed auctor sed, posuere quis erat.",
-      "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
-  },
-  {
-      "name": "Person16",
-      "text": "Sed ut iaculis libero. Curabitur fringilla dui et tristique malesuada. Donec ut dolor quis sem consectetur pellentesque.",
-      "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
-  },
-  {
-      "name": "Person17",
-      "text": "Cras faucibus vitae est vel volutpat. Mauris mollis suscipit magna, et luctus purus porttitor et.",
-      "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
-  },
-  {
-      "name": "Person18",
-      "text": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi.",
-      "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
-  },
-  {
-      "name": "Person19",
-      "text": "Donec eget sem ac libero aliquam vehicula. Cras aliquam turpis eu nibh pulvinar ullamcorper. Ut in blandit diam, at consequat tortor.",
-      "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
-  },
-  {
-      "name": "Person20",
-      "text": "Sed volutpat arcu massa, et consequat justo viverra quis. Praesent lacinia rutrum consequat. Ut pellentesque quis magna et interdum.",
-      "avatar": "/images/Intro/avatar.svg",
-      "title": "Chief Digital Officer"
+      "name": "Cesar Hernández Tavera",
+      "text": "I like to solve problems from programing contest and coding interviews.",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C4E03AQHX0yd_-7-jSw/profile-displayphoto-shrink_800_800/0/1538559586936?e=1626912000&v=beta&t=7YaH7z_GfwBWcpn4vQsIdwzyKcgtSpIB0T-_FjycddY",
+      "title": "Student @ ESCOM-IPN"
   }
 ];

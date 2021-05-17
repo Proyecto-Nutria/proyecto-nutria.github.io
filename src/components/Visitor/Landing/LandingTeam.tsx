@@ -113,7 +113,7 @@ const VisitorTeam = () => {
               <div className={classes.circle} />
               <GroupIcon className={classes.icon} />
               <Typography variant="h3">
-                {t('contributors.team')}
+                {t('collaborators.team')}
               </Typography>
             </div>
             <nav className={classes.arrow}>

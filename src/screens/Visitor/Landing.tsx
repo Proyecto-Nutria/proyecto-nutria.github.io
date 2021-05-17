@@ -5,7 +5,7 @@ import VisitorSettings from "components/Visitor/Landing/LandingSettings";
 import VisitorHeader from "components/Visitor/Landing/LandingHeader";
 import VisitorIntro from "components/Visitor/Landing/LandingIntro";
 import VisitorAbout from "components/Visitor/Landing/LandingAbout";
-import VisitorContributor from "components/Visitor/Landing/LandingContributors";
+import VisitorCollaborator from "components/Visitor/Landing/LandingCollaborators";
 import VisitorTeam from "components/Visitor/Landing/LandingTeam";
 import VisitorSections from "components/Visitor/Landing/LandingSections";
 import VisitorProgress from "components/Visitor/Landing/LandingProgress";
@@ -40,8 +40,8 @@ const Login = ({ onToggleDark }: { onToggleDark: Function }) => {
         <section id="about">
           <VisitorAbout />
         </section>
-        <section id="contributors">
-          <VisitorContributor />
+        <section id="Collaboratorss">
+          <VisitorCollaborator />
           <VisitorTeam />
         </section>
         <section id="sections">

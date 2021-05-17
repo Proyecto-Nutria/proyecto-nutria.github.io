@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const contributorsStyles = makeStyles(theme => ({
+const collaboratorsStyles = makeStyles(theme => ({
   root: {
     paddingTop: theme.spacing(9),
     position: 'relative',
@@ -497,4 +497,4 @@ const contributorsStyles = makeStyles(theme => ({
   },
 }));
 
-export default contributorsStyles;
+export default collaboratorsStyles;
