@@ -36,10 +36,7 @@ const UserBoard = (props: any) => {
                 <Grid item xs container direction="column" spacing={2}>
                   <Grid item xs>
                     <Typography variant="body2" gutterBottom>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      At nisi, quibusdam alias quas sunt optio ipsum eos
-                      deserunt provident! Illo, ipsum dolores facilis
-                      necessitatibus et esse aspernatur molestias nobis rem?
+                     {information.description}
                     </Typography>
                   </Grid>
                   <Grid item>

@@ -20,16 +20,19 @@ const InterviewerMain = () => {
     {
       img: scheduleImage,
       label: 'Match',
+      description: 'Select your availability and match with someone else to have a mock interview.',
       onClick: () => history.push(WER_MATCH_PATH),
     },
     {
       img: incomingImage,
       label: 'Incoming Interviews',
+      description: 'Check out your upcoming interviews. Prepare ahead of time.',
       onClick: () => history.push(WER_INCOMING_INTERVIEWS_PATH),
     },
     {
       img: logImage,
       label: 'Past Interviews',
+      description: 'Get insights from your previus interviews.',
       onClick: () => history.push(USER_PAST_INTERVIEWS_PATH),
     },
   ];
