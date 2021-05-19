@@ -19,16 +19,19 @@ const IntervieweeMain = () => {
     {
       img: scheduleImage,
       label: 'Schedule a Mock Interview',
+      description: 'Mock interviews are the heart of interview prep. You can schedule one by dropping your availabidy here.',
       onClick: () => history.push(WEE_MOCK_PATH),
     },
     {
       img: incomingImage,
       label: 'Incoming Interviews',
+      description: 'Check out your incoming interviews scheduled based upon your availabity. Make sure you are still available ahead of time.',
       onClick: () => history.push(WEE_INCOMING_INTERVIEWS_PATH),
     },
     {
       img: logImage,
       label: 'Previous Interviews',
+      description: 'Looking back on your interviews will help on measuring your progress and forecasting success. Check out your past interviews, feedback and outcome.',
       onClick: () => history.push(USER_PAST_INTERVIEWS_PATH),
     },
   ];
