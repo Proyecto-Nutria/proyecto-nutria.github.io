@@ -40,7 +40,7 @@ export default class DateTime {
   }
 
   static timestampToDate(timestamp: string) {
-    return new Date(parseInt(timestamp, 10));
+    return new Date(Date.parse(timestamp));
   }
 
   static formatDateToHours(currentDate: Date) {

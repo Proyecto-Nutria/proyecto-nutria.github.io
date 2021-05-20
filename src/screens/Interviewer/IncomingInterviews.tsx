@@ -19,9 +19,8 @@ const InterviewerIncomingInterviews = () => {
     variables: { now },
   });
   // eslint-disable-next-line
-  const [cancellation, { error: cancellationMutationError }] = useMutation(
-    CANCEL_INTERVIEW
-  );
+  const [cancellation, { error: cancellationMutationError }] =
+    useMutation(CANCEL_INTERVIEW);
 
   const [sort, setSort] = React.useState({
     property: 'name',
@@ -31,9 +30,8 @@ const InterviewerIncomingInterviews = () => {
   if (loading) return <p> Loading </p>;
   if (error) return <p> Error </p>;
 
-  let incomingInterviews: IIncomingInterviewsData[] = Data.fromAPItoIncoming(
-    data
-  );
+  let incomingInterviews: IIncomingInterviewsData[] =
+    Data.fromAPItoIncomingInterviews(data);
 
   const cancelInterview = (id: string, timestamp: string) => {
     cancellation({

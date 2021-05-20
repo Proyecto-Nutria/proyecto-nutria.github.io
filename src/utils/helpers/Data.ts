@@ -173,20 +173,20 @@ export default class Data {
     return parsedData;
   }
 
-  static fromAPItoIncoming(data: any) {
+  static fromAPItoIncomingInterviews(data: any) {
     let parsedData: IIncomingInterviewsData[] = [];
-    for (var elem of data.interviews) {
-      const currentTime = DateTime.timestampToDate(elem.date);
-      let parsed: IIncomingInterviewsData = {
-        id: elem.uid,
+    for (var interview of data.interviews) {
+      const parsedTimestamp = DateTime.timestampToDate(interview.date);
+      let interviewInfo: IIncomingInterviewsData = {
+        id: interview.uid,
         name: 'Unknown', //TODO: Check if is necessary to get the name of the person
-        date: DateTime.formatDateToDay(currentTime),
-        time: DateTime.formatDateToHours(currentTime),
-        document: Data.getDocumentUrl(elem.doc),
-        place: elem.room,
-        confirmed: elem.confirmed,
+        date: DateTime.formatDateToDay(parsedTimestamp),
+        time: DateTime.formatDateToHours(parsedTimestamp),
+        document: Data.getDocumentUrl(interview.document),
+        place: interview.room,
+        confirmed: interview.confirmed,
       };
-      parsedData.push(parsed);
+      parsedData.push(interviewInfo);
     }
     return parsedData;
   }

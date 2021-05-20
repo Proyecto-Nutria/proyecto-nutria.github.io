@@ -6,39 +6,57 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
-import {
-  IIncomingInterviewsData,
-  IIncomingInterviewsProps,
-} from 'structure/interfaces/IIncomingInterviews';
-
-const InterviewsIncoming = (props: IIncomingInterviewsProps) => {
+const InterviewsIncoming = (props: any) => {
   return (
-    <TableContainer component={Paper}>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell align="right">Day</TableCell>
-            <TableCell align="right">Hour (24hrs)</TableCell>
-            <TableCell align="right">Document</TableCell>
-            <TableCell align="right">Place</TableCell>
-            <TableCell align="right">Confirmed</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {props.data.map((row: any, id: any) => (
-            <TableRow key={id}>
-              <TableCell align="right">{row.date}</TableCell>
-              <TableCell align="right">{row.time}</TableCell>
-              <TableCell align="right">{row.document}</TableCell>
-              <TableCell align="right">{row.place}</TableCell>
-              <TableCell align="right">{row.confirmed}</TableCell>
+    <Box mt={4}>
+      <Typography variant="h4">Incoming Interviews</Typography>
+      <br />
+      <TableContainer>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell align="left">Day</TableCell>
+              <TableCell align="left">Hour (24hrs)</TableCell>
+              <TableCell align="left">Document</TableCell>
+              <TableCell align="left">Room</TableCell>
+              <TableCell align="left">Confirmed</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {props.data.map((row: any, id: any) => (
+              <TableRow key={id}>
+                <TableCell align="left">{row.date}</TableCell>
+                <TableCell align="left">{row.time}</TableCell>
+                <TableCell align="left">{row.document}</TableCell>
+                <TableCell align="left">{row.place}</TableCell>
+
+                <TableCell align="left">
+                  {row.confirmed ? (
+                    <CheckBoxIcon />
+                  ) : (
+                    <CheckBoxOutlineBlankIcon />
+                  )}
+                </TableCell>
+
+                <TableCell align="right">
+                  {row.confirmed ? (
+                    <Button color="secondary">Cancel</Button>
+                  ) : (
+                    <Button color="primary">Confirm</Button>
+                  )}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Box>
   );
 };
 
