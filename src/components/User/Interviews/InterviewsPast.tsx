@@ -7,34 +7,47 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
 const InterviewsPast = (props: any) => {
   return (
-    <TableContainer component={Paper}>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell align="right">Date</TableCell>
-            <TableCell align="right">Document</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {props.data.map((row: any, id: any) => (
-            <TableRow key={id}>
-              <TableCell>{row.date}</TableCell>
-              <TableCell align="right">
-                <a href={row.document}>
-                  <Button variant="contained" color="primary">
-                    Document
-                  </Button>
-                </a>
-              </TableCell>
+    <Box mt={4}>
+      <Typography variant="h4">Past Interviews</Typography>
+      <br />
+      <TableContainer>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell align="left">Date</TableCell>
+              <TableCell align="left">Confirmed</TableCell>
+              <TableCell></TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {props.data.map((row: any, id: any) => (
+              <TableRow key={id}>
+                <TableCell>{row.date}</TableCell>
+                <TableCell align="left">
+                  {row.confirmed ? (
+                    <CheckBoxIcon color="disabled" />
+                  ) : (
+                    <CheckBoxOutlineBlankIcon color="disabled" />
+                  )}
+                </TableCell>
+                <TableCell align="right">
+                  <a href={row.document}>
+                    <Button color="primary">Document</Button>
+                  </a>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Box>
   );
 };
 

@@ -1,20 +1,22 @@
 import React from 'react';
-
 import Data from 'utils/helpers/Data';
+import DateTime from 'utils/helpers/DateTime';
 import { IIncomingInterviewsData } from 'structure/interfaces/IIncomingInterviews';
-
 import { useQuery, useMutation } from '@apollo/client';
 import {
   INCOMING_INTERVIEWS,
   CONFIRM_INTERVIEW,
   CANCEL_INTERVIEW,
 } from 'utils/constants/endpoints';
-
 import UIMainContainer from 'components/UI/UIBoxContainer';
 import InterviewsIncoming from 'components/User/Interviews/InterviewsIncoming';
 
+const now = DateTime.getCurrentDate();
+
 const IntervieweeIncomingInterviews = () => {
-  const { loading, error, data } = useQuery(INCOMING_INTERVIEWS);
+  const { loading, error, data } = useQuery(INCOMING_INTERVIEWS, {
+    variables: { now },
+  });
   // eslint-disable-next-line
   const [confirmation, { error: confirmationMutationError }] =
     useMutation(CONFIRM_INTERVIEW);

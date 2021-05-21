@@ -1,11 +1,9 @@
 import React from 'react';
-import { IPastInterviewsData } from 'structure/interfaces/IPastInterviews';
 import Data from 'utils/helpers/Data';
 import DateTime from 'utils/helpers/DateTime';
-
+import { IPastInterviewsData } from 'structure/interfaces/IPastInterviews';
 import { useQuery } from '@apollo/client';
 import { PAST_INTERVIEWS } from 'utils/constants/endpoints';
-
 import UIMainContainer from 'components/UI/UIBoxContainer';
 import InterviewsPast from 'components/User/Interviews/InterviewsPast';
 
