@@ -4,61 +4,61 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
 
 const IntervieweeSchedule = (props: any) => {
   const mutationFunction = props.mutation;
   return (
-    <Grid container spacing={3} component={Paper}>
+    <Box mt={4} mb={4}>
+      <Typography variant="h4">Schedule Interview</Typography>
+      <br />
       <form noValidate>
         {props.inputs.map((input: any) => {
           const type = input.type;
           if (type === 'Select') {
             return (
-              <Grid item xs={12}>
-                <FormControl>
-                  <InputLabel>{input.label}</InputLabel>
-                  <Select onChange={input.state}>
-                    {input.values.map((name: any) => (
-                      <MenuItem key={name} value={name}>
-                        {name}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-              </Grid>
+              <FormControl fullWidth>
+                <InputLabel>{input.label}</InputLabel>
+                <Select onChange={input.state}>
+                  {input.values.map((name: any) => (
+                    <MenuItem key={name} value={name}>
+                      {name}
+                    </MenuItem>
+                  ))}
+                </Select>
+                <br />
+              </FormControl>
             );
           } else if (type === 'Check') {
             return (
-              <Grid item xs={12}>
-                <FormControl component="fieldset">
-                  <FormLabel component="legend">{input.label}</FormLabel>
-                  <FormGroup>
-                    {input.values.map((value: any) => (
-                      <FormControlLabel
-                        control={<Checkbox name={value} />}
-                        label={value}
-                      />
-                    ))}
-                  </FormGroup>
-                </FormControl>
-              </Grid>
+              <FormControl fullWidth component="fieldset">
+                <FormLabel component="legend">{input.label}</FormLabel>
+                <FormGroup row>
+                  {input.values.map((value: any) => (
+                    <FormControlLabel
+                      control={<Checkbox name={value} />}
+                      label={value}
+                    />
+                  ))}
+                </FormGroup>
+                <br />
+              </FormControl>
             );
           }
         })}
 
-        <Button type="submit" fullWidth variant="contained" color="primary">
-          Sign Up
+        <Button type="submit" variant="contained" color="primary">
+          Schedule
         </Button>
       </form>
       {props.onMutationError && <p>Error :( Please try again</p>}
-    </Grid>
+    </Box>
   );
 };
 

@@ -38,9 +38,9 @@ const InterviewsIncoming = (props: any) => {
 
                 <TableCell align="left">
                   {row.confirmed ? (
-                    <CheckBoxIcon />
+                    <CheckBoxIcon color="disabled" />
                   ) : (
-                    <CheckBoxOutlineBlankIcon />
+                    <CheckBoxOutlineBlankIcon color="disabled" />
                   )}
                 </TableCell>
 
