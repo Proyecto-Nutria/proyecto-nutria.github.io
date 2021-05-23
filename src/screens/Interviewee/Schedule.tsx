@@ -1,5 +1,4 @@
 import IntervieweeSchedule from 'components/Interviewee/Schedule/IntervieweeSchedule';
-import UIMainContainer from 'components/UI/UIBoxContainer';
 import React, { useReducer, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { actionData, scheduleData } from 'structure/types/dataTypes';
@@ -21,9 +20,7 @@ const reducer = (
       const newSchedule = JSON.parse(
         JSON.stringify(currentSchedule)
       ) as scheduleData;
-      const indexes = (Object.keys(
-        currentSchedule
-      ) as unknown) as Array<number>;
+      const indexes = Object.keys(currentSchedule) as unknown as Array<number>;
       const newIndex = indexes.length === 0 ? 0 : Math.max(...indexes) + 1;
       newSchedule[newIndex] = { day: null, interval: [null, null] };
 
@@ -60,13 +57,17 @@ const reducer = (
 
 const IntervieweeMock = () => {
   const [enterToPool, { error: mutationError }] = useMutation(ENTER_POOL);
-
-  const history = useHistory();
+  var allLanguages: any = {};
+  var allCompanies: any = {};
+  Object.keys(PROGRAMMING_LANGUAGES).map(
+    language => (allLanguages[language] = false)
+  );
+  Object.keys(COMPANIES).map(company => (allCompanies[company] = false));
   const [interviewType, setInterviewTypeValue] = useState('');
   const [rol, setRolValue] = useState('');
   const [numberInterviews, setNumberInterviewsValue] = useState(1);
-  const [languages, setLanguagesValue] = useState();
-  const [company, setCompanyValue] = useState();
+  const [languages, setLanguagesValue] = useState(allLanguages);
+  const [company, setCompanyValue] = useState(allCompanies);
   const [schedule, dispatchSchedule] = useReducer(reducer, {});
 
   //TODO: Change the state to methods to work with MaterialUI
@@ -148,14 +149,12 @@ const IntervieweeMock = () => {
   };
 
   return (
-    <UIMainContainer>
-      <IntervieweeSchedule
-        inputs={staticInputs}
-        dynamicInput={dynamicInputs}
-        mutation={createMock}
-        onMutationError={mutationError}
-      />
-    </UIMainContainer>
+    <IntervieweeSchedule
+      inputs={staticInputs}
+      dynamicInput={dynamicInputs}
+      mutation={createMock}
+      onMutationError={mutationError}
+    />
   );
 };
 
