@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
+
 import Fab from '@material-ui/core/Fab';
+import { fade, makeStyles } from '@material-ui/core/styles';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
-import { makeStyles } from '@material-ui/core/styles';
-import { fade } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   settingsWrap: {

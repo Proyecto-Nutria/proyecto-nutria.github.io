@@ -1,13 +1,14 @@
-import React from "react"
-import Grid from '@material-ui/core/Grid';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+
 import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { useText } from './LandingCommonStyle';
-import { useTranslation } from 'react-i18next'
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
+import { useText } from './LandingCommonStyle';
 import useStyles from './LandingIntroStyle';
 
 const VisitorIntro = (props: any) => {

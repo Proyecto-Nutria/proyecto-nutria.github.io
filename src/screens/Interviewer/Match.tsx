@@ -1,15 +1,13 @@
-import React, { useState } from "react"
+import InterviewerMatch from 'components/Interviewer/Match/InterviewerMatch';
+import UIMainContainer from 'components/UI/UIBoxContainer';
+import React, { useState } from 'react';
+import { CREATE_INTERVIEW, VIEW_POOL } from 'utils/constants/endpoints';
+import { day, hour } from 'utils/constants/values';
+import Data from 'utils/helpers/Data';
+import DateTime from 'utils/helpers/DateTime';
 
-import { useQuery, useMutation } from "@apollo/client"
-import { VIEW_POOL, CREATE_INTERVIEW } from "utils/constants/endpoints"
+import { useMutation, useQuery } from '@apollo/client';
 
-import Data from "utils/helpers/Data"
-import DateTime from "utils/helpers/DateTime"
-
-import UIMainContainer from "components/UI/UIBoxContainer"
-import InterviewerMatch from "components/Interviewer/Match/InterviewerMatch"
-
-import { day, hour } from "utils/constants/values"
 import type { queryData, interviewData } from "structure/types/dataTypes"
 import type { hourRange } from "structure/types/timeTypes"
 

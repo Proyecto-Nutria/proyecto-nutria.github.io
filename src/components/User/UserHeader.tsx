@@ -1,14 +1,12 @@
 import React from 'react';
-
 import { withRouter } from 'react-router';
 import { useHistory } from 'react-router-dom';
+import { EDIT_PATH, HOME_PATH } from 'routes/paths';
 
-import { HOME_PATH, EDIT_PATH } from 'routes/paths';
-
-import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import Toolbar from '@material-ui/core/Toolbar';
 
 const useStyles = makeStyles(theme => ({
   root: {

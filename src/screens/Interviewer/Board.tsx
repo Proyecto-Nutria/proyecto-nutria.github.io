@@ -1,18 +1,13 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-
-import {
-  WER_INCOMING_INTERVIEWS_PATH,
-  WER_MATCH_PATH,
-  USER_PAST_INTERVIEWS_PATH,
-} from 'routes/paths';
-
+import incomingImage from 'assets/imgs/Interviewee/incoming.png';
+import logImage from 'assets/imgs/Interviewee/log.png';
+import scheduleImage from 'assets/imgs/Interviewee/schedule.png';
 import UIMainContainer from 'components/UI/UIBoxContainer';
 import UserBoard from 'components/User/Board/UserBoard';
-
-import scheduleImage from 'assets/imgs/Interviewee/schedule.png';
-import logImage from 'assets/imgs/Interviewee/log.png';
-import incomingImage from 'assets/imgs/Interviewee/incoming.png';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import {
+    USER_PAST_INTERVIEWS_PATH, WER_INCOMING_INTERVIEWS_PATH, WER_MATCH_PATH
+} from 'routes/paths';
 
 const InterviewerMain = () => {
   const history = useHistory();

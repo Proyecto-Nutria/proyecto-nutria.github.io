@@ -1,13 +1,15 @@
+import clsx from 'clsx';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import clsx from 'clsx';
-import Grid from '@material-ui/core/Grid';
+
 import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import Grid from '@material-ui/core/Grid';
 import { useTheme } from '@material-ui/core/styles';
+import Tab from '@material-ui/core/Tab';
+import Tabs from '@material-ui/core/Tabs';
+import Typography from '@material-ui/core/Typography';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 import { useText } from './LandingCommonStyle';
 import useStyles from './LandingSectionsStyle';
 

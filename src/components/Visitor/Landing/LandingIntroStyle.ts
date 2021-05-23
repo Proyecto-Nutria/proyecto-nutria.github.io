@@ -1,8 +1,9 @@
 import { makeStyles } from '@material-ui/core/styles';
-import introWaveLight from './../../../assets/imgs/Visitor/intro-wave-light.webp';
-import introWaveDark from './../../../assets/imgs/Visitor/intro-wave-dark.webp';
-import introLineLight from './../../../assets/imgs/Visitor/intro-line-light.webp';
-import introLineDark from './../../../assets/imgs/Visitor/intro-line-dark.webp';
+
+import introLineDark from '../../../assets/imgs/Visitor/intro-line-dark.webp';
+import introLineLight from '../../../assets/imgs/Visitor/intro-line-light.webp';
+import introWaveDark from '../../../assets/imgs/Visitor/intro-wave-dark.webp';
+import introWaveLight from '../../../assets/imgs/Visitor/intro-wave-light.webp';
 
 const introStyles = makeStyles(theme => ({
   root: {

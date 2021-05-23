@@ -1,20 +1,23 @@
-import React, { useEffect } from 'react';
-import Carousel, { Settings } from 'react-slick';
 import './vendors/slick/slick.css';
 import './vendors/slick/slick-theme.css';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import Link from "@material-ui/core/Link";
+
+import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import Carousel, { Settings } from 'react-slick';
+
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
 import Fab from '@material-ui/core/Fab';
+import Link from '@material-ui/core/Link';
+import Paper from '@material-ui/core/Paper';
+import { useTheme } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import PrevIcon from '@material-ui/icons/ArrowBack';
 import NextIcon from '@material-ui/icons/ArrowForward';
 import GroupIcon from '@material-ui/icons/Group';
-import { TEAM } from './../../../utils/constants/landing';
-import { useTranslation } from 'react-i18next';
+
+import { TEAM } from '../../../utils/constants/landing';
 import useStyle from './LandingTeamStyle';
 
 type teamType = {

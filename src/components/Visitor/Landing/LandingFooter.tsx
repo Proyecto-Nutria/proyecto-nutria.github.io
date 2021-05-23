@@ -1,26 +1,27 @@
-import React, { useEffect, useState } from "react"
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Link from "@material-ui/core/Link";
-import Divider from '@material-ui/core/Divider';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import IconButton from '@material-ui/core/IconButton';
-import LangIcon from '@material-ui/icons/Language';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import useStyles from './LandingFooterStyle';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import logo from './../../../assets/imgs/logo.svg';
-import Box from "@material-ui/core/Box";
+import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
+import Divider from '@material-ui/core/Divider';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import Link from '@material-ui/core/Link';
+import MenuItem from '@material-ui/core/MenuItem';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import Select from '@material-ui/core/Select';
+import { useTheme } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import LangIcon from '@material-ui/icons/Language';
+
+import logo from '../../../assets/imgs/logo.svg';
+import useStyles from './LandingFooterStyle';
 
 function Copyright({ text }: {text: string}) {
   const dt = new Date();

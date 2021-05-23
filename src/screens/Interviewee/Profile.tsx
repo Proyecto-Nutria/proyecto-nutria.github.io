@@ -1,19 +1,14 @@
 // @ts-nocheck
+
+import IntervieweeProfile from 'components/Interviewee/Profile/IntervieweeProfile';
+import UIMainContainer from 'components/UI/UIBoxContainer';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-
-import { useMutation, useLazyQuery } from '@apollo/client';
-import {
-  UPLOAD_FOLDER,
-  CREATE_INTERVIEWEE,
-  UPDATE_INTERVIEWEE,
-} from 'utils/constants/endpoints';
-
+import { CREATE_INTERVIEWEE, UPDATE_INTERVIEWEE, UPLOAD_FOLDER } from 'utils/constants/endpoints';
 import Data from 'utils/helpers/Data';
 import Path from 'utils/helpers/Path';
 
-import UIMainContainer from 'components/UI/UIBoxContainer';
-import IntervieweeProfile from 'components/Interviewee/Profile/IntervieweeProfile';
+import { useLazyQuery, useMutation } from '@apollo/client';
 
 const IntervieweeEditProfile = () => {
   const history = useHistory();
@@ -28,9 +23,8 @@ const IntervieweeEditProfile = () => {
   );*/
 
   const [uploadResume, { loading, data }] = useLazyQuery(UPLOAD_FOLDER);
-  const [createInterviewee, { error: mutationError }] = useMutation(
-    CREATE_INTERVIEWEE
-  );
+  const [createInterviewee, { error: mutationError }] =
+    useMutation(CREATE_INTERVIEWEE);
 
   const [resume, setResume] = React.useState(null);
   const [school, setSchoolValue] = React.useState('');

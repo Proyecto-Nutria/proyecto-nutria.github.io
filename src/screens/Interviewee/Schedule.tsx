@@ -1,21 +1,16 @@
+import IntervieweeSchedule from 'components/Interviewee/Schedule/IntervieweeSchedule';
+import UIMainContainer from 'components/UI/UIBoxContainer';
 import React, { useReducer, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
-import { useMutation } from '@apollo/client';
+import { actionData, scheduleData } from 'structure/types/dataTypes';
 import { ENTER_POOL } from 'utils/constants/endpoints';
-
+import {
+    COMPANIES, INTERVIEW_ROLES, PROGRAMMING_LANGUAGES, TYPES_OF_INTERVIEW
+} from 'utils/constants/values';
 import Data from 'utils/helpers/Data';
 import DateTime from 'utils/helpers/DateTime';
-import {
-  TYPES_OF_INTERVIEW,
-  INTERVIEW_ROLES,
-  PROGRAMMING_LANGUAGES,
-  COMPANIES,
-} from 'utils/constants/values';
-import { actionData, scheduleData } from 'structure/types/dataTypes';
 
-import UIMainContainer from 'components/UI/UIBoxContainer';
-import IntervieweeSchedule from 'components/Interviewee/Schedule/IntervieweeSchedule';
+import { useMutation } from '@apollo/client';
 
 const reducer = (
   currentSchedule: scheduleData,

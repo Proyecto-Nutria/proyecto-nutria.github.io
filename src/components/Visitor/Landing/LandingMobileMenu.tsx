@@ -1,12 +1,14 @@
+import clsx from 'clsx';
 import React from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
+
+import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import clsx from "clsx";
-import { MENU_SECTIONS } from './../../../utils/constants/landing';
+
+import { MENU_SECTIONS } from '../../../utils/constants/landing';
 import useStyles from './LandingHeaderStyle';
 
 const VisitorMobileMenu = ({ onToggleDrawer, isOpen }: { onToggleDrawer: Function, isOpen: boolean }) => {

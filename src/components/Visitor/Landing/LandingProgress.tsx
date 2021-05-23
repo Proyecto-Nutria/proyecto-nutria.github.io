@@ -1,11 +1,13 @@
-import React from 'react';
 import clsx from 'clsx';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import { useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 import { useText, useTextAlign } from './LandingCommonStyle';
 import useStyles from './LandingProgressStyle';
 

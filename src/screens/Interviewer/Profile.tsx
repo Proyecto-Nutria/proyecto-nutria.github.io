@@ -1,17 +1,12 @@
+import InterviewerProfileForm from 'components/Interviewer/Profile/InterviewerProfileForm';
+import UIMainContainer from 'components/UI/UIBoxContainer';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-
-import { useMutation } from '@apollo/client';
-import {
-  CREATE_INTERVIEWER,
-  UPDATE_INTERVIEWER,
-} from 'utils/constants/endpoints';
-
+import { CREATE_INTERVIEWER, UPDATE_INTERVIEWER } from 'utils/constants/endpoints';
 import Data from 'utils/helpers/Data';
 import Path from 'utils/helpers/Path';
 
-import UIMainContainer from 'components/UI/UIBoxContainer';
-import InterviewerProfileForm from 'components/Interviewer/Profile/InterviewerProfileForm';
+import { useMutation } from '@apollo/client';
 
 const InterviewerEditProfile = () => {
   const history = useHistory();

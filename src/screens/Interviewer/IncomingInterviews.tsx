@@ -1,16 +1,12 @@
+import UIMainContainer from 'components/UI/UIBoxContainer';
+import InterviewsIncoming from 'components/User/Interviews/InterviewsIncoming';
 import React from 'react';
 import { IIncomingInterviewsData } from 'structure/interfaces/IIncomingInterviews';
+import { CANCEL_INTERVIEW, INCOMING_INTERVIEWS } from 'utils/constants/endpoints';
 import Data from 'utils/helpers/Data';
 import DateTime from 'utils/helpers/DateTime';
 
-import { useQuery, useMutation } from '@apollo/client';
-import {
-  INCOMING_INTERVIEWS,
-  CANCEL_INTERVIEW,
-} from 'utils/constants/endpoints';
-
-import UIMainContainer from 'components/UI/UIBoxContainer';
-import InterviewsIncoming from 'components/User/Interviews/InterviewsIncoming';
+import { useMutation, useQuery } from '@apollo/client';
 
 const now = DateTime.getCurrentDate();
 

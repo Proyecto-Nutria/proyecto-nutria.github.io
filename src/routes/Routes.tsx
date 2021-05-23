@@ -1,42 +1,27 @@
-import React, { Fragment } from 'react';
-import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
-
-import {
-  LANDING_PATH,
-  LOGIN_PATH,
-  HOME_PATH,
-  EDIT_PATH,
-  WEE_INCOMING_INTERVIEWS_PATH,
-  WEE_MOCK_PATH,
-  WER_INCOMING_INTERVIEWS_PATH,
-  WER_MATCH_PATH,
-  FEEDBACK_HELPER_PATH,
-  USER_PAST_INTERVIEWS_PATH,
-} from 'routes/paths';
-
 // UI
 import AppHeader from 'components/User/UserHeader';
-
-// Visitor
-import Landing from 'screens/Visitor/Landing';
-
-//User
-import PastInterviews from 'screens/User/PastInterviews';
-
+import MainFeedbackHelper from 'FeedbackHelper/MainFeedbackHelper.bs';
+import { useIsFirstLogin, useUserRole } from 'hooks/UserHooks';
+import React, { Fragment } from 'react';
+import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
+import {
+    EDIT_PATH, FEEDBACK_HELPER_PATH, HOME_PATH, LANDING_PATH, LOGIN_PATH, USER_PAST_INTERVIEWS_PATH,
+    WEE_INCOMING_INTERVIEWS_PATH, WEE_MOCK_PATH, WER_INCOMING_INTERVIEWS_PATH, WER_MATCH_PATH
+} from 'routes/paths';
 // Interviewee
 import IntervieweeMain from 'screens/Interviewee/Board';
 import IntervieweeIncomingInterviews from 'screens/Interviewee/IncomingInterviews';
-import IntervieweeMock from 'screens/Interviewee/Schedule';
 import IntervieweeEditProfile from 'screens/Interviewee/Profile';
-
+import IntervieweeMock from 'screens/Interviewee/Schedule';
 // Interviewer
 import InterviewerMain from 'screens/Interviewer/Board';
-import InterviewerMatchInterview from 'screens/Interviewer/Match';
 import InterviewerIncomingInterviews from 'screens/Interviewer/IncomingInterviews';
+import InterviewerMatchInterview from 'screens/Interviewer/Match';
 import InterviewerEditProfile from 'screens/Interviewer/Profile';
-
-import MainFeedbackHelper from 'FeedbackHelper/MainFeedbackHelper.bs';
-import { useIsFirstLogin, useUserRole } from 'hooks/UserHooks';
+//User
+import PastInterviews from 'screens/User/PastInterviews';
+// Visitor
+import Landing from 'screens/Visitor/Landing';
 import { UserRole } from 'structure/types/userTypes';
 
 const Routes = ({ onToggleDark }: { onToggleDark: Function }) => {
@@ -48,7 +33,7 @@ const Routes = ({ onToggleDark }: { onToggleDark: Function }) => {
     <HashRouter>
       <Switch>
         <Route exact={true} path={LANDING_PATH}>
-          <Landing onToggleDark={onToggleDark}/>
+          <Landing onToggleDark={onToggleDark} />
         </Route>
 
         {isFirstLogin && (

@@ -1,15 +1,18 @@
-import React from "react";
-import Grid from '@material-ui/core/Grid';
-import Hidden from '@material-ui/core/Hidden';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import NextIcon from '@material-ui/icons/ArrowForward';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import Slider from 'react-animated-slider';
 import 'react-animated-slider/build/horizontal.css';
 import './vendors/animate-slider.css';
-import useStyles from './LandingAboutStyle';
+
+import React from 'react';
+import Slider from 'react-animated-slider';
 import { useTranslation } from 'react-i18next';
+
+import ButtonBase from '@material-ui/core/ButtonBase';
+import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import NextIcon from '@material-ui/icons/ArrowForward';
+
+import useStyles from './LandingAboutStyle';
 
 const sliderData = [
   {

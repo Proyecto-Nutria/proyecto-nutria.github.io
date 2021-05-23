@@ -1,19 +1,22 @@
-import React, { useState, useRef } from 'react';
-import Carousel, { Settings } from 'react-slick';
 import './vendors/slick/slick.css';
 import './vendors/slick/slick-theme.css';
+
 import clsx from 'clsx';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import React, { useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import Carousel, { Settings } from 'react-slick';
+
+import Avatar from '@material-ui/core/Avatar';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import Avatar from '@material-ui/core/Avatar';
+import { useTheme } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 import { COLLABORATORS } from '../../../utils/constants/landing';
-import { useTranslation } from 'react-i18next';
-import { useText } from './LandingCommonStyle';
 import useStyle from './LandingCollaboratorsStyle';
+import { useText } from './LandingCommonStyle';
 
 type collaboratorType = {
   name: string;
