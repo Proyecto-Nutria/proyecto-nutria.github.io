@@ -70,6 +70,17 @@ const IntervieweeSchedule = (props: any) => {
             }
           })}
 
+          <Button onClick={() => props.dynamicInput.setter({ type: 'create' })}>
+            Preferences
+          </Button>
+
+          {Object.entries(props.dynamicInput.state).map(([id, data]) => {
+            const current = props.dynamicInput.state[id];
+            const { day, interval } = current;
+            const [start, end] = interval;
+            return <Button>This is added</Button>;
+          })}
+
           <Button type="submit" variant="contained" color="primary">
             Schedule
           </Button>
