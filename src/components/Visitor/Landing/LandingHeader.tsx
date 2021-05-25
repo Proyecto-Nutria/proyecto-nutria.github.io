@@ -3,7 +3,6 @@ import './vendors/hamburger-menu.css';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
-import { useHistory } from 'react-router-dom';
 import Scrollspy from 'react-scrollspy';
 
 import { useAuth0 } from '@auth0/auth0-react';
