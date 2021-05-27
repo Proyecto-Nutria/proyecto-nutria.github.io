@@ -12,6 +12,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
+import AddIcon from '@material-ui/icons/Add';
 
 const IntervieweeSchedule = (props: any) => {
   const mutationFunction = props.mutation;
@@ -70,15 +71,60 @@ const IntervieweeSchedule = (props: any) => {
             }
           })}
 
-          <Button onClick={() => props.dynamicInput.setter({ type: 'create' })}>
-            Preferences
+          <Button
+            variant="outlined"
+            startIcon={<AddIcon />}
+            onClick={() => props.dynamicInput.setter({ type: 'create' })}
+          >
+            Schedule preference
           </Button>
 
           {Object.entries(props.dynamicInput.state).map(([id, data]) => {
             const current = props.dynamicInput.state[id];
             const { day, interval } = current;
             const [start, end] = interval;
-            return <Button>This is added</Button>;
+            return (
+              <form noValidate>
+                <FormControl key={id}>
+                  <InputLabel>Day</InputLabel>
+                  <Select>
+                    {props.dynamicInput.values.days.map(
+                      (name: any, id: any) => (
+                        <MenuItem key={id} value={name}>
+                          {name}
+                        </MenuItem>
+                      )
+                    )}
+                  </Select>
+                </FormControl>
+
+                <FormControl key={id}>
+                  <InputLabel>Start</InputLabel>
+                  <Select>
+                    {props.dynamicInput.values.hours.map(
+                      (name: any, id: any) => (
+                        <MenuItem key={id} value={name}>
+                          {name}
+                        </MenuItem>
+                      )
+                    )}
+                  </Select>
+                </FormControl>
+
+                <FormControl key={id}>
+                  <InputLabel>End</InputLabel>
+                  <Select>
+                    {props.dynamicInput.values.hours.map(
+                      (name: any, id: any) => (
+                        <MenuItem key={id} value={name}>
+                          {name}
+                        </MenuItem>
+                      )
+                    )}
+                  </Select>
+                </FormControl>
+              </form>
+            );
           })}
 
           <Button type="submit" variant="contained" color="primary">

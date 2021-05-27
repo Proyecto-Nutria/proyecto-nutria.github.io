@@ -11,6 +11,7 @@ import DateTime from 'utils/helpers/DateTime';
 
 import { useMutation } from '@apollo/client';
 
+// TODO: Remove pickers from materialui
 const reducer = (
   currentSchedule: scheduleData,
   action: actionData
