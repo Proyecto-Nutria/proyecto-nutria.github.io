@@ -4,6 +4,7 @@ import { UserRole } from '../structure/types/userTypes';
 export function useUserRole(): UserRole {
   const { isAuthenticated, user } = useAuth0();
   if (isAuthenticated) {
+    ///@ts-ignore
     const userRole: UserRole = user['https://hasura.io/jwt/claims'].role;
     const validRoles = Object.values(UserRole);
     if (!validRoles.includes(userRole)) {
@@ -20,6 +21,7 @@ export function useUserRole(): UserRole {
 export function useIsFirstLogin(): boolean {
   const { isAuthenticated, user } = useAuth0();
   if (isAuthenticated) {
+    ///@ts-ignore
     return user['https://hasura.io/jwt/claims'].firstTime;
   } else {
     return false;

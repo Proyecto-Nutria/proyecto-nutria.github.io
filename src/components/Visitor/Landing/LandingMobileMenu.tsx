@@ -10,15 +10,17 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 
 import { MENU_SECTIONS } from '../../../utils/constants/landing';
 import useStyles from './LandingHeaderStyle';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const VisitorMobileMenu = ({ onToggleDrawer, isOpen }: { onToggleDrawer: Function, isOpen: boolean }) => {
+  const { loginWithRedirect } = useAuth0();
   const handleToggleDrawer = () => {
     onToggleDrawer();
   };
 
   const history = useHistory();
   function handleLoginClick() {
-    history.push("/login");
+    loginWithRedirect({});
   }
 
   const classes = useStyles();
