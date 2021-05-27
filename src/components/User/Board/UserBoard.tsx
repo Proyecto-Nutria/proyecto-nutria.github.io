@@ -33,8 +33,8 @@ const UserBoard = (props: any) => {
             <Grid container spacing={3}>
               <img className={classes.img} src={information.img} />
               <Grid item xs={12} sm container>
-                <Grid item xs container direction="column" spacing={2}>
-                  <Grid item xs>
+                <Grid item xs container direction="column" spacing={1} justify="center">
+                  <Grid item>
                     <Typography variant="body2" gutterBottom>
                      {information.description}
                     </Typography>
