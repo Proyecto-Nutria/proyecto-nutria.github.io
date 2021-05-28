@@ -15,8 +15,7 @@ import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { Container, Grid } from '@material-ui/core';
-import { BREAK } from 'graphql';
+import { Grid } from '@material-ui/core';
 
 const IntervieweeSchedule = (props: any) => {
   const mutationFunction = props.mutation;
