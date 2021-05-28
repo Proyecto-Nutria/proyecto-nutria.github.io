@@ -43,6 +43,15 @@ const reducer = (
       return newSchedule;
     }
 
+    case 'updateEnd': {
+      const newSchedule = JSON.parse(
+        JSON.stringify(currentSchedule)
+      ) as scheduleData;
+      newSchedule[action.id].interval[1] = action.end;
+
+      return newSchedule;
+    }
+
     case 'updateDay': {
       const newSchedule = JSON.parse(
         JSON.stringify(currentSchedule)
