@@ -15,6 +15,8 @@ import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { Container, Grid } from '@material-ui/core';
+import { BREAK } from 'graphql';
 
 const IntervieweeSchedule = (props: any) => {
   const mutationFunction = props.mutation;
@@ -80,7 +82,7 @@ const IntervieweeSchedule = (props: any) => {
           >
             Schedule preference
           </Button>
-
+          <br />
           {Object.entries(props.dynamicInput.state).map(([id, data]) => {
             const current = props.dynamicInput.state[id];
             const { day, interval } = current;
@@ -88,27 +90,31 @@ const IntervieweeSchedule = (props: any) => {
             const updater = props.dynamicInput.setter;
             return (
               <div key={id}>
-                <FormControl>
-                  <InputLabel>Day</InputLabel>
-                  <Select
-                    value={day}
-                    onChange={event =>
-                      updater({
-                        type: 'updateDay',
-                        id,
-                        day: event.target.value,
-                      })
-                    }
-                  >
-                    {props.dynamicInput.values.days.map((day: any, id: any) => (
-                      <MenuItem key={id} value={day}>
-                        {day}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-
-                <FormControl>
+              <br />
+              <Grid container>
+                <Grid item xs>
+                  <FormControl fullWidth={true}>
+                    <InputLabel>Day</InputLabel>
+                    <Select
+                      value={day}
+                      onChange={event =>
+                        updater({
+                          type: 'updateDay',
+                          id,
+                          day: event.target.value,
+                        })
+                      }
+                    >
+                      {props.dynamicInput.values.days.map((day: any, id: any) => (
+                        <MenuItem key={id} value={day}>
+                          {day}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs>        
+                <FormControl fullWidth={true}>
                   <InputLabel>Start</InputLabel>
                   <Select
                     value={start}
@@ -129,8 +135,9 @@ const IntervieweeSchedule = (props: any) => {
                     )}
                   </Select>
                 </FormControl>
-
-                <FormControl>
+                </Grid>
+                <Grid item xs>
+                <FormControl fullWidth={true}>
                   <InputLabel>End</InputLabel>
                   <Select
                     value={end}
@@ -151,17 +158,20 @@ const IntervieweeSchedule = (props: any) => {
                     )}
                   </Select>
                 </FormControl>
-
+                </Grid>        
                 <IconButton onClick={() => updater({ type: 'delete', id })}>
                   <DeleteIcon />
                 </IconButton>
+                </Grid>
               </div>
             );
           })}
-
-          <Button type="submit" variant="contained" color="primary">
-            Schedule
-          </Button>
+          <br/>
+          <Box>
+            <Button type="submit" variant="contained" color="primary">
+              Schedule
+            </Button>
+          </Box>
         </form>
         {props.onMutationError && <p>Error :( Please try again</p>}
       </Box>
