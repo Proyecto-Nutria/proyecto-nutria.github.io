@@ -83,47 +83,27 @@ const IntervieweeSchedule = (props: any) => {
             const current = props.dynamicInput.state[id];
             const { day, interval } = current;
             const [start, end] = interval;
+            const updater = props.dynamicInput.setter;
             return (
-              <form noValidate>
-                <FormControl key={id}>
-                  <InputLabel>Day</InputLabel>
-                  <Select>
-                    {props.dynamicInput.values.days.map(
-                      (name: any, id: any) => (
-                        <MenuItem key={id} value={name}>
-                          {name}
-                        </MenuItem>
-                      )
-                    )}
-                  </Select>
-                </FormControl>
-
-                <FormControl key={id}>
-                  <InputLabel>Start</InputLabel>
-                  <Select>
-                    {props.dynamicInput.values.hours.map(
-                      (name: any, id: any) => (
-                        <MenuItem key={id} value={name}>
-                          {name}
-                        </MenuItem>
-                      )
-                    )}
-                  </Select>
-                </FormControl>
-
-                <FormControl key={id}>
-                  <InputLabel>End</InputLabel>
-                  <Select>
-                    {props.dynamicInput.values.hours.map(
-                      (name: any, id: any) => (
-                        <MenuItem key={id} value={name}>
-                          {name}
-                        </MenuItem>
-                      )
-                    )}
-                  </Select>
-                </FormControl>
-              </form>
+              <FormControl key={id}>
+                <InputLabel>Day</InputLabel>
+                <Select
+                  value={day}
+                  onChange={event =>
+                    updater({
+                      type: 'updateDay',
+                      id,
+                      day: event.target.value,
+                    })
+                  }
+                >
+                  {props.dynamicInput.values.days.map((day: any, id: any) => (
+                    <MenuItem key={id} value={day}>
+                      {day}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
             );
           })}
 
