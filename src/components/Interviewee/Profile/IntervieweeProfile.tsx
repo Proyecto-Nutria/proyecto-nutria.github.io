@@ -1,11 +1,13 @@
+import UIMainContainer from 'components/UI/UIBoxContainer';
 import React from 'react';
 
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import Container from '@material-ui/core/Container';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import Typography from '@material-ui/core/Typography';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
 const IntervieweeProfile = (props: any) => {
   const mutationFunction = props.mutation;
@@ -19,7 +21,9 @@ const IntervieweeProfile = (props: any) => {
   };
 
   return (
-    <Container>
+    <UIMainContainer>
+      <Typography variant="h4">Nutri Profile</Typography>
+      <br />
       <form
         onSubmit={event => {
           event.preventDefault();
@@ -29,6 +33,7 @@ const IntervieweeProfile = (props: any) => {
         <Box>
           <InputLabel id="demo-simple-select-label">School</InputLabel>
           <Select
+            fullWidth
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={props.data.school}
@@ -40,7 +45,6 @@ const IntervieweeProfile = (props: any) => {
               </MenuItem>
             ))}
           </Select>
-
           <input
             type="file"
             id="file"
@@ -50,13 +54,17 @@ const IntervieweeProfile = (props: any) => {
               inputFile = input as HTMLInputElement;
             }}
           />
-
-          <Button onClick={uploadClick}>Upload</Button>
-
-          <Button type="submit">Submit</Button>
+          <br /> <br />
+          <Button onClick={uploadClick} startIcon={<CloudUploadIcon />}>
+            Upload Your Resume
+          </Button>
+          <br /> <br />
+          <Button type="submit" variant="contained" color="primary">
+            Update profile
+          </Button>
         </Box>
       </form>
-    </Container>
+    </UIMainContainer>
   );
 };
 

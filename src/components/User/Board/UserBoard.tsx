@@ -1,3 +1,4 @@
+import UIMainContainer from 'components/UI/UIBoxContainer';
 import React from 'react';
 
 import Button from '@material-ui/core/Button';
@@ -26,17 +27,24 @@ const useStyles = makeStyles(theme => ({
 const UserBoard = (props: any) => {
   const classes = useStyles();
   return (
-    <div>
+    <UIMainContainer>
       {props.elements.map((information: any, id: any) => (
         <div className={classes.root} key={id}>
           <Paper className={classes.paper}>
             <Grid container spacing={3}>
               <img className={classes.img} src={information.img} />
               <Grid item xs={12} sm container>
-                <Grid item xs container direction="column" spacing={1} justify="center">
+                <Grid
+                  item
+                  xs
+                  container
+                  direction="column"
+                  spacing={1}
+                  justify="center"
+                >
                   <Grid item>
                     <Typography variant="body2" gutterBottom>
-                     {information.description}
+                      {information.description}
                     </Typography>
                   </Grid>
                   <Grid item>
@@ -54,7 +62,7 @@ const UserBoard = (props: any) => {
           </Paper>
         </div>
       ))}
-    </div>
+    </UIMainContainer>
   );
 };
 

@@ -1,3 +1,4 @@
+import UIMainContainer from 'components/UI/UIBoxContainer';
 import React from 'react';
 
 import Box from '@material-ui/core/Box';
@@ -14,7 +15,7 @@ import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
 const InterviewsIncoming = (props: any) => {
   return (
-    <Box mt={4}>
+    <UIMainContainer>
       <Typography variant="h4">Incoming Interviews</Typography>
       <br />
       <TableContainer>
@@ -56,7 +57,7 @@ const InterviewsIncoming = (props: any) => {
           </TableBody>
         </Table>
       </TableContainer>
-    </Box>
+    </UIMainContainer>
   );
 };
 
