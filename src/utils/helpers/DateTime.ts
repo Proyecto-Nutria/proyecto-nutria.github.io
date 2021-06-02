@@ -43,6 +43,11 @@ export default class DateTime {
     return new Date(Date.parse(timestamp));
   }
 
+  static timestampWithoutTimezoneToStr(timestamp: string) {
+    const noTimezoneDate = new Date(Date.parse(timestamp));
+    return noTimezoneDate.toString().split('GMT')[0];
+  }
+
   static formatDateToHours(currentDate: Date) {
     return `${currentDate.getHours()}:${currentDate.getMinutes()}`;
   }

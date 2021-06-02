@@ -14,7 +14,7 @@ export default class Data {
     return `https://drive.google.com/drive/folders/${id}`;
   }
 
-  static getDocumentUrl(id: string) {
+  static formatDocumentUrl(id: string) {
     return id ? `https://docs.google.com/document/d/${id}` : '';
   }
 
@@ -178,7 +178,7 @@ export default class Data {
         name: 'Unknown', //TODO: Check if is necessary to get the name of the person
         date: DateTime.formatDateToDay(parsedTimestamp),
         time: DateTime.formatDateToHours(parsedTimestamp),
-        document: Data.getDocumentUrl(interview.document),
+        document: Data.formatDocumentUrl(interview.document),
         place: interview.room,
         confirmed: interview.confirmed,
       };
@@ -187,15 +187,14 @@ export default class Data {
     return parsedData;
   }
 
-  static fromAPItoPast(data: any) {
-    let parsedData: IPastInterviewsData[] = [];
-    for (var elem of data.interviews) {
-      let parsed: IPastInterviewsData = {
-        date: DateTime.formatDateToDay(DateTime.timestampToDate(elem.date)),
-        document: Data.getDocumentUrl(elem.doc),
-      };
-      parsedData.push(parsed);
+  static parseAPIDataToPastInterview(apiData: any) {
+    let pastInterviews: IPastInterviewsData[] = [];
+    for (var pastInterview of apiData.interviews) {
+      pastInterviews.push({
+        date: DateTime.timestampWithoutTimezoneToStr(pastInterview.date),
+        document: Data.formatDocumentUrl(pastInterview.doc),
+      });
     }
-    return parsedData;
+    return pastInterviews;
   }
 }

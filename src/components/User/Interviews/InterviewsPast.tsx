@@ -28,20 +28,26 @@ const InterviewsPast = (props: any) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {props.data.map((row: any, id: any) => (
+            {props.data.map((pastInterview: any, id: any) => (
               <TableRow key={id}>
-                <TableCell>{row.date}</TableCell>
+                <TableCell>{pastInterview.date}</TableCell>
                 <TableCell align="left">
-                  {row.confirmed ? (
+                  {pastInterview.confirmed ? (
                     <CheckBoxIcon color="disabled" />
                   ) : (
                     <CheckBoxOutlineBlankIcon color="disabled" />
                   )}
                 </TableCell>
                 <TableCell align="right">
-                  <a href={row.document}>
-                    <Button color="primary">Document</Button>
-                  </a>
+                  {pastInterview.document && (
+                    <Button
+                      color="primary"
+                      target="_blank"
+                      href={pastInterview.document}
+                    >
+                      Document
+                    </Button>
+                  )}
                 </TableCell>
               </TableRow>
             ))}

@@ -15,21 +15,13 @@ const PastInterviews = () => {
     variables: { now },
   });
 
-  const [sort, setSort] = React.useState({
-    property: 'name',
-    direction: 'desc',
-  });
-
   if (loading) return <p> Loading </p>;
   if (error) return <p> Error </p>;
 
-  let pastInterviews: IPastInterviewsData[] = Data.fromAPItoPast(data);
+  let pastInterviews: IPastInterviewsData[] =
+    Data.parseAPIDataToPastInterview(data);
 
-  return (
-    <UIMainContainer>
-      <InterviewsPast data={pastInterviews} onSort={setSort} sort={sort} />
-    </UIMainContainer>
-  );
+  return <InterviewsPast data={pastInterviews} />;
 };
 
 export default PastInterviews;
