@@ -11,7 +11,6 @@ import DateTime from 'utils/helpers/DateTime';
 
 import { useMutation } from '@apollo/client';
 
-// TODO: Remove pickers from materialui
 const reducer = (
   currentSchedule: scheduleData,
   action: actionData
@@ -67,17 +66,12 @@ const reducer = (
 
 const IntervieweeMock = () => {
   const [enterToPool, { error: mutationError }] = useMutation(ENTER_POOL);
-  var allLanguages: any = {};
-  var allCompanies: any = {};
-  Object.keys(PROGRAMMING_LANGUAGES).map(
-    language => (allLanguages[language] = false)
-  );
-  Object.keys(COMPANIES).map(company => (allCompanies[company] = false));
+
   const [interviewType, setInterviewTypeValue] = useState('');
   const [rol, setRolValue] = useState('');
   const [numberInterviews, setNumberInterviewsValue] = useState(1);
-  const [languages, setLanguagesValue] = useState(allLanguages);
-  const [company, setCompanyValue] = useState(allCompanies);
+  const [languages, setLanguagesValue] = useState('');
+  const [company, setCompanyValue] = useState('');
   const [schedule, dispatchSchedule] = useReducer(reducer, {});
 
   //TODO: Change the state to methods to work with MaterialUI
@@ -108,15 +102,15 @@ const IntervieweeMock = () => {
     },
     {
       label: 'Programming languages to use in the interview',
-      type: 'Check',
+      type: 'Select',
       values: Object.keys(PROGRAMMING_LANGUAGES),
       state: languages,
       setter: setLanguagesValue,
       apiMap: 'language',
     },
     {
-      label: 'Companies applying to',
-      type: 'Check',
+      label: 'Company applying to',
+      type: 'Select',
       values: Object.keys(COMPANIES),
       state: company,
       setter: setCompanyValue,
@@ -147,15 +141,19 @@ const IntervieweeMock = () => {
   };
 
   const createMock = () => {
+    /*
     enterToPool({
       variables: { preferences },
-    });
+    });*/
+    console.log(Data.fromInputToMock(staticInputs, dynamicInputs));
+    // const data = Data.fromInputToMock(staticInputs, dynamicInputs);
+    // console.log(data);
     /*
     Data.callMutationAndRedirectToHome(
       enterToPool,
       Data.fromInputToMock(staticInputs, dynamicInputs),
       history
-    )*/
+    );*/
   };
 
   return (

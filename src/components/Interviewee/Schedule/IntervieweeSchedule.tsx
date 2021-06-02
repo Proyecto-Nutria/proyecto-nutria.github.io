@@ -1,6 +1,7 @@
 import UIMainContainer from 'components/UI/UIBoxContainer';
-import React from 'react';
+import React, { Fragment, useState } from 'react';
 
+import MomentUtils from '@date-io/moment';
 import { Grid } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
@@ -16,14 +17,23 @@ import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { KeyboardDateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 
 const IntervieweeSchedule = (props: any) => {
+  const [selectedDate, handleDateChange] = useState(new Date());
+
   const mutationFunction = props.mutation;
   return (
     <UIMainContainer>
       <Typography variant="h4">Schedule Interview</Typography>
       <br />
-      <form noValidate>
+      <form
+        noValidate
+        onSubmit={event => {
+          event.preventDefault();
+          mutationFunction();
+        }}
+      >
         {props.inputs.map((input: any, id: any) => {
           const type = input.type;
           if (type === 'Select') {
@@ -81,6 +91,18 @@ const IntervieweeSchedule = (props: any) => {
           Schedule preference
         </Button>
         <br />
+        <MuiPickersUtilsProvider utils={MomentUtils}>
+          <KeyboardDateTimePicker
+            variant="inline"
+            ampm={false}
+            label="With keyboard"
+            value={selectedDate}
+            onChange={e => console.log(e)}
+            onError={console.log}
+            disablePast
+            format="yyyy/MM/dd HH:mm"
+          />
+        </MuiPickersUtilsProvider>
         {Object.entries(props.dynamicInput.state).map(([id, data]) => {
           const current = props.dynamicInput.state[id];
           const { day, interval } = current;
@@ -89,7 +111,7 @@ const IntervieweeSchedule = (props: any) => {
           return (
             <div key={id}>
               <br />
-              <Grid container>
+              <Grid container spacing={3}>
                 <Grid item xs>
                   <FormControl fullWidth={true}>
                     <InputLabel>Day</InputLabel>

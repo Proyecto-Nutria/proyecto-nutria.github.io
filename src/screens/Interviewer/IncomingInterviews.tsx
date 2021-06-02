@@ -1,5 +1,7 @@
 import UIMainContainer from 'components/UI/UIBoxContainer';
 import InterviewsIncoming from 'components/User/Interviews/InterviewsIncoming';
+import UserError from 'components/User/UserError';
+import UserLoading from 'components/User/UserLoading';
 import React from 'react';
 import { IIncomingInterviewsData } from 'structure/interfaces/IIncomingInterviews';
 import { CANCEL_INTERVIEW, INCOMING_INTERVIEWS } from 'utils/constants/endpoints';
@@ -23,8 +25,8 @@ const InterviewerIncomingInterviews = () => {
     direction: 'desc',
   });
 
-  if (loading) return <p> Loading </p>;
-  if (error) return <p> Error </p>;
+  if (loading) return <UserLoading />;
+  if (error) return <UserError />;
 
   let incomingInterviews: IIncomingInterviewsData[] =
     Data.fromAPItoIncomingInterviews(data);
