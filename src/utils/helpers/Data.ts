@@ -1,14 +1,9 @@
-import {
-  SCHOOLS,
-  INTERVIEW_ROLES,
-  TYPES_OF_INTERVIEW,
-} from 'utils/constants/values';
-
-import DateTime from 'utils/helpers/DateTime';
 import { HOME_PATH } from 'routes/paths';
-import { IMatch } from 'structure/interfaces/IMatch';
 import { IIncomingInterviewsData } from 'structure/interfaces/IIncomingInterviews';
+import { IMatch } from 'structure/interfaces/IMatch';
 import { IPastInterviewsData } from 'structure/interfaces/IPastInterviews';
+import { INTERVIEW_ROLES, SCHOOLS, TYPES_OF_INTERVIEW } from 'utils/constants/values';
+import DateTime from 'utils/helpers/DateTime';
 
 export default class Data {
   static getSchools() {
@@ -170,6 +165,7 @@ export default class Data {
       }
       parsedData.push(parsed);
     }
+    console.log(parsedData);
     return parsedData;
   }
 
