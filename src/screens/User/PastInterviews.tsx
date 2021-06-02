@@ -1,5 +1,6 @@
-import UIMainContainer from 'components/UI/UIBoxContainer';
 import InterviewsPast from 'components/User/Interviews/InterviewsPast';
+import UserError from 'components/User/UserError';
+import UserLoading from 'components/User/UserLoading';
 import React from 'react';
 import { IPastInterviewsData } from 'structure/interfaces/IPastInterviews';
 import { PAST_INTERVIEWS } from 'utils/constants/endpoints';
@@ -15,13 +16,13 @@ const PastInterviews = () => {
     variables: { now },
   });
 
-  if (loading) return <p> Loading </p>;
-  if (error) return <p> Error </p>;
+  if (loading) return <UserLoading />;
+  if (error) return <UserError />;
 
-  let pastInterviews: IPastInterviewsData[] =
+  const pastInterviewsData: IPastInterviewsData[] =
     Data.parseAPIDataToPastInterview(data);
 
-  return <InterviewsPast data={pastInterviews} />;
+  return <InterviewsPast data={pastInterviewsData} />;
 };
 
 export default PastInterviews;
