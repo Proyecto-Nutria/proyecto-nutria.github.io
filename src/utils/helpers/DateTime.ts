@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { day, hour } from 'utils/constants/values';
 
 export default class DateTime {
@@ -26,6 +27,10 @@ export default class DateTime {
       [day.Saturday]: [],
       [day.Sunday]: [],
     };
+  }
+
+  static oneMonthAhead() {
+    return moment().add(1, 'months').calendar();
   }
 
   static getDateOfMatchInterview(day: string, hour: string) {

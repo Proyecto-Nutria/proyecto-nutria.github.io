@@ -1,5 +1,6 @@
 import UIMainContainer from 'components/UI/UIBoxContainer';
 import React, { Fragment, useState } from 'react';
+import DateTime from 'utils/helpers/DateTime';
 
 import MomentUtils from '@date-io/moment';
 import { Grid } from '@material-ui/core';
@@ -17,11 +18,9 @@ import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { KeyboardDateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 
 const IntervieweeSchedule = (props: any) => {
-  const [selectedDate, handleDateChange] = useState(new Date());
-
   const mutationFunction = props.mutation;
   return (
     <UIMainContainer>
@@ -91,18 +90,6 @@ const IntervieweeSchedule = (props: any) => {
           Schedule preference
         </Button>
         <br />
-        <MuiPickersUtilsProvider utils={MomentUtils}>
-          <KeyboardDateTimePicker
-            variant="inline"
-            ampm={false}
-            label="With keyboard"
-            value={selectedDate}
-            onChange={e => console.log(e)}
-            onError={console.log}
-            disablePast
-            format="yyyy/MM/dd HH:mm"
-          />
-        </MuiPickersUtilsProvider>
         {Object.entries(props.dynamicInput.state).map(([id, data]) => {
           const current = props.dynamicInput.state[id];
           const { day, interval } = current;
@@ -111,29 +98,25 @@ const IntervieweeSchedule = (props: any) => {
           return (
             <div key={id}>
               <br />
-              <Grid container spacing={3}>
-                <Grid item xs>
-                  <FormControl fullWidth={true}>
-                    <InputLabel>Day</InputLabel>
-                    <Select
+              <Grid container spacing={2}>
+                <Grid item>
+                  <MuiPickersUtilsProvider utils={MomentUtils}>
+                    <DatePicker
+                      variant="inline"
+                      maxDate={DateTime.oneMonthAhead()}
+                      label="Day"
                       value={day}
-                      onChange={event =>
+                      onChange={momentEvent =>
                         updater({
                           type: 'updateDay',
                           id,
-                          day: event.target.value,
+                          //@ts-expect-error
+                          day: momentEvent._d,
                         })
                       }
-                    >
-                      {props.dynamicInput.values.days.map(
-                        (day: any, id: any) => (
-                          <MenuItem key={id} value={day}>
-                            {day}
-                          </MenuItem>
-                        )
-                      )}
-                    </Select>
-                  </FormControl>
+                      disablePast
+                    />
+                  </MuiPickersUtilsProvider>
                 </Grid>
                 <Grid item xs>
                   <FormControl fullWidth={true}>
@@ -181,9 +164,11 @@ const IntervieweeSchedule = (props: any) => {
                     </Select>
                   </FormControl>
                 </Grid>
-                <IconButton onClick={() => updater({ type: 'delete', id })}>
-                  <DeleteIcon />
-                </IconButton>
+                <Grid item>
+                  <IconButton onClick={() => updater({ type: 'delete', id })}>
+                    <DeleteIcon />
+                  </IconButton>
+                </Grid>
               </Grid>
             </div>
           );

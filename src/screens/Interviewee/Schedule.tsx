@@ -22,7 +22,7 @@ const reducer = (
       ) as scheduleData;
       const indexes = Object.keys(currentSchedule) as unknown as Array<number>;
       const newIndex = indexes.length === 0 ? 0 : Math.max(...indexes) + 1;
-      newSchedule[newIndex] = { day: '', interval: ['', ''] };
+      newSchedule[newIndex] = { day: null, interval: ['', ''] };
 
       return newSchedule;
     }
