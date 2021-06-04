@@ -1,4 +1,5 @@
 import UIMainContainer from 'components/UI/UIBoxContainer';
+import moment from 'moment';
 import React, { Fragment, useState } from 'react';
 import DateTime from 'utils/helpers/DateTime';
 
@@ -106,12 +107,11 @@ const IntervieweeSchedule = (props: any) => {
                       maxDate={DateTime.oneMonthAhead()}
                       label="Day"
                       value={day}
-                      onChange={momentEvent =>
+                      onChange={momentObject =>
                         updater({
                           type: 'updateDay',
                           id,
-                          //@ts-expect-error
-                          day: momentEvent._d,
+                          day: momentObject,
                         })
                       }
                       disablePast

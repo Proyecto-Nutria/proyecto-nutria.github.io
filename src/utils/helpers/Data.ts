@@ -2,7 +2,7 @@ import { HOME_PATH } from 'routes/paths';
 import { IIncomingInterviewsData } from 'structure/interfaces/IIncomingInterviews';
 import { IMatch } from 'structure/interfaces/IMatch';
 import { IPastInterviewsData } from 'structure/interfaces/IPastInterviews';
-import { INTERVIEW_ROLES, SCHOOLS, TYPES_OF_INTERVIEW } from 'utils/constants/values';
+import { JOBS, POSITIONS, SCHOOLS } from 'utils/constants/values';
 import DateTime from 'utils/helpers/DateTime';
 
 export default class Data {
@@ -32,14 +32,14 @@ export default class Data {
       });
   }
 
-  static fromInputToMock(staticInputs: any, dynamicInputs: any) {
-    const mappedValues = { availability: [] };
+  static fromInputToPool(staticInputs: any, dynamicInputs: any) {
+    const mappedValues = { availability: '' };
     for (const element of staticInputs) {
       let value = null;
-      if (element.apiMap === 'role') {
-        value = INTERVIEW_ROLES[element.state];
-      } else if (element.apiMap === 'type') {
-        value = TYPES_OF_INTERVIEW[element.state];
+      if (element.apiMap === 'job') {
+        value = JOBS[element.state];
+      } else if (element.apiMap === 'position') {
+        value = POSITIONS[element.state];
       } else {
         value = element.state;
       }
@@ -47,19 +47,18 @@ export default class Data {
       mappedValues[element.apiMap] = value;
     }
 
+    let allIntervals: any = [];
+
     for (const id in dynamicInputs.state) {
-      const intervals: any = [];
+      const poolDate = DateTime._getDate(dynamicInputs.state[id]['day']);
+      let intervals: any = [];
       for (const interval of dynamicInputs.state[id].interval) {
-        intervals.push(interval.replace(' PT', ''));
+        intervals.push(`${poolDate} ${interval}`);
       }
-      let prev = mappedValues.availability;
-      prev.push({
-        //@ts-expect-error
-        day: dynamicInputs.state[id]['day'],
-        //@ts-expect-error
-        interval: intervals,
-      });
+      allIntervals.push(`"[${intervals.join(',')})"`);
     }
+    mappedValues.availability = `{${allIntervals.join(',')}}`;
+    console.log(mappedValues);
 
     return {
       preferences: mappedValues,

@@ -1,13 +1,13 @@
-const HOUR_IN_MILLISECONDS = 3600000
+const HOUR_IN_MILLISECONDS = 3600000;
 
-const ROLE_KEY = "role"
-const INTERVIEWEE_ROLE = "interviewee"
-const INTERVIEWER_ROLE = "interviewer"
-const TOKEN_KEY = "token"
-const FIRST_TIME_KEY = "first"
+const ROLE_KEY = 'role';
+const INTERVIEWEE_ROLE = 'interviewee';
+const INTERVIEWER_ROLE = 'interviewer';
+const TOKEN_KEY = 'token';
+const FIRST_TIME_KEY = 'first';
 
-const TRUE_VALUE = "1"
-const FALSE_VALUE = "0"
+const TRUE_VALUE = '1';
+const FALSE_VALUE = '0';
 
 enum hour {
   h0 = 0,
@@ -37,69 +37,69 @@ enum hour {
 }
 
 enum day {
-  Monday = "Monday",
-  Tuesday = "Tuesday",
-  Wednesday = "Wednesday",
-  Thursday = "Thursday",
-  Friday = "Friday",
-  Saturday = "Saturday",
-  Sunday = "Sunday",
+  Monday = 'Monday',
+  Tuesday = 'Tuesday',
+  Wednesday = 'Wednesday',
+  Thursday = 'Thursday',
+  Friday = 'Friday',
+  Saturday = 'Saturday',
+  Sunday = 'Sunday',
 }
 
 enum languages {
-  "C" = "C",
-  "C++" = "C++",
-  "Python" = "Python",
-  "Java" = "Java",
-  "JavaScript" = "JavaScript",
-  "Other" = "Other",
+  'C' = 'C',
+  'C++' = 'C++',
+  'Python' = 'Python',
+  'Java' = 'Java',
+  'JavaScript' = 'JavaScript',
+  'Other' = 'Other',
 }
 
 const PROGRAMMING_LANGUAGES: { [string: string]: string } = {
-  c: "",
-  cpp: "",
-  python: "",
-  Java: "",
-  JavaScript: "",
-  Other: "",
-}
+  c: '',
+  cpp: '',
+  python: '',
+  Java: '',
+  JavaScript: '',
+  Other: '',
+};
 
-const TYPES_OF_INTERVIEW: { [string: string]: string } = {
-  "Software Engineer": "se",
-  "Machine Learning": "ml",
-  "Reliability Engineering": "re",
-  "Data Science": "ds",
-}
+const JOBS: { [string: string]: string } = {
+  'Software Engineer': 'SE',
+  'Machine Learning': 'ML',
+  'Reliability Engineering': 'RE',
+  'Data Science': 'DS',
+};
 
-const INTERVIEW_ROLES: { [string: string]: string } = {
-  Internship: "Intern",
-  "Full Time": "FTE",
-  "Explore/STEP": "STEP",
-}
+const POSITIONS: { [string: string]: string } = {
+  Internship: 'Intern',
+  'Full Time': 'FTE',
+  'Explore/STEP': 'STEP',
+};
 
 const COMPANIES: { [string: string]: string } = {
-  Amazon: "",
-  Facebook: "",
-  Github: "",
-  Google: "",
-  Microsoft: "",
-  Netflix: "",
-  Twitter: "",
-}
+  amazon: '',
+  facebook: '',
+  github: '',
+  google: '',
+  microsoft: '',
+  netflix: '',
+  twitter: '',
+};
 
 const SCHOOLS: { [string: string]: string } = {
-  IPN: "IPN",
-  UNAM: "UNAM",
-  CIMAT: "CIMAT",
-  Other: "NONLISTED",
-}
+  IPN: 'IPN',
+  UNAM: 'UNAM',
+  CIMAT: 'CIMAT',
+  Other: 'NONLISTED',
+};
 
 export {
   SCHOOLS,
   PROGRAMMING_LANGUAGES,
-  INTERVIEW_ROLES,
+  POSITIONS,
   COMPANIES,
-  TYPES_OF_INTERVIEW,
+  JOBS,
   HOUR_IN_MILLISECONDS,
   TRUE_VALUE,
   FALSE_VALUE,
@@ -111,4 +111,4 @@ export {
   day,
   hour,
   languages,
-}
+};

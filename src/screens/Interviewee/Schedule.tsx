@@ -3,9 +3,7 @@ import React, { useReducer, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { actionData, scheduleData } from 'structure/types/dataTypes';
 import { ENTER_POOL } from 'utils/constants/endpoints';
-import {
-    COMPANIES, INTERVIEW_ROLES, PROGRAMMING_LANGUAGES, TYPES_OF_INTERVIEW
-} from 'utils/constants/values';
+import { COMPANIES, JOBS, POSITIONS, PROGRAMMING_LANGUAGES } from 'utils/constants/values';
 import Data from 'utils/helpers/Data';
 import DateTime from 'utils/helpers/DateTime';
 
@@ -77,20 +75,20 @@ const IntervieweeMock = () => {
   //TODO: Change the state to methods to work with MaterialUI
   const staticInputs = [
     {
-      label: 'Type Of Interview',
+      label: 'Position',
       type: 'Select',
-      values: Object.keys(TYPES_OF_INTERVIEW),
+      values: Object.keys(POSITIONS),
       state: interviewType,
       setter: setInterviewTypeValue,
-      apiMap: 'type',
+      apiMap: 'position',
     },
     {
       label: 'Role applying to',
       type: 'Select',
-      values: Object.keys(INTERVIEW_ROLES),
+      values: Object.keys(JOBS),
       state: rol,
       setter: setRolValue,
-      apiMap: 'role',
+      apiMap: 'job',
     },
     {
       label: 'Number Of Interviews',
@@ -98,7 +96,7 @@ const IntervieweeMock = () => {
       values: [1, 2, 3],
       state: numberInterviews,
       setter: setNumberInterviewsValue,
-      apiMap: 'pending',
+      apiMap: 'awaiting',
     },
     {
       label: 'Programming languages to use in the interview',
@@ -114,7 +112,7 @@ const IntervieweeMock = () => {
       values: Object.keys(COMPANIES),
       state: company,
       setter: setCompanyValue,
-      apiMap: 'companies',
+      apiMap: 'company',
     },
   ];
 
@@ -128,32 +126,12 @@ const IntervieweeMock = () => {
     setter: dispatchSchedule,
   };
 
-  //TODO: Modify Data.fromInputToMock to be able to fill the preferences object, na example of the
-  // required format input is written below
-  const preferences = {
-    availability:
-      '{"[2010-01-01 14:30, 2010-01-01 15:30)", "[2010-01-01 18:30, 2010-01-01 20:30)"}',
-    awaiting: 10,
-    company: 'amazon',
-    job: 'SE',
-    language: 'python',
-    position: 'FTE',
-  };
-
   const createMock = () => {
-    /*
-    enterToPool({
-      variables: { preferences },
-    });*/
-    console.log(Data.fromInputToMock(staticInputs, dynamicInputs));
-    // const data = Data.fromInputToMock(staticInputs, dynamicInputs);
-    // console.log(data);
-    /*
     Data.callMutationAndRedirectToHome(
       enterToPool,
-      Data.fromInputToMock(staticInputs, dynamicInputs),
+      Data.fromInputToPool(staticInputs, dynamicInputs),
       history
-    );*/
+    );
   };
 
   return (

@@ -4,7 +4,7 @@ import { day, hour } from 'utils/constants/values';
 export default class DateTime {
   static getHoursToScheduleMock() {
     const hourMapper = (hour: number | string) =>
-      `${hour < 10 ? '0' : ''}${hour}-00 PT`;
+      `${hour < 10 ? '0' : ''}${hour}:00`;
     const hours: (string | hour)[] = DateTime.getHoursOfDay();
     return hours.filter(h => typeof h !== 'string').map(hourMapper);
   }
@@ -63,5 +63,9 @@ export default class DateTime {
 
   static formatDateToDay(currentDate: Date) {
     return `${currentDate.getMonth()}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
+  }
+
+  static _getDate(momentDate: any): String {
+    return momentDate.split('T')[0];
   }
 }
