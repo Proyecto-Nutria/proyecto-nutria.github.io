@@ -217,6 +217,8 @@ export default class Data {
         interviewType: pool.job,
         role: pool.position,
         folder: Data.getFolderUrl(pool.folder),
+        company: pool.company,
+        awaiting: pool.awaiting,
         availability: Data._parseRangesToArrayByDay(pool.availability),
       };
       parsedData.push(poolData);

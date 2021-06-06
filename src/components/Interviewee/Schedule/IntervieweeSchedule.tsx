@@ -1,6 +1,5 @@
 import UIMainContainer from 'components/UI/UIBoxContainer';
-import moment from 'moment';
-import React, { Fragment, useState } from 'react';
+import React from 'react';
 import DateTime from 'utils/helpers/DateTime';
 
 import MomentUtils from '@date-io/moment';

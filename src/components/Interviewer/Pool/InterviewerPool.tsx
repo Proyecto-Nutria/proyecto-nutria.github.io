@@ -1,11 +1,8 @@
 import UIMainContainer from 'components/UI/UIBoxContainer';
 import React from 'react';
 
+import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormLabel from '@material-ui/core/FormLabel';
-import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Table from '@material-ui/core/Table';
@@ -24,18 +21,21 @@ const InterviewerPool = (props: any) => (
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell align="right">Resume</TableCell>
-            <TableCell align="right">Availability</TableCell>
-            <TableCell align="right">Languages</TableCell>
-            <TableCell align="right">Role</TableCell>
-            <TableCell align="right">Company</TableCell>
+            <TableCell align="left">Languages</TableCell>
+            <TableCell align="center">Awaiting</TableCell>
+            <TableCell align="center">Role</TableCell>
+            <TableCell align="center">Company</TableCell>
+            <TableCell align="center">Availability</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {props.data.pool.map((row: any, id: any) => (
             <TableRow key={id}>
-              <TableCell align="right">{row.folder}</TableCell>
-              <TableCell align="right">
+              <TableCell align="left">{row.languages}</TableCell>
+              <TableCell align="center">{row.awaiting}</TableCell>
+              <TableCell align="center">{row.role}</TableCell>
+              <TableCell align="center">{row.company}</TableCell>
+              <TableCell align="center">
                 <FormControl>
                   <Select>
                     {row.availability.map((date: any, id: any) => (
@@ -46,9 +46,16 @@ const InterviewerPool = (props: any) => (
                   </Select>
                 </FormControl>
               </TableCell>
-              <TableCell align="right">{row.languages}</TableCell>
-              <TableCell align="right">{row.role}</TableCell>
-              <TableCell align="right">{row.company}</TableCell>
+              <TableCell align="center">
+                <Button color="secondary" target="_blank" href={row.folder}>
+                  Resume
+                </Button>
+              </TableCell>
+              <TableCell align="center">
+                <Button type="submit" variant="contained" color="primary">
+                  Schedule
+                </Button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
