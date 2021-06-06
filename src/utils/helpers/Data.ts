@@ -32,39 +32,6 @@ export default class Data {
       });
   }
 
-  static fromInputToPool(staticInputs: any, dynamicInputs: any) {
-    const mappedValues = { availability: '' };
-    for (const element of staticInputs) {
-      let value = null;
-      if (element.apiMap === 'job') {
-        value = JOBS[element.state];
-      } else if (element.apiMap === 'position') {
-        value = POSITIONS[element.state];
-      } else {
-        value = element.state;
-      }
-      //@ts-expect-error
-      mappedValues[element.apiMap] = value;
-    }
-
-    let allIntervals: any = [];
-
-    for (const id in dynamicInputs.state) {
-      const poolDate = DateTime._getDate(dynamicInputs.state[id]['day']);
-      let intervals: any = [];
-      for (const interval of dynamicInputs.state[id].interval) {
-        intervals.push(`${poolDate} ${interval}`);
-      }
-      allIntervals.push(`"[${intervals.join(',')})"`);
-    }
-    mappedValues.availability = `{${allIntervals.join(',')}}`;
-    console.log(mappedValues);
-
-    return {
-      preferences: mappedValues,
-    };
-  }
-
   static fromInputToConfirmInterview(id: string, timestamp: string) {
     return {
       interviewUid: id,
@@ -135,38 +102,6 @@ export default class Data {
     };
   }
 
-  static fromAPItoMatch(data: any) {
-    let parsedData: IMatch[] = [];
-
-    for (var elem of data.pools) {
-      let parsed: IMatch = {
-        uid: elem.uid,
-        name: elem.person,
-        languages: elem.language,
-        interviewType: elem.job,
-        role: elem.position,
-        folder: Data.getFolderUrl(elem.folder),
-      };
-      // TODO: Fix the problem with the new date format
-      // console.log(elem.availability);
-      for (var available of elem.availability) {
-        const day = available.day;
-        if (typeof day !== 'undefined') {
-          const capitalizedDay = day.charAt(0).toUpperCase() + day.slice(1);
-
-          //@ts-expect-error
-          parsed[capitalizedDay] = available.interval.map((interval: any) => {
-            const intervals = interval.split('-');
-            return { startHour: intervals[0], endHour: intervals[1] };
-          });
-        }
-      }
-      parsedData.push(parsed);
-    }
-    console.log(parsedData);
-    return parsedData;
-  }
-
   static fromAPItoIncomingInterviews(data: any) {
     let parsedData: IIncomingInterviewsData[] = [];
     for (var interview of data.interviews) {
@@ -194,5 +129,98 @@ export default class Data {
       });
     }
     return pastInterviews;
+  }
+
+  static parseInputToPoolAPI(staticInputs: any, dynamicInputs: any) {
+    const mappedValues = { availability: '' };
+    for (const element of staticInputs) {
+      let value = null;
+      if (element.apiMap === 'job') {
+        value = JOBS[element.state];
+      } else if (element.apiMap === 'position') {
+        value = POSITIONS[element.state];
+      } else {
+        value = element.state;
+      }
+      //@ts-expect-error
+      mappedValues[element.apiMap] = value;
+    }
+
+    let allIntervals: any = [];
+
+    for (const id in dynamicInputs.state) {
+      const poolDate = DateTime._getDate(dynamicInputs.state[id]['day']);
+      let intervals: any = [];
+      for (const interval of dynamicInputs.state[id].interval) {
+        intervals.push(`${poolDate} ${interval}`);
+      }
+      // TODO: Research how to change from ) to ] to be able to serialize in an easier way
+      allIntervals.push(`"[${intervals.join(',')})"`);
+    }
+    mappedValues.availability = `{${allIntervals.join(',')}}`;
+    console.log(mappedValues);
+
+    return {
+      preferences: mappedValues,
+    };
+  }
+
+  static _parseRangesToArrayByDay(ranges: Array<string>) {
+    let rangesByDay: { [day: string]: Array<string> } = {};
+    let availableDates: Array<string> = [];
+
+    ranges.forEach(range => {
+      let intervals = JSON.parse(range.replace(')', ']')).sort();
+      intervals.forEach((interval: string) => {
+        const intervalInfo = interval.split(' ');
+        const day = intervalInfo[0];
+        const hour = intervalInfo[1];
+        if (day in rangesByDay) {
+          rangesByDay[day].push(hour);
+        } else {
+          rangesByDay[day] = [hour];
+        }
+      });
+    });
+
+    for (const [day, intervals] of Object.entries(rangesByDay)) {
+      for (var i = 0; i < intervals.length; i += 2) {
+        const beginInterval = DateTime.createMomentumDateFromStr(
+          `${day} ${intervals[i]}`
+        );
+        const endInterval = DateTime.createMomentumDateFromStr(
+          `${day} ${intervals[i + 1]}`
+        );
+        var hourDifference = DateTime.hourDifferenceBetweenTwoIntervals(
+          beginInterval,
+          endInterval
+        );
+
+        availableDates.push(DateTime.momentumDateToPool(beginInterval));
+        console.log(DateTime.momentumDateToPool(beginInterval));
+        for (var hour = 1; hour <= hourDifference; hour += 1) {
+          const gapInterval = DateTime.addHoursToInterval(hour, beginInterval);
+          availableDates.push(DateTime.momentumDateToPool(gapInterval));
+        }
+      }
+    }
+    return availableDates;
+  }
+
+  static parseAPIDataToPool(data: any) {
+    let parsedData: any[] = [];
+
+    for (var pool of data.pools) {
+      let poolData = {
+        uid: pool.id,
+        languages: pool.language,
+        interviewType: pool.job,
+        role: pool.position,
+        folder: Data.getFolderUrl(pool.folder),
+        availability: Data._parseRangesToArrayByDay(pool.availability),
+      };
+      parsedData.push(poolData);
+    }
+    return parsedData;
   }
 }

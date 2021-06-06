@@ -52,7 +52,7 @@ const UPDATE_INTERVIEWER = gql`
 const VIEW_POOL = gql`
   {
     pools {
-      interviewee_id
+      id
       availability
       awaiting
       company

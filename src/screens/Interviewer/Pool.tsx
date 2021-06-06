@@ -1,4 +1,6 @@
-import InterviewerMatch from 'components/Interviewer/Match/InterviewerMatch';
+import InterviewerPool from 'components/Interviewer/Pool/InterviewerPool';
+import UserError from 'components/User/UserError';
+import UserLoading from 'components/User/UserLoading';
 import React, { useState } from 'react';
 import { CREATE_INTERVIEW, VIEW_POOL } from 'utils/constants/endpoints';
 import { day, hour } from 'utils/constants/values';
@@ -27,9 +29,8 @@ const defaultInterviewData: interviewData = {
   interviewHour: hour.h0,
 };
 
-const InterviewerMatchInterview = () => {
+const Pool = () => {
   const { loading, error, data } = useQuery(VIEW_POOL);
-  // eslint-disable-next-line
   const [creation, { error: cancellationMutationError }] =
     useMutation(CREATE_INTERVIEW);
 
@@ -41,10 +42,10 @@ const InterviewerMatchInterview = () => {
     useState<interviewData>(defaultInterviewData);
   const [showConfirm, setShowConfirm] = useState<Boolean>(false);
 
-  if (loading) return <p> Loading </p>;
-  if (error) return <p> Error </p>;
+  if (loading) return <UserLoading />;
+  if (error) return <UserError />;
 
-  let pool = Data.fromAPItoMatch(data);
+  const pool = Data.parseAPIDataToPool(data);
 
   const createInterview = (id: string, day: string, hour: string) => {
     creation({
@@ -72,7 +73,7 @@ const InterviewerMatchInterview = () => {
     createInterview,
   };
 
-  return <InterviewerMatch data={allData} />;
+  return <InterviewerPool data={allData} />;
 };
 
-export default InterviewerMatchInterview;
+export default Pool;

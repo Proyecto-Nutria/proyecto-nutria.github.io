@@ -68,4 +68,28 @@ export default class DateTime {
   static _getDate(momentDate: any): String {
     return momentDate.split('T')[0];
   }
+
+  static createMomentumDateFromStr(date: string) {
+    return moment(date);
+  }
+
+  static hourDifferenceBetweenTwoIntervals(
+    beginningInterval: Object,
+    endInterval: Object
+  ) {
+    //@ts-ignore
+    return endInterval.diff(beginningInterval, 'hours');
+  }
+
+  static addHoursToInterval(numberOfHours: number, interval: Object) {
+    // @ts-ignore
+    let newInterval = interval.clone();
+    // @ts-ignore
+    return newInterval.add(numberOfHours, 'hours');
+  }
+
+  static momentumDateToPool(momentumDate: Object) {
+    //@ts-ignore
+    return momentumDate.format('YYYY-MM-DDTHH:mm:ss');
+  }
 }

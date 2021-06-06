@@ -16,7 +16,7 @@ import IntervieweeMock from 'screens/Interviewee/Schedule';
 // Interviewer
 import InterviewerMain from 'screens/Interviewer/Board';
 import InterviewerIncomingInterviews from 'screens/Interviewer/IncomingInterviews';
-import InterviewerMatchInterview from 'screens/Interviewer/Match';
+import InterviewerInterviewPools from 'screens/Interviewer/Pool';
 import InterviewerEditProfile from 'screens/Interviewer/Profile';
 //User
 import PastInterviews from 'screens/User/PastInterviews';
@@ -82,7 +82,7 @@ const Routes = ({ onToggleDark }: { onToggleDark: Function }) => {
               <Route path={HOME_PATH} component={InterviewerMain} />
               <Route
                 path={WER_MATCH_PATH}
-                component={InterviewerMatchInterview}
+                component={InterviewerInterviewPools}
               />
               <Route
                 path={WER_INCOMING_INTERVIEWS_PATH}

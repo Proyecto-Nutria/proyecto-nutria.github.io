@@ -129,7 +129,7 @@ const IntervieweeMock = () => {
   const createMock = () => {
     Data.callMutationAndRedirectToHome(
       enterToPool,
-      Data.fromInputToPool(staticInputs, dynamicInputs),
+      Data.parseInputToPoolAPI(staticInputs, dynamicInputs),
       history
     );
   };
