@@ -1,5 +1,5 @@
 import UIMainContainer from 'components/UI/UIBoxContainer';
-import React from 'react';
+import React, { useState } from 'react';
 
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
@@ -13,55 +13,64 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 
-const InterviewerPool = (props: any) => (
-  <UIMainContainer>
-    <Typography variant="h4">Match</Typography>
-    <br />
-    <TableContainer>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell align="left">Languages</TableCell>
-            <TableCell align="center">Awaiting</TableCell>
-            <TableCell align="center">Role</TableCell>
-            <TableCell align="center">Company</TableCell>
-            <TableCell align="center">Availability</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {props.data.pool.map((row: any, id: any) => (
-            <TableRow key={id}>
-              <TableCell align="left">{row.languages}</TableCell>
-              <TableCell align="center">{row.awaiting}</TableCell>
-              <TableCell align="center">{row.role}</TableCell>
-              <TableCell align="center">{row.company}</TableCell>
-              <TableCell align="center">
-                <FormControl>
-                  <Select>
-                    {row.availability.map((date: any, id: any) => (
-                      <MenuItem key={id} value={date}>
-                        {date}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-              </TableCell>
-              <TableCell align="center">
-                <Button color="secondary" target="_blank" href={row.folder}>
-                  Resume
-                </Button>
-              </TableCell>
-              <TableCell align="center">
-                <Button type="submit" variant="contained" color="primary">
-                  Schedule
-                </Button>
-              </TableCell>
+const InterviewerPool = (props: any) => {
+  const [availability, setAvailability] = useState<any>({});
+  // const selectHandler = (even: object) => {
+  //   setAvailability(event?.target.value);
+  // }
+  return (
+    <UIMainContainer>
+      <Typography variant="h4">Match</Typography>
+      <br />
+      <TableContainer>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell align="left">Languages</TableCell>
+              <TableCell align="center">Awaiting</TableCell>
+              <TableCell align="center">Role</TableCell>
+              <TableCell align="center">Company</TableCell>
+              <TableCell align="center">Availability</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  </UIMainContainer>
-);
+          </TableHead>
+          <TableBody>
+            {props.data.pool.map((row: any, id: any) => (
+              <TableRow key={id}>
+                <TableCell align="left">{row.languages}</TableCell>
+                <TableCell align="center">{row.awaiting}</TableCell>
+                <TableCell align="center">{row.role}</TableCell>
+                <TableCell align="center">{row.company}</TableCell>
+                <TableCell align="center">
+                  <FormControl>
+                    <Select onChange={event => setAvailability({...availability, availability:event.target.value} )}>
+                      {row.availability.map((date: any, id: any) => (
+                        <MenuItem key={id} value={date}>
+                          {date}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </TableCell>
+                <TableCell align="center">
+                  <Button color="secondary" target="_blank" href={row.folder}>
+                    Resume
+                  </Button>
+                </TableCell>
+                <TableCell align="center">
+                  <Button type="submit" variant="contained" color="primary" onClick={ ()=> {
+                    setAvailability({...availability, id:id} );
+                    console.log({...availability, id:id});
+                  }}>
+                    Schedule
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </UIMainContainer>
+  )
+};
 
 export default InterviewerPool;
