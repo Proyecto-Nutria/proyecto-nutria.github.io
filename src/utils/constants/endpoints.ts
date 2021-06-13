@@ -49,19 +49,18 @@ const UPDATE_INTERVIEWER = gql`
   }
 `;
 
+// interviewee { folder, user_id }
 const VIEW_POOL = gql`
   {
     pools {
       id
+      interviewee_id
       availability
       awaiting
       company
       job
       language
       position
-      interviewee {
-        folder
-      }
     }
   }
 `;

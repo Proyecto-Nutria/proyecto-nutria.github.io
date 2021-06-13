@@ -37,7 +37,16 @@ const InterviewerPool = (props: any) => (
               <TableCell align="center">{row.company}</TableCell>
               <TableCell align="center">
                 <FormControl>
-                  <Select>
+                  <Select
+                    value={props.data.poolR[row.uid] || ''}
+                    onChange={event =>
+                      props.data.setPool({
+                        type: 'create',
+                        id: row.uid,
+                        schedule: event.target.value,
+                      })
+                    }
+                  >
                     {row.availability.map((date: any, id: any) => (
                       <MenuItem key={id} value={date}>
                         {date}
@@ -52,7 +61,17 @@ const InterviewerPool = (props: any) => (
                 </Button>
               </TableCell>
               <TableCell align="center">
-                <Button type="submit" variant="contained" color="primary">
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  onClick={() => {
+                    props.data.createInterview(
+                      row.interviewee,
+                      props.data.poolR[row.uid]
+                    );
+                  }}
+                >
                   Schedule
                 </Button>
               </TableCell>

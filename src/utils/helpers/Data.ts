@@ -158,7 +158,6 @@ export default class Data {
       allIntervals.push(`"[${intervals.join(',')})"`);
     }
     mappedValues.availability = `{${allIntervals.join(',')}}`;
-    console.log(mappedValues);
 
     return {
       preferences: mappedValues,
@@ -197,7 +196,6 @@ export default class Data {
         );
 
         availableDates.push(DateTime.momentumDateToPool(beginInterval));
-        console.log(DateTime.momentumDateToPool(beginInterval));
         for (var hour = 1; hour <= hourDifference; hour += 1) {
           const gapInterval = DateTime.addHoursToInterval(hour, beginInterval);
           availableDates.push(DateTime.momentumDateToPool(gapInterval));
@@ -213,6 +211,7 @@ export default class Data {
     for (var pool of data.pools) {
       let poolData = {
         uid: pool.id,
+        interviewee: pool.interviewee_id,
         languages: pool.language,
         interviewType: pool.job,
         role: pool.position,
@@ -224,5 +223,17 @@ export default class Data {
       parsedData.push(poolData);
     }
     return parsedData;
+  }
+
+  static parseInputToInterviewAPI(
+    intervieweeId: string,
+    dateOfInterview: string
+  ) {
+    return {
+      interview: {
+        interviewee_id: intervieweeId,
+        date: dateOfInterview,
+      },
+    };
   }
 }
