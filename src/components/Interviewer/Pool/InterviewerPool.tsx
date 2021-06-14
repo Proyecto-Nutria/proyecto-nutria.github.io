@@ -67,6 +67,8 @@ const InterviewerPool = (props: any) => (
                   color="primary"
                   onClick={() => {
                     props.data.createInterview(
+                      row.uid,
+                      row.awaiting,
                       row.interviewee,
                       props.data.poolR[row.uid]
                     );

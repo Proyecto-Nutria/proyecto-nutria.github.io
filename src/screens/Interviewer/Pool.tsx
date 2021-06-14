@@ -2,7 +2,7 @@ import InterviewerPool from 'components/Interviewer/Pool/InterviewerPool';
 import UserError from 'components/User/UserError';
 import UserLoading from 'components/User/UserLoading';
 import React, { useReducer } from 'react';
-import { CREATE_INTERVIEW, VIEW_POOL } from 'utils/constants/endpoints';
+import { CREATE_INTERVIEW, UPDATE_POOL, VIEW_POOL } from 'utils/constants/endpoints';
 import Data from 'utils/helpers/Data';
 
 import { useMutation, useQuery } from '@apollo/client';
@@ -21,9 +21,12 @@ const reducer = (currentPool: any, action: any): any => {
 };
 
 const Pool = () => {
-  const { loading, error, data } = useQuery(VIEW_POOL);
+  const { loading, error, data } = useQuery(VIEW_POOL, {
+    fetchPolicy: 'no-cache',
+  });
   const [creation, { error: cancellationMutationError }] =
     useMutation(CREATE_INTERVIEW);
+  const [updatePool, { error: updatePoolError }] = useMutation(UPDATE_POOL);
   const [poolR, setPool] = useReducer(reducer, {});
 
   if (loading) return <UserLoading />;
@@ -31,10 +34,20 @@ const Pool = () => {
 
   const pool = Data.parseAPIDataToPool(data);
 
-  const createInterview = (intervieweeId: string, dateOfInterview: string) => {
-    console.log(intervieweeId, dateOfInterview);
+  const createInterview = (
+    poolId: number,
+    awaitingInterviews: number,
+    intervieweeId: string,
+    dateOfInterview: string
+  ) => {
     creation({
       variables: Data.parseInputToInterviewAPI(intervieweeId, dateOfInterview),
+    });
+    updatePool({
+      variables: {
+        id: poolId,
+        awaiting: awaitingInterviews - 1,
+      },
     });
   };
 

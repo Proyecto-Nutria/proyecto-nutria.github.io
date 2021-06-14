@@ -65,6 +65,14 @@ const VIEW_POOL = gql`
   }
 `;
 
+const UPDATE_POOL = gql`
+  mutation update_pools($id: Int!, $awaiting: Int!) {
+    update_pools(_set: { awaiting: $awaiting }, where: { id: { _eq: $id } }) {
+      affected_rows
+    }
+  }
+`;
+
 const ENTER_POOL = gql`
   mutation enterToPool($preferences: pools_insert_input!) {
     insert_pools_one(object: $preferences) {
@@ -131,6 +139,7 @@ export {
   UPDATE_INTERVIEWER,
   VIEW_POOL,
   ENTER_POOL,
+  UPDATE_POOL,
   CREATE_INTERVIEW,
   PAST_INTERVIEWS,
   INCOMING_INTERVIEWS,
