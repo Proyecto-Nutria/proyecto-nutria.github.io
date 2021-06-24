@@ -56,7 +56,14 @@ const InterviewsIncoming = (props: any) => {
                       Cancel
                     </Button>
                   ) : (
-                    <Button color="primary">Confirm</Button>
+                    <Button
+                      color="primary"
+                      onClick={() => {
+                        props.confirmationMutation(row.id);
+                      }}
+                    >
+                      Confirm
+                    </Button>
                   )}
                 </TableCell>
               </TableRow>

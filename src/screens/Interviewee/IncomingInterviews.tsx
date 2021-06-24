@@ -1,4 +1,3 @@
-import UIMainContainer from 'components/UI/UIBoxContainer';
 import InterviewsIncoming from 'components/User/Interviews/InterviewsIncoming';
 import React from 'react';
 import { IIncomingInterviewsData } from 'structure/interfaces/IIncomingInterviews';
@@ -29,30 +28,28 @@ const IntervieweeIncomingInterviews = () => {
   let incomingInterviews: IIncomingInterviewsData[] =
     Data.fromAPItoIncomingInterviews(data);
 
-  const confirmInterview = (id: string, timestamp: string) => {
+  const confirmInterview = (id: string) => {
     confirmation({
       variables: {
-        confirmation: Data.fromInputToConfirmInterview(id, timestamp),
+        id: id,
       },
     });
   };
-  const cancelInterview = (id: string, timestamp: string) => {
+  const cancelInterview = (id: string) => {
     cancellation({
       variables: {
-        cancellation: Data.fromInputToCancelInterview(id, timestamp),
+        id: id,
       },
     });
   };
 
   return (
-    <UIMainContainer>
-      <InterviewsIncoming
-        data={incomingInterviews}
-        confirmMutation={confirmInterview}
-        cancelMutation={cancelInterview}
-        isInterviewee={true}
-      />
-    </UIMainContainer>
+    <InterviewsIncoming
+      data={incomingInterviews}
+      confirmMutation={confirmInterview}
+      cancelMutation={cancelInterview}
+      isInterviewee={true}
+    />
   );
 };
 

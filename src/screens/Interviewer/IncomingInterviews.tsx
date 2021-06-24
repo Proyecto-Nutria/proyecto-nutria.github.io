@@ -16,6 +16,7 @@ const now = DateTime.getCurrentDate();
 const InterviewerIncomingInterviews = () => {
   const { loading, error, data } = useQuery(INCOMING_INTERVIEWS, {
     variables: { now },
+    fetchPolicy: 'no-cache',
   });
   const [cancellation, { error: cancellationMutationError }] =
     useMutation(CANCEL_INTERVIEW);
@@ -28,19 +29,26 @@ const InterviewerIncomingInterviews = () => {
   let incomingInterviews: IIncomingInterviewsData[] =
     Data.fromAPItoIncomingInterviews(data);
 
-  const cancelInterview = (interviewId: string) => {
-    console.log(interviewId);
-    console.log('entered here');
-    /*
+  const confirmInterview = (id: string) => {
+    confirmation({
+      variables: {
+        id: id,
+      },
+    });
+  };
+  const cancelInterview = (id: string) => {
     cancellation({
-      variables: Data.fromInputToCancelInterview(id, timestamp),
-    });*/
+      variables: {
+        id: id,
+      },
+    });
   };
 
   return (
     <InterviewsIncoming
       data={incomingInterviews}
       cancelMutation={cancelInterview}
+      confirmationMutation={confirmInterview}
     />
   );
 };

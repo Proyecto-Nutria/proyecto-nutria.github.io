@@ -32,19 +32,15 @@ export default class Data {
       });
   }
 
-  static fromInputToConfirmInterview(id: string, timestamp: string) {
+  static fromInputToConfirmInterview(id: string) {
     return {
       interviewUid: id,
-      interviewDate: timestamp,
     };
   }
 
-  static fromInputToCancelInterview(id: string, timestamp: string) {
+  static fromInputToCancelInterview(id: string) {
     return {
-      cancellation: {
-        interviewUid: id,
-        interviewDate: timestamp,
-      },
+      interviewUid: id,
     };
   }
 
@@ -106,6 +102,7 @@ export default class Data {
     let parsedData: IIncomingInterviewsData[] = [];
     for (var interview of data.interviews) {
       const parsedTimestamp = DateTime.timestampToDate(interview.date);
+      console.log(typeof interview.confirmed);
       let interviewInfo: IIncomingInterviewsData = {
         id: interview.id,
         name: 'Unknown', //TODO: Check if is necessary to get the name of the person
