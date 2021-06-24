@@ -107,7 +107,7 @@ export default class Data {
     for (var interview of data.interviews) {
       const parsedTimestamp = DateTime.timestampToDate(interview.date);
       let interviewInfo: IIncomingInterviewsData = {
-        id: interview.uid,
+        id: interview.id,
         name: 'Unknown', //TODO: Check if is necessary to get the name of the person
         date: DateTime.formatDateToDay(parsedTimestamp),
         time: DateTime.formatDateToHours(parsedTimestamp),

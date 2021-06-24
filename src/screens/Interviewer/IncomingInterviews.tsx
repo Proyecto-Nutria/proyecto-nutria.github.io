@@ -3,7 +3,9 @@ import UserError from 'components/User/UserError';
 import UserLoading from 'components/User/UserLoading';
 import React from 'react';
 import { IIncomingInterviewsData } from 'structure/interfaces/IIncomingInterviews';
-import { CANCEL_INTERVIEW, INCOMING_INTERVIEWS } from 'utils/constants/endpoints';
+import {
+    CANCEL_INTERVIEW, CONFIRM_INTERVIEW, INCOMING_INTERVIEWS
+} from 'utils/constants/endpoints';
 import Data from 'utils/helpers/Data';
 import DateTime from 'utils/helpers/DateTime';
 
@@ -17,6 +19,8 @@ const InterviewerIncomingInterviews = () => {
   });
   const [cancellation, { error: cancellationMutationError }] =
     useMutation(CANCEL_INTERVIEW);
+  const [confirmation, { error: confirmationMutationError }] =
+    useMutation(CONFIRM_INTERVIEW);
 
   if (loading) return <UserLoading />;
   if (error) return <UserError />;
@@ -24,10 +28,13 @@ const InterviewerIncomingInterviews = () => {
   let incomingInterviews: IIncomingInterviewsData[] =
     Data.fromAPItoIncomingInterviews(data);
 
-  const cancelInterview = (id: string, timestamp: string) => {
+  const cancelInterview = (interviewId: string) => {
+    console.log(interviewId);
+    console.log('entered here');
+    /*
     cancellation({
       variables: Data.fromInputToCancelInterview(id, timestamp),
-    });
+    });*/
   };
 
   return (
