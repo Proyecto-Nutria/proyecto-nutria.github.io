@@ -111,7 +111,6 @@ const PAST_INTERVIEWS = gql`
   }
 `;
 
-// TODO: Test mutation
 const CONFIRM_INTERVIEW = gql`
   mutation confirmInterview($id: Int!) {
     update_interviews(_set: { confirmed: true }, where: { id: { _eq: $id } }) {
@@ -120,7 +119,6 @@ const CONFIRM_INTERVIEW = gql`
   }
 `;
 
-// TODO: Test mutation
 const CANCEL_INTERVIEW = gql`
   mutation cancelInterview($id: Int!) {
     delete_interviews(where: { id: { _eq: $id } }) {

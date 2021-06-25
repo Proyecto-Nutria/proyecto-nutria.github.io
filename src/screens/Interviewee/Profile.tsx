@@ -1,7 +1,6 @@
 // @ts-nocheck
 
 import IntervieweeProfile from 'components/Interviewee/Profile/IntervieweeProfile';
-import UIMainContainer from 'components/UI/UIBoxContainer';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { CREATE_INTERVIEWEE, UPDATE_INTERVIEWEE, UPLOAD_FOLDER } from 'utils/constants/endpoints';
@@ -66,13 +65,20 @@ const IntervieweeEditProfile = () => {
   if (loading) return <p>Loading ...</p>;
 
   if (data) {
+    console.log(data); // This has the folderuid
+    if (update) {
+      console.log('Update does nothing');
+    } else {
+      console.log('New user');
+    }
+    /*
     const information = {
       folder: data.upload_resume_and_create_folder.id,
       school: 'UNAM',
     };
     createInterviewee({
       variables: { information },
-    });
+    });*/
   }
 
   const allData = {
@@ -85,13 +91,11 @@ const IntervieweeEditProfile = () => {
   };
 
   return (
-    <UIMainContainer>
-      <IntervieweeProfile
-        mutation={editInterviewee}
-        onMutationError={null}
-        data={allData}
-      />
-    </UIMainContainer>
+    <IntervieweeProfile
+      mutation={editInterviewee}
+      onMutationError={null}
+      data={allData}
+    />
   );
 };
 
