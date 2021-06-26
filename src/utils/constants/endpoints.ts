@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 const UPLOAD_RESUME_TO_FOLDER_OR_UPDATE = gql`
-  query getIdOfResume($resume: String!) {
-    upload_resume_and_create_folder(resume: $resume) {
+  query getIdOfResume($resume: String!, $firstTime: Boolean!) {
+    upload_resume_and_create_folder(resume: $resume, firstTime: $firstTime) {
       id
     }
   }
