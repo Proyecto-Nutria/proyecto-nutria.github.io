@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-const UPLOAD_FOLDER = gql`
+const UPLOAD_RESUME_TO_FOLDER_OR_UPDATE = gql`
   query getIdOfResume($resume: String!) {
     upload_resume_and_create_folder(resume: $resume) {
       id
@@ -130,7 +130,7 @@ const CANCEL_INTERVIEW = gql`
 `;
 
 export {
-  UPLOAD_FOLDER,
+  UPLOAD_RESUME_TO_FOLDER_OR_UPDATE,
   CREATE_INTERVIEWEE,
   UPDATE_INTERVIEWEE,
   CREATE_INTERVIEWER,

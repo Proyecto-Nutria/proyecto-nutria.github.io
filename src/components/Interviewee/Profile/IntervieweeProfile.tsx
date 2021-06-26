@@ -34,13 +34,11 @@ const IntervieweeProfile = (props: any) => {
           <InputLabel id="demo-simple-select-label">School</InputLabel>
           <Select
             fullWidth
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
             value={props.data.school}
-            onChange={option => props.data.setSchoolValue(option)}
+            onChange={event => props.data.setSchoolValue(event.target.value)}
           >
-            {props.data.schoolsOptions.map((name: any) => (
-              <MenuItem key={name} value={name}>
+            {props.data.schoolsOptions.map((name: any, id: any) => (
+              <MenuItem key={id} value={name}>
                 {name}
               </MenuItem>
             ))}

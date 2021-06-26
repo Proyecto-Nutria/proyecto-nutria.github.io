@@ -26,7 +26,7 @@ import { UserRole } from 'structure/types/userTypes';
 
 const Routes = ({ onToggleDark }: { onToggleDark: Function }) => {
   const userRole = useUserRole();
-  const isFirstLogin = useIsFirstLogin();
+  const firstLogin = useIsFirstLogin();
   const FeedbackHelper = MainFeedbackHelper.make;
 
   return (
@@ -36,7 +36,7 @@ const Routes = ({ onToggleDark }: { onToggleDark: Function }) => {
           <Landing onToggleDark={onToggleDark} />
         </Route>
 
-        {isFirstLogin && (
+        {firstLogin && (
           <Fragment>
             <AppHeader />
             <Switch>

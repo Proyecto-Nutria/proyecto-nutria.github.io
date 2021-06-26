@@ -1,29 +1,31 @@
 // @ts-nocheck
 
 import IntervieweeProfile from 'components/Interviewee/Profile/IntervieweeProfile';
+import UserError from 'components/User/UserError';
+import UserLoading from 'components/User/UserLoading';
+import { useIsFirstLogin } from 'hooks/UserHooks';
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { CREATE_INTERVIEWEE, UPDATE_INTERVIEWEE, UPLOAD_FOLDER } from 'utils/constants/endpoints';
+import {
+    CREATE_INTERVIEWEE, UPDATE_INTERVIEWEE, UPLOAD_RESUME_TO_FOLDER_OR_UPDATE
+} from 'utils/constants/endpoints';
 import Data from 'utils/helpers/Data';
-import Path from 'utils/helpers/Path';
 
 import { useLazyQuery, useMutation } from '@apollo/client';
 
 const IntervieweeEditProfile = () => {
-  const history = useHistory();
-  const update = Path.isEditProfile(history);
-
+  const firstLogin = useIsFirstLogin();
   let profileMutation = CREATE_INTERVIEWEE;
-  if (update) profileMutation = UPDATE_INTERVIEWEE;
+  if (firstLogin) profileMutation = UPDATE_INTERVIEWEE;
 
   /*
   const [modifyInterviewee, { error: mutationError }] = useMutation(
     profileMutation
   );*/
 
-  const [uploadResume, { loading, data }] = useLazyQuery(UPLOAD_FOLDER);
-  const [createInterviewee, { error: mutationError }] =
-    useMutation(CREATE_INTERVIEWEE);
+  const [uploadResumeOrUpdate, { loading, data }] = useLazyQuery(
+    UPLOAD_RESUME_TO_FOLDER_OR_UPDATE
+  );
+  const [createInterviewee, { error }] = useMutation(CREATE_INTERVIEWEE);
 
   const [resume, setResume] = React.useState(null);
   const [school, setSchoolValue] = React.useState('');
@@ -40,7 +42,7 @@ const IntervieweeEditProfile = () => {
       base64 = fileLoadedEvent.target.result;
       const metadataCharacters = 28;
       const base64Resume = base64.slice(metadataCharacters);
-      uploadResume({
+      uploadResumeOrUpdate({
         variables: { resume: base64Resume },
       });
     };
@@ -62,13 +64,11 @@ const IntervieweeEditProfile = () => {
     }*/
   };
 
-  if (loading) return <p>Loading ...</p>;
+  if (loading) return <UserLoading />;
+  if (error) return <UserError />;
 
   if (data) {
-    console.log(data); // This has the folderuid
-    if (update) {
-      console.log('Update does nothing');
-    } else {
+    if (!firstLogin) {
       console.log('New user');
     }
     /*
