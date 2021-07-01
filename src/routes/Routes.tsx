@@ -5,7 +5,7 @@ import { useIsFirstLogin, useUserRole } from 'hooks/UserHooks';
 import React, { Fragment } from 'react';
 import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
 import {
-    EDIT_PATH, FEEDBACK_HELPER_PATH, HOME_PATH, LANDING_PATH, LOGIN_PATH, USER_PAST_INTERVIEWS_PATH,
+    EDIT_PATH, FEEDBACK_HELPER_PATH, HOME_PATH, LANDING_PATH, USER_PAST_INTERVIEWS_PATH,
     WEE_INCOMING_INTERVIEWS_PATH, WEE_MOCK_PATH, WER_INCOMING_INTERVIEWS_PATH, WER_MATCH_PATH
 } from 'routes/paths';
 // Interviewee
