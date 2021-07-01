@@ -12,9 +12,8 @@ import Data from 'utils/helpers/Data';
 
 import { useLazyQuery, useMutation } from '@apollo/client';
 
-const newUser = useIsFirstLogin();
-
 const IntervieweeEditProfile = () => {
+  const newUser = useIsFirstLogin();
   let profileMutation = CREATE_INTERVIEWEE;
   if (!newUser) profileMutation = UPDATE_INTERVIEWEE;
 

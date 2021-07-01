@@ -80,20 +80,14 @@ export default class Data {
     };
   }
 
-  static fromInputToCreateInterviewer(mentioned: boolean, description: string) {
+  static fromInputToCreateOrUpdateInterviewer(
+    mentioned: boolean,
+    description: string
+  ) {
     return {
       interviewer: {
-        isMentioned: mentioned,
-        description: description,
-      },
-    };
-  }
-
-  static fromInputToUpdateInterviewer(mentioned: boolean, description: string) {
-    return {
-      interviewer: {
-        isMentioned: mentioned,
-        description: description,
+        mentioned: mentioned,
+        information: description,
       },
     };
   }

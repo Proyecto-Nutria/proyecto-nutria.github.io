@@ -19,8 +19,8 @@ const CREATE_INTERVIEWEE = gql`
 
 // TODO: Test mutation, Missing GET_INTERVIEWER and Re Upload resume
 const UPDATE_INTERVIEWEE = gql`
-  mutation updateInterviewee($id: Int!, $information: interviewees_set_input!) {
-    update_interviewees(where: { id: { _eq: $id } }, _set: $information) {
+  mutation updateInterviewee($information: interviewees_set_input!) {
+    update_interviewees(where: {}, _set: $information) {
       returning {
         school
       }
@@ -37,12 +37,13 @@ const CREATE_INTERVIEWER = gql`
   }
 `;
 
-// TODO: Test mutation, Missing GET_INTERVIEWER
 const UPDATE_INTERVIEWER = gql`
-  mutation updateInterviewer($id: Int!, $information: interviewers_set_input!) {
-    update_interviewers(where: { id: { _eq: $id } }, _set: $information) {
+  mutation updateInterviewer($mentioned: Boolean!, $information: String!) {
+    update_interviewers(
+      where: {}
+      _set: { mentioned: $mentioned, information: $information }
+    ) {
       returning {
-        information
         mentioned
       }
     }

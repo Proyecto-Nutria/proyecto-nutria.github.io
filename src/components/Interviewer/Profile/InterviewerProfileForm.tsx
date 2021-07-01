@@ -1,15 +1,21 @@
+import UIMainContainer from 'components/UI/UIBoxContainer';
 import React from 'react';
 
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
 
 const InterviewerProfileForm = (props: any) => {
   return (
-    <Grid container spacing={3} component={Paper}>
+    <UIMainContainer>
+      <Typography variant="body2" gutterBottom>
+        By clicking on this box you give Proyecto Nutria the permission to share
+        brief details on the way your are contributing to this project. See
+        examples on our official website
+      </Typography>
       <form
         noValidate
         onSubmit={event => {
@@ -28,20 +34,21 @@ const InterviewerProfileForm = (props: any) => {
           label="Mention"
         />
         {props.data.appear && (
-          <Grid item xs={12}>
-            <TextField
-              label="Description"
-              multiline
-              rowsMax={4}
-              onChange={event => props.data.setAboutValue(event.target.value)}
-            />
-          </Grid>
+          <TextField
+            fullWidth
+            label="Your brief description"
+            multiline
+            rowsMax={4}
+            onChange={event => props.data.setAboutValue(event.target.value)}
+          />
         )}
-        <Button type="submit" fullWidth variant="contained" color="primary">
-          Sign Up
+        <br />
+        <br />
+        <Button type="submit" variant="contained" color="primary">
+          Update Information
         </Button>
       </form>
-    </Grid>
+    </UIMainContainer>
   );
 };
 

@@ -1,5 +1,7 @@
 import InterviewerProfileForm from 'components/Interviewer/Profile/InterviewerProfileForm';
-import UIMainContainer from 'components/UI/UIBoxContainer';
+import UserError from 'components/User/UserError';
+import UserLoading from 'components/User/UserLoading';
+import { useIsFirstLogin } from 'hooks/UserHooks';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { CREATE_INTERVIEWER, UPDATE_INTERVIEWER } from 'utils/constants/endpoints';
@@ -9,33 +11,24 @@ import Path from 'utils/helpers/Path';
 import { useMutation } from '@apollo/client';
 
 const InterviewerEditProfile = () => {
-  const history = useHistory();
-  const update = Path.isEditProfile(history);
-
+  const newUser = useIsFirstLogin();
   let profileMutation = CREATE_INTERVIEWER;
-  if (update) profileMutation = UPDATE_INTERVIEWER;
+  if (!newUser) profileMutation = UPDATE_INTERVIEWER;
 
-  const [modifyInterviewee, { error: mutationError }] = useMutation(
-    profileMutation
-  );
+  const [modifyInterviewee, { error }] = useMutation(profileMutation);
 
   const [appear, setAppearValue] = React.useState(false);
   const [about, setAboutValue] = React.useState('');
 
+  if (error) return <UserError />;
+
   const editInterviewer = () => {
-    if (update) {
-      Data.callMutationAndRedirectToHome(
-        modifyInterviewee,
-        Data.fromInputToUpdateInterviewee(appear, about),
-        history
-      );
-    } else {
-      Data.callMutationAndRedirectToHome(
-        modifyInterviewee,
-        Data.fromInputToCreateInterviewer(appear, about),
-        history
-      );
-    }
+    modifyInterviewee({
+      variables: {
+        mentioned: appear,
+        information: about,
+      },
+    });
   };
 
   const data = {
@@ -45,15 +38,7 @@ const InterviewerEditProfile = () => {
     setAboutValue,
   };
 
-  return (
-    <UIMainContainer>
-      <InterviewerProfileForm
-        mutation={editInterviewer}
-        onMutationError={mutationError}
-        data={data}
-      />
-    </UIMainContainer>
-  );
+  return <InterviewerProfileForm mutation={editInterviewer} data={data} />;
 };
 
 export default InterviewerEditProfile;
