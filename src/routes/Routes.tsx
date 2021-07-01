@@ -1,6 +1,5 @@
 // UI
 import AppHeader from 'components/User/UserHeader';
-import MainFeedbackHelper from 'FeedbackHelper/MainFeedbackHelper.bs';
 import { useIsFirstLogin, useUserRole } from 'hooks/UserHooks';
 import React, { Fragment } from 'react';
 import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
@@ -27,7 +26,6 @@ import { UserRole } from 'structure/types/userTypes';
 const Routes = ({ onToggleDark }: { onToggleDark: Function }) => {
   const userRole = useUserRole();
   const firstLogin = useIsFirstLogin();
-  const FeedbackHelper = MainFeedbackHelper.make;
 
   return (
     <HashRouter>
@@ -95,7 +93,6 @@ const Routes = ({ onToggleDark }: { onToggleDark: Function }) => {
 
               <Route path={EDIT_PATH} component={InterviewerEditProfile} />
 
-              <Route path={FEEDBACK_HELPER_PATH} component={FeedbackHelper} />
               <Redirect to={LANDING_PATH} push={true} />
             </Switch>
           </Fragment>
