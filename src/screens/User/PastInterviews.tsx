@@ -2,6 +2,7 @@ import InterviewsPast from 'components/User/Interviews/InterviewsPast';
 import UserError from 'components/User/UserError';
 import UserLoading from 'components/User/UserLoading';
 import React from 'react';
+import { PAST_INTERVIEWS_COPY } from 'utils/constants/copy';
 import { PAST_INTERVIEWS } from 'utils/constants/endpoints';
 import Data from 'utils/helpers/Data';
 import DateTime from 'utils/helpers/DateTime';
@@ -27,7 +28,12 @@ const PastInterviews = () => {
     pastInterviewsAPIData
   );
 
-  return <InterviewsPast interviewsData={pastInterviewsData} />;
+  return (
+    <InterviewsPast
+      copy={PAST_INTERVIEWS_COPY}
+      interviewsData={pastInterviewsData}
+    />
+  );
 };
 
 export default PastInterviews;

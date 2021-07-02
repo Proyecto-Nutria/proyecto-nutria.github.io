@@ -12,18 +12,19 @@ import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 
 const InterviewsPast: React.FC<PastInterviewsProps> = ({
+  copy,
   interviewsData,
 }): JSX.Element => {
   return (
     <UIMainContainer>
-      <Typography variant="h4">Past Interviews</Typography>
+      <Typography variant="h4">copy.header</Typography>
       <br />
       <TableContainer>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell align="left">Date</TableCell>
-              <TableCell align="left">Document URL</TableCell>
+              <TableCell align="left">copy.table.head.dateHead</TableCell>
+              <TableCell align="left">copy.table.head.documentHead</TableCell>
               <TableCell></TableCell>
             </TableRow>
           </TableHead>
@@ -38,7 +39,7 @@ const InterviewsPast: React.FC<PastInterviewsProps> = ({
                       target="_blank"
                       href={pastInterview.document}
                     >
-                      Document
+                      copy.table.body.docBtn
                     </Button>
                   )}
                 </TableCell>

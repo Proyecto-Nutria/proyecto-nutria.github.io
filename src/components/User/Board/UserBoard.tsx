@@ -1,5 +1,6 @@
 import UIMainContainer from 'components/UI/UIBoxContainer';
 import React from 'react';
+import { BoardProps } from 'utils/ts/propsInterfaces';
 
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
@@ -24,11 +25,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const UserBoard = (props: any) => {
+const UserBoard: React.FC<BoardProps> = ({ copy }): JSX.Element => {
   const classes = useStyles();
   return (
     <UIMainContainer>
-      {props.elements.map((information: any, id: any) => (
+      {copy.map((information: any, id: any) => (
         <div className={classes.root} key={id}>
           <Paper className={classes.paper}>
             <Grid container spacing={3}>
