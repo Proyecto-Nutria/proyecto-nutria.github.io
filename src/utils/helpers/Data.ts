@@ -4,6 +4,7 @@ import { IMatch } from 'structure/interfaces/IMatch';
 import { IPastInterviewsData } from 'structure/interfaces/IPastInterviews';
 import { JOBS, POSITIONS, SCHOOLS } from 'utils/constants/values';
 import DateTime from 'utils/helpers/DateTime';
+import { PastInterview } from 'utils/ts/dataTypes';
 
 export default class Data {
   static getSchools() {
@@ -111,8 +112,8 @@ export default class Data {
     return parsedData;
   }
 
-  static parseAPIDataToPastInterview(apiData: any) {
-    let pastInterviews: IPastInterviewsData[] = [];
+  static parseAPIDataToPastInterview(apiData: any): PastInterview[] {
+    let pastInterviews: PastInterview[] = [];
     for (var pastInterview of apiData.interviews) {
       pastInterviews.push({
         date: DateTime.timestampWithoutTimezoneToStr(pastInterview.date),

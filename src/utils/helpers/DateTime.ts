@@ -57,7 +57,7 @@ export default class DateTime {
     return `${currentDate.getHours()}:${currentDate.getMinutes()}`;
   }
 
-  static getCurrentDate() {
+  static getCurrentDate(): string {
     return new Date().toISOString();
   }
 
