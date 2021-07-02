@@ -16,15 +16,15 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import useStyles from './LandingFAQStyle';
 
 type questionType = {
-    question: string;
-    answer: string;
+  question: string;
+  answer: string;
 };
 
 function VisitorFAQ() {
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const setAlign = () => isMobile ? classes.center : classes.left;
+  const setAlign = () => (isMobile ? classes.center : classes.left);
   const [expanded, setExpanded] = useState(0);
   const { t } = useTranslation();
   const handleChange = (panel: any) => (event: any, newExpanded: any) => {
@@ -38,13 +38,15 @@ function VisitorFAQ() {
           <Grid item xs={12} md={6}>
             <div className={clsx(classes.title, setAlign())}>
               <Typography variant="h3">
-                <strong>
-                    {t('faq.title')}
-                </strong>
+                <strong>{t('faq.title')}</strong>
               </Typography>
             </div>
-            <Typography className={classes.text} align={isMobile ? 'center' : 'left'} component="p">
-                {t('faq.text')}
+            <Typography
+              className={classes.text}
+              align={isMobile ? 'center' : 'left'}
+              component="p"
+            >
+              {t('faq.text')}
             </Typography>
             <Hidden smDown>
               <div className={classes.illustration}>
@@ -61,42 +63,45 @@ function VisitorFAQ() {
                     </svg>
                   </div>
                 </div>
-                <img src='/images/Intro/faq.webp' alt="illustration" />
+                <img src="/images/Intro/faq.webp" alt="illustration" />
               </div>
             </Hidden>
           </Grid>
           <Grid item xs={12} md={6} className={classes.accordionWrap}>
             <div className={classes.accordion}>
-              {t<questionType[]>('faq.questions', { returnObjects: true }).map((question: questionType, index: any) => (
-                <div className={classes.item} key={index.toString()}>
-                  <Accordion
-                    classes={{
-                      root: classes.paper
-                    }}
-                    expanded={expanded === index}
-                    onChange={handleChange(index)}
-                  >
-                    <AccordionSummary
+              {/*  @ts-ignore: Object is possibly 'null' */}
+              {t<questionType[]>('faq.questions', { returnObjects: true }).map(
+                (question: questionType, index: any) => (
+                  <div className={classes.item} key={index.toString()}>
+                    <Accordion
                       classes={{
-                        content: classes.content,
-                        expanded: classes.expanded,
+                        root: classes.paper,
                       }}
+                      expanded={expanded === index}
+                      onChange={handleChange(index)}
                     >
-                      <Typography className={classes.heading}>{question.question}</Typography>
-                      <ExpandMoreIcon className={classes.icon} />
-                    </AccordionSummary>
-                    <AccordionDetails
-                      classes={{
-                        root: classes.detail,
-                      }}
-                    >
-                      <Typography>
-                        {question.answer}
-                      </Typography>
-                    </AccordionDetails>
-                  </Accordion>
-                </div>
-              ))}
+                      <AccordionSummary
+                        classes={{
+                          content: classes.content,
+                          expanded: classes.expanded,
+                        }}
+                      >
+                        <Typography className={classes.heading}>
+                          {question.question}
+                        </Typography>
+                        <ExpandMoreIcon className={classes.icon} />
+                      </AccordionSummary>
+                      <AccordionDetails
+                        classes={{
+                          root: classes.detail,
+                        }}
+                      >
+                        <Typography>{question.answer}</Typography>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+                )
+              )}
             </div>
           </Grid>
         </Grid>

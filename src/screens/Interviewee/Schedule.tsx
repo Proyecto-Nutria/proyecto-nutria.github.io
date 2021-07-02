@@ -58,8 +58,6 @@ const reducer = (
       return newSchedule;
     }
   }
-
-  throw new Error('Bad action');
 };
 
 const IntervieweeMock = () => {
@@ -130,7 +128,7 @@ const IntervieweeMock = () => {
     Data.callMutationAndRedirectToHome(
       enterToPool,
       Data.parseInputToPoolAPI(staticInputs, dynamicInputs),
-      history
+      null
     );
   };
 
