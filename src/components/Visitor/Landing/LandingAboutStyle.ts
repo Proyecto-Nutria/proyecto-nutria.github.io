@@ -11,7 +11,7 @@ const aboutStyles = makeStyles(theme => ({
       padding: theme.spacing(10, 3),
     },
     [theme.breakpoints.down('xs')]: {
-      padding: 0
+      padding: 0,
     },
   },
   sliderWrap: {
@@ -23,21 +23,21 @@ const aboutStyles = makeStyles(theme => ({
       left: 'auto',
       top: 200,
       [theme.breakpoints.down('md')]: {
-        right: 20
-      }
+        right: 20,
+      },
     },
     '& a[class*="nextButton"]': {
       left: 'auto',
       top: 140,
       right: 120,
       [theme.breakpoints.down('md')]: {
-        right: 20
-      }
+        right: 20,
+      },
     },
     '& > div': {
       height: 500,
       [theme.breakpoints.down('sm')]: {
-        height: 450
+        height: 450,
       },
       '& > a': {
         background: theme.palette.background.paper,
@@ -49,10 +49,10 @@ const aboutStyles = makeStyles(theme => ({
         zIndex: 11,
         boxShadow: theme.shadows[2],
         [theme.breakpoints.down('xs')]: {
-          display: 'none'
+          display: 'none',
         },
         '&:hover': {
-          backgroundImage: 'none'
+          backgroundImage: 'none',
         },
         '& svg': {
           width: 35,
@@ -60,10 +60,10 @@ const aboutStyles = makeStyles(theme => ({
           position: 'absolute',
           left: 3,
           top: 3,
-          fill: theme.palette.text.secondary
-        }
-      }
-    }
+          fill: theme.palette.text.secondary,
+        },
+      },
+    },
   },
   paper: {},
   hexa: {},
@@ -77,7 +77,7 @@ const aboutStyles = makeStyles(theme => ({
     },
     '& svg': {
       width: 450,
-      height: 450
+      height: 450,
     },
     '& section': {
       position: 'relative',
@@ -89,7 +89,7 @@ const aboutStyles = makeStyles(theme => ({
     '&[class*="current"]': {
       '& section': {
         transform: 'translateX(0px)',
-        opacity: 1
+        opacity: 1,
       },
     },
     '& figure': {
@@ -107,8 +107,8 @@ const aboutStyles = makeStyles(theme => ({
         verticalAlign: 'middle',
         width: 350,
         height: 393,
-        opacity: 1
-      }
+        opacity: 1,
+      },
     },
     '& $paper': {
       position: 'relative',
@@ -134,7 +134,7 @@ const aboutStyles = makeStyles(theme => ({
         justifyContent: 'flex-start',
         [theme.breakpoints.down('sm')]: {
           justifyContent: 'center',
-        }
+        },
       },
       '& h1': {
         color: theme.palette.secondary.main,
@@ -158,16 +158,16 @@ const aboutStyles = makeStyles(theme => ({
           width: '100%',
           fontSize: 28,
           lineHeight: '36px',
-          textAlign: 'center'
+          textAlign: 'center',
         },
         [theme.breakpoints.down('xs')]: {
           fontSize: 20,
           lineHeight: '28px',
-        }
+        },
       },
       [theme.breakpoints.down('xs')]: {
         whiteSpace: 'normal',
-        lineHeight: '32px'
+        lineHeight: '32px',
       },
     },
     '& p': {
@@ -175,25 +175,25 @@ const aboutStyles = makeStyles(theme => ({
       [theme.breakpoints.down('xs')]: {
         textAlign: 'center',
         fontSize: 14,
-      }
+      },
     },
     '& $time': {
       '& h6': {
         fontSize: 14,
         color: theme.palette.text.secondary,
         [theme.breakpoints.down('xs')]: {
-          textAlign: 'center'
-        }
-      }
+          textAlign: 'center',
+        },
+      },
     },
     '&:before': {
-      display: 'none'
-    }
+      display: 'none',
+    },
   },
   imgWrap: {
     position: 'relative',
     top: -24,
-    left: -400
+    left: -400,
   },
   decoration: {
     position: 'absolute',
@@ -201,7 +201,7 @@ const aboutStyles = makeStyles(theme => ({
     left: 0,
     zIndex: 2,
     opacity: '0.5 !important',
-    fill: theme.palette.secondary.main
+    fill: theme.palette.secondary.main,
   },
   image: {
     top: '17px',

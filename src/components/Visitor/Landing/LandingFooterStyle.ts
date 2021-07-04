@@ -23,9 +23,9 @@ const footerStyles = makeStyles(theme => ({
         textDecoration: 'none !important',
         color: theme.palette.primary.contrastText,
         '&:hover': {
-          opacity: 0.7
-        }
-      }
+          opacity: 0.7,
+        },
+      },
     },
     '& $accordionRoot': {
       margin: '0 auto',
@@ -47,7 +47,7 @@ const footerStyles = makeStyles(theme => ({
       height: 350,
       [theme.breakpoints.down('xs')]: {
         height: 120,
-      }
+      },
     },
   },
   footerAfter: {
@@ -77,7 +77,7 @@ const footerStyles = makeStyles(theme => ({
     justifyContent: 'center',
     [theme.breakpoints.down('sm')]: {
       justifyContent: 'center',
-      padding: theme.spacing(0, 3)
+      padding: theme.spacing(0, 3),
     },
     '& img': {
       width: 48,
@@ -85,7 +85,7 @@ const footerStyles = makeStyles(theme => ({
     },
     '& h6': {
       color: theme.palette.primary.contrastText,
-    }
+    },
   },
   footerDesc: {
     display: 'block',
@@ -93,7 +93,7 @@ const footerStyles = makeStyles(theme => ({
     fontWeight: 'bold',
     marginBottom: theme.spacing(2),
     [theme.breakpoints.down('sm')]: {
-      textAlign: 'center'
+      textAlign: 'center',
     },
     color: theme.palette.primary.contrastText,
   },
@@ -101,7 +101,7 @@ const footerStyles = makeStyles(theme => ({
     color: theme.palette.primary.contrastText,
     '& a': {
       color: fade(theme.palette.primary.contrastText, 0.6),
-    }
+    },
   },
   socmed: {
     display: 'flex',
@@ -113,19 +113,19 @@ const footerStyles = makeStyles(theme => ({
       width: 45,
       height: 45,
       '& i': {
-        color: theme.palette.secondary.main
-      }
+        color: theme.palette.secondary.main,
+      },
     },
     '& i': {
       fontSize: 26,
-    }
+    },
   },
   icon: {
     '& + div': {
       background: 'none !important',
       padding: theme.spacing(1.5, 1.5, 1.5, 4),
       width: 'calc(100% - 32px)',
-    }
+    },
   },
   selectLang: {
     width: 212,
@@ -146,15 +146,15 @@ const footerStyles = makeStyles(theme => ({
       '& legend': {
         top: 6,
         position: 'relative',
-        borderTop: `1px solid ${theme.palette.secondary.main}`
-      }
-    }
+        borderTop: `1px solid ${theme.palette.secondary.main}`,
+      },
+    },
   },
   siteMapItem: {
     [theme.breakpoints.down('md')]: {
       paddingBottom: '0 !important',
       paddingTop: '0 !important',
-    }
+    },
   },
   accordionRoot: {
     background: 'none',
@@ -164,31 +164,31 @@ const footerStyles = makeStyles(theme => ({
     '& svg': {
       fill: theme.palette.common.white,
       [theme.breakpoints.down('sm')]: {
-        fill: theme.palette.primary.contrastText
-      }
+        fill: theme.palette.primary.contrastText,
+      },
     },
     [theme.breakpoints.down('sm')]: {
-      color: theme.palette.primary.contrastText
+      color: theme.palette.primary.contrastText,
     },
   },
   accordionContent: {
-    margin: 0
+    margin: 0,
   },
   accordionIcon: {
-    padding: 0
+    padding: 0,
   },
   notionLogo: {
-    fill: theme.palette.secondary.main, 
-    width: '26px', 
-    height: '26px', 
-    display: 'block', 
-    flexShrink: 0, 
-    backfaceVisibility: 'hidden'
+    fill: theme.palette.secondary.main,
+    width: '26px',
+    height: '26px',
+    display: 'block',
+    flexShrink: 0,
+    backfaceVisibility: 'hidden',
   },
   divider: {
     background: theme.palette.divider,
-    margin: '1rem 0'
-  }
+    margin: '1rem 0',
+  },
 }));
 
 export default footerStyles;

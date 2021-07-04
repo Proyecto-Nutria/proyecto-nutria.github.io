@@ -36,53 +36,50 @@ const VisitorAbout = () => {
   const { t } = useTranslation();
   const classes = useStyles();
   return (
-  <div className={classes.root}>
-    <div className={classes.sliderWrap}>
-      <Slider
-        className="slider-wrapper"
-        previousButton={(
-          <NextIcon />
-        )}
-        nextButton={(
-          <NextIcon />
-        )}
-      >
-        {sliderData.map((item, index) => (
-          <div className={classes.item} key={index.toString()}>
-            <Grid container>
-              <Grid item xs={12} lg={4}>
-                &nbsp;
-              </Grid>
-              <Grid item xs={12} lg={7}>
-                <Hidden mdDown>
-                  <div className={classes.imgWrap}>
-                    <div className={classes.decoration}>
-                      <svg>
-                        <use xlinkHref="/images/About/about-deco.svg#main" />
-                      </svg>
+    <div className={classes.root}>
+      <div className={classes.sliderWrap}>
+        <Slider
+          className="slider-wrapper"
+          previousButton={<NextIcon />}
+          nextButton={<NextIcon />}
+        >
+          {sliderData.map((item, index) => (
+            <div className={classes.item} key={index.toString()}>
+              <Grid container>
+                <Grid item xs={12} lg={4}>
+                  &nbsp;
+                </Grid>
+                <Grid item xs={12} lg={7}>
+                  <Hidden mdDown>
+                    <div className={classes.imgWrap}>
+                      <div className={classes.decoration}>
+                        <svg>
+                          <use xlinkHref="/images/About/about-deco.svg#main" />
+                        </svg>
+                      </div>
+                      <figure className={classes.image}>
+                        <img src={item.image} alt={item.title} />
+                      </figure>
                     </div>
-                    <figure className={classes.image}>
-                      <img src={item.image} alt={item.title} />
-                    </figure>
-                  </div>
-                </Hidden>
-                <Paper className={classes.paper}>
-                  <Typography variant="h1">
-                    <ButtonBase>
-                      {t('about.'+item.namespace+'.title')}
-                    </ButtonBase>
-                  </Typography>
-                  <Typography component="p">
-                    {t('about.'+item.namespace+'.text')}
-                  </Typography>
-                </Paper>
+                  </Hidden>
+                  <Paper className={classes.paper}>
+                    <Typography variant="h1">
+                      <ButtonBase>
+                        {t('about.' + item.namespace + '.title')}
+                      </ButtonBase>
+                    </Typography>
+                    <Typography component="p">
+                      {t('about.' + item.namespace + '.text')}
+                    </Typography>
+                  </Paper>
+                </Grid>
               </Grid>
-            </Grid>
-          </div>
-        ))}
-      </Slider>
+            </div>
+          ))}
+        </Slider>
+      </div>
     </div>
-  </div>
-)}
+  );
+};
 
-export default VisitorAbout
+export default VisitorAbout;

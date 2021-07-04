@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 
+import { useAuth0 } from '@auth0/auth0-react';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -10,15 +10,19 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 
 import { MENU_SECTIONS } from '../../../utils/constants/landing';
 import useStyles from './LandingHeaderStyle';
-import { useAuth0 } from '@auth0/auth0-react';
 
-const VisitorMobileMenu = ({ onToggleDrawer, isOpen }: { onToggleDrawer: Function, isOpen: boolean }) => {
+const VisitorMobileMenu = ({
+  onToggleDrawer,
+  isOpen,
+}: {
+  onToggleDrawer: Function;
+  isOpen: boolean;
+}) => {
   const { loginWithRedirect } = useAuth0();
   const handleToggleDrawer = () => {
     onToggleDrawer();
   };
 
-  const history = useHistory();
   function handleLoginClick() {
     loginWithRedirect({});
   }
@@ -30,7 +34,7 @@ const VisitorMobileMenu = ({ onToggleDrawer, isOpen }: { onToggleDrawer: Functio
       onClose={handleToggleDrawer}
       onOpen={handleToggleDrawer}
       classes={{
-        paper: classes.paperNav
+        paper: classes.paperNav,
       }}
     >
       <div
@@ -49,7 +53,10 @@ const VisitorMobileMenu = ({ onToggleDrawer, isOpen }: { onToggleDrawer: Functio
                 key={index.toString()}
                 style={{ animationDuration: index * 0.15 + 's' }}
               >
-                <ListItemText primary={item.name} className={classes.menuList}/>
+                <ListItemText
+                  primary={item.name}
+                  className={classes.menuList}
+                />
               </ListItem>
             ))}
             <Divider className={classes.dividerSidebar} />
@@ -59,13 +66,13 @@ const VisitorMobileMenu = ({ onToggleDrawer, isOpen }: { onToggleDrawer: Functio
               onClick={handleLoginClick}
               style={{ animationDuration: MENU_SECTIONS.length * 0.15 + 's' }}
             >
-              <ListItemText primary={"Login"} className={classes.menuList}/>
+              <ListItemText primary={'Login'} className={classes.menuList} />
             </ListItem>
           </List>
         </div>
       </div>
     </SwipeableDrawer>
   );
-}
+};
 
-export default VisitorMobileMenu
+export default VisitorMobileMenu;

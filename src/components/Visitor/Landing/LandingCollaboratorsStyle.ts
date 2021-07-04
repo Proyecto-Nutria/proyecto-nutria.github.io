@@ -6,15 +6,15 @@ const collaboratorsStyles = makeStyles(theme => ({
     position: 'relative',
     paddingBottom: theme.spacing(10),
     [theme.breakpoints.down('sm')]: {
-      paddingBottom: theme.spacing(5)
+      paddingBottom: theme.spacing(5),
     },
   },
   sliderHandle: {
     position: 'relative',
     zIndex: 1,
-    textAlign: 'center'
+    textAlign: 'center',
   },
-  title:{
+  title: {
     display: 'block',
     marginBottom: theme.spacing(9),
     position: 'relative',
@@ -25,12 +25,12 @@ const collaboratorsStyles = makeStyles(theme => ({
       fontWeight: theme.typography.fontWeightBold,
       [theme.breakpoints.down('md')]: {
         fontSize: 32,
-        lineHeight: '48px'
+        lineHeight: '48px',
       },
       [theme.breakpoints.down('xs')]: {
         fontSize: 28,
         lineHeight: '44px',
-      }
+      },
     },
     '&:after': {
       left: '50%',
@@ -41,11 +41,11 @@ const collaboratorsStyles = makeStyles(theme => ({
       bottom: -32,
       borderRadius: 12,
       background: theme.palette.primary.main,
-      position: 'absolute'
+      position: 'absolute',
     },
     '& strong': {
       color: theme.palette.text.primary,
-    }
+    },
   },
   sliderWrap: {
     position: 'relative',
@@ -66,14 +66,14 @@ const collaboratorsStyles = makeStyles(theme => ({
         width: '90%',
         bottom: 5,
         left: '50%',
-        transform: 'translate(-50%, 0)'
+        transform: 'translate(-50%, 0)',
       },
       '&:before': {
         zIndex: -2,
         width: '80%',
         bottom: -15,
         left: '50%',
-        transform: 'translate(-50%, 0)'
+        transform: 'translate(-50%, 0)',
       },
     },
   },
@@ -83,30 +83,30 @@ const collaboratorsStyles = makeStyles(theme => ({
       padding: theme.spacing(7, 1, 0),
     },
     '&:focus': {
-      outline: 'none'
-    }
+      outline: 'none',
+    },
   },
   slideContent: {
     animationDuration: '1s',
-    animationFillMode: 'both'
+    animationFillMode: 'both',
   },
   slide: {
-    background: 'none'
+    background: 'none',
   },
   future: {
     '& $slideContent': {
       animation: 'fadeInUp',
       animationDuration: '1s',
       animationDelay: '0.1s',
-      animationFillMode: 'both'
-    }
+      animationFillMode: 'both',
+    },
   },
   past: {
     '& $slideContent': {
       animation: 'fadeOutUp',
       animationDuration: '1s',
-      animationFillMode: 'both'
-    }
+      animationFillMode: 'both',
+    },
   },
   nav: {
     position: 'absolute',
@@ -131,25 +131,25 @@ const collaboratorsStyles = makeStyles(theme => ({
       fontSize: 26,
     },
     '&:focus': {
-      outline: 'none'
+      outline: 'none',
     },
     '&:hover': {
-      opacity: 0.6
-    }
+      opacity: 0.6,
+    },
   },
   prev: {
     left: 56,
     '& svg': {
       right: 2,
-      marginTop: 3
-    }
+      marginTop: 3,
+    },
   },
   next: {
     right: 56,
     '& svg': {
       left: 2,
-      marginTop: 3
-    }
+      marginTop: 3,
+    },
   },
   current: {},
   active: {},
@@ -280,17 +280,17 @@ const collaboratorsStyles = makeStyles(theme => ({
           [theme.breakpoints.up('lg')]: {
             position: 'absolute',
           },
-        }
+        },
       },
-    }
+    },
   },
   caption: {
     marginTop: theme.spacing(3),
     display: 'block',
     fontSize: 16,
     [theme.breakpoints.down('xs')]: {
-      fontSize: 14
-    }
+      fontSize: 14,
+    },
   },
   paper: {
     height: 250,
@@ -303,7 +303,7 @@ const collaboratorsStyles = makeStyles(theme => ({
       padding: theme.spacing(8, 15),
     },
     '&$active': {
-      border: `1px solid ${theme.palette.primary.main}`
+      border: `1px solid ${theme.palette.primary.main}`,
     },
   },
   text: {
@@ -317,7 +317,7 @@ const collaboratorsStyles = makeStyles(theme => ({
     [theme.breakpoints.down('xs')]: {
       fontSize: 14,
       '-webkit-line-clamp': 4,
-    }
+    },
   },
   avatar: {
     boxShadow: theme.shadows[8],
@@ -326,13 +326,13 @@ const collaboratorsStyles = makeStyles(theme => ({
     margin: '-32px auto 32px',
     [theme.breakpoints.up('sm')]: {
       margin: '-96px auto 32px',
-    }
+    },
   },
   carouselHandle: {
     height: 380,
     position: 'relative',
-    zIndex: 10, 
-    marginTop: 150
+    zIndex: 10,
+    marginTop: 150,
   },
   carouselWrap: {
     position: 'absolute',
@@ -350,18 +350,18 @@ const collaboratorsStyles = makeStyles(theme => ({
         borderRadius: 15,
         margin: theme.spacing(0, 0.5),
         '&[class="slick-active"]': {
-          width: 35
+          width: 35,
         },
         '& button': {
-          opacity: 0
-        }
-      }
-    }
+          opacity: 0,
+        },
+      },
+    },
   },
   carouselItem: {
     '&:focus': {
-      outline: 'none'
-    }
+      outline: 'none',
+    },
   },
   defaultCard: {
     direction: 'ltr',
@@ -378,8 +378,8 @@ const collaboratorsStyles = makeStyles(theme => ({
       marginBottom: theme.spacing(3),
       '& img': {
         height: '100%',
-        minWidth: '100%'
-      }
+        minWidth: '100%',
+      },
     },
     '& $button': {
       padding: 0,
@@ -391,7 +391,7 @@ const collaboratorsStyles = makeStyles(theme => ({
       right: 0,
       bottom: 0,
       boxShadow: theme.shadows[10],
-      borderRadius: '20px 0 0 0'
+      borderRadius: '20px 0 0 0',
     },
     '& h6': {
       marginBottom: theme.spacing(2),
@@ -399,20 +399,20 @@ const collaboratorsStyles = makeStyles(theme => ({
     '& p': {
       height: 70,
       overflow: 'hidden',
-      marginBottom: theme.spacing(3)
-    }
+      marginBottom: theme.spacing(3),
+    },
   },
   cardText: {
-    padding: theme.spacing(0, 2.5)
+    padding: theme.spacing(0, 2.5),
   },
   button: {},
   carouselProp: {
     [theme.breakpoints.down('md')]: {
-      display: 'none'
+      display: 'none',
     },
     '& div': {
-      width: theme.direction === 'ltr' ? 300 : 480
-    }
+      width: theme.direction === 'ltr' ? 300 : 480,
+    },
   },
   carouselTitle: {},
   floatingTitle: {
@@ -435,16 +435,19 @@ const collaboratorsStyles = makeStyles(theme => ({
         float: 'right',
       },
       [theme.breakpoints.up(1400)]: {
-        marginRight: theme.spacing(-5)
-      }
-    }
+        marginRight: theme.spacing(-5),
+      },
+    },
   },
   iconDeco: {
     [theme.breakpoints.up('lg')]: {
       width: 350,
     },
     '& h3': {
-      color: theme.palette.type === 'dark' ? theme.palette.common.white : theme.palette.primary.dark,
+      color:
+        theme.palette.type === 'dark'
+          ? theme.palette.common.white
+          : theme.palette.primary.dark,
       textTransform: 'capitalize',
       width: 200,
       fontWeight: theme.typography.fontWeightBold,
@@ -460,8 +463,8 @@ const collaboratorsStyles = makeStyles(theme => ({
       [theme.breakpoints.down('xs')]: {
         fontSize: 32,
         lineHeight: '42px',
-      }
-    }
+      },
+    },
   },
   icon: {
     position: 'relative',
@@ -472,8 +475,8 @@ const collaboratorsStyles = makeStyles(theme => ({
     margin: theme.spacing(18, 0, 3),
     textAlign: 'left',
     [theme.breakpoints.down('md')]: {
-      display: 'none'
-    }
+      display: 'none',
+    },
   },
   capsul: {
     width: 900,
@@ -482,9 +485,12 @@ const collaboratorsStyles = makeStyles(theme => ({
     position: 'absolute',
     opacity: 0.75,
     top: 80,
-    backgroundImage: theme.palette.type === 'light' ? `linear-gradient(144deg, ${theme.palette.primary.light} 0%, ${theme.palette.secondary.light} 100%)` : `linear-gradient(144deg, ${theme.palette.primary.dark} 0%, ${theme.palette.secondary.dark} 100%)`,
+    backgroundImage:
+      theme.palette.type === 'light'
+        ? `linear-gradient(144deg, ${theme.palette.primary.light} 0%, ${theme.palette.secondary.light} 100%)`
+        : `linear-gradient(144deg, ${theme.palette.primary.dark} 0%, ${theme.palette.secondary.dark} 100%)`,
     right: -250,
-    transform: theme.direction === 'rtl' ? 'rotate(30deg)' : 'rotate(-30deg)'
+    transform: theme.direction === 'rtl' ? 'rotate(30deg)' : 'rotate(-30deg)',
   },
   circle: {
     width: 700,
@@ -492,7 +498,11 @@ const collaboratorsStyles = makeStyles(theme => ({
     top: 50,
     right: 10,
     borderRadius: '50%',
-    border: `1px solid ${theme.palette.type === 'light' ? theme.palette.primary.light : theme.palette.primary.dark}`,
+    border: `1px solid ${
+      theme.palette.type === 'light'
+        ? theme.palette.primary.light
+        : theme.palette.primary.dark
+    }`,
     position: 'absolute',
   },
 }));

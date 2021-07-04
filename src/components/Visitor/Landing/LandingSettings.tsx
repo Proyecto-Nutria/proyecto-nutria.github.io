@@ -5,8 +5,7 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 
 const useStyles = makeStyles(theme => ({
-  settingsWrap: {
-  },
+  settingsWrap: {},
   fab: {
     bottom: '50vh',
     right: theme.spacing(2),
@@ -17,7 +16,8 @@ const useStyles = makeStyles(theme => ({
     zIndex: 9999,
     position: 'fixed',
     backgroundColor: theme.palette.background.paper,
-    boxShadow: '0px 2px 4px -1px rgba(128,128,128, 0.2), 0px 4px 5px 0px rgba(128,128,128, 0.14), 0px 1px 10px 0px rgba(128,128,128, 0.12)',
+    boxShadow:
+      '0px 2px 4px -1px rgba(128,128,128, 0.2), 0px 4px 5px 0px rgba(128,128,128, 0.14), 0px 1px 10px 0px rgba(128,128,128, 0.12)',
     flexDirection: 'column',
     backdropFilter: 'saturate(180%) blur(20px)',
     '&:hover': {
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     },
     '& svg': {
       fill: theme.palette.text.secondary,
-    }
+    },
   },
 }));
 
@@ -36,9 +36,10 @@ const VisitorSettings = ({ onToggleDark }: { onToggleDark: Function }) => {
 
   const classes = useStyles();
   return (
-    <Fab size='small' onClick={handleToggleDark} className={classes.fab}>
+    <Fab size="small" onClick={handleToggleDark} className={classes.fab}>
       <Brightness4Icon />
     </Fab>
-)}
+  );
+};
 
-export default VisitorSettings
+export default VisitorSettings;

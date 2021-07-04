@@ -14,20 +14,23 @@ const sectionsStyles = makeStyles(theme => ({
     '& svg': {
       width: '100%',
       height: 1700,
-      fill: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
+      fill:
+        theme.palette.type === 'dark'
+          ? theme.palette.primary.dark
+          : theme.palette.primary.light,
       opacity: 0.2,
       transform: 'scale(1.3)',
       [theme.breakpoints.up(1400)]: {
         transform: 'scale(2.5, 1)',
       },
       [theme.breakpoints.up('xl')]: {
-        display: 'none'
+        display: 'none',
       },
       [theme.breakpoints.down('xs')]: {
         transform: 'scale(0.5)',
-        transformOrigin: 'center left'
-      }
-    }
+        transformOrigin: 'center left',
+      },
+    },
   },
   title: {
     textAlign: 'center',
@@ -40,12 +43,12 @@ const sectionsStyles = makeStyles(theme => ({
       fontWeight: theme.typography.fontWeightBold,
       [theme.breakpoints.down('md')]: {
         fontSize: 32,
-        lineHeight: '48px'
+        lineHeight: '48px',
       },
       [theme.breakpoints.down('xs')]: {
         fontSize: 28,
         lineHeight: '44px',
-      }
+      },
     },
     '&:after': {
       left: '50%',
@@ -56,18 +59,18 @@ const sectionsStyles = makeStyles(theme => ({
       bottom: -32,
       borderRadius: 12,
       background: theme.palette.primary.main,
-      position: 'absolute'
+      position: 'absolute',
     },
     '& strong': {
       color: theme.palette.text.primary,
-    }
+    },
   },
   item: {
     position: 'relative',
     minHeight: 320,
     marginBottom: theme.spacing(7),
     '&$last': {
-      marginBottom: theme.spacing(7)
+      marginBottom: theme.spacing(7),
     },
     [theme.breakpoints.down('sm')]: {
       textAlign: 'center',
@@ -80,11 +83,11 @@ const sectionsStyles = makeStyles(theme => ({
         position: 'absolute',
       },
       [theme.breakpoints.down('sm')]: {
-        margin: theme.spacing(3, 0)
+        margin: theme.spacing(3, 0),
       },
       '& > div': {
-        perspective: 1000
-      }
+        perspective: 1000,
+      },
     },
     '& $figure': {
       transformStyle: 'preserve-3d',
@@ -98,21 +101,21 @@ const sectionsStyles = makeStyles(theme => ({
       '& img': {
         width: '100%',
       },
-    }
+    },
   },
   screen: {
     position: 'relative',
     '& img': {
       width: '90%',
-      display: 'block'
-    }
+      display: 'block',
+    },
   },
   graphic: {
     position: 'relative',
     '& img': {
       width: '90%',
-      display: 'block'
-    }
+      display: 'block',
+    },
   },
   tabContent: {
     position: 'relative',
@@ -120,35 +123,38 @@ const sectionsStyles = makeStyles(theme => ({
       padding: theme.spacing(8, 4, 0),
     },
     '& section': {
-      position: 'relative'
-    }
+      position: 'relative',
+    },
   },
   selected: {},
   tabLabel: {
     fontSize: 18,
     borderBottom: `1px solid ${theme.palette.text.disabled}`,
     [theme.breakpoints.down('xs')]: {
-      fontSize: 14
+      fontSize: 14,
     },
     '&$selected': {
-      color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.main
-    }
+      color:
+        theme.palette.type === 'dark'
+          ? theme.palette.primary.light
+          : theme.palette.primary.main,
+    },
   },
   illustrationLeft: {
     position: 'relative',
     '& $screen': {
       [theme.breakpoints.up('md')]: {
         marginTop: -50,
-        transform: 'rotateY( 30deg )'
-      }
+        transform: 'rotateY( 30deg )',
+      },
     },
     '& $graphic': {
       top: 100,
       left: 70,
       width: 360,
       [theme.breakpoints.up('md')]: {
-        transform: 'rotateY( 30deg ) rotateX(-5deg) rotateZ(-2deg)'
-      }
+        transform: 'rotateY( 30deg ) rotateX(-5deg) rotateZ(-2deg)',
+      },
     },
   },
   illustrationRight: {
@@ -158,7 +164,7 @@ const sectionsStyles = makeStyles(theme => ({
         left: 20,
         top: -40,
         transform: 'rotateY( -30deg )',
-      }
+      },
     },
     '& $graphic': {
       right: -60,
@@ -167,7 +173,7 @@ const sectionsStyles = makeStyles(theme => ({
       [theme.breakpoints.up('md')]: {
         transformStyle: 'preserve-3d',
         transform: 'rotateY( -30deg ) rotateX(-4deg) rotateZ(0deg)',
-      }
+      },
     },
   },
   illustrationCenter: {
@@ -180,8 +186,8 @@ const sectionsStyles = makeStyles(theme => ({
       transform: 'rotateY( 0 ) rotateX(35deg) rotateZ(0deg)',
       '& img': {
         margin: '0 auto',
-        width: '100%'
-      }
+        width: '100%',
+      },
     },
   },
 }));

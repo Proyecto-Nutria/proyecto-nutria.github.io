@@ -28,93 +28,164 @@ const VisitorSections = () => {
   return (
     <div className={classes.root}>
       <Container fixed={isDesktop}>
-          <div className={clsx(classes.item)}>
-            <div className={classes.title}>
-              <Typography variant="h3">
-                <strong>
-                  {t('sections.title')}
-                </strong>
-              </Typography>
-            </div>
-            <Grid container spacing={6}>
-              {!isMobile && <Grid item md={1} xs={12} />}
-              <Grid item md={10} xs={12}>
-                <Tabs
-                  value={value}
-                  onChange={handleChange}
-                  indicatorColor="primary"
-                  textColor="primary"
-                  variant="scrollable"
-                  scrollButtons="auto"
-                >
-                  <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label={t('sections.activities.workshop.title')} wrapped/>
-                  <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label={t('sections.activities.webinar.title')} wrapped/>
-                  <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label={t('sections.activities.resume.title')} wrapped/>
-                  <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label={t('sections.activities.mock.title')} wrapped/>
-                  <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label={t('sections.activities.english.title')} wrapped/>
-                  <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label={t('sections.activities.community.title')} wrapped/>
-                </Tabs>
-                <div className={classes.tabContent}>
-                  {value === 0 && (
-                    <React.Fragment>
-                      <section>
-                        <Typography component="h6" display="block" align="center" className={text.subtitle2}>
-                          {t('sections.activities.workshop.description')}
-                        </Typography>
-                      </section>
-                    </React.Fragment>
-                  )}
-                  {value === 1 && (
-                    <React.Fragment>
-                      <section>
-                        <Typography component="h6" display="block" align="center" className={text.subtitle2}>
-                          {t('sections.activities.webinar.description')}
-                        </Typography>
-                      </section>
-                    </React.Fragment>
-                  )}
-                  {value === 2 && (
-                    <React.Fragment>
-                      <section>
-                        <Typography component="h6" display="block" align="center" className={text.subtitle2}>
-                          {t('sections.activities.resume.description')}
-                        </Typography>
-                      </section>
-                    </React.Fragment>
-                  )}
-                  {value === 3 && (
-                    <React.Fragment>
-                      <section>
-                        <Typography component="h6" display="block" align="center" className={text.subtitle2}>
-                          {t('sections.activities.mock.description')}
-                        </Typography>
-                      </section>
-                    </React.Fragment>
-                  )}
-                  {value === 4 && (
-                    <React.Fragment>
-                      <section>
-                        <Typography component="h6" display="block" align="center" className={text.subtitle2}>
-                          {t('sections.activities.english.description')}
-                        </Typography>
-                      </section>
-                    </React.Fragment>
-                  )}
-                  {value === 5 && (
-                    <React.Fragment>
-                      <section>
-                        <Typography component="h6" display="block" align="center" className={text.subtitle2}>
-                          {t('sections.activities.community.description')}
-                        </Typography>
-                      </section>
-                    </React.Fragment>
-                  )}
-                </div>
-              </Grid>
-            </Grid>
+        <div className={clsx(classes.item)}>
+          <div className={classes.title}>
+            <Typography variant="h3">
+              <strong>{t('sections.title')}</strong>
+            </Typography>
           </div>
+          <Grid container spacing={6}>
+            {!isMobile && <Grid item md={1} xs={12} />}
+            <Grid item md={10} xs={12}>
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                indicatorColor="primary"
+                textColor="primary"
+                variant="scrollable"
+                scrollButtons="auto"
+              >
+                <Tab
+                  classes={{
+                    root: classes.tabLabel,
+                    selected: classes.selected,
+                  }}
+                  label={t('sections.activities.workshop.title')}
+                  wrapped
+                />
+                <Tab
+                  classes={{
+                    root: classes.tabLabel,
+                    selected: classes.selected,
+                  }}
+                  label={t('sections.activities.webinar.title')}
+                  wrapped
+                />
+                <Tab
+                  classes={{
+                    root: classes.tabLabel,
+                    selected: classes.selected,
+                  }}
+                  label={t('sections.activities.resume.title')}
+                  wrapped
+                />
+                <Tab
+                  classes={{
+                    root: classes.tabLabel,
+                    selected: classes.selected,
+                  }}
+                  label={t('sections.activities.mock.title')}
+                  wrapped
+                />
+                <Tab
+                  classes={{
+                    root: classes.tabLabel,
+                    selected: classes.selected,
+                  }}
+                  label={t('sections.activities.english.title')}
+                  wrapped
+                />
+                <Tab
+                  classes={{
+                    root: classes.tabLabel,
+                    selected: classes.selected,
+                  }}
+                  label={t('sections.activities.community.title')}
+                  wrapped
+                />
+              </Tabs>
+              <div className={classes.tabContent}>
+                {value === 0 && (
+                  <React.Fragment>
+                    <section>
+                      <Typography
+                        component="h6"
+                        display="block"
+                        align="center"
+                        className={text.subtitle2}
+                      >
+                        {t('sections.activities.workshop.description')}
+                      </Typography>
+                    </section>
+                  </React.Fragment>
+                )}
+                {value === 1 && (
+                  <React.Fragment>
+                    <section>
+                      <Typography
+                        component="h6"
+                        display="block"
+                        align="center"
+                        className={text.subtitle2}
+                      >
+                        {t('sections.activities.webinar.description')}
+                      </Typography>
+                    </section>
+                  </React.Fragment>
+                )}
+                {value === 2 && (
+                  <React.Fragment>
+                    <section>
+                      <Typography
+                        component="h6"
+                        display="block"
+                        align="center"
+                        className={text.subtitle2}
+                      >
+                        {t('sections.activities.resume.description')}
+                      </Typography>
+                    </section>
+                  </React.Fragment>
+                )}
+                {value === 3 && (
+                  <React.Fragment>
+                    <section>
+                      <Typography
+                        component="h6"
+                        display="block"
+                        align="center"
+                        className={text.subtitle2}
+                      >
+                        {t('sections.activities.mock.description')}
+                      </Typography>
+                    </section>
+                  </React.Fragment>
+                )}
+                {value === 4 && (
+                  <React.Fragment>
+                    <section>
+                      <Typography
+                        component="h6"
+                        display="block"
+                        align="center"
+                        className={text.subtitle2}
+                      >
+                        {t('sections.activities.english.description')}
+                      </Typography>
+                    </section>
+                  </React.Fragment>
+                )}
+                {value === 5 && (
+                  <React.Fragment>
+                    <section>
+                      <Typography
+                        component="h6"
+                        display="block"
+                        align="center"
+                        className={text.subtitle2}
+                      >
+                        {t('sections.activities.community.description')}
+                      </Typography>
+                    </section>
+                  </React.Fragment>
+                )}
+              </div>
+            </Grid>
+          </Grid>
+        </div>
       </Container>
     </div>
-)}
+  );
+};
 
-export default VisitorSections
+export default VisitorSections;

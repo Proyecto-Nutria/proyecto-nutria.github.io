@@ -8,7 +8,7 @@ import introWaveLight from '../../../assets/imgs/Visitor/intro-wave-light.webp';
 const introStyles = makeStyles(theme => ({
   root: {
     position: 'relative',
-    display: 'block'
+    display: 'block',
   },
   background: {
     position: 'absolute',
@@ -23,13 +23,13 @@ const introStyles = makeStyles(theme => ({
       height: 260,
     },
     [theme.breakpoints.down('xs')]: {
-      display: 'none'
+      display: 'none',
     },
     '& img': {
       position: 'absolute',
       right: 0,
       top: 0,
-    }
+    },
   },
   decoInner: {
     position: 'absolute',
@@ -37,16 +37,16 @@ const introStyles = makeStyles(theme => ({
     right: 0,
     opacity: 0.2,
     [theme.breakpoints.down('md')]: {
-      display: 'none'
-    }
+      display: 'none',
+    },
   },
   gradient: {
     backgroundImage: `linear-gradient(30deg, ${theme.palette.primary.main} 50%, ${theme.palette.secondary.main} 140%)`,
     width: '100%',
     height: '100%',
     '& img': {
-      display: 'block'
-    }
+      display: 'block',
+    },
   },
   text: {
     height: 680,
@@ -56,12 +56,12 @@ const introStyles = makeStyles(theme => ({
     position: 'relative',
     zIndex: 10,
     [theme.breakpoints.up('sm')]: {
-      padding: theme.spacing(5)
+      padding: theme.spacing(5),
     },
     [theme.breakpoints.down('xs')]: {
       justifyContent: 'flex-start',
       paddingTop: theme.spacing(20),
-      height: 560
+      height: 560,
     },
     '& p': {
       marginBottom: theme.spacing(12),
@@ -70,11 +70,11 @@ const introStyles = makeStyles(theme => ({
       [theme.breakpoints.down('md')]: {
         marginBottom: theme.spacing(2),
         fontSize: 38,
-        lineHeight: '60px'
+        lineHeight: '60px',
       },
       [theme.breakpoints.down('xs')]: {
         fontSize: 28,
-        lineHeight: '44px'
+        lineHeight: '44px',
       },
     },
     '& h3': {
@@ -84,18 +84,21 @@ const introStyles = makeStyles(theme => ({
       },
       [theme.breakpoints.down('xs')]: {
         marginTop: theme.spacing(1),
-        textAlign: 'center'
+        textAlign: 'center',
       },
       '& strong': {
         fontWeight: theme.typography.fontWeightBold,
-        color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark
-      }
+        color:
+          theme.palette.type === 'dark'
+            ? theme.palette.primary.light
+            : theme.palette.primary.dark,
+      },
     },
     '& h5': {
       color: theme.palette.text.secondary,
       margin: theme.spacing(4, 0),
       [theme.breakpoints.down('xs')]: {
-        textAlign: 'center'
+        textAlign: 'center',
       },
     },
   },
@@ -103,22 +106,22 @@ const introStyles = makeStyles(theme => ({
     textAlign: 'center',
     display: 'flex',
     [theme.breakpoints.down('xs')]: {
-      justifyContent: 'space-around'
+      justifyContent: 'space-around',
     },
     '& a': {
       [theme.breakpoints.up('sm')]: {
         marginRight: theme.spacing(2),
       },
       [theme.breakpoints.down('xs')]: {
-        margin: 4
+        margin: 4,
       },
       '& img': {
         width: 160,
         [theme.breakpoints.down('xs')]: {
           width: '100%',
         },
-      }
-    }
+      },
+    },
   },
   decoration: {
     position: 'relative',
@@ -131,11 +134,13 @@ const introStyles = makeStyles(theme => ({
     width: '104%',
     height: '100%',
     transform: theme.direction === 'rtl' ? 'scale(-1, 1)' : 'none',
-    background: `url(${theme.palette.type === 'dark' ? introWaveDark : introWaveLight}) no-repeat 0 0`,
+    background: `url(${
+      theme.palette.type === 'dark' ? introWaveDark : introWaveLight
+    }) no-repeat 0 0`,
     backgroundSize: '100% 720px',
     [theme.breakpoints.down('sm')]: {
       backgroundSize: '100% 240px',
-    }
+    },
   },
   decoLine: {
     position: 'absolute',
@@ -145,7 +150,9 @@ const introStyles = makeStyles(theme => ({
     width: '100%',
     height: '100%',
     transform: theme.direction === 'rtl' ? 'scale(-1, 1)' : 'none',
-    background: `url(${theme.palette.type === 'dark' ? introLineDark : introLineLight}) no-repeat 0 0`,
+    background: `url(${
+      theme.palette.type === 'dark' ? introLineDark : introLineLight
+    }) no-repeat 0 0`,
     backgroundSize: '100% 700px',
   },
   otterIllustration: {
@@ -188,40 +195,40 @@ const introStyles = makeStyles(theme => ({
         left: '50%',
         marginLeft: '-300px',
       },
-    }
+    },
   },
   phone: {
     width: 600,
     right: -40,
-    bottom: 0
+    bottom: 0,
   },
   widgetTop: {
     width: 150,
     bottom: 330,
     left: 130,
     '&[class*="fragment-fadeUp"]': {
-      transitionDelay: '0.2s'
-    }
+      transitionDelay: '0.2s',
+    },
   },
   widgetLeft: {
     width: 170,
     bottom: 180,
     left: 110,
     '&[class*="fragment-fadeUp"]': {
-      transitionDelay: '0.3s'
-    }
+      transitionDelay: '0.3s',
+    },
   },
   widgetRight: {
     width: 170,
     bottom: 240,
     right: 80,
     '&[class*="fragment-fadeUp"]': {
-      transitionDelay: '0.4s'
-    }
+      transitionDelay: '0.4s',
+    },
   },
   hide: {
-    visibility: 'hidden'
-  }
+    visibility: 'hidden',
+  },
 }));
 
 export default introStyles;

@@ -42,22 +42,26 @@ const VisitorTeam = () => {
     arrows: false,
     slidesToScroll: 1,
     variableWidth: true,
-    responsive: [{
-      breakpoint: 1100,
-      settings: {
-        slidesToShow: 3,
-      }
-    }, {
-      breakpoint: 800,
-      settings: {
-        slidesToShow: 2,
-      }
-    }, {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 1,
-      }
-    }]
+    responsive: [
+      {
+        breakpoint: 1100,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   useEffect(() => {
@@ -72,7 +76,12 @@ const VisitorTeam = () => {
     <div className={classes.root}>
       <div className={classes.carouselHandle}>
         <div className={classes.carouselWrap}>
-          <Carousel ref={(component: Carousel) => { carousel = component; }} {...settingsCarousel}>
+          <Carousel
+            ref={(component: Carousel) => {
+              carousel = component;
+            }}
+            {...settingsCarousel}
+          >
             {isDesktop && (
               <div className={classes.item}>
                 <div className={classes.carouselProp}>
@@ -87,12 +96,23 @@ const VisitorTeam = () => {
                     <img src={item.avatar} alt="img" />
                   </figure>
                   <div className={classes.text}>
-                    <Typography display="block" variant="h6">{item.name}</Typography>
+                    <Typography display="block" variant="h6">
+                      {item.name}
+                    </Typography>
                     <Typography component="p">{item.text}</Typography>
                   </div>
-                  <Button variant="contained" color="secondary" className={classes.button}>
-                    <Link href={item.link} target="_blank" rel="noreferrer" className={classes.linkButton}>
-                    {"Social Media"}
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    className={classes.button}
+                  >
+                    <Link
+                      href={item.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={classes.linkButton}
+                    >
+                      {'Social Media'}
                     </Link>
                   </Button>
                 </Paper>
@@ -115,15 +135,21 @@ const VisitorTeam = () => {
               <div className={classes.capsul} />
               <div className={classes.circle} />
               <GroupIcon className={classes.icon} />
-              <Typography variant="h3">
-                {t('collaborators.team')}
-              </Typography>
+              <Typography variant="h3">{t('collaborators.team')}</Typography>
             </div>
             <nav className={classes.arrow}>
-              <Fab size="small" onClick={() => carousel?.slickNext()} aria-label="prev">
+              <Fab
+                size="small"
+                onClick={() => carousel?.slickNext()}
+                aria-label="prev"
+              >
                 <PrevIcon />
               </Fab>
-              <Fab size="small" onClick={() => carousel?.slickPrev()} aria-label="next">
+              <Fab
+                size="small"
+                onClick={() => carousel?.slickPrev()}
+                aria-label="next"
+              >
                 <NextIcon />
               </Fab>
             </nav>
@@ -131,6 +157,7 @@ const VisitorTeam = () => {
         </Container>
       </div>
     </div>
-)}
+  );
+};
 
-export default VisitorTeam
+export default VisitorTeam;

@@ -6,13 +6,13 @@ const teamStyles = makeStyles(theme => ({
     position: 'relative',
     [theme.breakpoints.down('md')]: {
       padding: theme.spacing(15, 0, 10),
-    }
+    },
   },
   title: {},
   carouselHandle: {
     height: 380,
     position: 'relative',
-    zIndex: 10
+    zIndex: 10,
   },
   carouselWrap: {
     position: 'absolute',
@@ -22,16 +22,16 @@ const teamStyles = makeStyles(theme => ({
   },
   item: {
     '&:focus': {
-      outline: 'none'
-    }
+      outline: 'none',
+    },
   },
   carouselProp: {
     [theme.breakpoints.down('md')]: {
-      display: 'none'
+      display: 'none',
     },
     '& div': {
-      width: 300
-    }
+      width: 300,
+    },
   },
   floatingTitle: {
     position: 'absolute',
@@ -53,9 +53,9 @@ const teamStyles = makeStyles(theme => ({
         float: 'right',
       },
       [theme.breakpoints.up(1400)]: {
-        marginRight: theme.spacing(-5)
-      }
-    }
+        marginRight: theme.spacing(-5),
+      },
+    },
   },
   arrow: {
     marginTop: 300,
@@ -68,11 +68,11 @@ const teamStyles = makeStyles(theme => ({
       color: theme.palette.primary.main,
     },
     [theme.breakpoints.down(1280)]: {
-      display: 'none'
+      display: 'none',
     },
     [theme.breakpoints.down('md')]: {
       display: 'none',
-      marginTop: 560
+      marginTop: 560,
     },
   },
   defaultCard: {
@@ -88,8 +88,8 @@ const teamStyles = makeStyles(theme => ({
       margin: 0,
       marginBottom: theme.spacing(3),
       '& img': {
-        width: '100%'
-      }
+        width: '100%',
+      },
     },
     '& $button': {
       padding: 0,
@@ -101,7 +101,7 @@ const teamStyles = makeStyles(theme => ({
       right: 0,
       bottom: 0,
       boxShadow: theme.shadows[10],
-      borderRadius: '20px 0 0 0'
+      borderRadius: '20px 0 0 0',
     },
     '& h6': {
       marginBottom: theme.spacing(1.2),
@@ -109,11 +109,11 @@ const teamStyles = makeStyles(theme => ({
     '& p': {
       height: 70,
       overflow: 'hidden',
-      marginBottom: theme.spacing(3)
-    }
+      marginBottom: theme.spacing(3),
+    },
   },
   text: {
-    padding: theme.spacing(0, 2.5)
+    padding: theme.spacing(0, 2.5),
   },
   button: {},
   linkButton: {
@@ -124,7 +124,10 @@ const teamStyles = makeStyles(theme => ({
       width: 350,
     },
     '& h3': {
-      color: theme.palette.type === 'dark' ? theme.palette.common.white : theme.palette.primary.dark,
+      color:
+        theme.palette.type === 'dark'
+          ? theme.palette.common.white
+          : theme.palette.primary.dark,
       textTransform: 'capitalize',
       width: 200,
       fontWeight: theme.typography.fontWeightBold,
@@ -140,8 +143,8 @@ const teamStyles = makeStyles(theme => ({
       [theme.breakpoints.down('xs')]: {
         fontSize: 32,
         lineHeight: '42px',
-      }
-    }
+      },
+    },
   },
   icon: {
     position: 'relative',
@@ -151,8 +154,8 @@ const teamStyles = makeStyles(theme => ({
     margin: theme.spacing(18, 0, 3),
     textAlign: 'left',
     [theme.breakpoints.down('md')]: {
-      display: 'none'
-    }
+      display: 'none',
+    },
   },
   capsul: {
     width: 900,
@@ -161,9 +164,12 @@ const teamStyles = makeStyles(theme => ({
     position: 'absolute',
     opacity: 0.75,
     top: 100,
-    backgroundImage: theme.palette.type === 'light' ? `linear-gradient(144deg, ${theme.palette.primary.light} 0%, ${theme.palette.secondary.light} 100%)` : `linear-gradient(144deg, ${theme.palette.primary.dark} 0%, ${theme.palette.secondary.dark} 100%)`,
+    backgroundImage:
+      theme.palette.type === 'light'
+        ? `linear-gradient(144deg, ${theme.palette.primary.light} 0%, ${theme.palette.secondary.light} 100%)`
+        : `linear-gradient(144deg, ${theme.palette.primary.dark} 0%, ${theme.palette.secondary.dark} 100%)`,
     right: -250,
-    transform: 'rotate(-30deg)'
+    transform: 'rotate(-30deg)',
   },
   circle: {
     width: 700,
@@ -171,9 +177,13 @@ const teamStyles = makeStyles(theme => ({
     top: 70,
     right: 10,
     borderRadius: '50%',
-    border: `1px solid ${theme.palette.type === 'light' ? theme.palette.primary.light : theme.palette.primary.dark}`,
+    border: `1px solid ${
+      theme.palette.type === 'light'
+        ? theme.palette.primary.light
+        : theme.palette.primary.dark
+    }`,
     position: 'absolute',
-  }
+  },
 }));
 
 export default teamStyles;

@@ -26,28 +26,32 @@ const VisitorProgress = () => {
             <div className={align.textCenter}>
               <div>
                 <div className={classes.textDeco}>
-                  <Typography className={classes.bgImg} variant="h3" >
-                    <span>
-                      {t('progress.title')}
-                    </span>
+                  <Typography className={classes.bgImg} variant="h3">
+                    <span>{t('progress.title')}</span>
                   </Typography>
                 </div>
               </div>
             </div>
           </Grid>
           <Grid item md={7} xs={12} className={classes.numsWrap}>
-            <Typography className={clsx(classes.title, text.subtitle)} variant="h4">
+            <Typography
+              className={clsx(classes.title, text.subtitle)}
+              variant="h4"
+            >
               {t('progress.subtitle')}
             </Typography>
             <div className={classes.counterWrap}>
               <Container fixed>
-                <Grid container justify="center" alignItems="center" spacing={2}>
+                <Grid
+                  container
+                  justify="center"
+                  alignItems="center"
+                  spacing={2}
+                >
                   <Grid sm={4} item className={classes.counterItemWrap}>
                     <div className={clsx(classes.counterItem, classes.deco)}>
                       <div className={classes.text}>
-                        <Typography variant="h3">
-                          +390
-                        </Typography>
+                        <Typography variant="h3">+390</Typography>
                         <Typography component="p">
                           {t('progress.count1')}
                         </Typography>
@@ -57,9 +61,7 @@ const VisitorProgress = () => {
                   <Grid sm={4} item className={classes.counterItemWrap}>
                     <div className={clsx(classes.counterItem, classes.deco)}>
                       <div className={classes.text}>
-                        <Typography variant="h3">
-                          +50
-                        </Typography>
+                        <Typography variant="h3">+50</Typography>
                         <Typography component="p">
                           {t('progress.count2')}
                         </Typography>
@@ -69,12 +71,10 @@ const VisitorProgress = () => {
                   <Grid sm={4} item className={classes.counterItemWrap}>
                     <div className={classes.counterItem}>
                       <div className={classes.text}>
-                        <Typography variant="h3">
-                          +400
-                        </Typography>
+                        <Typography variant="h3">+400</Typography>
                         <Typography component="p">
                           {t('progress.count3_1')}
-                          <br/>
+                          <br />
                           {t('progress.count3_2')}
                         </Typography>
                       </div>
@@ -83,13 +83,12 @@ const VisitorProgress = () => {
                 </Grid>
               </Container>
             </div>
-            <blockquote>
-              {t('progress.quote')}
-            </blockquote>
+            <blockquote>{t('progress.quote')}</blockquote>
           </Grid>
         </Grid>
       </Container>
     </div>
-)}
+  );
+};
 
-export default VisitorProgress
+export default VisitorProgress;

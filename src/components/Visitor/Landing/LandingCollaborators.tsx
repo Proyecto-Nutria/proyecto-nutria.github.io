@@ -35,12 +35,12 @@ type teamType = {
 const getCollaborators = () => {
   const arr = COLLABORATORS;
   let result = new Array(8);
-  let len = 8
+  let len = 8;
   let taken = new Array(8);
-  for (let i = len-1; i >= 0; i--) {
-      var x = Math.floor(Math.random() * len);
-      result[i] = arr[x in taken ? taken[x] : x];
-      taken[x] = --len in taken ? taken[len] : len;
+  for (let i = len - 1; i >= 0; i--) {
+    var x = Math.floor(Math.random() * len);
+    result[i] = arr[x in taken ? taken[x] : x];
+    taken[x] = --len in taken ? taken[len] : len;
   }
   return result;
 };
@@ -85,13 +85,11 @@ const VisitorCollaborator = () => {
       <Container fixed={isDesktop}>
         <div className={classes.title}>
           <Typography variant="h3">
-            <strong>
-                {t('collaborators.title')}
-            </strong>
+            <strong>{t('collaborators.title')}</strong>
           </Typography>
         </div>
         <Typography className={text.subtitle2} align="center" component="p">
-            {t('collaborators.text')}
+          {t('collaborators.text')}
         </Typography>
         <Grid container spacing={6} justify="center">
           <Grid item md={10} xs={12}>
@@ -104,22 +102,51 @@ const VisitorCollaborator = () => {
                 >
                   <i className="fas fa-chevron-left"></i>
                 </button>
-                <Carousel ref={(component: Carousel) => { slider = component; }} {...settingsSlider}>
-                  {collaborators.current.map((item: collaboratorType, index: number) => (
-                    <div key={index.toString()} className={clsx(classes.item, slideState(index))}>
-                      <div className={classes.slideContent}>
-                        <Paper className={clsx(classes.paper, index === active ? classes.active : '')}>
-                          {isMobile && <Avatar src={item.avatar} className={classes.avatar} alt="avatar" />}
-                          <Typography className={classes.text} display="block">{item.text}</Typography>
-                          <Typography variant="caption" className={classes.caption}>
-                            {item.name}
-                            &nbsp;-&nbsp;
-                            {item.title}
-                          </Typography>
-                        </Paper>
+                <Carousel
+                  ref={(component: Carousel) => {
+                    slider = component;
+                  }}
+                  {...settingsSlider}
+                >
+                  {collaborators.current.map(
+                    (item: collaboratorType, index: number) => (
+                      <div
+                        key={index.toString()}
+                        className={clsx(classes.item, slideState(index))}
+                      >
+                        <div className={classes.slideContent}>
+                          <Paper
+                            className={clsx(
+                              classes.paper,
+                              index === active ? classes.active : ''
+                            )}
+                          >
+                            {isMobile && (
+                              <Avatar
+                                src={item.avatar}
+                                className={classes.avatar}
+                                alt="avatar"
+                              />
+                            )}
+                            <Typography
+                              className={classes.text}
+                              display="block"
+                            >
+                              {item.text}
+                            </Typography>
+                            <Typography
+                              variant="caption"
+                              className={classes.caption}
+                            >
+                              {item.name}
+                              &nbsp;-&nbsp;
+                              {item.title}
+                            </Typography>
+                          </Paper>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    )
+                  )}
                 </Carousel>
                 <button
                   type="button"
@@ -128,26 +155,35 @@ const VisitorCollaborator = () => {
                 >
                   <i className="fas fa-chevron-right"></i>
                 </button>
-                {isTablet &&
+                {isTablet && (
                   <div className={classes.pagination}>
                     <ul>
-                      {collaborators.current.map((item: collaboratorType, index: number) => (
-                        <li
-                          key={index.toString()}
-                          className={index === active ? classes.active : ''}
-                        >
-                          <button type="button" onClick={() => slider?.slickGoTo(index)} style={{backgroundImage: `url(${item.avatar})`}}>{index}</button>
-                        </li>
-                      ))}
+                      {collaborators.current.map(
+                        (item: collaboratorType, index: number) => (
+                          <li
+                            key={index.toString()}
+                            className={index === active ? classes.active : ''}
+                          >
+                            <button
+                              type="button"
+                              onClick={() => slider?.slickGoTo(index)}
+                              style={{ backgroundImage: `url(${item.avatar})` }}
+                            >
+                              {index}
+                            </button>
+                          </li>
+                        )
+                      )}
                     </ul>
                   </div>
-                }
+                )}
               </div>
             </div>
           </Grid>
         </Grid>
       </Container>
     </div>
-)}
+  );
+};
 
-export default VisitorCollaborator
+export default VisitorCollaborator;

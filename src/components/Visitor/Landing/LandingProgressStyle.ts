@@ -15,13 +15,19 @@ const progressStyles = makeStyles(theme => ({
       [theme.breakpoints.up('md')]: {
         paddingLeft: theme.spacing(2),
         borderLeft: '4px solid',
-        borderLeftColor: theme.palette.type === 'dark' ? 'rgba(255, 255, 255, 0.12)' : '#D8D8D8',
+        borderLeftColor:
+          theme.palette.type === 'dark'
+            ? 'rgba(255, 255, 255, 0.12)'
+            : '#D8D8D8',
       },
       [theme.breakpoints.down('sm')]: {
         maxWidth: 'fit-content',
         paddingTop: theme.spacing(2),
         borderTop: '4px solid',
-        borderTopColor: theme.palette.type === 'dark' ? 'rgba(255, 255, 255, 0.12)' : '#D8D8D8',
+        borderTopColor:
+          theme.palette.type === 'dark'
+            ? 'rgba(255, 255, 255, 0.12)'
+            : '#D8D8D8',
         textAlign: 'center',
         margin: 'auto',
       },
@@ -29,15 +35,15 @@ const progressStyles = makeStyles(theme => ({
     '& h4': {
       [theme.breakpoints.down('sm')]: {
         textAlign: 'center',
-        marginTop: theme.spacing(-3)
-      }
-    }
+        marginTop: theme.spacing(-3),
+      },
+    },
   },
   title: {
     padding: theme.spacing(0, 2),
     [theme.breakpoints.up('sm')]: {
-      padding: theme.spacing(0, 4)
-    }
+      padding: theme.spacing(0, 4),
+    },
   },
   bgImg: {
     backgroundImage: `url('/images/Intro/progress_bg.webp')`,
@@ -46,7 +52,7 @@ const progressStyles = makeStyles(theme => ({
     alignSelf: 'center',
   },
   counterWrap: {
-    margin: theme.spacing(3, 0)
+    margin: theme.spacing(3, 0),
   },
   textDeco: {
     position: 'relative',
@@ -55,8 +61,7 @@ const progressStyles = makeStyles(theme => ({
       marginBottom: 20,
       width: '100%',
     },
-    [theme.breakpoints.down('xs')]: {
-    },
+    [theme.breakpoints.down('xs')]: {},
     '& h3': {
       overflow: 'hidden',
       color: 'rgba(255, 255, 255, 0.7)',
@@ -83,10 +88,10 @@ const progressStyles = makeStyles(theme => ({
           position: 'absolute',
           top: 0,
           left: 0,
-        }
+        },
       },
       '& span': {
-        position: 'relative'
+        position: 'relative',
       },
       [theme.breakpoints.up('md')]: {
         width: 380,
@@ -94,14 +99,14 @@ const progressStyles = makeStyles(theme => ({
       },
       [theme.breakpoints.down('md')]: {
         fontSize: 38,
-        lineHeight: '50px'
+        lineHeight: '50px',
       },
       [theme.breakpoints.down('sm')]: {
         textAlign: 'center',
       },
       [theme.breakpoints.down('xs')]: {
         fontSize: 32,
-        lineHeight: '42px'
+        lineHeight: '42px',
       },
     },
     '&:before': {
@@ -110,37 +115,52 @@ const progressStyles = makeStyles(theme => ({
       height: 400,
       top: -10,
       left: -10,
-      border: `1px solid ${theme.palette.type === 'light' ? theme.palette.primary.main : theme.palette.primary.dark}`,
+      border: `1px solid ${
+        theme.palette.type === 'light'
+          ? theme.palette.primary.main
+          : theme.palette.primary.dark
+      }`,
       position: 'absolute',
       [theme.breakpoints.down('sm')]: {
-        display: 'none'
+        display: 'none',
       },
-    }
+    },
   },
   deco: {
     '&:after': {
       content: '""',
-      borderLeft: `1px solid ${theme.palette.type === 'light' ? theme.palette.secondary.light : theme.palette.secondary.main}`,
+      borderLeft: `1px solid ${
+        theme.palette.type === 'light'
+          ? theme.palette.secondary.light
+          : theme.palette.secondary.main
+      }`,
       width: 50,
       height: '100%',
       position: 'absolute',
-      backgroundColor: theme.palette.type === 'light' ? theme.palette.background.paper : theme.palette.background.default,
+      backgroundColor:
+        theme.palette.type === 'light'
+          ? theme.palette.background.paper
+          : theme.palette.background.default,
       top: 1,
       right: -20,
-      transform: theme.direction === 'ltr' ? 'skew(-30deg, 0)' : 'skew(30deg, 0)',
+      transform:
+        theme.direction === 'ltr' ? 'skew(-30deg, 0)' : 'skew(30deg, 0)',
       [theme.breakpoints.down('sm')]: {
-        right: -50
-      }
+        right: -50,
+      },
     },
     '& p': {
-      backgroundColor: theme.palette.type === 'light' ? theme.palette.secondary.light : theme.palette.secondary.main,
+      backgroundColor:
+        theme.palette.type === 'light'
+          ? theme.palette.secondary.light
+          : theme.palette.secondary.main,
       color: 'rgba(0, 0, 0, 0.38)',
-    }
+    },
   },
   text: {},
   counterItemWrap: {
     [theme.breakpoints.down('sm')]: {
-      maxWidth: 'fit-content'
+      maxWidth: 'fit-content',
     },
   },
   counterItem: {
@@ -170,20 +190,20 @@ const progressStyles = makeStyles(theme => ({
     '& $text': {
       textAlign: 'center',
       '& h3': {
-        fontSize: 36
+        fontSize: 36,
       },
       '& h2': {
-        fontSize: 62
+        fontSize: 62,
       },
       '& h2, & h3': {
         position: 'relative',
         fontWeight: theme.typography.fontWeightBold,
         [theme.breakpoints.down('md')]: {
-          fontSize: 30
-        }
-      }
-    }
-  }
+          fontSize: 30,
+        },
+      },
+    },
+  },
 }));
 
 export default progressStyles;

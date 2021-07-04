@@ -10,14 +10,14 @@ const faqStyles = makeStyles(theme => ({
     textAlign: 'left',
     '&:after': {
       left: 0,
-    }
+    },
   },
   center: {
     textAlign: 'center',
     '&:after': {
       left: '50%',
       marginLeft: -35,
-    }
+    },
   },
   title: {
     display: 'block',
@@ -29,12 +29,12 @@ const faqStyles = makeStyles(theme => ({
       fontWeight: theme.typography.fontWeightBold,
       [theme.breakpoints.down('md')]: {
         fontSize: 32,
-        lineHeight: '48px'
+        lineHeight: '48px',
       },
       [theme.breakpoints.down('xs')]: {
         fontSize: 28,
         lineHeight: '44px',
-      }
+      },
     },
     '&:after': {
       content: '""',
@@ -43,15 +43,15 @@ const faqStyles = makeStyles(theme => ({
       bottom: -32,
       borderRadius: 12,
       background: theme.palette.primary.main,
-      position: 'absolute'
+      position: 'absolute',
     },
     '& strong': {
       color: theme.palette.text.primary,
-    }
+    },
   },
   text: {
     position: 'relative',
-    zIndex: 20
+    zIndex: 20,
   },
   figuresWrap: {
     position: 'absolute',
@@ -62,7 +62,7 @@ const faqStyles = makeStyles(theme => ({
     zIndex: 0,
     transform: 'scale(0.8)',
     [theme.breakpoints.down('md')]: {
-      display: 'none'
+      display: 'none',
     },
   },
   innerWrap: {
@@ -71,8 +71,8 @@ const faqStyles = makeStyles(theme => ({
     position: 'absolute',
     display: 'block',
     '& svg': {
-      position: 'absolute'
-    }
+      position: 'absolute',
+    },
   },
   plus: {
     left: -20,
@@ -101,7 +101,7 @@ const faqStyles = makeStyles(theme => ({
     '& img': {
       display: 'block',
       width: 280,
-    }
+    },
   },
   accordionWrap: {
     margin: 'auto',
@@ -125,26 +125,26 @@ const faqStyles = makeStyles(theme => ({
     fontSize: 18,
     [theme.breakpoints.down('xs')]: {
       fontSize: 16,
-    }
+    },
   },
   content: {
     '& $icon': {
       position: 'absolute',
       top: theme.spacing(2.5),
-      right: theme.spacing(2)
-    }
+      right: theme.spacing(2),
+    },
   },
   expanded: {
     background: theme.palette.primary.main,
     '& $heading': {
       color: theme.palette.common.white,
       paddingTop: 0,
-      paddingBottom: 0
+      paddingBottom: 0,
     },
     '& $icon': {
       color: theme.palette.common.white,
-      transform: 'rotate(180deg)'
-    }
+      transform: 'rotate(180deg)',
+    },
   },
   detail: {
     background: theme.palette.background.paper,
@@ -153,12 +153,15 @@ const faqStyles = makeStyles(theme => ({
       fontSize: 18,
       [theme.breakpoints.down('xs')]: {
         fontSize: 16,
-      }
-    }
+      },
+    },
   },
   icon: {
-    color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.main
-  }
+    color:
+      theme.palette.type === 'dark'
+        ? theme.palette.primary.light
+        : theme.palette.primary.main,
+  },
 }));
 
 export default faqStyles;
