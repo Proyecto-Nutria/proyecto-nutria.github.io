@@ -14,15 +14,15 @@ const now: string = DateTime.getCurrentDate();
 
 const PastInterviews = () => {
   const {
-    loading,
-    error,
+    loading: pasInterviewsLoading,
+    error: pastInterviewsQueryError,
     data: pastInterviewsAPIData,
   } = useQuery(PAST_INTERVIEWS, {
     variables: { now },
   });
 
-  if (loading) return <UserLoading />;
-  if (error) return <UserError />;
+  if (pasInterviewsLoading) return <UserLoading />;
+  if (pastInterviewsQueryError) return <UserError />;
 
   const pastInterviewsData: PastInterview[] = Data.parseAPIDataToPastInterview(
     pastInterviewsAPIData

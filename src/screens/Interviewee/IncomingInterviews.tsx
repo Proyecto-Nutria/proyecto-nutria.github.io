@@ -1,11 +1,11 @@
 import InterviewsIncoming from 'components/User/Interviews/InterviewsIncoming';
 import React from 'react';
-import { IIncomingInterviewsData } from 'structure/interfaces/IIncomingInterviews';
 import {
     CANCEL_INTERVIEW, CONFIRM_INTERVIEW, INCOMING_INTERVIEWS
 } from 'utils/constants/endpoints';
 import Data from 'utils/helpers/Data';
 import DateTime from 'utils/helpers/DateTime';
+import { IncomingInterview } from 'utils/ts/dataTypes';
 
 import { useMutation, useQuery } from '@apollo/client';
 
@@ -25,7 +25,7 @@ const IntervieweeIncomingInterviews = () => {
   if (loading) return <p> Loading </p>;
   if (error) return <p> Error </p>;
 
-  let incomingInterviews: IIncomingInterviewsData[] =
+  let incomingInterviews: IncomingInterview[] =
     Data.fromAPItoIncomingInterviews(data);
 
   const confirmInterview = (id: string) => {

@@ -1,10 +1,7 @@
 import { HOME_PATH } from 'routes/paths';
-import { IIncomingInterviewsData } from 'structure/interfaces/IIncomingInterviews';
-import { IMatch } from 'structure/interfaces/IMatch';
-import { IPastInterviewsData } from 'structure/interfaces/IPastInterviews';
 import { JOBS, POSITIONS, SCHOOLS } from 'utils/constants/values';
 import DateTime from 'utils/helpers/DateTime';
-import { PastInterview } from 'utils/ts/dataTypes';
+import { IncomingInterview, PastInterview } from 'utils/ts/dataTypes';
 
 export default class Data {
   static getSchools() {
@@ -93,23 +90,21 @@ export default class Data {
     };
   }
 
-  static fromAPItoIncomingInterviews(data: any) {
-    let parsedData: IIncomingInterviewsData[] = [];
-    for (var interview of data.interviews) {
+  static fromAPItoIncomingInterviews(apiData: any): IncomingInterview[] {
+    let allIncomingInterviews: IncomingInterview[] = [];
+    for (var interview of apiData.interviews) {
       const parsedTimestamp = DateTime.timestampToDate(interview.date);
-      console.log(typeof interview.confirmed);
-      let interviewInfo: IIncomingInterviewsData = {
+      let interviewInfo: IncomingInterview = {
         id: interview.id,
-        name: 'Unknown', //TODO: Check if is necessary to get the name of the person
         date: DateTime.formatDateToDay(parsedTimestamp),
         time: DateTime.formatDateToHours(parsedTimestamp),
         document: Data.formatDocumentUrl(interview.document),
-        place: interview.room,
+        room: interview.room,
         confirmed: interview.confirmed,
       };
-      parsedData.push(interviewInfo);
+      allIncomingInterviews.push(interviewInfo);
     }
-    return parsedData;
+    return allIncomingInterviews;
   }
 
   static parseAPIDataToPastInterview(apiData: any): PastInterview[] {

@@ -2,42 +2,51 @@ import InterviewsIncoming from 'components/User/Interviews/InterviewsIncoming';
 import UserError from 'components/User/UserError';
 import UserLoading from 'components/User/UserLoading';
 import React from 'react';
-import { IIncomingInterviewsData } from 'structure/interfaces/IIncomingInterviews';
 import {
     CANCEL_INTERVIEW, CONFIRM_INTERVIEW, INCOMING_INTERVIEWS
 } from 'utils/constants/endpoints';
 import Data from 'utils/helpers/Data';
 import DateTime from 'utils/helpers/DateTime';
+import { IncomingInterview } from 'utils/ts/dataTypes';
 
 import { useMutation, useQuery } from '@apollo/client';
 
 const now = DateTime.getCurrentDate();
 
 const InterviewerIncomingInterviews = () => {
-  const { loading, error, data } = useQuery(INCOMING_INTERVIEWS, {
+  const {
+    loading: incomingInterviewsLoading,
+    error: incomingInterviewsQueryError,
+    data: incomingInterviewsAPIData,
+  } = useQuery(INCOMING_INTERVIEWS, {
     variables: { now },
     fetchPolicy: 'no-cache',
   });
-  const [cancellation, { error: cancellationMutationError }] =
+  const [cancelInterviewMutation, { error: cancellationMutationError }] =
     useMutation(CANCEL_INTERVIEW);
-  const [confirmation, { error: confirmationMutationError }] =
+  const [confirmInterviewMutation, { error: confirmationMutationError }] =
     useMutation(CONFIRM_INTERVIEW);
 
-  if (loading) return <UserLoading />;
-  if (error) return <UserError />;
+  if (incomingInterviewsLoading) return <UserLoading />;
+  if (
+    incomingInterviewsQueryError ||
+    confirmationMutationError ||
+    cancellationMutationError
+  )
+    return <UserError />;
 
-  let incomingInterviews: IIncomingInterviewsData[] =
-    Data.fromAPItoIncomingInterviews(data);
+  let incomingInterviews: IncomingInterview[] =
+    Data.fromAPItoIncomingInterviews(incomingInterviewsAPIData);
 
   const confirmInterview = (id: string) => {
-    confirmation({
+    confirmInterviewMutation({
       variables: {
         id: id,
       },
     });
   };
   const cancelInterview = (id: string) => {
-    cancellation({
+    cancelInterviewMutation({
       variables: {
         id: id,
       },
