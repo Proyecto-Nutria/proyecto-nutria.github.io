@@ -17,14 +17,14 @@ const InterviewsPast: React.FC<PastInterviewsProps> = ({
 }): JSX.Element => {
   return (
     <UIMainContainer>
-      <Typography variant="h4">copy.header</Typography>
+      <Typography variant="h4">{copy.header}</Typography>
       <br />
       <TableContainer>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell align="left">copy.table.head.dateHead</TableCell>
-              <TableCell align="left">copy.table.head.documentHead</TableCell>
+              <TableCell align="left">{copy.table.head.dateHead}</TableCell>
+              <TableCell align="left">{copy.table.head.documentHead}</TableCell>
               <TableCell></TableCell>
             </TableRow>
           </TableHead>
@@ -39,7 +39,7 @@ const InterviewsPast: React.FC<PastInterviewsProps> = ({
                       target="_blank"
                       href={pastInterview.document}
                     >
-                      copy.table.body.docBtn
+                      {copy.table.body.docBtn}
                     </Button>
                   )}
                 </TableCell>

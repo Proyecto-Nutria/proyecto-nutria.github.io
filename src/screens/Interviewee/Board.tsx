@@ -5,7 +5,7 @@ import UserBoard from 'components/User/Board/UserBoard';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import {
-    USER_PAST_INTERVIEWS_PATH, WEE_INCOMING_INTERVIEWS_PATH, WEE_MOCK_PATH
+    USER_INCOMING_INTERVIEWS_PATH, USER_PAST_INTERVIEWS_PATH, WEE_MOCK_PATH
 } from 'routes/paths';
 import { INTERVIEWEE_BOARD_COPY } from 'utils/constants/copy';
 
@@ -22,7 +22,7 @@ const IntervieweeMain = () => {
       img: incomingImage,
       label: INTERVIEWEE_BOARD_COPY.grid.incoming.display,
       description: INTERVIEWEE_BOARD_COPY.grid.incoming.desc,
-      onClick: () => history.push(WEE_INCOMING_INTERVIEWS_PATH),
+      onClick: () => history.push(USER_INCOMING_INTERVIEWS_PATH),
     },
     {
       img: logImage,

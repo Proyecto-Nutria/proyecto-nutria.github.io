@@ -1,7 +1,7 @@
 import UIMainContainer from 'components/UI/UIBoxContainer';
 import React from 'react';
+import { IncomingInterviewsInterviewerProps } from 'utils/ts/propsInterfaces';
 
-import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -13,32 +13,38 @@ import Typography from '@material-ui/core/Typography';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
-const InterviewsIncoming = (props: any) => {
+const InterviewsIncoming: React.FC<IncomingInterviewsInterviewerProps> = ({
+  copy,
+  interviewsData,
+  cancelInterviewMutation,
+  confirmInterviewMutation,
+  interviewerRole,
+}): JSX.Element => {
   return (
     <UIMainContainer>
-      <Typography variant="h4">Incoming Interviews</Typography>
+      <Typography variant="h4">{copy.header}</Typography>
       <br />
       <TableContainer>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell align="left">Day</TableCell>
-              <TableCell align="left">Hour (24hrs)</TableCell>
-              <TableCell align="left">Document</TableCell>
-              <TableCell align="left">Room</TableCell>
-              <TableCell align="left">Confirmed</TableCell>
+              <TableCell align="left">{copy.table.head.dayHead}</TableCell>
+              <TableCell align="left">{copy.table.head.hourHead}</TableCell>
+              <TableCell align="left">{copy.table.head.documentHead}</TableCell>
+              <TableCell align="left">{copy.table.head.roomHead}</TableCell>
+              <TableCell align="left">{copy.table.head.confirmed}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {props.data.map((row: any, id: any) => (
+            {interviewsData.map((interview, id) => (
               <TableRow key={id}>
-                <TableCell align="left">{row.date}</TableCell>
-                <TableCell align="left">{row.time}</TableCell>
-                <TableCell align="left">{row.document}</TableCell>
-                <TableCell align="left">{row.place}</TableCell>
+                <TableCell align="left">{interview.date}</TableCell>
+                <TableCell align="left">{interview.time}</TableCell>
+                <TableCell align="left">{interview.document}</TableCell>
+                <TableCell align="left">{interview.room}</TableCell>
 
                 <TableCell align="left">
-                  {row.confirmed ? (
+                  {interview.confirmed ? (
                     <CheckBoxIcon color="disabled" />
                   ) : (
                     <CheckBoxOutlineBlankIcon color="disabled" />
@@ -46,24 +52,30 @@ const InterviewsIncoming = (props: any) => {
                 </TableCell>
 
                 <TableCell align="right">
-                  {row.confirmed ? (
+                  {interview.confirmed ? (
                     <Button
                       color="secondary"
                       onClick={() => {
-                        props.cancelMutation(row.id);
+                        cancelInterviewMutation.cancelMutation(interview.id);
                       }}
                     >
-                      Cancel
+                      {copy.table.body.cancelBtn}
                     </Button>
                   ) : (
-                    <Button
-                      color="primary"
-                      onClick={() => {
-                        props.confirmationMutation(row.id);
-                      }}
-                    >
-                      Confirm
-                    </Button>
+                    [
+                      interviewerRole && (
+                        <Button
+                          color="primary"
+                          onClick={() => {
+                            confirmInterviewMutation.confirmationMutation(
+                              interview.id
+                            );
+                          }}
+                        >
+                          {copy.table.body.confirmBtn}
+                        </Button>
+                      ),
+                    ]
                   )}
                 </TableCell>
               </TableRow>

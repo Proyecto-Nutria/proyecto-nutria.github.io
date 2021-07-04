@@ -4,20 +4,19 @@ import { useIsFirstLogin, useUserRole } from 'hooks/UserHooks';
 import React, { Fragment } from 'react';
 import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
 import {
-    EDIT_PATH, FEEDBACK_HELPER_PATH, HOME_PATH, LANDING_PATH, USER_PAST_INTERVIEWS_PATH,
-    WEE_INCOMING_INTERVIEWS_PATH, WEE_MOCK_PATH, WER_INCOMING_INTERVIEWS_PATH, WER_MATCH_PATH
+    EDIT_PATH, HOME_PATH, LANDING_PATH, USER_INCOMING_INTERVIEWS_PATH, USER_PAST_INTERVIEWS_PATH,
+    WEE_MOCK_PATH, WER_MATCH_PATH
 } from 'routes/paths';
 // Interviewee
 import IntervieweeMain from 'screens/Interviewee/Board';
-import IntervieweeIncomingInterviews from 'screens/Interviewee/IncomingInterviews';
 import IntervieweeEditProfile from 'screens/Interviewee/Profile';
 import IntervieweeMock from 'screens/Interviewee/Schedule';
 // Interviewer
 import InterviewerMain from 'screens/Interviewer/Board';
-import InterviewerIncomingInterviews from 'screens/Interviewer/IncomingInterviews';
 import InterviewerInterviewPools from 'screens/Interviewer/Pool';
 import InterviewerEditProfile from 'screens/Interviewer/Profile';
 //User
+import IncomingInterviews from 'screens/User/IncomingInterviews';
 import PastInterviews from 'screens/User/PastInterviews';
 // Visitor
 import Landing from 'screens/Visitor/Landing';
@@ -41,7 +40,7 @@ const Routes = ({ onToggleDark }: { onToggleDark: Function }) => {
               <Route
                 path={EDIT_PATH}
                 component={
-                  userRole == UserRole.Interviewee
+                  userRole === UserRole.Interviewee
                     ? IntervieweeEditProfile
                     : InterviewerEditProfile
                 }
@@ -51,15 +50,15 @@ const Routes = ({ onToggleDark }: { onToggleDark: Function }) => {
           </Fragment>
         )}
 
-        {userRole == UserRole.Interviewee && (
+        {userRole === UserRole.Interviewee && (
           <Fragment>
             <AppHeader />
             <Switch>
               <Route path={HOME_PATH} component={IntervieweeMain} />
               <Route path={WEE_MOCK_PATH} component={IntervieweeMock} />
               <Route
-                path={WEE_INCOMING_INTERVIEWS_PATH}
-                component={IntervieweeIncomingInterviews}
+                path={USER_INCOMING_INTERVIEWS_PATH}
+                component={IncomingInterviews}
               />
               <Route
                 path={USER_PAST_INTERVIEWS_PATH}
@@ -72,7 +71,7 @@ const Routes = ({ onToggleDark }: { onToggleDark: Function }) => {
           </Fragment>
         )}
 
-        {userRole == UserRole.Interviewer && (
+        {userRole === UserRole.Interviewer && (
           <Fragment>
             <AppHeader />
 
@@ -83,8 +82,8 @@ const Routes = ({ onToggleDark }: { onToggleDark: Function }) => {
                 component={InterviewerInterviewPools}
               />
               <Route
-                path={WER_INCOMING_INTERVIEWS_PATH}
-                component={InterviewerIncomingInterviews}
+                path={USER_INCOMING_INTERVIEWS_PATH}
+                component={IncomingInterviews}
               />
               <Route
                 path={USER_PAST_INTERVIEWS_PATH}

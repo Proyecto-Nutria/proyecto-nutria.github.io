@@ -2,7 +2,7 @@ const HOUR_IN_MILLISECONDS = 3600000;
 
 const ROLE_KEY = 'role';
 const INTERVIEWEE_ROLE = 'interviewee';
-const INTERVIEWER_ROLE = 'interviewer';
+export const INTERVIEWER_ROLE = 'interviewer';
 const TOKEN_KEY = 'token';
 const FIRST_TIME_KEY = 'first';
 
@@ -103,7 +103,6 @@ export {
   HOUR_IN_MILLISECONDS,
   TRUE_VALUE,
   FALSE_VALUE,
-  INTERVIEWER_ROLE,
   FIRST_TIME_KEY,
   ROLE_KEY,
   TOKEN_KEY,

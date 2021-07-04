@@ -47,3 +47,20 @@ export const PAST_INTERVIEWS_COPY = {
     },
   },
 };
+
+export const INCOMING_INTERVIEWS_COPY = {
+  header: 'Incoming Interviews',
+  table: {
+    head: {
+      dayHead: 'Day',
+      hourHead: 'Hour (24hrs)',
+      documentHead: 'Document',
+      roomHead: 'Discord Room',
+      confirmed: 'Confirmed',
+    },
+    body: {
+      confirmBtn: 'Confirm',
+      cancelBtn: 'Cancel',
+    },
+  },
+};
