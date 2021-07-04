@@ -1,6 +1,6 @@
 import UIMainContainer from 'components/UI/UIBoxContainer';
 import React from 'react';
-import { IncomingInterviewsInterviewerProps } from 'utils/ts/propsInterfaces';
+import { IncomingInterviewsProps } from 'utils/ts/propsInterfaces';
 
 import Button from '@material-ui/core/Button';
 import Table from '@material-ui/core/Table';
@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
-const InterviewsIncoming: React.FC<IncomingInterviewsInterviewerProps> = ({
+const InterviewsIncoming: React.FC<IncomingInterviewsProps> = ({
   copy,
   interviewsData,
   cancelInterviewMutation,

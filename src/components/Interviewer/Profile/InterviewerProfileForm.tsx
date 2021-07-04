@@ -1,5 +1,6 @@
 import UIMainContainer from 'components/UI/UIBoxContainer';
 import React from 'react';
+import { InterviewerProfileProps } from 'utils/ts/propsInterfaces';
 
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -7,38 +8,40 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
-const InterviewerProfileForm = (props: any) => {
+const InterviewerProfileForm: React.FC<InterviewerProfileProps> = ({
+  copy,
+  modifyInterviewerMutation,
+  appear,
+  appearSet,
+  about,
+  aboutSet,
+}) => {
   return (
     <UIMainContainer>
       <Typography variant="body2" gutterBottom>
-        By clicking on this box you give Proyecto Nutria the permission to share
-        brief details on the way your are contributing to this project. See
-        examples on our official website
+        {copy.text}
       </Typography>
       <form
         noValidate
         onSubmit={event => {
           event.preventDefault();
-          props.mutation();
+          modifyInterviewerMutation();
         }}
       >
         <FormControlLabel
           control={
-            <Checkbox
-              onChange={event =>
-                props.data.setAppearValue(event.target.checked)
-              }
-            />
+            <Checkbox onChange={event => appearSet(event.target.checked)} />
           }
-          label="Mention"
+          label={copy.form.mentionLabel}
         />
-        {props.data.appear && (
+        {appear && (
           <TextField
             fullWidth
-            label="Your brief description"
+            label={copy.form.descriptionLabel}
             multiline
             rowsMax={4}
-            onChange={event => props.data.setAboutValue(event.target.value)}
+            value={about}
+            onChange={event => aboutSet(event.target.value)}
           />
         )}
         <br />

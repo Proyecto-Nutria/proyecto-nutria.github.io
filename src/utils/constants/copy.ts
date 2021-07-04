@@ -1,3 +1,21 @@
+/* Interviewee copies */
+export const INTERVIEWEE_BOARD_COPY = {
+  grid: {
+    schedule: {
+      display: 'Schedule a Mock Interview',
+      desc: 'Mock interviews are the heart of interview prep. You can schedule one by dropping your availabidy here.',
+    },
+    incoming: {
+      display: 'Incoming Interviews',
+      desc: 'Check out your upcoming interviews. Prepare ahead of time.',
+    },
+    pasts: {
+      display: 'Past Interviews',
+      desc: 'Get insights from your previous interviews.',
+    },
+  },
+};
+
 /* Interviewer copies */
 export const INTERVIEWER_BOARD_COPY = {
   grid: {
@@ -16,21 +34,14 @@ export const INTERVIEWER_BOARD_COPY = {
   },
 };
 
-/* Interviewee copies */
-export const INTERVIEWEE_BOARD_COPY = {
-  grid: {
-    schedule: {
-      display: 'Schedule a Mock Interview',
-      desc: 'Mock interviews are the heart of interview prep. You can schedule one by dropping your availabidy here.',
-    },
-    incoming: {
-      display: 'Incoming Interviews',
-      desc: 'Check out your upcoming interviews. Prepare ahead of time.',
-    },
-    pasts: {
-      display: 'Past Interviews',
-      desc: 'Get insights from your previous interviews.',
-    },
+export const INTERVIEWER_PROFILE_COPY = {
+  text: `
+  By clicking on this box you give Proyecto Nutria the permission to share
+  brief details on the way your are contributing to this project. See
+  examples on our official website`,
+  form: {
+    mentionLabel: 'Mention',
+    descriptionLabel: 'Your brief description',
   },
 };
 
