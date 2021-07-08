@@ -2,37 +2,45 @@ import InterviewerPool from 'components/Interviewer/Pool/InterviewerPool';
 import UserError from 'components/User/UserError';
 import UserLoading from 'components/User/UserLoading';
 import React, { useReducer } from 'react';
+import { NO_CACHE } from 'utils/constants/apollo';
+import { INTERVIEWER_POOL_COPY } from 'utils/constants/copy';
 import { CREATE_INTERVIEW, UPDATE_POOL, VIEW_POOL } from 'utils/constants/endpoints';
+import { UPDATE_ACTION } from 'utils/constants/reducer';
 import Data from 'utils/helpers/Data';
+import { Pool as PoolType } from 'utils/ts/dataTypes';
 
 import { useMutation, useQuery } from '@apollo/client';
 
 const reducer = (currentPool: any, action: any): any => {
   switch (action.type) {
-    case 'create': {
+    case UPDATE_ACTION: {
       return {
         ...currentPool,
         [action.id]: action.schedule,
       };
     }
   }
-
-  throw new Error();
 };
 
 const Pool = () => {
-  const { loading, error, data } = useQuery(VIEW_POOL, {
-    fetchPolicy: 'no-cache',
+  const {
+    loading: poolLoading,
+    error: poolQueryError,
+    data: poolAPIData,
+  } = useQuery(VIEW_POOL, {
+    fetchPolicy: NO_CACHE,
   });
   const [creation, { error: cancellationMutationError }] =
     useMutation(CREATE_INTERVIEW);
-  const [updatePool, { error: updatePoolError }] = useMutation(UPDATE_POOL);
-  const [poolR, setPool] = useReducer(reducer, {});
+  const [updatePool, { error: updatePoolMutationError }] =
+    useMutation(UPDATE_POOL);
+  const [pool, setPool] = useReducer(reducer, {});
 
-  if (loading) return <UserLoading />;
-  if (error) return <UserError />;
+  if (poolLoading) return <UserLoading />;
+  if (poolQueryError || cancellationMutationError || updatePoolMutationError)
+    return <UserError />;
 
-  const pool = Data.parseAPIDataToPool(data);
+  const pools: PoolType[] = Data.parseAPIDataToPool(poolAPIData);
 
   const createInterview = (
     poolId: number,
@@ -41,7 +49,12 @@ const Pool = () => {
     dateOfInterview: string
   ) => {
     creation({
-      variables: Data.parseInputToInterviewAPI(intervieweeId, dateOfInterview),
+      variables: {
+        interview: {
+          interviewee_id: intervieweeId,
+          date: dateOfInterview,
+        },
+      },
     });
     updatePool({
       variables: {
@@ -51,14 +64,16 @@ const Pool = () => {
     });
   };
 
-  const allData = {
-    pool,
-    poolR,
-    setPool,
-    createInterview,
-  };
-
-  return <InterviewerPool data={allData} />;
+  return (
+    <InterviewerPool
+      copy={INTERVIEWER_POOL_COPY}
+      poolsData={pools}
+      pool={pool}
+      poolSet={setPool}
+      poolUpdateReducer={UPDATE_ACTION}
+      createInterviewMutation={createInterview}
+    />
+  );
 };
 
 export default Pool;

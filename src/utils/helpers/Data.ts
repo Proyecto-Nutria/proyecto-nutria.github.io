@@ -1,18 +1,18 @@
 import { HOME_PATH } from 'routes/paths';
 import { JOBS, POSITIONS, SCHOOLS } from 'utils/constants/values';
 import DateTime from 'utils/helpers/DateTime';
-import { IncomingInterview, PastInterview } from 'utils/ts/dataTypes';
+import { IncomingInterview, PastInterview, Pool } from 'utils/ts/dataTypes';
 
 export default class Data {
   static getSchools() {
     return Object.keys(SCHOOLS);
   }
 
-  static getFolderUrl(id: string) {
+  static _getFolderUrl(id: string) {
     return `https://drive.google.com/drive/folders/${id}`;
   }
 
-  static formatDocumentUrl(id: string) {
+  static _formatDocumentUrl(id: string) {
     return id ? `https://docs.google.com/document/d/${id}` : '';
   }
 
@@ -28,18 +28,6 @@ export default class Data {
       .catch((error: any) => {
         console.error(error);
       });
-  }
-
-  static fromInputToConfirmInterview(id: string) {
-    return {
-      interviewUid: id,
-    };
-  }
-
-  static fromInputToCancelInterview(id: string) {
-    return {
-      interviewUid: id,
-    };
   }
 
   static fromInputToCreateInterview(
@@ -78,18 +66,6 @@ export default class Data {
     };
   }
 
-  static fromInputToCreateOrUpdateInterviewer(
-    mentioned: boolean,
-    description: string
-  ) {
-    return {
-      interviewer: {
-        mentioned: mentioned,
-        information: description,
-      },
-    };
-  }
-
   static fromAPItoIncomingInterviews(apiData: any): IncomingInterview[] {
     let allIncomingInterviews: IncomingInterview[] = [];
     for (var interview of apiData.interviews) {
@@ -98,7 +74,7 @@ export default class Data {
         id: interview.id,
         date: DateTime.formatDateToDay(parsedTimestamp),
         time: DateTime.formatDateToHours(parsedTimestamp),
-        document: Data.formatDocumentUrl(interview.document),
+        document: Data._formatDocumentUrl(interview.document),
         room: interview.room,
         confirmed: interview.confirmed,
       };
@@ -112,7 +88,7 @@ export default class Data {
     for (var pastInterview of apiData.interviews) {
       pastInterviews.push({
         date: DateTime.timestampWithoutTimezoneToStr(pastInterview.date),
-        document: Data.formatDocumentUrl(pastInterview.doc),
+        document: Data._formatDocumentUrl(pastInterview.doc),
       });
     }
     return pastInterviews;
@@ -151,7 +127,7 @@ export default class Data {
     };
   }
 
-  static _parseRangesToArrayByDay(ranges: Array<string>) {
+  static _parseRangesToArrayByDay(ranges: Array<string>): Array<string> {
     let rangesByDay: { [day: string]: Array<string> } = {};
     let availableDates: Array<string> = [];
 
@@ -192,17 +168,17 @@ export default class Data {
     return availableDates;
   }
 
-  static parseAPIDataToPool(data: any) {
-    let parsedData: any[] = [];
+  static parseAPIDataToPool(apiData: any): Pool[] {
+    let parsedData: Pool[] = [];
 
-    for (var pool of data.pools) {
-      let poolData = {
+    for (var pool of apiData.pools) {
+      let poolData: Pool = {
         uid: pool.id,
-        interviewee: pool.interviewee_id,
+        intervieweeId: pool.interviewee_id,
         languages: pool.language,
         interviewType: pool.job,
         role: pool.position,
-        folder: Data.getFolderUrl(pool.folder),
+        folder: Data._getFolderUrl(pool.folder),
         company: pool.company,
         awaiting: pool.awaiting,
         availability: Data._parseRangesToArrayByDay(pool.availability),
@@ -210,17 +186,5 @@ export default class Data {
       parsedData.push(poolData);
     }
     return parsedData;
-  }
-
-  static parseInputToInterviewAPI(
-    intervieweeId: string,
-    dateOfInterview: string
-  ) {
-    return {
-      interview: {
-        interviewee_id: intervieweeId,
-        date: dateOfInterview,
-      },
-    };
   }
 }

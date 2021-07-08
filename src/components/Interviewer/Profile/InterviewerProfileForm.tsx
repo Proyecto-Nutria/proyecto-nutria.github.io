@@ -47,7 +47,7 @@ const InterviewerProfileForm: React.FC<InterviewerProfileProps> = ({
         <br />
         <br />
         <Button type="submit" variant="contained" color="primary">
-          Update Information
+          {copy.form.updateBtn}
         </Button>
       </form>
     </UIMainContainer>

@@ -17,6 +17,35 @@ export const INTERVIEWEE_BOARD_COPY = {
 };
 
 /* Interviewer copies */
+export const INTERVIEWER_POOL_COPY = {
+  header: 'Match',
+  table: {
+    head: {
+      languagesHead: 'Languages',
+      awaitingHead: 'Awaiting',
+      roleHead: 'Role',
+      companyHead: 'Company',
+      availabilityHead: 'Availability',
+    },
+    body: {
+      docBtn: 'Resume',
+      scheduleBtn: 'Schedule',
+    },
+  },
+};
+
+export const INTERVIEWER_PROFILE_COPY = {
+  text: `
+  By clicking on this box you give Proyecto Nutria the permission to share
+  brief details on the way your are contributing to this project. See
+  examples on our official website`,
+  form: {
+    mentionLabel: 'Mention',
+    descriptionLabel: 'Your brief description',
+    updateBtn: 'Update Information',
+  },
+};
+
 export const INTERVIEWER_BOARD_COPY = {
   grid: {
     match: {
@@ -34,17 +63,6 @@ export const INTERVIEWER_BOARD_COPY = {
   },
 };
 
-export const INTERVIEWER_PROFILE_COPY = {
-  text: `
-  By clicking on this box you give Proyecto Nutria the permission to share
-  brief details on the way your are contributing to this project. See
-  examples on our official website`,
-  form: {
-    mentionLabel: 'Mention',
-    descriptionLabel: 'Your brief description',
-  },
-};
-
 /* User copies */
 export const PAST_INTERVIEWS_COPY = {
   header: 'Past Interviews',
@@ -54,7 +72,7 @@ export const PAST_INTERVIEWS_COPY = {
       documentHead: 'Document URL',
     },
     body: {
-      docBtn: 'Document ',
+      docBtn: 'Document',
     },
   },
 };

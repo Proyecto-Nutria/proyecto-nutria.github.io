@@ -1,4 +1,23 @@
-import { IncomingInterview, PastInterview } from 'utils/ts/dataTypes';
+import { IncomingInterview, PastInterview, Pool } from 'utils/ts/dataTypes';
+
+/* Interviewer */
+export interface InterviewerPoolsProps {
+  copy: Record<string, any>;
+  poolsData: Pool[];
+  pool: any;
+  poolSet: any;
+  createInterviewMutation: any;
+  poolUpdateReducer: string;
+}
+
+export interface InterviewerProfileProps {
+  copy: Record<string, any>;
+  modifyInterviewerMutation: any;
+  appear: boolean;
+  appearSet: any;
+  about: string;
+  aboutSet: any;
+}
 
 /* User */
 export interface IncomingInterviewsProps {
@@ -16,14 +35,4 @@ export interface PastInterviewsProps {
 
 export interface BoardProps {
   copy: Array<any>;
-}
-
-/* Interviewer */
-export interface InterviewerProfileProps {
-  copy: Record<string, any>;
-  modifyInterviewerMutation: any;
-  appear: boolean;
-  appearSet: any;
-  about: string;
-  aboutSet: any;
 }
