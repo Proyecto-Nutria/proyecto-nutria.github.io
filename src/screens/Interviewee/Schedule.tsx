@@ -1,62 +1,65 @@
 import IntervieweeSchedule from 'components/Interviewee/Schedule/IntervieweeSchedule';
 import React, { useReducer, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { actionData, scheduleData } from 'structure/types/dataTypes';
+import { INTERVIEWEE_SCHEDULE_COPY } from 'utils/constants/copy';
 import { ENTER_POOL } from 'utils/constants/endpoints';
+import {
+    CREATE_ACTION, DELETE_ACTION, UPDATE_DAY_ACTION, UPDATE_END_ACTION, UPDATE_START_ACTION
+} from 'utils/constants/reducer';
 import { COMPANIES, JOBS, POSITIONS, PROGRAMMING_LANGUAGES } from 'utils/constants/values';
 import Data from 'utils/helpers/Data';
 import DateTime from 'utils/helpers/DateTime';
+import { avaliabilityInfo, scheduleInterviewStaticField as staticField } from 'utils/ts/dataTypes';
 
 import { useMutation } from '@apollo/client';
 
 const reducer = (
-  currentSchedule: scheduleData,
-  action: actionData
-): scheduleData => {
+  availability: avaliabilityInfo,
+  action: any
+): avaliabilityInfo => {
   switch (action.type) {
-    case 'create': {
+    case CREATE_ACTION: {
       const newSchedule = JSON.parse(
-        JSON.stringify(currentSchedule)
-      ) as scheduleData;
-      const indexes = Object.keys(currentSchedule) as unknown as Array<number>;
+        JSON.stringify(availability)
+      ) as avaliabilityInfo;
+      const indexes = Object.keys(availability) as unknown as Array<number>;
       const newIndex = indexes.length === 0 ? 0 : Math.max(...indexes) + 1;
       newSchedule[newIndex] = { day: null, interval: ['', ''] };
-
       return newSchedule;
     }
 
-    case 'delete': {
-      const newSchedule = JSON.parse(JSON.stringify(currentSchedule));
+    case DELETE_ACTION: {
+      const newSchedule = JSON.parse(JSON.stringify(availability));
       delete newSchedule[action.id];
-      return newSchedule as scheduleData;
+      return newSchedule as avaliabilityInfo;
     }
 
-    case 'updateStart': {
+    case UPDATE_START_ACTION: {
       const newSchedule = JSON.parse(
-        JSON.stringify(currentSchedule)
-      ) as scheduleData;
+        JSON.stringify(availability)
+      ) as avaliabilityInfo;
       newSchedule[action.id].interval[0] = action.start;
-
       return newSchedule;
     }
 
-    case 'updateEnd': {
+    case UPDATE_END_ACTION: {
       const newSchedule = JSON.parse(
-        JSON.stringify(currentSchedule)
-      ) as scheduleData;
+        JSON.stringify(availability)
+      ) as avaliabilityInfo;
       newSchedule[action.id].interval[1] = action.end;
-
       return newSchedule;
     }
 
-    case 'updateDay': {
+    case UPDATE_DAY_ACTION: {
       const newSchedule = JSON.parse(
-        JSON.stringify(currentSchedule)
-      ) as scheduleData;
+        JSON.stringify(availability)
+      ) as avaliabilityInfo;
       newSchedule[action.id].day = action.day;
-
       return newSchedule;
     }
+
+    default:
+      throw new Error();
   }
 };
 
@@ -70,54 +73,53 @@ const IntervieweeMock = () => {
   const [company, setCompanyValue] = useState('');
   const [schedule, dispatchSchedule] = useReducer(reducer, {});
 
-  //TODO: Change the state to methods to work with MaterialUI
+  const positionField: staticField = {
+    label: INTERVIEWEE_SCHEDULE_COPY.form.positionLabel,
+    values: Object.keys(POSITIONS),
+    state: interviewType,
+    setter: setInterviewTypeValue,
+    apiMap: 'position',
+  };
+  const roleField: staticField = {
+    label: INTERVIEWEE_SCHEDULE_COPY.form.roleLabel,
+    values: Object.keys(JOBS),
+    state: rol,
+    setter: setRolValue,
+    apiMap: 'job',
+  };
+  const numberOfInterviewTypeField: staticField = {
+    label: INTERVIEWEE_SCHEDULE_COPY.form.numberOfInterviewsLabel,
+    values: [1, 2, 3],
+    state: numberInterviews,
+    setter: setNumberInterviewsValue,
+    apiMap: 'awaiting',
+  };
+  const programmingField: staticField = {
+    label: INTERVIEWEE_SCHEDULE_COPY.form.programmingLabel,
+    values: Data.fromEnumToArray(PROGRAMMING_LANGUAGES),
+    state: languages,
+    setter: setLanguagesValue,
+    apiMap: 'language',
+  };
+  const companyField: staticField = {
+    label: INTERVIEWEE_SCHEDULE_COPY.form.companyLabel,
+    values: Data.fromEnumToArray(COMPANIES),
+    state: company,
+    setter: setCompanyValue,
+    apiMap: 'company',
+  };
+
   const staticInputs = [
-    {
-      label: 'Position',
-      type: 'Select',
-      values: Object.keys(POSITIONS),
-      state: interviewType,
-      setter: setInterviewTypeValue,
-      apiMap: 'position',
-    },
-    {
-      label: 'Role applying to',
-      type: 'Select',
-      values: Object.keys(JOBS),
-      state: rol,
-      setter: setRolValue,
-      apiMap: 'job',
-    },
-    {
-      label: 'Number Of Interviews',
-      type: 'Select',
-      values: [1, 2, 3],
-      state: numberInterviews,
-      setter: setNumberInterviewsValue,
-      apiMap: 'awaiting',
-    },
-    {
-      label: 'Programming languages to use in the interview',
-      type: 'Select',
-      values: Object.keys(PROGRAMMING_LANGUAGES),
-      state: languages,
-      setter: setLanguagesValue,
-      apiMap: 'language',
-    },
-    {
-      label: 'Company applying to',
-      type: 'Select',
-      values: Object.keys(COMPANIES),
-      state: company,
-      setter: setCompanyValue,
-      apiMap: 'company',
-    },
+    positionField,
+    roleField,
+    numberOfInterviewTypeField,
+    programmingField,
+    companyField,
   ];
 
   const dynamicInputs = {
-    label: 'Time to schedule a mock',
+    label: INTERVIEWEE_SCHEDULE_COPY.form.scheduleLabel,
     values: {
-      days: DateTime.getDaysOfWeek(),
       hours: DateTime.getHoursToScheduleMock(),
     },
     state: schedule,

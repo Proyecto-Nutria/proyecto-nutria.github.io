@@ -1,13 +1,48 @@
-const HOUR_IN_MILLISECONDS = 3600000;
+export const STRING_TYPE = 'string';
 
-const ROLE_KEY = 'role';
-const INTERVIEWEE_ROLE = 'interviewee';
-export const INTERVIEWER_ROLE = 'interviewer';
-const TOKEN_KEY = 'token';
-const FIRST_TIME_KEY = 'first';
+export enum UserRole {
+  visitor,
+  interviewee,
+  interviewer,
+  admin,
+}
+export enum PROGRAMMING_LANGUAGES {
+  c,
+  cpp,
+  python,
+  java,
+  javascript,
+  Other,
+}
 
-const TRUE_VALUE = '1';
-const FALSE_VALUE = '0';
+export enum COMPANIES {
+  amazon,
+  facebook,
+  github,
+  google,
+  microsoft,
+  netflix,
+  twitter,
+}
+
+/* TODO: See if we are going to put the complete number */
+export const UNIVERSITIES: { [string: string]: string } = {
+  IPN: 'IPN',
+  UNAM: 'UNAM',
+  CIMAT: 'CIMAT',
+  Other: 'NONLISTED',
+};
+export const JOBS: { [string: string]: string } = {
+  'Software Engineer': 'SE',
+  'Machine Learning': 'ML',
+  'Reliability Engineering': 'RE',
+  'Data Science': 'DS',
+};
+export const POSITIONS: { [string: string]: string } = {
+  Internship: 'Intern',
+  'Full Time': 'FTE',
+  'Explore/STEP': 'STEP',
+};
 
 enum hour {
   h0 = 0,
@@ -36,78 +71,4 @@ enum hour {
   h23 = 23,
 }
 
-enum day {
-  Monday = 'Monday',
-  Tuesday = 'Tuesday',
-  Wednesday = 'Wednesday',
-  Thursday = 'Thursday',
-  Friday = 'Friday',
-  Saturday = 'Saturday',
-  Sunday = 'Sunday',
-}
-
-enum languages {
-  'C' = 'C',
-  'C++' = 'C++',
-  'Python' = 'Python',
-  'Java' = 'Java',
-  'JavaScript' = 'JavaScript',
-  'Other' = 'Other',
-}
-
-const PROGRAMMING_LANGUAGES: { [string: string]: string } = {
-  c: '',
-  cpp: '',
-  python: '',
-  Java: '',
-  JavaScript: '',
-  Other: '',
-};
-
-const JOBS: { [string: string]: string } = {
-  'Software Engineer': 'SE',
-  'Machine Learning': 'ML',
-  'Reliability Engineering': 'RE',
-  'Data Science': 'DS',
-};
-
-const POSITIONS: { [string: string]: string } = {
-  Internship: 'Intern',
-  'Full Time': 'FTE',
-  'Explore/STEP': 'STEP',
-};
-
-const COMPANIES: { [string: string]: string } = {
-  amazon: '',
-  facebook: '',
-  github: '',
-  google: '',
-  microsoft: '',
-  netflix: '',
-  twitter: '',
-};
-
-const SCHOOLS: { [string: string]: string } = {
-  IPN: 'IPN',
-  UNAM: 'UNAM',
-  CIMAT: 'CIMAT',
-  Other: 'NONLISTED',
-};
-
-export {
-  SCHOOLS,
-  PROGRAMMING_LANGUAGES,
-  POSITIONS,
-  COMPANIES,
-  JOBS,
-  HOUR_IN_MILLISECONDS,
-  TRUE_VALUE,
-  FALSE_VALUE,
-  FIRST_TIME_KEY,
-  ROLE_KEY,
-  TOKEN_KEY,
-  INTERVIEWEE_ROLE,
-  day,
-  hour,
-  languages,
-};
+export { hour };

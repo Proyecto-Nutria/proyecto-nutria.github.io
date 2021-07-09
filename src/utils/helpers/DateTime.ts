@@ -1,47 +1,16 @@
 import moment from 'moment';
-import { day, hour } from 'utils/constants/values';
+import { hour, STRING_TYPE } from 'utils/constants/values';
 
 export default class DateTime {
   static getHoursToScheduleMock() {
     const hourMapper = (hour: number | string) =>
       `${hour < 10 ? '0' : ''}${hour}:00`;
-    const hours: (string | hour)[] = DateTime.getHoursOfDay();
-    return hours.filter(h => typeof h !== 'string').map(hourMapper);
-  }
-
-  static getDaysOfWeek() {
-    return Object.values(day);
-  }
-
-  static getHoursOfDay() {
-    return Object.values(hour);
-  }
-
-  static getDefaultDayTimeRanges() {
-    return {
-      [day.Monday]: [],
-      [day.Tuesday]: [],
-      [day.Wednesday]: [],
-      [day.Thursday]: [],
-      [day.Friday]: [],
-      [day.Saturday]: [],
-      [day.Sunday]: [],
-    };
+    const hours: (string | hour)[] = Object.values(hour);
+    return hours.filter(h => typeof h !== STRING_TYPE).map(hourMapper);
   }
 
   static oneMonthAhead() {
     return moment().add(1, 'months').calendar();
-  }
-
-  static getDateOfMatchInterview(day: string, hour: string) {
-    // TODO: Create algorithm to schedule in the correct day
-    var tomorrow = new Date();
-    tomorrow.setDate(new Date().getDate() + 1);
-    return DateTime.dateToTimestamp(tomorrow);
-  }
-
-  static dateToTimestamp(date: any) {
-    return date.getTime();
   }
 
   static timestampToDate(timestamp: string) {
@@ -65,7 +34,7 @@ export default class DateTime {
     return `${currentDate.getMonth()}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
   }
 
-  static _getDate(momentDate: any): String {
+  static _getDate(momentDate: any): string {
     return momentDate.split('T')[0];
   }
 

@@ -1,3 +1,17 @@
+/* Interviewee */
+export type avaliabilityInfo = Record<
+  number,
+  { day: object | null; interval: [string | null, string | null] }
+>;
+
+export type scheduleInterviewStaticField = {
+  label: string;
+  values: Array<any>;
+  state: any;
+  setter: any;
+  apiMap: string;
+};
+
 /* Interviewer */
 export type Pool = {
   uid: number;

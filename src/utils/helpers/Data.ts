@@ -1,11 +1,13 @@
 import { HOME_PATH } from 'routes/paths';
-import { JOBS, POSITIONS, SCHOOLS } from 'utils/constants/values';
+import { JOBS, POSITIONS, STRING_TYPE, UNIVERSITIES } from 'utils/constants/values';
 import DateTime from 'utils/helpers/DateTime';
 import { IncomingInterview, PastInterview, Pool } from 'utils/ts/dataTypes';
 
 export default class Data {
-  static getSchools() {
-    return Object.keys(SCHOOLS);
+  static fromEnumToArray(enumType: any) {
+    return Object.keys(enumType)
+      .map((key: any) => enumType[key])
+      .filter(value => typeof value === STRING_TYPE) as string[];
   }
 
   static _getFolderUrl(id: string) {
@@ -46,26 +48,6 @@ export default class Data {
     };
   }
 
-  static fromInputToCreateInterviewee(file: any, school: string) {
-    // TODO: Debug why the file is getting corrupted in the server
-    return {
-      interviewee: {
-        resume: file,
-        school: SCHOOLS[school],
-      },
-    };
-  }
-
-  static fromInputToUpdateInterviewee(file: any, school: string) {
-    // TODO: Validate when the user does not provide a school
-    return {
-      interviewee: {
-        resume: file,
-        school: SCHOOLS[school],
-      },
-    };
-  }
-
   static fromAPItoIncomingInterviews(apiData: any): IncomingInterview[] {
     let allIncomingInterviews: IncomingInterview[] = [];
     for (var interview of apiData.interviews) {
@@ -94,33 +76,40 @@ export default class Data {
     return pastInterviews;
   }
 
-  static parseInputToPoolAPI(staticInputs: any, dynamicInputs: any) {
-    const mappedValues = { availability: '' };
-    for (const element of staticInputs) {
-      let value = null;
-      if (element.apiMap === 'job') {
-        value = JOBS[element.state];
-      } else if (element.apiMap === 'position') {
-        value = POSITIONS[element.state];
-      } else {
-        value = element.state;
+  static parseInputToPoolAPI(
+    interviewInformation: any,
+    availabilityInformation: any
+  ): Record<string, Record<string, string>> {
+    const mappedValues: Record<string, string> = {};
+
+    for (const information of interviewInformation) {
+      const keyNameInAPI: string = information.apiMap;
+      let value = information.state;
+      if (keyNameInAPI === 'job') {
+        value = JOBS[value];
+      } else if (keyNameInAPI === 'position') {
+        value = POSITIONS[value];
       }
-      //@ts-expect-error
-      mappedValues[element.apiMap] = value;
+      mappedValues[keyNameInAPI] = value;
     }
 
-    let allIntervals: any = [];
+    let intervieweeAvaliability: string[] = [];
+    const availabilityIntervals: Record<
+      string,
+      Record<string, any>
+    > = availabilityInformation.state;
 
-    for (const id in dynamicInputs.state) {
-      const poolDate = DateTime._getDate(dynamicInputs.state[id]['day']);
-      let intervals: any = [];
-      for (const interval of dynamicInputs.state[id].interval) {
+    for (const availabilityId in availabilityIntervals) {
+      let intervals: string[] = [];
+      const intervalInfo: any = availabilityIntervals[availabilityId];
+      const poolDate: string = DateTime._getDate(intervalInfo['day']);
+      for (const interval of intervalInfo.interval) {
         intervals.push(`${poolDate} ${interval}`);
       }
       // TODO: Research how to change from ) to ] to be able to serialize in an easier way
-      allIntervals.push(`"[${intervals.join(',')})"`);
+      intervieweeAvaliability.push(`"[${intervals.join(',')})"`);
     }
-    mappedValues.availability = `{${allIntervals.join(',')}}`;
+    mappedValues.availability = `{${intervieweeAvaliability.join(',')}}`;
 
     return {
       preferences: mappedValues,

@@ -33,7 +33,7 @@ const UserBoard: React.FC<BoardProps> = ({ copy }): JSX.Element => {
         <div className={classes.root} key={id}>
           <Paper className={classes.paper}>
             <Grid container spacing={3}>
-              <img className={classes.img} src={information.img} />
+              <img alt="" className={classes.img} src={information.img} />
               <Grid item xs={12} sm container>
                 <Grid
                   item

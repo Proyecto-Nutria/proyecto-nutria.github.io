@@ -20,7 +20,7 @@ import IncomingInterviews from 'screens/User/IncomingInterviews';
 import PastInterviews from 'screens/User/PastInterviews';
 // Visitor
 import Landing from 'screens/Visitor/Landing';
-import { UserRole } from 'structure/types/userTypes';
+import { UserRole } from 'utils/constants/values';
 
 const Routes = ({ onToggleDark }: { onToggleDark: Function }) => {
   const userRole = useUserRole();
@@ -40,7 +40,7 @@ const Routes = ({ onToggleDark }: { onToggleDark: Function }) => {
               <Route
                 path={EDIT_PATH}
                 component={
-                  userRole === UserRole.Interviewee
+                  userRole === UserRole[UserRole.interviewee]
                     ? IntervieweeEditProfile
                     : InterviewerEditProfile
                 }
@@ -50,7 +50,7 @@ const Routes = ({ onToggleDark }: { onToggleDark: Function }) => {
           </Fragment>
         )}
 
-        {userRole === UserRole.Interviewee && (
+        {userRole === UserRole[UserRole.interviewee] && (
           <Fragment>
             <AppHeader />
             <Switch>
@@ -71,7 +71,7 @@ const Routes = ({ onToggleDark }: { onToggleDark: Function }) => {
           </Fragment>
         )}
 
-        {userRole === UserRole.Interviewer && (
+        {userRole === UserRole[UserRole.interviewer] && (
           <Fragment>
             <AppHeader />
 

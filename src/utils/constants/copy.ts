@@ -16,6 +16,23 @@ export const INTERVIEWEE_BOARD_COPY = {
   },
 };
 
+export const INTERVIEWEE_SCHEDULE_COPY = {
+  header: 'Schedule Interview',
+  form: {
+    positionLabel: 'Position',
+    roleLabel: 'Role applying to',
+    numberOfInterviewsLabel: 'Number Of Interviews',
+    programmingLabel: 'Programming languages to use in the interview',
+    companyLabel: 'Company applying to',
+    avaliabilityLabel: 'Time to schedule a mock',
+    dayLabel: 'Day',
+    startLabel: 'Start',
+    endLabel: 'End',
+    scheduleLabel: 'Time to schedule a mock',
+    scheduleBtn: 'Schedule',
+  },
+};
+
 /* Interviewer copies */
 export const INTERVIEWER_POOL_COPY = {
   header: 'Match',

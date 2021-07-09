@@ -8,7 +8,7 @@ import { INCOMING_INTERVIEWS_COPY } from 'utils/constants/copy';
 import {
     CANCEL_INTERVIEW, CONFIRM_INTERVIEW, INCOMING_INTERVIEWS
 } from 'utils/constants/endpoints';
-import { INTERVIEWER_ROLE } from 'utils/constants/values';
+import { UserRole } from 'utils/constants/values';
 import Data from 'utils/helpers/Data';
 import DateTime from 'utils/helpers/DateTime';
 import { IncomingInterview } from 'utils/ts/dataTypes';
@@ -18,7 +18,7 @@ import { useMutation, useQuery } from '@apollo/client';
 const now = DateTime.getCurrentDate();
 
 const IncomingInterviews = () => {
-  const interviewerRole = useUserRole() === INTERVIEWER_ROLE;
+  const interviewerRole = useUserRole() === UserRole[UserRole.interviewer];
   const {
     loading: incomingInterviewsLoading,
     error: incomingInterviewsQueryError,
