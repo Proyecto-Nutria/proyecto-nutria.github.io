@@ -1,11 +1,11 @@
 import { IncomingInterview, PastInterview, Pool } from 'utils/ts/dataTypes';
 
 /* Interviewee */
-/* TODO: Refactor the component below */
-export interface interfaceIntervieweeSchedule {
+export interface IntervieweeScheduleProps {
   copy: Record<string, any>;
-  interviewInformationFields: Record<string, any>;
+  interviewInformationFields: Array<Record<string, any>>;
   intervieweeAvaliabilityFields: Record<string, any>;
+  enterToPoolMutation: any;
 }
 
 /* Interviewer */

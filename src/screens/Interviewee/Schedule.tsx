@@ -1,4 +1,5 @@
 import IntervieweeSchedule from 'components/Interviewee/Schedule/IntervieweeSchedule';
+import UserError from 'components/User/UserError';
 import React, { useReducer, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { INTERVIEWEE_SCHEDULE_COPY } from 'utils/constants/copy';
@@ -6,14 +7,16 @@ import { ENTER_POOL } from 'utils/constants/endpoints';
 import {
     CREATE_ACTION, DELETE_ACTION, UPDATE_DAY_ACTION, UPDATE_END_ACTION, UPDATE_START_ACTION
 } from 'utils/constants/reducer';
-import { COMPANIES, JOBS, POSITIONS, PROGRAMMING_LANGUAGES } from 'utils/constants/values';
+import {
+    COMPANIES, JOBS, POSITIONS, PROGRAMMING_LANGUAGES, SCHEDULE_API_MAP
+} from 'utils/constants/values';
 import Data from 'utils/helpers/Data';
 import DateTime from 'utils/helpers/DateTime';
 import { avaliabilityInfo, scheduleInterviewStaticField as staticField } from 'utils/ts/dataTypes';
 
 import { useMutation } from '@apollo/client';
 
-const reducer = (
+const avaliabilityReducer = (
   availability: avaliabilityInfo,
   action: any
 ): avaliabilityInfo => {
@@ -64,49 +67,55 @@ const reducer = (
 };
 
 const IntervieweeMock = () => {
-  const [enterToPool, { error: mutationError }] = useMutation(ENTER_POOL);
+  const [enterToPool, { error: enterToPoolMutationError }] =
+    useMutation(ENTER_POOL);
 
   const [interviewType, setInterviewTypeValue] = useState('');
   const [rol, setRolValue] = useState('');
   const [numberInterviews, setNumberInterviewsValue] = useState(1);
   const [languages, setLanguagesValue] = useState('');
   const [company, setCompanyValue] = useState('');
-  const [schedule, dispatchSchedule] = useReducer(reducer, {});
+  const [avaliability, dispatchAvaliability] = useReducer(
+    avaliabilityReducer,
+    {}
+  );
+
+  if (enterToPoolMutationError) return <UserError />;
 
   const positionField: staticField = {
     label: INTERVIEWEE_SCHEDULE_COPY.form.positionLabel,
     values: Object.keys(POSITIONS),
     state: interviewType,
     setter: setInterviewTypeValue,
-    apiMap: 'position',
+    apiMap: SCHEDULE_API_MAP[SCHEDULE_API_MAP.position],
   };
   const roleField: staticField = {
     label: INTERVIEWEE_SCHEDULE_COPY.form.roleLabel,
     values: Object.keys(JOBS),
     state: rol,
     setter: setRolValue,
-    apiMap: 'job',
+    apiMap: SCHEDULE_API_MAP[SCHEDULE_API_MAP.job],
   };
   const numberOfInterviewTypeField: staticField = {
     label: INTERVIEWEE_SCHEDULE_COPY.form.numberOfInterviewsLabel,
     values: [1, 2, 3],
     state: numberInterviews,
     setter: setNumberInterviewsValue,
-    apiMap: 'awaiting',
+    apiMap: SCHEDULE_API_MAP[SCHEDULE_API_MAP.awaiting],
   };
   const programmingField: staticField = {
     label: INTERVIEWEE_SCHEDULE_COPY.form.programmingLabel,
     values: Data.fromEnumToArray(PROGRAMMING_LANGUAGES),
     state: languages,
     setter: setLanguagesValue,
-    apiMap: 'language',
+    apiMap: SCHEDULE_API_MAP[SCHEDULE_API_MAP.language],
   };
   const companyField: staticField = {
     label: INTERVIEWEE_SCHEDULE_COPY.form.companyLabel,
     values: Data.fromEnumToArray(COMPANIES),
     state: company,
     setter: setCompanyValue,
-    apiMap: 'company',
+    apiMap: SCHEDULE_API_MAP[SCHEDULE_API_MAP.company],
   };
 
   const staticInputs = [
@@ -118,15 +127,14 @@ const IntervieweeMock = () => {
   ];
 
   const dynamicInputs = {
-    label: INTERVIEWEE_SCHEDULE_COPY.form.scheduleLabel,
     values: {
       hours: DateTime.getHoursToScheduleMock(),
     },
-    state: schedule,
-    setter: dispatchSchedule,
+    state: avaliability,
+    setter: dispatchAvaliability,
   };
 
-  const createMock = () => {
+  const createMockInterview = () => {
     Data.callMutationAndRedirectToHome(
       enterToPool,
       Data.parseInputToPoolAPI(staticInputs, dynamicInputs),
@@ -136,10 +144,10 @@ const IntervieweeMock = () => {
 
   return (
     <IntervieweeSchedule
-      inputs={staticInputs}
-      dynamicInput={dynamicInputs}
-      mutation={createMock}
-      onMutationError={mutationError}
+      copy={INTERVIEWEE_SCHEDULE_COPY}
+      interviewInformationFields={staticInputs}
+      intervieweeAvaliabilityFields={dynamicInputs}
+      enterToPoolMutation={createMockInterview}
     />
   );
 };

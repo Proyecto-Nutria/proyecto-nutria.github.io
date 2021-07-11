@@ -19,7 +19,7 @@ const InterviewsIncoming: React.FC<IncomingInterviewsProps> = ({
   cancelInterviewMutation,
   confirmInterviewMutation,
   interviewerRole,
-}): JSX.Element => {
+}) => {
   return (
     <UIMainContainer>
       <Typography variant="h4">{copy.header}</Typography>

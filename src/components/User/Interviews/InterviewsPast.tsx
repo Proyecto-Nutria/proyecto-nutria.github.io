@@ -14,7 +14,7 @@ import Typography from '@material-ui/core/Typography';
 const InterviewsPast: React.FC<PastInterviewsProps> = ({
   copy,
   interviewsData,
-}): JSX.Element => {
+}) => {
   return (
     <UIMainContainer>
       <Typography variant="h4">{copy.header}</Typography>

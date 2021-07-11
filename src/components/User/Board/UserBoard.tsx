@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const UserBoard: React.FC<BoardProps> = ({ copy }): JSX.Element => {
+const UserBoard: React.FC<BoardProps> = ({ copy }) => {
   const classes = useStyles();
   return (
     <UIMainContainer>

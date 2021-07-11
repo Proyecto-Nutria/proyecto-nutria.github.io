@@ -14,7 +14,6 @@ export enum PROGRAMMING_LANGUAGES {
   javascript,
   Other,
 }
-
 export enum COMPANIES {
   amazon,
   facebook,
@@ -23,6 +22,13 @@ export enum COMPANIES {
   microsoft,
   netflix,
   twitter,
+}
+export enum SCHEDULE_API_MAP {
+  position,
+  job,
+  awaiting,
+  language,
+  company,
 }
 
 /* TODO: See if we are going to put the complete number */
@@ -43,32 +49,3 @@ export const POSITIONS: { [string: string]: string } = {
   'Full Time': 'FTE',
   'Explore/STEP': 'STEP',
 };
-
-enum hour {
-  h0 = 0,
-  h1 = 1,
-  h2 = 2,
-  h3 = 3,
-  h4 = 4,
-  h5 = 5,
-  h6 = 6,
-  h7 = 7,
-  h8 = 8,
-  h9 = 9,
-  h10 = 10,
-  h11 = 11,
-  h12 = 12,
-  h13 = 13,
-  h14 = 14,
-  h15 = 15,
-  h16 = 16,
-  h17 = 17,
-  h18 = 18,
-  h19 = 19,
-  h20 = 20,
-  h21 = 21,
-  h22 = 22,
-  h23 = 23,
-}
-
-export { hour };

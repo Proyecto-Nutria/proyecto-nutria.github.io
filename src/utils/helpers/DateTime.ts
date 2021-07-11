@@ -1,12 +1,10 @@
 import moment from 'moment';
-import { hour, STRING_TYPE } from 'utils/constants/values';
 
 export default class DateTime {
   static getHoursToScheduleMock() {
-    const hourMapper = (hour: number | string) =>
-      `${hour < 10 ? '0' : ''}${hour}:00`;
-    const hours: (string | hour)[] = Object.values(hour);
-    return hours.filter(h => typeof h !== STRING_TYPE).map(hourMapper);
+    const hourMapper = (hour: number) => `${hour < 10 ? '0' : ''}${hour}:00`;
+    const hours = Array.from({ length: 24 }, (_v, i) => i);
+    return hours.map(hourMapper);
   }
 
   static oneMonthAhead() {

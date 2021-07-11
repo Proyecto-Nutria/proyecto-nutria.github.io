@@ -11,7 +11,7 @@ import { Pool as PoolType } from 'utils/ts/dataTypes';
 
 import { useMutation, useQuery } from '@apollo/client';
 
-const reducer = (currentPool: any, action: any): any => {
+const poolReducer = (currentPool: any, action: any): any => {
   switch (action.type) {
     case UPDATE_ACTION: {
       return {
@@ -34,7 +34,7 @@ const Pool = () => {
     useMutation(CREATE_INTERVIEW);
   const [updatePool, { error: updatePoolMutationError }] =
     useMutation(UPDATE_POOL);
-  const [pool, setPool] = useReducer(reducer, {});
+  const [pool, setPool] = useReducer(poolReducer, {});
 
   if (poolLoading) return <UserLoading />;
   if (poolQueryError || cancellationMutationError || updatePoolMutationError)

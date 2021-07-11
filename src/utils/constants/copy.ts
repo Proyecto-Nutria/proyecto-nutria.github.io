@@ -28,7 +28,6 @@ export const INTERVIEWEE_SCHEDULE_COPY = {
     dayLabel: 'Day',
     startLabel: 'Start',
     endLabel: 'End',
-    scheduleLabel: 'Time to schedule a mock',
     scheduleBtn: 'Schedule',
   },
 };
