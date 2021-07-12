@@ -1,7 +1,6 @@
 import IntervieweeSchedule from 'components/Interviewee/Schedule/IntervieweeSchedule';
 import UserError from 'components/User/UserError';
 import React, { useReducer, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { INTERVIEWEE_SCHEDULE_COPY } from 'utils/constants/copy';
 import { ENTER_POOL } from 'utils/constants/endpoints';
 import {

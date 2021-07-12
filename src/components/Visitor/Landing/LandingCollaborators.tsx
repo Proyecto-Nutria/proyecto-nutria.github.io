@@ -25,13 +25,6 @@ type collaboratorType = {
   title: string;
 };
 
-type teamType = {
-  name: string;
-  text: string;
-  avatar: string;
-  title: string;
-};
-
 const getCollaborators = () => {
   const arr = COLLABORATORS;
   let result = new Array(8);
