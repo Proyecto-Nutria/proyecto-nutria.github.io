@@ -1,6 +1,15 @@
 import { IncomingInterview, PastInterview, Pool } from 'utils/ts/dataTypes';
 
 /* Interviewee */
+export interface IntervieweeProfileProps {
+  copy: Record<string, any>;
+  school: any;
+  schoolSet: any;
+  allSchools: string[];
+  onFileChanged: any;
+  editIntervieweeMutation: any;
+}
+
 export interface IntervieweeScheduleProps {
   copy: Record<string, any>;
   interviewInformationFields: Array<Record<string, any>>;

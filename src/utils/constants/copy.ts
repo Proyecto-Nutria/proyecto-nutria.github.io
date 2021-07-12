@@ -16,6 +16,15 @@ export const INTERVIEWEE_BOARD_COPY = {
   },
 };
 
+export const INTERVIEWEE_PROFILE_COPY = {
+  header: 'Nutri Profile',
+  form: {
+    schoolLabel: 'School',
+    uploadResumeBtn: 'Upload your resume',
+    updateProfileBtn: 'Upload Your Resume',
+  },
+};
+
 export const INTERVIEWEE_SCHEDULE_COPY = {
   header: 'Schedule Interview',
   form: {

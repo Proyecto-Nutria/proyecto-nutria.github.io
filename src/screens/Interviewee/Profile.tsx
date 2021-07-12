@@ -1,14 +1,13 @@
-// @ts-nocheck
-
 import IntervieweeProfile from 'components/Interviewee/Profile/IntervieweeProfile';
 import UserError from 'components/User/UserError';
 import UserLoading from 'components/User/UserLoading';
 import { useIsFirstLogin } from 'hooks/UserHooks';
 import React from 'react';
+import { INTERVIEWEE_PROFILE_COPY } from 'utils/constants/copy';
 import {
     CREATE_INTERVIEWEE, UPDATE_INTERVIEWEE, UPLOAD_RESUME_TO_FOLDER_OR_UPDATE
 } from 'utils/constants/endpoints';
-import Data from 'utils/helpers/Data';
+import { SLICE_METADATA, UNIVERSITIES } from 'utils/constants/values';
 
 import { useLazyQuery, useMutation } from '@apollo/client';
 
@@ -17,14 +16,18 @@ const IntervieweeEditProfile = () => {
   let profileMutation = CREATE_INTERVIEWEE;
   if (!newUser) profileMutation = UPDATE_INTERVIEWEE;
 
-  const [uploadResumeOrUpdate, { loading, data }] = useLazyQuery(
-    UPLOAD_RESUME_TO_FOLDER_OR_UPDATE
-  );
-  const [createInterviewee, { error }] = useMutation(CREATE_INTERVIEWEE);
+  const [
+    uploadResumeOrUpdate,
+    { loading: uploadResumeToFolderRLoading, data: gFolderData },
+  ] = useLazyQuery(UPLOAD_RESUME_TO_FOLDER_OR_UPDATE);
+  const [
+    createOrUpdateInterviewee,
+    { error: createOrUpdateIntervieweeMutationError },
+  ] = useMutation(profileMutation);
 
-  const [resume, setResume] = React.useState(null);
+  const [resume, setResume] = React.useState(new Blob());
   const [school, setSchoolValue] = React.useState('');
-  const schoolsOptions = Data.getSchools();
+  const schoolsOptions = Object.keys(UNIVERSITIES);
 
   const onFileChange = (event: any) => {
     setResume(event.target.files[0]);
@@ -32,65 +35,55 @@ const IntervieweeEditProfile = () => {
 
   const editInterviewee = () => {
     var fileReader = new FileReader();
-    var base64;
-    console.log(newUser);
-    fileReader.onload = fileLoadedEvent => {
-      base64 = fileLoadedEvent.target.result;
-      const metadataCharacters = 28;
-      const base64Resume = base64.slice(metadataCharacters);
-      uploadResumeOrUpdate({
-        variables: {
-          resume: base64Resume,
-          firstTime: newUser,
-        },
-      });
-    };
-    fileReader.readAsDataURL(resume);
+    var base64: string | ArrayBuffer | null | undefined = null;
 
-    /*
-    if (update) {
-      Data.callMutationAndRedirectToHome(
-        modifyInterviewee,
-        Data.fromInputToUpdateInterviewee(resume, school),
-        history
-      )
-    } else {
-      Data.callMutationAndRedirectToHome(
-        modifyInterviewee,
-        Data.fromInputToCreateInterviewee(resume, school),
-        history
-      )
-    }*/
+    // Event handler executed when the load event is fired
+    fileReader.onload = fileLoadedEvent => {
+      base64 = fileLoadedEvent?.target?.result;
+      if (base64) {
+        const base64Resume = base64.slice(SLICE_METADATA);
+        uploadResumeOrUpdate({
+          variables: {
+            resume: base64Resume,
+            firstTime: newUser,
+          },
+        });
+      }
+    };
+
+    //readAsDataURL is used to read the contents of the specified Blob or File.
+    fileReader.readAsDataURL(resume);
   };
 
-  if (loading) return <UserLoading />;
-  if (error) return <UserError />;
+  if (uploadResumeToFolderRLoading) return <UserLoading />;
+  if (createOrUpdateIntervieweeMutationError) return <UserError />;
 
-  if (data) {
+  /* TODO: Test update mutation */
+  if (gFolderData) {
     if (newUser) {
-      createInterviewee({
+      createOrUpdateInterviewee({
         variables: {
-          folder: data.upload_resume_and_create_folder.id,
+          folder: gFolderData.upload_resume_and_create_folder.id,
+          school: school,
+        },
+      });
+    } else {
+      createOrUpdateInterviewee({
+        variables: {
           school: school,
         },
       });
     }
   }
 
-  const allData = {
-    resume,
-    setResume,
-    school,
-    setSchoolValue,
-    onFileChange,
-    schoolsOptions,
-  };
-
   return (
     <IntervieweeProfile
-      mutation={editInterviewee}
-      onMutationError={null}
-      data={allData}
+      copy={INTERVIEWEE_PROFILE_COPY}
+      school={school}
+      schoolSet={setSchoolValue}
+      allSchools={schoolsOptions}
+      onFileChanged={onFileChange}
+      editIntervieweeMutation={editInterviewee}
     />
   );
 };

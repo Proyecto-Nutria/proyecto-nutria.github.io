@@ -1,5 +1,5 @@
 import { HOME_PATH } from 'routes/paths';
-import { JOBS, POSITIONS, STRING_TYPE, UNIVERSITIES } from 'utils/constants/values';
+import { JOBS, POSITIONS, STRING_TYPE } from 'utils/constants/values';
 import DateTime from 'utils/helpers/DateTime';
 import { IncomingInterview, PastInterview, Pool } from 'utils/ts/dataTypes';
 
@@ -8,14 +8,6 @@ export default class Data {
     return Object.keys(enumType)
       .map((key: any) => enumType[key])
       .filter(value => typeof value === STRING_TYPE) as string[];
-  }
-
-  static _getFolderUrl(id: string) {
-    return `https://drive.google.com/drive/folders/${id}`;
-  }
-
-  static _formatDocumentUrl(id: string) {
-    return id ? `https://docs.google.com/document/d/${id}` : '';
   }
 
   static callMutationAndRedirectToHome(
@@ -32,23 +24,11 @@ export default class Data {
       });
   }
 
-  static fromInputToCreateInterview(
-    id: string,
-    userId: string,
-    timestamp: string,
-    pending: number
-  ) {
-    return {
-      interview: {
-        poolId: id,
-        intervieweeUid: userId,
-        date: timestamp,
-        pending: pending,
-      },
-    };
+  static _formatDocumentUrl(id: string) {
+    return id ? `https://docs.google.com/document/d/${id}` : '';
   }
 
-  static fromAPItoIncomingInterviews(apiData: any): IncomingInterview[] {
+  static parseAPItoIncomingInterviews(apiData: any): IncomingInterview[] {
     let allIncomingInterviews: IncomingInterview[] = [];
     for (var interview of apiData.interviews) {
       const parsedTimestamp = DateTime.timestampToDate(interview.date);
@@ -155,6 +135,10 @@ export default class Data {
       }
     }
     return availableDates;
+  }
+
+  static _getFolderUrl(id: string) {
+    return `https://drive.google.com/drive/folders/${id}`;
   }
 
   static parseAPIDataToPool(apiData: any): Pool[] {

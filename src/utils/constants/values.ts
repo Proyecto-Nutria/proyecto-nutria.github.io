@@ -1,4 +1,5 @@
 export const STRING_TYPE = 'string';
+export const SLICE_METADATA = 28;
 
 export enum UserRole {
   visitor,

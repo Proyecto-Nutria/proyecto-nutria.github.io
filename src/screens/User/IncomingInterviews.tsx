@@ -41,7 +41,7 @@ const IncomingInterviews = () => {
     return <UserError />;
 
   let incomingInterviews: IncomingInterview[] =
-    Data.fromAPItoIncomingInterviews(incomingInterviewsAPIData);
+    Data.parseAPItoIncomingInterviews(incomingInterviewsAPIData);
 
   const confirmInterview = (id: string) => {
     confirmInterviewMutation({
