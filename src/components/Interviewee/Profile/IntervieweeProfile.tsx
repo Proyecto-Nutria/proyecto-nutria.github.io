@@ -1,60 +1,77 @@
-import React from "react"
+import UIMainContainer from 'components/UI/UIBoxContainer';
+import React from 'react';
+import { IntervieweeProfileProps } from 'utils/ts/propsInterfaces';
 
-import { Form, Box, Select, Button, Heading } from "grommet"
-import { DocumentUpload } from "grommet-icons"
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import Typography from '@material-ui/core/Typography';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
-const IntervieweeProfile = (props: any) => {
-  const mutationFunction = props.mutation
-  let inputFile: HTMLInputElement | null = null
+const IntervieweeProfile: React.FC<IntervieweeProfileProps> = ({
+  copy,
+  school,
+  schoolSet,
+  allSchools,
+  onFileChanged,
+  editIntervieweeMutation,
+}) => {
+  let inputFile: HTMLInputElement | null = null;
 
   // Triggers input file click
   const uploadClick = (event: any) => {
-    event.preventDefault()
-    //@ts-expect-error
-    inputFile.click()
-  }
+    event.preventDefault();
+    inputFile?.click();
+  };
 
   return (
-    <Box pad="xlarge">
-      <Heading>Nutri Profile</Heading>
-      <Box round background="light-1" pad="large">
-        <Form
-          onSubmit={event => {
-            event.preventDefault()
-            mutationFunction()
-          }}
-        >
-          <Box direction="column" gap="small">
-            <Select
-              placeholder="School"
-              options={props.data.schoolsOptions}
-              value={props.data.school}
-              onChange={({ option }) => props.data.setSchoolValue(option)}
-            />
+    <UIMainContainer>
+      <Typography variant="h4">{copy.header}</Typography>
+      <br />
+      <form
+        onSubmit={event => {
+          event.preventDefault();
+          editIntervieweeMutation();
+        }}
+      >
+        <Box>
+          <InputLabel id="demo-simple-select-label">
+            {copy.form.schoolLabel}
+          </InputLabel>
+          <Select
+            fullWidth
+            value={school}
+            onChange={event => schoolSet(event.target.value)}
+          >
+            {allSchools.map((name: any, id: any) => (
+              <MenuItem key={id} value={name}>
+                {name}
+              </MenuItem>
+            ))}
+          </Select>
+          <input
+            type="file"
+            id="file"
+            style={{ display: 'none' }}
+            onChange={onFileChanged}
+            ref={input => {
+              inputFile = input as HTMLInputElement;
+            }}
+          />
+          <br /> <br />
+          <Button onClick={uploadClick} startIcon={<CloudUploadIcon />}>
+            {copy.uploadResumeBtn}
+          </Button>
+          <br /> <br />
+          <Button type="submit" variant="contained" color="primary">
+            {copy.updateProfileBtn}
+          </Button>
+        </Box>
+      </form>
+    </UIMainContainer>
+  );
+};
 
-            <input
-              type="file"
-              id="file"
-              style={{ display: "none" }}
-              onChange={props.data.onFileChange}
-              ref={input => {
-                inputFile = input as HTMLInputElement
-              }}
-            />
-
-            <Button
-              alignSelf="start"
-              icon={<DocumentUpload size="medium" />}
-              label="Upload Resume"
-              onClick={uploadClick}
-            />
-
-            <Button alignSelf="start" type="submit" label="Submit" primary />
-          </Box>
-        </Form>
-      </Box>
-    </Box>
-  )
-}
-
-export default IntervieweeProfile
+export default IntervieweeProfile;

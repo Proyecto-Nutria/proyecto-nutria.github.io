@@ -1,110 +1,147 @@
-import { gql } from '@apollo/client'
+import { gql } from '@apollo/client';
 
-const GET_USER_TYPE = gql`
-  {
-    getUserTypeOrCreate {
-      role
-      firstTime
+const UPLOAD_RESUME_TO_FOLDER_OR_UPDATE = gql`
+  query getIdOfResume($resume: String!, $firstTime: Boolean!) {
+    upload_resume_and_create_folder(resume: $resume, firstTime: $firstTime) {
+      id
     }
   }
-`
+`;
+
+// TODO: Test mutation
 const CREATE_INTERVIEWEE = gql`
-  mutation createInterviewee($interviewee: IntervieweeInput!) {
-    createInterviewee(interviewee: $interviewee)
+  mutation createInterviewee($information: interviewees_insert_input!) {
+    insert_interviewees_one(object: $information) {
+      school
+    }
   }
-`
+`;
 
+// TODO: Test mutation, Missing GET_INTERVIEWER and Re Upload resume
 const UPDATE_INTERVIEWEE = gql`
-  mutation updateInterviewee($interviewee: IntervieweeUpdateInput!) {
-    updateInterviewee(interviewee: $interviewee)
-  }
-`
-
-const CREATE_INTERVIEWER = gql`
-  mutation createInterviewer($interviewer: InterviewerInput!) {
-    createInterviewer(interviewer: $interviewer)
-  }
-`
-
-const UPDATE_INTERVIEWER = gql`
-  mutation updateInterviewer($interviewer: InterviewerUpdateInput!) {
-    updateInterviewer(interviewer: $interviewer)
-  }
-`
-
-const VIEW_POOL = gql`
-  {
-    viewPool {
-      uid
-      type
-      role
-      language
-      folder
-      person
-      availability {
-        day
-        interval
+  mutation updateInterviewee($school: String!) {
+    update_interviewees(where: {}, _set: { school: $university }) {
+      returning {
+        school
       }
     }
   }
-`
+`;
+
+// TODO: Test mutation
+const CREATE_INTERVIEWER = gql`
+  mutation createInterviewer($information: interviewers_insert_input!) {
+    insert_interviewers_one(object: $information) {
+      mentioned
+    }
+  }
+`;
+
+const UPDATE_INTERVIEWER = gql`
+  mutation updateInterviewer($mentioned: Boolean!, $information: String!) {
+    update_interviewers(
+      where: {}
+      _set: { mentioned: $mentioned, information: $information }
+    ) {
+      returning {
+        mentioned
+      }
+    }
+  }
+`;
+
+// interviewee { folder, user_id }
+const VIEW_POOL = gql`
+  {
+    pools {
+      id
+      interviewee_id
+      availability
+      awaiting
+      company
+      job
+      language
+      position
+    }
+  }
+`;
+
+const UPDATE_POOL = gql`
+  mutation update_pools($id: Int!, $awaiting: Int!) {
+    update_pools(_set: { awaiting: $awaiting }, where: { id: { _eq: $id } }) {
+      affected_rows
+    }
+  }
+`;
 
 const ENTER_POOL = gql`
-  mutation enterToPool($preferences: PoolInput!) {
-    enterToPool(preferences: $preferences)
+  mutation enterToPool($preferences: pools_insert_input!) {
+    insert_pools_one(object: $preferences) {
+      awaiting
+    }
   }
-`
+`;
 
+// TODO: Test mutation
 const CREATE_INTERVIEW = gql`
-  mutation createInterview($interview: InterviewInput!) {
-    createInterview(interview: $interview)
+  mutation createInterview($interview: interviews_insert_input!) {
+    insert_interviews_one(object: $interview) {
+      id
+    }
   }
-`
+`;
 
 const INCOMING_INTERVIEWS = gql`
-  {
-    getIncomingInterviews {
-      uid
+  query IncomingInterviews($now: timestamp) {
+    interviews(where: { date: { _gt: $now } }) {
+      id
+      document
       date
-      confirmed
       room
-      doc
+      confirmed
     }
   }
-`
+`;
 
 const PAST_INTERVIEWS = gql`
-  {
-    getPastsInterviews {
+  query PastInterviews($now: timestamp) {
+    interviews(where: { date: { _lt: $now } }) {
       date
-      doc
+      document
     }
   }
-`
+`;
 
 const CONFIRM_INTERVIEW = gql`
-  mutation confirmInterview($confirmation: ConfirmationInput!) {
-    confirmInterview(confirmation: $confirmation)
+  mutation confirmInterview($id: Int!) {
+    update_interviews(_set: { confirmed: true }, where: { id: { _eq: $id } }) {
+      affected_rows
+    }
   }
-`
+`;
 
 const CANCEL_INTERVIEW = gql`
-  mutation cancelInterview($cancellation: CancellationInput!) {
-    cancelInterview(cancellation: $cancellation)
+  mutation cancelInterview($id: Int!) {
+    delete_interviews(where: { id: { _eq: $id } }) {
+      returning {
+        id
+      }
+    }
   }
-`
+`;
 
 export {
-  GET_USER_TYPE,
+  UPLOAD_RESUME_TO_FOLDER_OR_UPDATE,
   CREATE_INTERVIEWEE,
   UPDATE_INTERVIEWEE,
   CREATE_INTERVIEWER,
   UPDATE_INTERVIEWER,
   VIEW_POOL,
   ENTER_POOL,
+  UPDATE_POOL,
   CREATE_INTERVIEW,
   PAST_INTERVIEWS,
   INCOMING_INTERVIEWS,
   CONFIRM_INTERVIEW,
-  CANCEL_INTERVIEW
-}
+  CANCEL_INTERVIEW,
+};

@@ -1,45 +1,59 @@
-import React from "react"
-import { useHistory } from "react-router-dom"
+import React from 'react';
+import { withRouter } from 'react-router';
+import { useHistory } from 'react-router-dom';
+import { EDIT_PATH, HOME_PATH } from 'routes/paths';
 
-import { signOutWithGoogle } from "services/firebaseService"
-import { HOME_PATH, LANDING_PATH, EDIT_PATH } from "utils/constants/paths"
+import { useAuth0 } from '@auth0/auth0-react';
+import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import Toolbar from '@material-ui/core/Toolbar';
 
-import { Button, Header, Nav, Anchor } from "grommet"
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  title: {
+    flexGrow: 1,
+  },
+}));
 
 const AppHeader = () => {
-  const history = useHistory()
+  const { isAuthenticated, logout } = useAuth0();
+
+  const history = useHistory();
+  const classes = useStyles();
 
   return (
-    <Header background="main-box" elevation="medium" pad="medium">
-      <Anchor
-        color="light"
-        onClick={() => history.push(HOME_PATH)}
-        label="YAOS"
-      />
-      <Nav direction="row">
-        <Button
-          secondary
-          label="Profile"
-          onClick={() =>
-            history.push({
-              pathname: EDIT_PATH,
-              state: {
-                firstTime: false,
-              },
-            })
-          }
-        />
-        <Button
-          secondary
-          label="Log Out"
-          onClick={() => {
-            signOutWithGoogle()
-            history.push(LANDING_PATH)
-          }}
-        />
-      </Nav>
-    </Header>
-  )
-}
+    <AppBar position="static">
+      <Toolbar>
+        <div className={classes.title}>
+          <Button onClick={() => history.push(HOME_PATH)}>Nutria</Button>
+        </div>
 
-export default AppHeader
+        {isAuthenticated && (
+          <Button
+            color="inherit"
+            onClick={() =>
+              history.push({
+                pathname: EDIT_PATH,
+                state: {
+                  firstTime: false,
+                },
+              })
+            }
+          >
+            Profile
+          </Button>
+        )}
+        {isAuthenticated && (
+          <Button color="inherit" onClick={() => logout({})}>
+            Logout
+          </Button>
+        )}
+      </Toolbar>
+    </AppBar>
+  );
+};
+
+export default withRouter(AppHeader);

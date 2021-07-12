@@ -1,533 +1,185 @@
-const theme = {
-  name: "YAOS theme",
-  rounding: 4,
-  spacing: 20,
-  defaultMode: "dark",
-  global: {
-    colors: {
-      brand: {
-        dark: "#2786EE",
-        light: "background-back",
-      },
-      background: {
-        dark: "#172451",
-        light: "#FFFFFF",
-      },
-      "background-back": {
-        dark: "#172451",
-        light: "#333333",
-      },
-      "background-front": {
-        dark: "#222222",
-        light: "#FFFFFF",
-      },
-      "background-contrast": {
-        dark: "#FFFFFF11",
-        light: "#11111111",
-      },
-      text: {
-        dark: "#EEEEEE",
-        light: "#333333",
-      },
-      "text-strong": {
-        dark: "#FFFFFF",
-        light: "#000000",
-      },
-      "text-weak": {
-        dark: "#CCCCCC",
-        light: "#444444",
-      },
-      "text-xweak": {
-        dark: "#999999",
-        light: "#666666",
-      },
-      border: {
-        dark: "#d1d1d1",
-        light: "#d1d1d1",
-      },
-      control: "brand",
-      "main-box": "#232c67",
-      "active-background": "background-contrast",
-      "active-text": "text-strong",
-      "selected-background": "brand",
-      "selected-text": "text-strong",
-      "status-critical": "#FF4040",
-      "status-warning": "#FFAA15",
-      "status-ok": "#00C781",
-      "status-unknown": "#CCCCCC",
-      "status-disabled": "#CCCCCC",
-      "graph-0": "brand",
-      "graph-1": "status-warning",
-      focus: {
-        dark: "#50A0D7",
-        light: "#ffff",
-      },
+import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
+
+const themeOptions: (mode: 'light' | 'dark') => ThemeOptions = (mode: 'light' | 'dark') => ({
+  palette: {
+    type: mode,
+    primary: {
+      main: '#0099a2',
+      light: '#b8eaea',
+      dark: '#007a7a',
     },
-    font: {
-      family: "inter",
-      size: "18px",
-      height: "24px",
-      maxWidth: "432px",
-    },
-    active: {
-      background: "active-background",
-      color: "active-text",
-    },
-    hover: {
-      background: "active-background",
-      color: "active-text",
-    },
-    selected: {
-      background: "selected-background",
-      color: "selected-text",
-    },
-    control: {
-      border: {
-        radius: "4px",
-      },
-    },
-    drop: {
-      border: {
-        radius: "4px",
-      },
-    },
-    borderSize: {
-      xsmall: "1px",
-      small: "2px",
-      medium: "3px",
-      large: "10px",
-      xlarge: "20px",
-    },
-    breakpoints: {
-      small: {
-        value: 640,
-        borderSize: {
-          xsmall: "1px",
-          small: "2px",
-          medium: "3px",
-          large: "5px",
-          xlarge: "10px",
-        },
-        edgeSize: {
-          none: "0px",
-          hair: "1px",
-          xxsmall: "2px",
-          xsmall: "3px",
-          small: "5px",
-          medium: "10px",
-          large: "20px",
-          xlarge: "40px",
-        },
-        size: {
-          xxsmall: "20px",
-          xsmall: "40px",
-          small: "80px",
-          medium: "160px",
-          large: "320px",
-          xlarge: "640px",
-          full: "100%",
-        },
-      },
-      medium: {
-        value: 1280,
-      },
-      large: {},
-    },
-    edgeSize: {
-      none: "0px",
-      hair: "1px",
-      xxsmall: "3px",
-      xsmall: "5px",
-      small: "10px",
-      medium: "20px",
-      large: "40px",
-      xlarge: "80px",
-      responsiveBreakpoint: "small",
-    },
-    input: {
-      padding: "10px",
-      weight: 600,
-    },
-    spacing: "20px",
-    size: {
-      xxsmall: "40px",
-      xsmall: "80px",
-      small: "160px",
-      medium: "320px",
-      large: "640px",
-      xlarge: "960px",
-      xxlarge: "1280px",
-      full: "100%",
-    },
-    elevation: {
-      light: {
-        none: "none",
-        xsmall: "0px 1px 2px rgba(0, 0, 0, 0.20)",
-        small: "0px 2px 4px rgba(0, 0, 0, 0.20)",
-        medium: "0px 4px 8px rgba(0, 0, 0, 0.20)",
-        large: "0px 8px 16px rgba(0, 0, 0, 0.20)",
-        xlarge: "0px 12px 24px rgba(0, 0, 0, 0.20)",
-      },
-      dark: {
-        none: "none",
-        xsmall: "0px 1px 2px rgba(0, 0, 0, 0.20)",
-        small: "0px 2px 4px rgba(0, 0, 0, 0.20)",
-        medium: "0px 4px 8px rgba(0, 0, 0, 0.20)",
-        large: "0px 8px 16px rgba(0, 0, 0, 0.20)",
-        xlarge: "0px 12px 24px rgba(0, 0, 0, 0.20)",
-      },
-    },
-  },
-  chart: {},
-  diagram: {
-    line: {},
-  },
-  meter: {},
-  button: {
-    border: {
-      width: "2px",
-      radius: "15px",
-    },
-    padding: {
-      vertical: "3px",
-      horizontal: "18px",
-    },
-  },
-  checkBox: {
-    check: {
-      radius: "4px",
-    },
-    toggle: {
-      radius: "20px",
-      size: "40px",
-    },
-    size: "20px",
-  },
-  radioButton: {
-    size: "20px",
-  },
-  formField: {
-    border: {
-      color: "border",
-      error: {
-        color: {
-          dark: "white",
-          light: "status-critical",
-        },
-      },
-      position: "inner",
-      side: "bottom",
-    },
-    content: {
-      pad: "small",
-    },
-    disabled: {
-      background: {
-        color: "status-disabled",
-        opacity: "medium",
-      },
+    secondary: {
+        main: '#ffab00',
+        light: '#ffc400',
+        dark: '#d08900',
+        contrastText: 'rgba(0,0,0,0.71)',
     },
     error: {
-      color: "status-critical",
-      margin: {
-        vertical: "xsmall",
-        horizontal: "small",
-      },
+      main: '#ff4444',
+      dark: '#cc0000',
     },
-    help: {
-      color: "dark-3",
-      margin: {
-        start: "small",
-      },
+    warning: {
+      main: '#fb8c00',
+      dark: '#ef6c00',
+      light: '#ffa726',
+    },
+    success: {
+      main: '#00c851',
+      dark: '#007e33',
     },
     info: {
-      color: "text-xweak",
-      margin: {
-        vertical: "xsmall",
-        horizontal: "small",
-      },
+      main: '#33b5e5',
+      dark: '#0099cc',
     },
-    label: {
-      margin: {
-        vertical: "xsmall",
-        horizontal: "small",
-      },
-    },
-    margin: {
-      bottom: "small",
-    },
-    round: "4px",
-  },
-  calendar: {
-    small: {
-      fontSize: "14.333333333333334px",
-      lineHeight: 1.375,
-      daySize: "22.86px",
-    },
-    medium: {
-      fontSize: "15px",
-      lineHeight: 1.45,
-      daySize: "45.71px",
-    },
-    large: {
-      fontSize: "17px",
-      lineHeight: 1.11,
-      daySize: "91.43px",
-    },
-  },
-  clock: {
-    analog: {
-      hour: {
-        width: "7px",
-        size: "20px",
-      },
-      minute: {
-        width: "3px",
-        size: "10px",
-      },
-      second: {
-        width: "3px",
-        size: "8px",
-      },
-      size: {
-        small: "60px",
-        medium: "80px",
-        large: "120px",
-        xlarge: "180px",
-        huge: "240px",
-      },
-    },
-    digital: {
-      text: {
-        xsmall: {
-          size: "13.666666666666666px",
-          height: 1.5,
-        },
-        small: {
-          size: "14.333333333333334px",
-          height: 1.43,
-        },
-        medium: {
-          size: "15px",
-          height: 1.375,
-        },
-        large: {
-          size: "15.666666666666666px",
-          height: 1.167,
-        },
-        xlarge: {
-          size: "16.333333333333332px",
-          height: 1.1875,
-        },
-        xxlarge: {
-          size: "17.666666666666668px",
-          height: 1.125,
-        },
-      },
-    },
-  },
-  heading: {
-    level: {
-      "1": {
-        small: {
-          size: "34px",
-          height: "40px",
-          maxWidth: "816px",
-        },
-        medium: {
-          size: "50px",
-          height: "56px",
-          maxWidth: "1200px",
-        },
-        large: {
-          size: "82px",
-          height: "88px",
-          maxWidth: "1968px",
-        },
-        xlarge: {
-          size: "114px",
-          height: "120px",
-          maxWidth: "2736px",
-        },
-      },
-      "2": {
-        small: {
-          size: "30px",
-          height: "36px",
-          maxWidth: "720px",
-        },
-        medium: {
-          size: "42px",
-          height: "48px",
-          maxWidth: "1008px",
-        },
-        large: {
-          size: "54px",
-          height: "60px",
-          maxWidth: "1296px",
-        },
-        xlarge: {
-          size: "66px",
-          height: "72px",
-          maxWidth: "1584px",
-        },
-      },
-      "3": {
-        small: {
-          size: "26px",
-          height: "32px",
-          maxWidth: "624px",
-        },
-        medium: {
-          size: "34px",
-          height: "40px",
-          maxWidth: "816px",
-        },
-        large: {
-          size: "42px",
-          height: "48px",
-          maxWidth: "1008px",
-        },
-        xlarge: {
-          size: "50px",
-          height: "56px",
-          maxWidth: "1200px",
-        },
-      },
-      "4": {
-        small: {
-          size: "22px",
-          height: "28px",
-          maxWidth: "528px",
-        },
-        medium: {
-          size: "26px",
-          height: "32px",
-          maxWidth: "624px",
-        },
-        large: {
-          size: "30px",
-          height: "36px",
-          maxWidth: "720px",
-        },
-        xlarge: {
-          size: "34px",
-          height: "40px",
-          maxWidth: "816px",
-        },
-      },
-      "5": {
-        small: {
-          size: "16px",
-          height: "22px",
-          maxWidth: "384px",
-        },
-        medium: {
-          size: "16px",
-          height: "22px",
-          maxWidth: "384px",
-        },
-        large: {
-          size: "16px",
-          height: "22px",
-          maxWidth: "384px",
-        },
-        xlarge: {
-          size: "16px",
-          height: "22px",
-          maxWidth: "384px",
-        },
-      },
-      "6": {
-        small: {
-          size: "14px",
-          height: "20px",
-          maxWidth: "336px",
-        },
-        medium: {
-          size: "14px",
-          height: "20px",
-          maxWidth: "336px",
-        },
-        large: {
-          size: "14px",
-          height: "20px",
-          maxWidth: "336px",
-        },
-        xlarge: {
-          size: "14px",
-          height: "20px",
-          maxWidth: "336px",
-        },
-      },
-    },
-  },
-  paragraph: {
-    small: {
-      size: "16px",
-      height: "22px",
-      maxWidth: "384px",
-    },
-    medium: {
-      size: "18px",
-      height: "24px",
-      maxWidth: "432px",
-    },
-    large: {
-      size: "22px",
-      height: "28px",
-      maxWidth: "528px",
-    },
-    xlarge: {
-      size: "26px",
-      height: "32px",
-      maxWidth: "624px",
-    },
-    xxlarge: {
-      size: "34px",
-      height: "40px",
-      maxWidth: "816px",
-    },
-  },
-  text: {
-    xsmall: {
-      size: "14px",
-      height: "20px",
-      maxWidth: "336px",
-    },
-    small: {
-      size: "16px",
-      height: "22px",
-      maxWidth: "384px",
-    },
-    medium: {
-      size: "18px",
-      height: "24px",
-      maxWidth: "432px",
-    },
-    large: {
-      size: "22px",
-      height: "28px",
-      maxWidth: "528px",
-    },
-    xlarge: {
-      size: "26px",
-      height: "32px",
-      maxWidth: "624px",
-    },
-    xxlarge: {
-      size: "34px",
-      height: "40px",
-      maxWidth: "816px",
-    },
-  },
-  scale: 0.2,
-  layer: {
     background: {
-      dark: "#111111",
-      light: "#FFFFFF",
+      default: mode === 'light' ? '#f5f6f6' : '#303030',
     },
   },
-}
+  typography: {
+    fontFamily: [
+      'Inter',
+      'Roboto',
+      'Open Sans',
+      'Lato',
+    ].join(','),
+    fontWeightRegular: 400,
+    fontWeightMedium: 700,
+    fontWeightBold: 900,
+  },
+  shade: {
+    light: '0 10px 15px -5px rgba(62, 57, 107, .07)',
+  },
+  rounded: {
+    small: '8px',
+    medium: '12px',
+    big: '20px'
+  },
+  shadows: mode === 'dark'
+    ? [
+      'none',
+      '0px 1px 3px 0px rgba(50,50,50, 0.2),0px 1px 1px 0px rgba(50,50,50, 0.14),0px 2px 1px -1px rgba(50,50,50, 0.12)',
+      '0px 1px 5px 0px rgba(50,50,50, 0.2),0px 2px 2px 0px rgba(50,50,50, 0.14),0px 3px 1px -2px rgba(50,50,50, 0.12)',
+      '0px 1px 8px 0px rgba(50,50,50, 0.2),0px 3px 4px 0px rgba(50,50,50, 0.14),0px 3px 3px -2px rgba(50,50,50, 0.12)',
+      '0px 2px 4px -1px rgba(50,50,50, 0.2),0px 4px 5px 0px rgba(50,50,50, 0.14),0px 1px 10px 0px rgba(50,50,50, 0.12)',
+      '0px 3px 5px -1px rgba(50,50,50, 0.2),0px 5px 8px 0px rgba(50,50,50, 0.14),0px 1px 14px 0px rgba(50,50,50, 0.12)',
+      '0px 3px 5px -1px rgba(50,50,50, 0.2),0px 6px 10px 0px rgba(50,50,50, 0.14),0px 1px 18px 0px rgba(50,50,50, 0.12)',
+      '0px 4px 5px -2px rgba(50,50,50, 0.2),0px 7px 10px 1px rgba(50,50,50, 0.14),0px 2px 16px 1px rgba(50,50,50, 0.12)',
+      '0px 5px 5px -3px rgba(50,50,50, 0.2),0px 8px 10px 1px rgba(50,50,50, 0.14),0px 3px 14px 2px rgba(50,50,50, 0.12)',
+      '0px 5px 6px -3px rgba(50,50,50, 0.2),0px 9px 12px 1px rgba(50,50,50, 0.14),0px 3px 16px 2px rgba(50,50,50, 0.12)',
+      '0px 6px 6px -3px rgba(50,50,50, 0.2),0px 10px 14px 1px rgba(50,50,50, 0.14),0px 4px 18px 3px rgba(50,50,50, 0.12)',
+      '0px 6px 7px -4px rgba(50,50,50, 0.2),0px 11px 15px 1px rgba(50,50,50, 0.14),0px 4px 20px 3px rgba(50,50,50, 0.12)',
+      '0px 7px 8px -4px rgba(50,50,50, 0.2),0px 12px 17px 2px rgba(50,50,50, 0.14),0px 5px 22px 4px rgba(50,50,50, 0.12)',
+      '0px 7px 8px -4px rgba(50,50,50, 0.2),0px 13px 19px 2px rgba(50,50,50, 0.14),0px 5px 24px 4px rgba(50,50,50, 0.12)',
+      '0px 7px 9px -4px rgba(50,50,50, 0.2),0px 14px 21px 2px rgba(50,50,50, 0.14),0px 5px 26px 4px rgba(50,50,50, 0.12)',
+      '0px 8px 9px -5px rgba(50,50,50, 0.2),0px 15px 22px 2px rgba(50,50,50, 0.14),0px 6px 28px 5px rgba(50,50,50, 0.12)',
+      '0px 8px 10px -5px rgba(50,50,50, 0.2),0px 16px 24px 2px rgba(50,50,50, 0.14),0px 6px 30px 5px rgba(50,50,50, 0.12)',
+      '0px 8px 11px -5px rgba(50,50,50, 0.2),0px 17px 26px 2px rgba(50,50,50, 0.14),0px 6px 32px 5px rgba(50,50,50, 0.12)',
+      '0px 9px 11px -5px rgba(50,50,50, 0.2),0px 18px 28px 2px rgba(50,50,50, 0.14),0px 7px 34px 6px rgba(50,50,50, 0.12)',
+      '0px 9px 12px -6px rgba(50,50,50, 0.2),0px 19px 29px 2px rgba(50,50,50, 0.14),0px 7px 36px 6px rgba(50,50,50, 0.12)',
+      '0px 10px 13px -6px rgba(50,50,50, 0.2),0px 20px 31px 3px rgba(50,50,50, 0.14),0px 8px 38px 7px rgba(50,50,50, 0.12)',
+      '0px 10px 13px -6px rgba(50,50,50, 0.2),0px 21px 33px 3px rgba(50,50,50, 0.14),0px 8px 40px 7px rgba(50,50,50, 0.12)',
+      '0px 10px 14px -6px rgba(50,50,50, 0.2),0px 22px 35px 3px rgba(50,50,50, 0.14),0px 8px 42px 7px rgba(50,50,50, 0.12)',
+      '0px 11px 14px -7px rgba(50,50,50, 0.2),0px 23px 36px 3px rgba(50,50,50, 0.14),0px 9px 44px 8px rgba(50,50,50, 0.12)',
+      '0px 11px 15px -7px rgba(50,50,50, 0.2),0px 24px 38px 3px rgba(850,50,50 0.14),0px 9px 46px 8px rgba(50,50,50, 0.12)',
+    ]
+    : [
+      'none',
+      '0px 1px 3px 0px rgba(128,128,128, 0.2),0px 1px 1px 0px rgba(128,128,128, 0.14),0px 2px 1px -1px rgba(128,128,128, 0.12)',
+      '0px 1px 5px 0px rgba(128,128,128, 0.2),0px 2px 2px 0px rgba(128,128,128, 0.14),0px 3px 1px -2px rgba(128,128,128, 0.12)',
+      '0px 1px 8px 0px rgba(128,128,128, 0.2),0px 3px 4px 0px rgba(128,128,128, 0.14),0px 3px 3px -2px rgba(128,128,128, 0.12)',
+      '0px 2px 4px -1px rgba(128,128,128, 0.2),0px 4px 5px 0px rgba(128,128,128, 0.14),0px 1px 10px 0px rgba(128,128,128, 0.12)',
+      '0px 3px 5px -1px rgba(128,128,128, 0.2),0px 5px 8px 0px rgba(128,128,128, 0.14),0px 1px 14px 0px rgba(128,128,128, 0.12)',
+      '0px 3px 5px -1px rgba(128,128,128, 0.2),0px 6px 10px 0px rgba(128,128,128, 0.14),0px 1px 18px 0px rgba(128,128,128, 0.12)',
+      '0px 4px 5px -2px rgba(128,128,128, 0.2),0px 7px 10px 1px rgba(128,128,128, 0.14),0px 2px 16px 1px rgba(128,128,128, 0.12)',
+      '0px 5px 5px -3px rgba(128,128,128, 0.2),0px 8px 10px 1px rgba(128,128,128, 0.14),0px 3px 14px 2px rgba(128,128,128, 0.12)',
+      '0px 5px 6px -3px rgba(128,128,128, 0.2),0px 9px 12px 1px rgba(128,128,128, 0.14),0px 3px 16px 2px rgba(128,128,128, 0.12)',
+      '0px 6px 6px -3px rgba(128,128,128, 0.2),0px 10px 14px 1px rgba(128,128,128, 0.14),0px 4px 18px 3px rgba(128,128,128, 0.12)',
+      '0px 6px 7px -4px rgba(128,128,128, 0.2),0px 11px 15px 1px rgba(128,128,128, 0.14),0px 4px 20px 3px rgba(128,128,128, 0.12)',
+      '0px 7px 8px -4px rgba(128,128,128, 0.2),0px 12px 17px 2px rgba(128,128,128, 0.14),0px 5px 22px 4px rgba(128,128,128, 0.12)',
+      '0px 7px 8px -4px rgba(128,128,128, 0.2),0px 13px 19px 2px rgba(128,128,128, 0.14),0px 5px 24px 4px rgba(128,128,128, 0.12)',
+      '0px 7px 9px -4px rgba(128,128,128, 0.2),0px 14px 21px 2px rgba(128,128,128, 0.14),0px 5px 26px 4px rgba(128,128,128, 0.12)',
+      '0px 8px 9px -5px rgba(128,128,128, 0.2),0px 15px 22px 2px rgba(128,128,128, 0.14),0px 6px 28px 5px rgba(128,128,128, 0.12)',
+      '0px 8px 10px -5px rgba(128,128,128, 0.2),0px 16px 24px 2px rgba(128,128,128, 0.14),0px 6px 30px 5px rgba(128,128,128, 0.12)',
+      '0px 8px 11px -5px rgba(128,128,128, 0.2),0px 17px 26px 2px rgba(128,128,128, 0.14),0px 6px 32px 5px rgba(128,128,128, 0.12)',
+      '0px 9px 11px -5px rgba(128,128,128, 0.2),0px 18px 28px 2px rgba(128,128,128, 0.14),0px 7px 34px 6px rgba(128,128,128, 0.12)',
+      '0px 9px 12px -6px rgba(128,128,128, 0.2),0px 19px 29px 2px rgba(128,128,128, 0.14),0px 7px 36px 6px rgba(128,128,128, 0.12)',
+      '0px 10px 13px -6px rgba(128,128,128, 0.2),0px 20px 31px 3px rgba(128,128,128, 0.14),0px 8px 38px 7px rgba(128,128,128, 0.12)',
+      '0px 10px 13px -6px rgba(128,128,128, 0.2),0px 21px 33px 3px rgba(128,128,128, 0.14),0px 8px 40px 7px rgba(128,128,128, 0.12)',
+      '0px 10px 14px -6px rgba(128,128,128, 0.2),0px 22px 35px 3px rgba(128,128,128, 0.14),0px 8px 42px 7px rgba(128,128,128, 0.12)',
+      '0px 11px 14px -7px rgba(128,128,128, 0.2),0px 23px 36px 3px rgba(128,128,128, 0.14),0px 9px 44px 8px rgba(128,128,128, 0.12)',
+      '0px 11px 15px -7px rgba(128,128,128, 0.2),0px 24px 38px 3px rgba(128,128,128, 0.14),0px 9px 46px 8px rgba(128,128,128, 0.12)',
+    ],
+  overrides: {
+    MuiPaper: {
+      rounded: {
+        borderRadius: 12
+      },
+      elevation1: {
+        boxShadow: mode === 'dark' ? '0px 1px 3px 0px rgba(64, 64, 64, 1), 0px 1px 1px 0px rgba(42, 42, 42, 1), 0px 2px 1px -1px rgba(20, 20, 20, 1)' : '0 1.5px 12px 2px rgba(0, 0, 0, 0.06)'
+      },
+      elevation4: {
+        boxShadow: mode === 'dark' ? '0px 2px 4px -1px rgba(64, 64, 64, 0.46), 0px 4px 5px 0px rgba(42, 42, 42, 0.32), 0px 1px 10px 0px rgba(20, 20, 20, 0.12)' : '0 1.5px 12px 4px rgba(0, 0, 0, 0.12)'
+      }
+    },
+    MuiButton: {
+      containedSecondary: {
+        color: '#FFFFFF',
+      },
+      containedPrimary: {
+        color: '#FFFFFF',
+      },
+      contained: {
+        boxShadow: 'none',
+      },
+      root: {
+        borderRadius: 36,
+        fontWeight: 600,
+        padding: '8px 24px'
+      },
+      sizeSmall: {
+        padding: '7px 12px'
+      },
+      sizeLarge: {
+        padding: '7px 36px'
+      }
+    },
+    MuiTypography: {
+      button: {
+        fontWeight: 600
+      }
+    },
+    MuiInputLabel: {
+      root: {
+        '&$focused': {
+          color: '#ffab00'
+        }
+      },
+      filled: {
+        top: -2,
+        '&$shrink': {
+          color: '#ffab00'
+        }
+      }
+    },
+    MuiFilledInput: {
+      root: {
+        borderRadius: '12px !important',
+        background: 'none',
+        '&:before': {
+          display: 'none'
+        },
+        '&:after': {
+          display: 'none'
+        },
+        '&$focused': {
+          borderColor: '#ffab00'
+        }
+      },
+      input: {
+        padding: '23px 12px 6px'
+      }
+    }
+  }
+});
 
-export default theme
+export default themeOptions;

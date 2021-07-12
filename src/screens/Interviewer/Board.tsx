@@ -1,44 +1,38 @@
-import React from "react"
-import { useHistory } from "react-router-dom"
-
+import incomingImage from 'assets/imgs/Interviewee/incoming.png';
+import logImage from 'assets/imgs/Interviewee/log.png';
+import scheduleImage from 'assets/imgs/Interviewee/schedule.png';
+import UserBoard from 'components/User/Board/UserBoard';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 import {
-  WER_INCOMING_INTERVIEWS_PATH,
-  WER_MATCH_PATH,
-  USER_PAST_INTERVIEWS_PATH,
-} from "utils/constants/paths"
-
-import UIMainContainer from "components/UI/UIBoxContainer"
-import UserBoard from "components/User/Board/UserBoard"
-
-import scheduleImage from "assets/imgs/Interviewee/schedule.png"
-import logImage from "assets/imgs/Interviewee/log.png"
-import incomingImage from "assets/imgs/Interviewee/incoming.png"
+    USER_INCOMING_INTERVIEWS_PATH, USER_PAST_INTERVIEWS_PATH, WER_MATCH_PATH
+} from 'routes/paths';
+import { INTERVIEWER_BOARD_COPY } from 'utils/constants/copy';
 
 const InterviewerMain = () => {
-  const history = useHistory()
+  const history = useHistory();
   const boardElements = [
     {
       img: scheduleImage,
-      label: "Match",
+      label: INTERVIEWER_BOARD_COPY.grid.match.display,
+      description: INTERVIEWER_BOARD_COPY.grid.match.desc,
       onClick: () => history.push(WER_MATCH_PATH),
     },
     {
       img: incomingImage,
-      label: "Incoming Interviews",
-      onClick: () => history.push(WER_INCOMING_INTERVIEWS_PATH),
+      label: INTERVIEWER_BOARD_COPY.grid.incoming.display,
+      description: INTERVIEWER_BOARD_COPY.grid.incoming.desc,
+      onClick: () => history.push(USER_INCOMING_INTERVIEWS_PATH),
     },
     {
       img: logImage,
-      label: "Past Interviews",
+      label: INTERVIEWER_BOARD_COPY.grid.pasts.display,
+      description: INTERVIEWER_BOARD_COPY.grid.pasts.desc,
       onClick: () => history.push(USER_PAST_INTERVIEWS_PATH),
     },
-  ]
+  ];
 
-  return (
-    <UIMainContainer>
-      <UserBoard heading={"Interviews"} elements={boardElements} />
-    </UIMainContainer>
-  )
-}
+  return <UserBoard copy={boardElements} />;
+};
 
-export default InterviewerMain
+export default InterviewerMain;

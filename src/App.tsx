@@ -1,25 +1,49 @@
-import React from "react"
+import './i18n/config';
 
-import { Grommet, ThemeType } from "grommet"
-import yaosTheme from "assets/themes/yaos"
+import AuthProvider from 'providers/AuthProvider';
+import GraphProvider from 'providers/GraphProvider';
+import React, { useState } from 'react';
+import Routes from 'routes/Routes';
 
-import { ApolloProvider } from "@apollo/client"
-import getClient from "services/graphqlService"
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
-import UserProvider from "utils/providers/UserProvider"
-import Routes from "Routes"
+import themeOptions from './assets/themes/yaos';
 
-const client = getClient()
 const App: React.FunctionComponent = () => {
-  return (
-    <Grommet theme={yaosTheme as ThemeType}>
-      <UserProvider>
-        <ApolloProvider client={client}>
-          <Routes />
-        </ApolloProvider>
-      </UserProvider>
-    </Grommet>
-  )
-}
+  const [theme, setTheme] = useState({
+    ...themeOptions(
+      typeof Storage !== 'undefined'
+        ? localStorage.getItem('themeMode') === 'light'
+          ? 'light'
+          : 'dark'
+        : 'light'
+    ),
+  });
 
-export default App
+  const toggleDarkTheme = () => {
+    const newPaletteType = theme.palette?.type === 'light' ? 'dark' : 'light';
+    localStorage.setItem(
+      'themeMode',
+      theme.palette?.type === 'light' ? 'dark' : 'light'
+    );
+    setTheme({
+      ...themeOptions(newPaletteType),
+    });
+  };
+
+  const muiTheme = createMuiTheme(theme);
+
+  return (
+    <ThemeProvider theme={muiTheme}>
+      <AuthProvider>
+        <GraphProvider>
+          <CssBaseline />
+          <Routes onToggleDark={toggleDarkTheme} />
+        </GraphProvider>
+      </AuthProvider>
+    </ThemeProvider>
+  );
+};
+
+export default App;

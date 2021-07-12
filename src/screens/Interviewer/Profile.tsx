@@ -1,64 +1,44 @@
-import React from "react"
-import { useHistory } from "react-router-dom"
+import InterviewerProfileForm from 'components/Interviewer/Profile/InterviewerProfileForm';
+import UserError from 'components/User/UserError';
+import { useIsFirstLogin } from 'hooks/UserHooks';
+import React from 'react';
+import { INTERVIEWER_PROFILE_COPY } from 'utils/constants/copy';
+import { CREATE_INTERVIEWER, UPDATE_INTERVIEWER } from 'utils/constants/endpoints';
 
-import { useMutation } from "@apollo/client"
-import {
-  CREATE_INTERVIEWER,
-  UPDATE_INTERVIEWER,
-} from "utils/constants/endpoints"
-
-import Data from "utils/helpers/Data"
-import Path from "utils/helpers/Path"
-
-import UIMainContainer from "components/UI/UIBoxContainer"
-import InterviewerProfileForm from "components/Interviewer/Profile/InterviewerProfileForm"
+import { useMutation } from '@apollo/client';
 
 const InterviewerEditProfile = () => {
-  const history = useHistory()
-  const update = Path.isEditProfile(history)
+  const newUser = useIsFirstLogin();
+  let profileMutation = CREATE_INTERVIEWER;
+  if (!newUser) profileMutation = UPDATE_INTERVIEWER;
 
-  let profileMutation = CREATE_INTERVIEWER
-  if (update) profileMutation = UPDATE_INTERVIEWER
+  const [modifyInterviewer, { error: modifyInterviewerMutationError }] =
+    useMutation(profileMutation);
 
-  const [modifyInterviewee, { error: mutationError }] = useMutation(
-    profileMutation
-  )
+  const [appear, setAppearValue] = React.useState(false);
+  const [about, setAboutValue] = React.useState('');
 
-  const [appear, setAppearValue] = React.useState(false)
-  const [about, setAboutValue] = React.useState("")
+  if (modifyInterviewerMutationError) return <UserError />;
 
   const editInterviewer = () => {
-    if (update) {
-      Data.callMutationAndRedirectToHome(
-        modifyInterviewee,
-        Data.fromInputToUpdateInterviewee(appear, about),
-        history
-      )
-    } else {
-      Data.callMutationAndRedirectToHome(
-        modifyInterviewee,
-        Data.fromInputToCreateInterviewer(appear, about),
-        history
-      )
-    }
-  }
-
-  const data = {
-    appear,
-    setAppearValue,
-    about,
-    setAboutValue,
-  }
+    modifyInterviewer({
+      variables: {
+        mentioned: appear,
+        information: about,
+      },
+    });
+  };
 
   return (
-    <UIMainContainer>
-      <InterviewerProfileForm
-        mutation={editInterviewer}
-        onMutationError={mutationError}
-        data={data}
-      />
-    </UIMainContainer>
-  )
-}
+    <InterviewerProfileForm
+      copy={INTERVIEWER_PROFILE_COPY}
+      modifyInterviewerMutation={editInterviewer}
+      appear={appear}
+      appearSet={setAppearValue}
+      about={about}
+      aboutSet={setAboutValue}
+    />
+  );
+};
 
-export default InterviewerEditProfile
+export default InterviewerEditProfile;

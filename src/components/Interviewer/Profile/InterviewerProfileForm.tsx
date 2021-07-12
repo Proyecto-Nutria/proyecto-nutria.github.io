@@ -1,38 +1,57 @@
-import React from "react"
+import UIMainContainer from 'components/UI/UIBoxContainer';
+import React from 'react';
+import { InterviewerProfileProps } from 'utils/ts/propsInterfaces';
 
-import { TextArea, CheckBox, Form, Box, Button, Heading } from "grommet"
+import Button from '@material-ui/core/Button';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
 
-const InterviewerProfileForm = (props: any) => {
-  const mutationFunction = props.mutation
-
+const InterviewerProfileForm: React.FC<InterviewerProfileProps> = ({
+  copy,
+  modifyInterviewerMutation,
+  appear,
+  appearSet,
+  about,
+  aboutSet,
+}) => {
   return (
-    <Box pad="xlarge">
-      <Heading>Nutri Profile</Heading>
-      <Box round background="light-1" pad="large">
-        <Form
-          onSubmit={event => {
-            event.preventDefault()
-            mutationFunction()
-          }}
-        >
-          <CheckBox
-            checked={props.data.appear}
-            label="Check if you want to appear as a contributor"
-            reverse={true}
-            onChange={event => props.data.setAppearValue(event.target.checked)}
+    <UIMainContainer>
+      <Typography variant="body2" gutterBottom>
+        {copy.text}
+      </Typography>
+      <form
+        noValidate
+        onSubmit={event => {
+          event.preventDefault();
+          modifyInterviewerMutation();
+        }}
+      >
+        <FormControlLabel
+          control={
+            <Checkbox onChange={event => appearSet(event.target.checked)} />
+          }
+          label={copy.form.mentionLabel}
+        />
+        {appear && (
+          <TextField
+            fullWidth
+            label={copy.form.descriptionLabel}
+            multiline
+            rowsMax={4}
+            value={about}
+            onChange={event => aboutSet(event.target.value)}
           />
-          {props.data.appear && (
-            <TextArea
-              placeholder=" Describe yourself, aximum 250 characters"
-              value={props.data.about}
-              onChange={event => props.data.setAboutValue(event.target.value)}
-            />
-          )}
-          <Button alignSelf="start" type="submit" label="Submit" primary />
-        </Form>
-      </Box>
-    </Box>
-  )
-}
+        )}
+        <br />
+        <br />
+        <Button type="submit" variant="contained" color="primary">
+          {copy.form.updateBtn}
+        </Button>
+      </form>
+    </UIMainContainer>
+  );
+};
 
-export default InterviewerProfileForm
+export default InterviewerProfileForm;

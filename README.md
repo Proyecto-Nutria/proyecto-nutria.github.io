@@ -51,7 +51,11 @@
    sudo sysctl -w fs.inotify.max_user_watches=100000
    ```
 
-1. You can see the frontend in `localhost:8000`
+1. `.env` contents:
+   ```shell
+   EXTEND_ESLINT=true
+   PORT=3000
+   ```
 
 Note: Try to split the frontend in [components and screens](https://gist.github.com/chantastic/fc9e3853464dffdb1e3c)
 

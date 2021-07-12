@@ -6,46 +6,50 @@
   "dependencies": {
     "@apollo/client": "^3.2.5",
     "@auth0/auth0-react": "^1.2.0",
-    "@emotion/core": "^10.0.35",
-    "@emotion/react": "^11.0.0",
-    "@emotion/styled": "^10.0.27",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.0.0",
+    "@date-io/moment": "1.x",
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.58",
+    "@material-ui/pickers": "^3.3.10",
+    "@types/i18next": "^13.0.0",
     "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
+    "@types/react": "^17.0.0",
+    "@types/react-anchor-link-smooth-scroll": "^1.0.1",
+    "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.1.5",
-    "@types/react-table": "^7.0.23",
-    "apollo-upload-client": "^14.1.3",
-    "firebase": "^7.20.0",
+    "@types/react-scrollspy": "^3.3.3",
+    "@types/react-slick": "^0.23.4",
     "graphql": "^15.3.0",
-    "grommet": "^2.15.0",
-    "grommet-controls": "^3.0.1",
-    "grommet-icons": "^4.4.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "husky": "^7.0.0",
+    "i18next": "^19.8.7",
+    "i18next-browser-languagedetector": "^6.0.1",
+    "i18next-http-backend": "^1.1.0",
+    "lint-staged": "^11.0.0",
+    "moment": "^2.29.1",
+    "prettier": "^2.3.2",
+    "react": "^17.0.2",
+    "react-anchor-link-smooth-scroll": "^1.0.12",
+    "react-animated-slider": "^2.0.0",
+    "react-dom": "^17.0.2",
+    "react-i18next": "^11.8.5",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
-    "react-table": "^7.5.1",
-    "reason-react": "0.9.1",
-    "styled-components": "^5.2.0",
-    "typescript": "^3.8"
+    "react-scripts": "4.0.3",
+    "react-scrollspy": "^3.4.3",
+    "react-slick": "^0.28.0",
+    "typescript": "^4.1.2",
+    "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:arch": "BROWSER=google-chrome-stable yarn start",
-    "build": "yarn build:reason && react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "build:reason": "bsb -make-world -clean-world",
-    "watch:reason": "bsb -make-world -clean-world -w",
-    "clean": "bsb -clean-world"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app"
+    ]
   },
   "browserslist": {
     "production": [
@@ -59,16 +63,17 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@baransu/graphql_ppx_re": "^0.7.1",
-    "@jsiebern/bs-material-ui": "^2.0.2",
-    "@material-ui/core": "^4.11.3",
-    "@material-ui/icons": "^4.9.1",
-    "bs-fetch": "^0.6.2",
-    "bs-platform": "^8.3.1",
-    "bs-webapi": "^0.19.1",
-    "clipboard-polyfill": "^3.0.1",
-    "gentype": "^3.37.0",
-    "reason-promise": "^1.1.1"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ]
+  },
+  "engines": {
+    "node": ">=14.10.0"
   }
 }
