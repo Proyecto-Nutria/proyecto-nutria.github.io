@@ -13,7 +13,7 @@ export enum PROGRAMMING_LANGUAGES {
   python,
   java,
   javascript,
-  Other,
+  other,
 }
 export enum COMPANIES {
   amazon,
@@ -37,7 +37,7 @@ export const UNIVERSITIES: { [string: string]: string } = {
   IPN: 'IPN',
   UNAM: 'UNAM',
   CIMAT: 'CIMAT',
-  Other: 'NONLISTED',
+  Other: 'other',
 };
 export const JOBS: { [string: string]: string } = {
   'Software Engineer': 'SE',
