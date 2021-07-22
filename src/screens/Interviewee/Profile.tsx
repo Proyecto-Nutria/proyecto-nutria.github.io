@@ -3,6 +3,8 @@ import UserError from 'components/User/UserError';
 import UserLoading from 'components/User/UserLoading';
 import { useIsFirstLogin } from 'hooks/UserHooks';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { LANDING_PATH } from 'routes/paths';
 import { INTERVIEWEE_PROFILE_COPY } from 'utils/constants/copy';
 import {
     CREATE_INTERVIEWEE, UPDATE_INTERVIEWEE, UPLOAD_RESUME_TO_FOLDER_OR_UPDATE
@@ -12,6 +14,7 @@ import { SLICE_METADATA, UNIVERSITIES } from 'utils/constants/values';
 import { useLazyQuery, useMutation } from '@apollo/client';
 
 const IntervieweeEditProfile = () => {
+  let history = useHistory();
   const newUser = useIsFirstLogin();
   let profileMutation = CREATE_INTERVIEWEE;
   if (!newUser) profileMutation = UPDATE_INTERVIEWEE;
@@ -74,6 +77,8 @@ const IntervieweeEditProfile = () => {
         },
       });
     }
+    //TODO: Bug: Cannot redirect after first time
+    history.push(LANDING_PATH);
   }
 
   return (
