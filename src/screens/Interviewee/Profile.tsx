@@ -63,10 +63,6 @@ const IntervieweeEditProfile = () => {
 
   /* TODO: Test update mutation */
   if (gFolderData) {
-    console.log('This entered here');
-    console.log(school);
-    console.log(gFolderData.upload_resume_and_create_folder);
-
     if (newUser) {
       createOrUpdateInterviewee({
         variables: {
