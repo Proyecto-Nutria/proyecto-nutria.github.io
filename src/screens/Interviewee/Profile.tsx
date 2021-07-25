@@ -66,7 +66,7 @@ const IntervieweeEditProfile = () => {
     console.log('This entered here');
     console.log(school);
     console.log(gFolderData.upload_resume_and_create_folder);
-    /*
+
     if (newUser) {
       createOrUpdateInterviewee({
         variables: {
@@ -83,7 +83,6 @@ const IntervieweeEditProfile = () => {
     }
     //TODO: Bug: Cannot redirect after first time
     history.push(LANDING_PATH);
-    */
   }
 
   return (
