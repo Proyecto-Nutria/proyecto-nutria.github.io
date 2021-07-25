@@ -62,11 +62,11 @@ const IntervieweeProfile: React.FC<IntervieweeProfileProps> = ({
           />
           <br /> <br />
           <Button onClick={uploadClick} startIcon={<CloudUploadIcon />}>
-            {copy.uploadResumeBtn}
+            {copy.form.uploadResumeBtn}
           </Button>
           <br /> <br />
           <Button type="submit" variant="contained" color="primary">
-            {copy.updateProfileBtn}
+            {copy.form.updateProfileBtn}
           </Button>
         </Box>
       </form>

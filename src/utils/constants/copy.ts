@@ -21,7 +21,7 @@ export const INTERVIEWEE_PROFILE_COPY = {
   form: {
     schoolLabel: 'School',
     uploadResumeBtn: 'Upload your resume',
-    updateProfileBtn: 'Upload Your Resume',
+    updateProfileBtn: 'Upload Profile',
   },
 };
 
