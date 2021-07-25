@@ -70,8 +70,10 @@ const IntervieweeEditProfile = () => {
     if (newUser) {
       createOrUpdateInterviewee({
         variables: {
-          folder: gFolderData.upload_resume_and_create_folder.id,
-          school: school,
+          information: {
+            folder: gFolderData.upload_resume_and_create_folder.id,
+            school: school,
+          },
         },
       });
     } else {
