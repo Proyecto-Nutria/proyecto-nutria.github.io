@@ -1,6 +1,7 @@
 import IntervieweeSchedule from 'components/Interviewee/Schedule/IntervieweeSchedule';
 import UserError from 'components/User/UserError';
 import React, { useReducer, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { INTERVIEWEE_SCHEDULE_COPY } from 'utils/constants/copy';
 import { ENTER_POOL } from 'utils/constants/endpoints';
 import {
@@ -66,6 +67,8 @@ const avaliabilityReducer = (
 };
 
 const IntervieweeMock = () => {
+  let history = useHistory();
+
   const [enterToPool, { error: enterToPoolMutationError }] =
     useMutation(ENTER_POOL);
 
@@ -137,7 +140,7 @@ const IntervieweeMock = () => {
     Data.callMutationAndRedirectToHome(
       enterToPool,
       Data.parseInputToPoolAPI(staticInputs, dynamicInputs),
-      null
+      history
     );
   };
 
