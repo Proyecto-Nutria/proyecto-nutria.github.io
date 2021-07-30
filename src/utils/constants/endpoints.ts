@@ -77,7 +77,7 @@ const UPDATE_POOL = gql`
 const ENTER_POOL = gql`
   mutation enterToPool($preferences: pools_insert_input!) {
     insert_pools(objects: [$preferences]) {
-      awaiting
+      affected_rows
     }
   }
 `;
