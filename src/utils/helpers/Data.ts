@@ -151,7 +151,7 @@ export default class Data {
         languages: pool.language,
         interviewType: pool.job,
         role: pool.position,
-        folder: Data._getFolderUrl(pool.folder),
+        folder: Data._getFolderUrl(pool.interviewee.folder),
         company: pool.company,
         awaiting: pool.awaiting,
         availability: Data._parseRangesToArrayByDay(pool.availability),

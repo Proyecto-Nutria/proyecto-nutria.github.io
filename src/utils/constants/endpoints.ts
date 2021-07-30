@@ -62,6 +62,9 @@ const VIEW_POOL = gql`
       job
       language
       position
+      interviewee {
+        folder
+      }
     }
   }
 `;
