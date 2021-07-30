@@ -61,7 +61,6 @@ const IntervieweeEditProfile = () => {
   if (uploadResumeToFolderRLoading) return <UserLoading />;
   if (createOrUpdateIntervieweeMutationError) return <UserError />;
 
-  /* TODO: Test update mutation */
   if (gFolderData) {
     if (newUser) {
       createOrUpdateInterviewee({
