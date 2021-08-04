@@ -42,7 +42,7 @@ export interface IncomingInterviewsProps {
   interviewsData: IncomingInterview[];
   cancelInterviewMutation: any;
   confirmInterviewMutation: any;
-  interviewerRole: boolean;
+  intervieweeRole: boolean;
 }
 
 export interface PastInterviewsProps {

@@ -18,7 +18,7 @@ const InterviewsIncoming: React.FC<IncomingInterviewsProps> = ({
   interviewsData,
   cancelInterviewMutation,
   confirmInterviewMutation,
-  interviewerRole,
+  intervieweeRole,
 }) => {
   return (
     <UIMainContainer>
@@ -63,7 +63,7 @@ const InterviewsIncoming: React.FC<IncomingInterviewsProps> = ({
                     </Button>
                   ) : (
                     [
-                      interviewerRole && (
+                      intervieweeRole && (
                         <Button
                           color="primary"
                           onClick={() => {

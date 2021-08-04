@@ -18,7 +18,7 @@ import { useMutation, useQuery } from '@apollo/client';
 const now = DateTime.getCurrentDate();
 
 const IncomingInterviews = () => {
-  const interviewerRole = useUserRole() === UserRole[UserRole.interviewer];
+  const intervieweeRole = useUserRole() === UserRole[UserRole.interviewee];
   const {
     loading: incomingInterviewsLoading,
     error: incomingInterviewsQueryError,
@@ -64,7 +64,7 @@ const IncomingInterviews = () => {
       interviewsData={incomingInterviews}
       cancelInterviewMutation={cancelInterview}
       confirmInterviewMutation={confirmInterview}
-      interviewerRole={interviewerRole}
+      intervieweeRole={intervieweeRole}
     />
   );
 };
