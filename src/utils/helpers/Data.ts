@@ -36,7 +36,8 @@ export default class Data {
       let interviewInfo: IncomingInterview = {
         id: interview.id,
         // TODO: The bug is with parsedTimestamp, changed to raw info instead
-        date: DateTime.formatDateToDay(interview.date.split('T')[0]),
+        // date: DateTime.formatDateToDay(parsedTimestamp),
+        date: interview.date.split('T')[0],
         time: DateTime.formatDateToHours(parsedTimestamp),
         document: Data._formatDocumentUrl(interview.document),
         room: interview.room,
