@@ -102,17 +102,21 @@ export default class Data {
   static _parseRangesToArrayByDay(ranges: Array<string>): Array<string> {
     let rangesByDay: { [day: string]: Array<string> } = {};
     let availableDates: Array<string> = [];
+    let today: Date = new Date();
 
     ranges.forEach(range => {
       let intervals = JSON.parse(range.replace(')', ']')).sort();
       intervals.forEach((interval: string) => {
         const intervalInfo = interval.split(' ');
-        const day = intervalInfo[0];
-        const hour = intervalInfo[1];
-        if (day in rangesByDay) {
-          rangesByDay[day].push(hour);
-        } else {
-          rangesByDay[day] = [hour];
+        const day: string = intervalInfo[0];
+        const hour: string = intervalInfo[1];
+        const intervalDate: Date = new Date(Date.parse(day));
+        if (intervalDate > today) {
+          if (day in rangesByDay) {
+            rangesByDay[day].push(hour);
+          } else {
+            rangesByDay[day] = [hour];
+          }
         }
       });
     });
