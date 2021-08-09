@@ -33,6 +33,7 @@ export const INTERVIEWEE_SCHEDULE_COPY = {
     numberOfInterviewsLabel: 'Number Of Interviews',
     programmingLabel: 'Programming languages to use in the interview',
     companyLabel: 'Company applying to',
+    avaliabilityInfo: 'Your avaliability must be on PT',
     avaliabilityLabel: 'Time to schedule a mock',
     dayLabel: 'Day',
     startLabel: 'Start',

@@ -66,6 +66,9 @@ const IntervieweeSchedule: React.FC<IntervieweeScheduleProps> = ({
           {copy.form.avaliabilityLabel}
         </Button>
         <br />
+        <Typography variant="body2" gutterBottom>
+          {copy.form.avaliabilityInfo}
+        </Typography>
         {Object.entries(intervieweeAvaliabilityFields.state).map(
           ([id, data]) => {
             const current = intervieweeAvaliabilityFields.state[id];
