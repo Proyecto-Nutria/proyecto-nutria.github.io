@@ -56,7 +56,7 @@ const InterviewsIncoming: React.FC<IncomingInterviewsProps> = ({
                     <Button
                       color="secondary"
                       onClick={() => {
-                        cancelInterviewMutation.cancelMutation(interview.id);
+                        cancelInterviewMutation(interview.id);
                       }}
                     >
                       {copy.table.body.cancelBtn}
@@ -67,9 +67,7 @@ const InterviewsIncoming: React.FC<IncomingInterviewsProps> = ({
                         <Button
                           color="primary"
                           onClick={() => {
-                            confirmInterviewMutation.confirmationMutation(
-                              interview.id
-                            );
+                            confirmInterviewMutation(interview.id);
                           }}
                         >
                           {copy.table.body.confirmBtn}
