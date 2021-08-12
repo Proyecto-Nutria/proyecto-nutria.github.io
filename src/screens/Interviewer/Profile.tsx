@@ -3,7 +3,7 @@ import UserError from 'components/User/UserError';
 import { useIsFirstLogin } from 'hooks/UserHooks';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { LANDING_PATH } from 'routes/paths';
+import { HOME_PATH } from 'routes/paths';
 import { INTERVIEWER_PROFILE_COPY } from 'utils/constants/copy';
 import { CREATE_INTERVIEWER, UPDATE_INTERVIEWER } from 'utils/constants/endpoints';
 
@@ -42,7 +42,7 @@ const InterviewerEditProfile = () => {
       });
     }
     //TODO: Bug: Cannot redirect after first time
-    history.push(LANDING_PATH);
+    history.push(HOME_PATH);
   };
 
   return (

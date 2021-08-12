@@ -4,7 +4,7 @@ import UserLoading from 'components/User/UserLoading';
 import { useIsFirstLogin } from 'hooks/UserHooks';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { LANDING_PATH } from 'routes/paths';
+import { HOME_PATH } from 'routes/paths';
 import { INTERVIEWEE_PROFILE_COPY } from 'utils/constants/copy';
 import {
     CREATE_INTERVIEWEE, UPDATE_INTERVIEWEE, UPLOAD_RESUME_TO_FOLDER_OR_UPDATE
@@ -79,7 +79,7 @@ const IntervieweeEditProfile = () => {
       });
     }
     //TODO: Bug: Cannot redirect after first time
-    history.push(LANDING_PATH);
+    history.push(HOME_PATH);
   }
 
   return (

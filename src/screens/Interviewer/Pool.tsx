@@ -2,6 +2,8 @@ import InterviewerPool from 'components/Interviewer/Pool/InterviewerPool';
 import UserError from 'components/User/UserError';
 import UserLoading from 'components/User/UserLoading';
 import React, { useReducer } from 'react';
+import { useHistory } from 'react-router-dom';
+import { HOME_PATH } from 'routes/paths';
 import { NO_CACHE } from 'utils/constants/apollo';
 import { INTERVIEWER_POOL_COPY } from 'utils/constants/copy';
 import { CREATE_INTERVIEW, UPDATE_POOL, VIEW_POOL } from 'utils/constants/endpoints';
@@ -23,6 +25,7 @@ const poolReducer = (currentPool: any, action: any): any => {
 };
 
 const Pool = () => {
+  let history = useHistory();
   const {
     loading: poolLoading,
     error: poolQueryError,
@@ -30,13 +33,18 @@ const Pool = () => {
   } = useQuery(VIEW_POOL, {
     fetchPolicy: NO_CACHE,
   });
-  const [creation, { error: cancellationMutationError }] =
-    useMutation(CREATE_INTERVIEW);
-  const [updatePool, { error: updatePoolMutationError }] =
-    useMutation(UPDATE_POOL);
+  const [
+    creation,
+    { error: cancellationMutationError, loading: cancellationLoading },
+  ] = useMutation(CREATE_INTERVIEW);
+  const [
+    updatePool,
+    { error: updatePoolMutationError, loading: updateLoading },
+  ] = useMutation(UPDATE_POOL);
   const [pool, setPool] = useReducer(poolReducer, {});
 
-  if (poolLoading) return <UserLoading />;
+  if (poolLoading || cancellationLoading || updateLoading)
+    return <UserLoading />;
   if (poolQueryError || cancellationMutationError || updatePoolMutationError)
     return <UserError />;
 
@@ -62,6 +70,7 @@ const Pool = () => {
         awaiting: awaitingInterviews - 1,
       },
     });
+    history.push(HOME_PATH);
   };
 
   return (
