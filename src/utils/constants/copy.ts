@@ -20,7 +20,7 @@ export const INTERVIEWEE_PROFILE_COPY = {
   header: 'Nutri Profile',
   form: {
     schoolLabel: 'School',
-    uploadResumeBtn: 'Upload your resume',
+    uploadResumeBtn: 'Load your resume',
     updateProfileBtn: 'Upload Profile',
   },
 };

@@ -15,6 +15,7 @@ const IntervieweeProfile: React.FC<IntervieweeProfileProps> = ({
   school,
   schoolSet,
   allSchools,
+  resumeName,
   onFileChanged,
   editIntervieweeMutation,
 }) => {
@@ -54,6 +55,7 @@ const IntervieweeProfile: React.FC<IntervieweeProfileProps> = ({
           <input
             type="file"
             id="file"
+            accept="application/pdf"
             style={{ display: 'none' }}
             onChange={onFileChanged}
             ref={input => {
@@ -64,6 +66,8 @@ const IntervieweeProfile: React.FC<IntervieweeProfileProps> = ({
           <Button onClick={uploadClick} startIcon={<CloudUploadIcon />}>
             {copy.form.uploadResumeBtn}
           </Button>
+          <br />
+          {resumeName}
           <br /> <br />
           <Button type="submit" variant="contained" color="primary">
             {copy.form.updateProfileBtn}

@@ -19,7 +19,7 @@ const CREATE_INTERVIEWEE = gql`
 
 // TODO: Test mutation, Missing GET_INTERVIEWER and Re Upload resume
 const UPDATE_INTERVIEWEE = gql`
-  mutation updateInterviewee($school: String!) {
+  mutation updateInterviewee($school: interviewee_school_enum!) {
     update_interviewees(where: {}, _set: { school: $school }) {
       returning {
         school

@@ -30,10 +30,15 @@ const IntervieweeEditProfile = () => {
 
   const [resume, setResume] = React.useState(new Blob());
   const [school, setSchoolValue] = React.useState('');
+  const [resumeName, setResumeName] = React.useState('');
+  const [resumeLoaded, setResumeLoaded] = React.useState(false);
   const schoolsOptions = Object.keys(UNIVERSITIES);
 
   const onFileChange = (event: any) => {
-    setResume(event.target.files[0]);
+    const file = event.target.files[0];
+    setResume(file);
+    setResumeName(file.name);
+    setResumeLoaded(true);
   };
 
   const editInterviewee = () => {
@@ -43,7 +48,7 @@ const IntervieweeEditProfile = () => {
     // Event handler executed when the load event is fired
     fileReader.onload = fileLoadedEvent => {
       base64 = fileLoadedEvent?.target?.result;
-      if (base64) {
+      if (base64 && resumeLoaded) {
         const base64Resume = base64.slice(SLICE_METADATA);
         uploadResumeOrUpdate({
           variables: {
@@ -78,7 +83,6 @@ const IntervieweeEditProfile = () => {
         },
       });
     }
-    //TODO: Bug: Cannot redirect after first time
     history.push(HOME_PATH);
   }
 
@@ -88,6 +92,7 @@ const IntervieweeEditProfile = () => {
       school={school}
       schoolSet={setSchoolValue}
       allSchools={schoolsOptions}
+      resumeName={resumeName}
       onFileChanged={onFileChange}
       editIntervieweeMutation={editInterviewee}
     />

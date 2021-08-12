@@ -6,6 +6,7 @@ export interface IntervieweeProfileProps {
   school: any;
   schoolSet: any;
   allSchools: string[];
+  resumeName: string;
   onFileChanged: any;
   editIntervieweeMutation: any;
 }
