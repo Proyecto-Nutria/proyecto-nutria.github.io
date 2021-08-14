@@ -25,7 +25,7 @@ export default class DateTime {
   }
 
   static getCurrentDate(): string {
-    return new Date().toISOString();
+    return new Date().toISOString().split('.')[0];
   }
 
   static formatDateToDay(currentDate: Date) {
