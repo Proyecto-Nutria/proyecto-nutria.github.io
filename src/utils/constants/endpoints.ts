@@ -8,7 +8,6 @@ const UPLOAD_RESUME_TO_FOLDER_OR_UPDATE = gql`
   }
 `;
 
-// TODO: Test mutation
 const CREATE_INTERVIEWEE = gql`
   mutation createInterviewee($information: interviewees_insert_input!) {
     insert_interviewees_one(object: $information) {
@@ -17,7 +16,6 @@ const CREATE_INTERVIEWEE = gql`
   }
 `;
 
-// TODO: Test mutation, Missing GET_INTERVIEWER and Re Upload resume
 const UPDATE_INTERVIEWEE = gql`
   mutation updateInterviewee($school: interviewee_school_enum!) {
     update_interviewees(where: {}, _set: { school: $school }) {

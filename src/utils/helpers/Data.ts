@@ -53,7 +53,7 @@ export default class Data {
     for (var pastInterview of apiData.interviews) {
       pastInterviews.push({
         date: DateTime.timestampWithoutTimezoneToStr(pastInterview.date),
-        document: Data._formatDocumentUrl(pastInterview.doc),
+        document: Data._formatDocumentUrl(pastInterview.document),
       });
     }
     return pastInterviews;
