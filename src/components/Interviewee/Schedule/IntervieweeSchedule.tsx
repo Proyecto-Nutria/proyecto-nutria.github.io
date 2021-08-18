@@ -12,7 +12,7 @@ import DateTime from 'utils/helpers/DateTime';
 import { IntervieweeScheduleProps } from 'utils/ts/propsInterfaces';
 
 import MomentUtils from '@date-io/moment';
-import { Grid, Paper } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
