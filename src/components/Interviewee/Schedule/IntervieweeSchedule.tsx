@@ -1,16 +1,22 @@
 import UIMainContainer from 'components/UI/UIBoxContainer';
 import React from 'react';
+import InfoIcon from '@material-ui/icons/Info';
 import {
-    CREATE_ACTION, DELETE_ACTION, UPDATE_DAY_ACTION, UPDATE_END_ACTION, UPDATE_START_ACTION
+  CREATE_ACTION,
+  DELETE_ACTION,
+  UPDATE_DAY_ACTION,
+  UPDATE_END_ACTION,
+  UPDATE_START_ACTION,
 } from 'utils/constants/reducer';
 import DateTime from 'utils/helpers/DateTime';
 import { IntervieweeScheduleProps } from 'utils/ts/propsInterfaces';
 
 import MomentUtils from '@date-io/moment';
-import { Grid } from '@material-ui/core';
+import { Grid, Paper } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
+import Card from '@material-ui/core/Card';
 import IconButton from '@material-ui/core/IconButton';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -19,6 +25,7 @@ import Typography from '@material-ui/core/Typography';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import CardContent from '@material-ui/core/CardContent';
 
 const IntervieweeSchedule: React.FC<IntervieweeScheduleProps> = ({
   copy,
@@ -56,19 +63,49 @@ const IntervieweeSchedule: React.FC<IntervieweeScheduleProps> = ({
           );
         })}
 
-        <Button
-          variant="outlined"
-          startIcon={<AddIcon />}
-          onClick={() =>
-            intervieweeAvaliabilityFields.setter({ type: CREATE_ACTION })
-          }
-        >
-          {copy.form.avaliabilityLabel}
-        </Button>
-        <br />
-        <Typography variant="body2" gutterBottom>
-          {copy.form.avaliabilityInfo}
-        </Typography>
+        <Box m={2} />
+        {/* TODO: Extract this Card as an Admonition component for reuse */}
+        <Card variant="elevation">
+          <CardContent>
+            <div
+              style={{
+                display: 'flex',
+                alignContent: 'center',
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  alignContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <InfoIcon />
+              </div>
+              <div style={{ width: '8px' }} />
+              <div
+                style={{
+                  display: 'flex',
+                  alignContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <Typography variant="h6">Note</Typography>
+              </div>
+            </div>
+            <div style={{ height: '8px' }} />
+            <Typography variant="body1">
+              In Proyecto Nutria we work with the Pacific Timezone, therefore
+              you should provide your availability in PT (usually CDMX time -2
+              hours)
+              <div style={{ height: '12px' }} />
+              <span style={{ fontWeight: 600 }}>Example:</span> If you set a
+              time between 2:00pm and 5:00pm then your interview will be between
+              4:00pm and 7:00pm CDMX time.
+            </Typography>
+          </CardContent>
+        </Card>
+        <div style={{ height: '10px' }} />
         {Object.entries(intervieweeAvaliabilityFields.state).map(
           ([id, data]) => {
             const current = intervieweeAvaliabilityFields.state[id];
@@ -156,11 +193,21 @@ const IntervieweeSchedule: React.FC<IntervieweeScheduleProps> = ({
           }
         )}
         <br />
-        <Box>
+        <div style={{ display: 'flex' }}>
           <Button type="submit" variant="contained" color="primary">
             {copy.form.scheduleBtn}
           </Button>
-        </Box>
+          <div style={{ width: '10px' }} />
+          <Button
+            variant="outlined"
+            startIcon={<AddIcon />}
+            onClick={() =>
+              intervieweeAvaliabilityFields.setter({ type: CREATE_ACTION })
+            }
+          >
+            {copy.form.availabilityLabel}
+          </Button>
+        </div>
       </form>
     </UIMainContainer>
   );
