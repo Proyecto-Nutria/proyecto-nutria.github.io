@@ -2,8 +2,8 @@
 export const INTERVIEWEE_BOARD_COPY = {
   grid: {
     schedule: {
-      display: 'Schedule a Mock Interview',
-      desc: 'Mock interviews are the heart of interview prep. You can schedule one by dropping your availabidy here.',
+      display: 'Request a Mock Interview',
+      desc: 'Mock interviews are the heart of interview preparation. Click on this card to request one and start practicing!'
     },
     incoming: {
       display: 'Incoming Interviews',
@@ -33,8 +33,9 @@ export const INTERVIEWEE_SCHEDULE_COPY = {
     numberOfInterviewsLabel: 'Number Of Interviews',
     programmingLabel: 'Programming languages to use in the interview',
     companyLabel: 'Company applying to',
-    avaliabilityInfo: 'Your avaliability must be on PT',
-    avaliabilityLabel: 'Time to schedule a mock',
+    availabilityInfo: 'In Proyecto Nutria we work with the Pacific Timezone, therefore you should provide your availability in PT (usually CDMX time -2 hours)'
+    ,
+    availabilityLabel: 'Add Availability Range',
     dayLabel: 'Day',
     startLabel: 'Start',
     endLabel: 'End',
