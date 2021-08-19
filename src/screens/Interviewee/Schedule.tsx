@@ -6,14 +6,25 @@ import { useHistory } from 'react-router-dom';
 import { INTERVIEWEE_SCHEDULE_COPY } from 'utils/constants/copy';
 import { ENTER_POOL } from 'utils/constants/endpoints';
 import {
-    CREATE_ACTION, DELETE_ACTION, UPDATE_DAY_ACTION, UPDATE_END_ACTION, UPDATE_START_ACTION
+  CREATE_ACTION,
+  DELETE_ACTION,
+  UPDATE_DAY_ACTION,
+  UPDATE_END_ACTION,
+  UPDATE_START_ACTION,
 } from 'utils/constants/reducer';
 import {
-    COMPANIES, JOBS, POSITIONS, PROGRAMMING_LANGUAGES, SCHEDULE_API_MAP
+  COMPANIES,
+  JOBS,
+  POSITIONS,
+  PROGRAMMING_LANGUAGES,
+  SCHEDULE_API_MAP,
 } from 'utils/constants/values';
 import Data from 'utils/helpers/Data';
 import DateTime from 'utils/helpers/DateTime';
-import { avaliabilityInfo, scheduleInterviewStaticField as staticField } from 'utils/ts/dataTypes';
+import {
+  avaliabilityInfo,
+  scheduleInterviewStaticField as staticField,
+} from 'utils/ts/dataTypes';
 
 import { useMutation } from '@apollo/client';
 
@@ -80,10 +91,9 @@ const IntervieweeMock = () => {
   const [numberInterviews, setNumberInterviewsValue] = useState(1);
   const [languages, setLanguagesValue] = useState('');
   const [company, setCompanyValue] = useState('');
-  const [avaliability, dispatchAvaliability] = useReducer(
-    avaliabilityReducer,
-    {}
-  );
+  const [avaliability, dispatchAvaliability] = useReducer(avaliabilityReducer, {
+    0: { day: null, interval: ['', ''] },
+  });
 
   if (enterPoolLoading) return <UserLoading />;
   if (enterToPoolMutationError) return <UserError />;
