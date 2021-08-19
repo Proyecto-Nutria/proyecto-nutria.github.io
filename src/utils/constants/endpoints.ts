@@ -62,6 +62,9 @@ const VIEW_POOL = gql`
       position
       interviewee {
         folder
+        user {
+          name
+        }
       }
     }
   }

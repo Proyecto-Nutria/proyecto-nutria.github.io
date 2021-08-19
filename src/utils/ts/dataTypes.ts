@@ -23,6 +23,7 @@ export type Pool = {
   company: string;
   awaiting: number;
   availability: Array<string>;
+  name: string;
 };
 
 /* User */

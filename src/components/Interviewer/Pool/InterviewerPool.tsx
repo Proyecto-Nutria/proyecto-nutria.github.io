@@ -29,7 +29,10 @@ const InterviewerPool: React.FC<InterviewerPoolsProps> = ({
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell align="left">{copy.table.head.languagesHead}</TableCell>
+            <TableCell align="center">Name</TableCell>
+            <TableCell align="center">
+              {copy.table.head.languagesHead}
+            </TableCell>
             <TableCell align="center">{copy.table.head.awaitingHead}</TableCell>
             <TableCell align="center">{copy.table.head.roleHead}</TableCell>
             <TableCell align="center">{copy.table.head.companyHead}</TableCell>
@@ -41,7 +44,8 @@ const InterviewerPool: React.FC<InterviewerPoolsProps> = ({
         <TableBody>
           {poolsData.map((poolCandidate, id) => (
             <TableRow key={id}>
-              <TableCell align="left">{poolCandidate.languages}</TableCell>
+              <TableCell align="center">{poolCandidate.name}</TableCell>
+              <TableCell align="center">{poolCandidate.languages}</TableCell>
               <TableCell align="center">{poolCandidate.awaiting}</TableCell>
               <TableCell align="center">{poolCandidate.role}</TableCell>
               <TableCell align="center">{poolCandidate.company}</TableCell>
