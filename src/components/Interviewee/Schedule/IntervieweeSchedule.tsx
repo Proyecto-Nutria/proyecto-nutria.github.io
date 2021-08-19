@@ -97,7 +97,11 @@ const IntervieweeSchedule: React.FC<IntervieweeScheduleProps> = ({
             <Typography variant="body1">
               In Proyecto Nutria we work with the Pacific Timezone, therefore
               you should provide your availability in PT (usually CDMX time -2
-              hours)
+              hours). Navigate to{' '}
+              <a style={{ color: 'pink' }} href="https://time.is/PT">
+                https://time.is/PT
+              </a>{' '}
+              to see current exact time in PT.
               <div style={{ height: '12px' }} />
               <span style={{ fontWeight: 600 }}>Example:</span> If you set a
               time between 2:00pm and 5:00pm then your interview will be between
