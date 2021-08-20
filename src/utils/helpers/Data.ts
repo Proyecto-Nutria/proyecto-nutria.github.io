@@ -13,13 +13,19 @@ export default class Data {
   static callMutationAndRedirectToHome(
     mutation: any,
     parameters: any,
-    history: any
+    history: any,
+    onSuccess: () => void,
+    onFail: () => void
   ) {
     mutation({
       variables: parameters,
     })
-      .then(() => history.push(HOME_PATH))
+      .then(() => {
+        onSuccess();
+        setTimeout(() => history.push(HOME_PATH), 1000);
+      })
       .catch((error: any) => {
+        onFail();
         console.error(error);
       });
   }
