@@ -9,7 +9,7 @@ const UserError = () => {
       spacing={0}
       direction="column"
       alignItems="center"
-      justify="center"
+      justifyContent="center"
     >
       <Grid item>
         <h1>Error loading your data</h1>

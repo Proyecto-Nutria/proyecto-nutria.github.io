@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Fab from '@material-ui/core/Fab';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { alpha, makeStyles } from '@material-ui/core/styles';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 
 const useStyles = makeStyles(theme => ({
@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     backdropFilter: 'saturate(180%) blur(20px)',
     '&:hover': {
-      backgroundColor: fade(theme.palette.text.secondary, 0.05),
+      backgroundColor: alpha(theme.palette.text.secondary, 0.05),
     },
     '& svg': {
       fill: theme.palette.text.secondary,

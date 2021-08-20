@@ -1,4 +1,4 @@
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { alpha, makeStyles } from '@material-ui/core/styles';
 
 const progressStyles = makeStyles(theme => ({
   root: {
@@ -83,7 +83,7 @@ const progressStyles = makeStyles(theme => ({
           content: '""',
           height: '100%',
           width: '100%',
-          background: fade(theme.palette.primary.main, 0.8),
+          background: alpha(theme.palette.primary.main, 0.8),
           opacity: 0.38,
           position: 'absolute',
           top: 0,

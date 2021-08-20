@@ -84,7 +84,7 @@ const VisitorCollaborator = () => {
         <Typography className={text.subtitle2} align="center" component="p">
           {t('collaborators.text')}
         </Typography>
-        <Grid container spacing={6} justify="center">
+        <Grid container spacing={6} justifyContent="center">
           <Grid item md={10} xs={12}>
             <div className={classes.sliderHandle}>
               <div className={classes.sliderWrap}>

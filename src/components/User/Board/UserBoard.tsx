@@ -41,7 +41,7 @@ const UserBoard: React.FC<BoardProps> = ({ copy }) => {
                   container
                   direction="column"
                   spacing={1}
-                  justify="center"
+                  justifyContent="center"
                 >
                   <Grid item>
                     <Typography variant="h6" gutterBottom>

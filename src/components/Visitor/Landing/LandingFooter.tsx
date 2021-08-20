@@ -121,7 +121,11 @@ const VisitorFooter = () => {
           </Grid>
           {/* Middle Columns */}
           <Grid item xs={12} md={6}>
-            <Grid container spacing={isTablet ? 1 : 4} justify="space-evenly">
+            <Grid
+              container
+              spacing={isTablet ? 1 : 4}
+              justifyContent="space-evenly"
+            >
               {footers.map((footer, index) => (
                 <Grid
                   item

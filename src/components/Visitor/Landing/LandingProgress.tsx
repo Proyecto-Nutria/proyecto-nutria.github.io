@@ -44,7 +44,7 @@ const VisitorProgress = () => {
               <Container fixed>
                 <Grid
                   container
-                  justify="center"
+                  justifyContent="center"
                   alignItems="center"
                   spacing={2}
                 >

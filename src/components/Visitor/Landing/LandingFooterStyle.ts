@@ -1,4 +1,4 @@
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { alpha, makeStyles } from '@material-ui/core/styles';
 
 import footerBackground from '../../../assets/imgs/Visitor/footer-background.webp';
 
@@ -100,7 +100,7 @@ const footerStyles = makeStyles(theme => ({
   contactText: {
     color: theme.palette.primary.contrastText,
     '& a': {
-      color: fade(theme.palette.primary.contrastText, 0.6),
+      color: alpha(theme.palette.primary.contrastText, 0.6),
     },
   },
   socmed: {
