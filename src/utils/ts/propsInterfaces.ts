@@ -15,7 +15,8 @@ export interface IntervieweeScheduleProps {
   copy: Record<string, any>;
   interviewInformationFields: Array<Record<string, any>>;
   intervieweeAvaliabilityFields: Record<string, any>;
-  enterToPoolMutation: any;
+  enterToPoolMutation: (onSuccess: () => void, onFail: () => void) => void;
+  isLoading: boolean;
 }
 
 /* Interviewer */

@@ -1,5 +1,5 @@
 import UIMainContainer from 'components/UI/UIBoxContainer';
-import React from 'react';
+import React, { useState } from 'react';
 import InfoIcon from '@material-ui/icons/Info';
 import {
   CREATE_ACTION,
@@ -26,22 +26,66 @@ import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import CardContent from '@material-ui/core/CardContent';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import { useEffect } from 'react';
+
+function Alert(props: any) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const IntervieweeSchedule: React.FC<IntervieweeScheduleProps> = ({
   copy,
   interviewInformationFields,
   intervieweeAvaliabilityFields,
   enterToPoolMutation,
+  isLoading,
 }) => {
+  const [successSnackBarOpen, setSuccessSnackBarOpen] = useState(false);
+  const [failSnackBarOpen, setFailSnackBarOpen] = useState(false);
+  const [loadingSnackBarOpen, setLoadingSnackBarOpen] = useState(false);
+
+  useEffect(() => {
+    if (isLoading) {
+      setLoadingSnackBarOpen(true);
+    } else {
+      setLoadingSnackBarOpen(false);
+    }
+  }, [isLoading]);
   return (
     <UIMainContainer>
+      <Snackbar open={loadingSnackBarOpen}>
+        <Alert severity="info">Loading...</Alert>
+      </Snackbar>
+      <Snackbar
+        open={successSnackBarOpen}
+        autoHideDuration={6000}
+        onClose={() => setSuccessSnackBarOpen(false)}
+      >
+        <Alert severity="success">
+          Your Request has been sent! Please keep an eye on your email for the
+          following days :)
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={failSnackBarOpen}
+        autoHideDuration={6000}
+        onClose={() => setFailSnackBarOpen(false)}
+      >
+        <Alert severity="error">
+          An Error occurred, please try again later
+        </Alert>
+      </Snackbar>
       <Typography variant="h4">{copy.header}</Typography>
       <br />
       <form
         noValidate
         onSubmit={event => {
           event.preventDefault();
-          enterToPoolMutation();
+          enterToPoolMutation(
+            () => setSuccessSnackBarOpen(true),
+            () => setFailSnackBarOpen(true)
+          );
         }}
       >
         {interviewInformationFields.map((input, id) => {

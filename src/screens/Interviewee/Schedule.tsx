@@ -95,9 +95,6 @@ const IntervieweeMock = () => {
     0: { day: null, interval: ['', ''] },
   });
 
-  if (enterPoolLoading) return <UserLoading />;
-  if (enterToPoolMutationError) return <UserError />;
-
   const positionField: staticField = {
     label: INTERVIEWEE_SCHEDULE_COPY.form.positionLabel,
     values: Object.keys(POSITIONS),
@@ -150,11 +147,13 @@ const IntervieweeMock = () => {
     setter: dispatchAvaliability,
   };
 
-  const createMockInterview = () => {
+  const createMockInterview = (onSuccess: () => void, onFail: () => void) => {
     Data.callMutationAndRedirectToHome(
       enterToPool,
       Data.parseInputToPoolAPI(staticInputs, dynamicInputs),
-      history
+      history,
+      onSuccess,
+      onFail
     );
   };
 
@@ -164,6 +163,7 @@ const IntervieweeMock = () => {
       interviewInformationFields={staticInputs}
       intervieweeAvaliabilityFields={dynamicInputs}
       enterToPoolMutation={createMockInterview}
+      isLoading={enterPoolLoading}
     />
   );
 };
