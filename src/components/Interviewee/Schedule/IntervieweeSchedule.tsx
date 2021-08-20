@@ -102,7 +102,9 @@ const IntervieweeSchedule: React.FC<IntervieweeScheduleProps> = ({
                 https://time.is/PT
               </a>{' '}
               to see current exact time in PT.
-              <div style={{ height: '12px' }} />
+            </Typography>
+            <div style={{ height: '12px' }} />
+            <Typography>
               <span style={{ fontWeight: 600 }}>Example:</span> If you set a
               time between 2:00pm and 5:00pm then your interview will be between
               4:00pm and 7:00pm CDMX time.
