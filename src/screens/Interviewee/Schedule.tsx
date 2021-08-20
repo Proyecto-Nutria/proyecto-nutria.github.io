@@ -1,6 +1,4 @@
 import IntervieweeSchedule from 'components/Interviewee/Schedule/IntervieweeSchedule';
-import UserError from 'components/User/UserError';
-import UserLoading from 'components/User/UserLoading';
 import React, { useReducer, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { INTERVIEWEE_SCHEDULE_COPY } from 'utils/constants/copy';
@@ -81,10 +79,7 @@ const avaliabilityReducer = (
 const IntervieweeMock = () => {
   let history = useHistory();
 
-  const [
-    enterToPool,
-    { loading: enterPoolLoading, error: enterToPoolMutationError },
-  ] = useMutation(ENTER_POOL);
+  const [enterToPool, { loading: enterPoolLoading }] = useMutation(ENTER_POOL);
 
   const [interviewType, setInterviewTypeValue] = useState('');
   const [rol, setRolValue] = useState('');
