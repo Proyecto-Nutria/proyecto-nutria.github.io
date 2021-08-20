@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import Routes from 'routes/Routes';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 
 import themeOptions from './assets/themes/yaos';
 
@@ -32,7 +32,7 @@ const App: React.FunctionComponent = () => {
     });
   };
 
-  const muiTheme = createMuiTheme(theme);
+  const muiTheme = createTheme(theme);
 
   return (
     <ThemeProvider theme={muiTheme}>
