@@ -137,6 +137,7 @@ const IntervieweeSchedule: React.FC<IntervieweeScheduleProps> = ({
                           })
                         }
                         disablePast
+                        autoOk={true}
                       />
                     </MuiPickersUtilsProvider>
                   </Grid>
