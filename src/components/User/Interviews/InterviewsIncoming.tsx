@@ -40,7 +40,9 @@ const InterviewsIncoming: React.FC<IncomingInterviewsProps> = ({
               <TableRow key={id}>
                 <TableCell align="left">{interview.date}</TableCell>
                 <TableCell align="left">{interview.time}</TableCell>
-                <TableCell align="left">{interview.document}</TableCell>
+                <TableCell align="left">
+                  <a href={interview.document}>{interview.document}</a>
+                </TableCell>
                 <TableCell align="left">{interview.room}</TableCell>
 
                 <TableCell align="left">
