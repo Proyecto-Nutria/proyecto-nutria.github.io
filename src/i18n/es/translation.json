@@ -65,16 +65,25 @@
         "text": "¿Tienes alguna otra pregunta? ¡No dudes en preguntarnos a tráves de nuestros medios de contacto!",
         "questions":[
             {
-                "question": "Pregunta #1", 
-                "answer": "Respuesta #1"
+                "question": "¿Esto es gratuito?", 
+                "answer": "Sí, todo en Proyecto Nutria es gratuito. Estamos comprometidos con ser un factor que cambie la vida de nuestra comunidad dando lo mejor de nosotros."
             },
             {
-                "question": "Pregunta #2", 
-                "answer": "Respuesta #2"
+                "question": "¿Cómo puedo contribuir?", 
+                "answer": "Si estás interesado en colaborar con nosotros, contáctanos a nuestro correo contact@proyectonutria.com o por nuestras redes sociales. Eres bienvenid@ a contribuir independientemente de tu experiencia."
             },
             {
-                "question": "Pregunta #3", 
-                "answer": "Respuesta #3"
+                "question": "¿Por dónde puedo iniciar en lo que ofrecen?", 
+                "answer": "Entra a nuestro servidor de Discord y lee las pautas de nuestra comunidad. Una vez dentro podrás pedir mock interviews, revisiones de tu resume y participar en nuestras actividades."
+            }
+            ,
+            {
+                "question": "¿Cómo puedo aprovechar Proyecto Nutria al máximo?", 
+                "answer": "Para aprovechar al máximo lo que ofrecemos te sugerimos seguir nuestros anuncios en nuestras redes sociales y participar en nuestra comunidad, hacer todas tus preguntas en nuestro Discord y comenzar a practicar anotándote en nuestra lista de espera para mock interviews."
+            },
+            {
+                "question": "¿Importa de dónde provengo?", 
+                "answer": "Estamos enfocados en Latinoamérica. Sin embargo, damos la bienvenida a cualquiera y siempre estamos dispuestos a ayudar, así que no dudes en entrar en nuestra comunidad."
             }
         ]
     },
