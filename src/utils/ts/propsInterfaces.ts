@@ -25,8 +25,17 @@ export interface InterviewerPoolsProps {
   poolsData: Pool[];
   pool: any;
   poolSet: any;
-  createInterviewMutation: any;
+  createInterviewMutation: (
+    poolId: number,
+    awaitingInterviews: number,
+    intervieweeId: string,
+    dateOfInterview: string,
+    onSuccess: () => void,
+    onFail: () => void
+  ) => void;
   poolUpdateReducer: string;
+  isLoading: boolean;
+  isError: boolean;
 }
 
 export interface InterviewerProfileProps {
