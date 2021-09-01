@@ -1,12 +1,12 @@
 import InterviewerPool from 'components/Interviewer/Pool/InterviewerPool';
-import UserError from 'components/User/UserError';
-import UserLoading from 'components/User/UserLoading';
-import React, { useReducer } from 'react';
-import { useHistory } from 'react-router-dom';
-import { HOME_PATH } from 'routes/paths';
+import { useReducer } from 'react';
 import { NO_CACHE } from 'utils/constants/apollo';
 import { INTERVIEWER_POOL_COPY } from 'utils/constants/copy';
-import { CREATE_INTERVIEW, UPDATE_POOL, VIEW_POOL } from 'utils/constants/endpoints';
+import {
+  CREATE_INTERVIEW,
+  UPDATE_POOL,
+  VIEW_POOL,
+} from 'utils/constants/endpoints';
 import { UPDATE_ACTION } from 'utils/constants/reducer';
 import Data from 'utils/helpers/Data';
 import { Pool as PoolType } from 'utils/ts/dataTypes';
@@ -25,7 +25,6 @@ const poolReducer = (currentPool: any, action: any): any => {
 };
 
 const Pool = () => {
-  let history = useHistory();
   const {
     loading: poolLoading,
     error: poolQueryError,
@@ -43,18 +42,21 @@ const Pool = () => {
   ] = useMutation(UPDATE_POOL);
   const [pool, setPool] = useReducer(poolReducer, {});
 
-  if (poolLoading || cancellationLoading || updateLoading)
-    return <UserLoading />;
-  if (poolQueryError || cancellationMutationError || updatePoolMutationError)
-    return <UserError />;
+  const isLoading = poolLoading || cancellationLoading || updateLoading;
+  const isError =
+    poolQueryError || cancellationMutationError || updatePoolMutationError;
 
-  const pools: PoolType[] = Data.parseAPIDataToPool(poolAPIData);
+  const pools: PoolType[] = poolAPIData
+    ? Data.parseAPIDataToPool(poolAPIData)
+    : [];
 
   const createInterview = (
     poolId: number,
     awaitingInterviews: number,
     intervieweeId: string,
-    dateOfInterview: string
+    dateOfInterview: string,
+    onSuccess: () => void,
+    onFail: () => void
   ) => {
     creation({
       variables: {
@@ -63,14 +65,22 @@ const Pool = () => {
           date: dateOfInterview,
         },
       },
-    });
-    updatePool({
-      variables: {
-        id: poolId,
-        awaiting: awaitingInterviews - 1,
-      },
-    });
-    history.push(HOME_PATH);
+    })
+      .then(_ =>
+        updatePool({
+          variables: {
+            id: poolId,
+            awaiting: awaitingInterviews - 1,
+          },
+        })
+      )
+      .then(_ => {
+        onSuccess();
+      })
+      .catch(e => {
+        console.log(e);
+        onFail();
+      });
   };
 
   return (
@@ -81,6 +91,8 @@ const Pool = () => {
       poolSet={setPool}
       poolUpdateReducer={UPDATE_ACTION}
       createInterviewMutation={createInterview}
+      isLoading={isLoading}
+      isError={isError ? true : false}
     />
   );
 };
