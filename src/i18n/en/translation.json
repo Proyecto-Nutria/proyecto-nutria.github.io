@@ -65,16 +65,24 @@
         "text": "Have another question? Reach us out through any other channel!",
         "questions":[
             {
-                "question": "Question #1", 
-                "answer": "Answer #1"
+                "question": "Is it for free?", 
+                "answer": "Yes, everything on Proyecto Nutria is for free. We are committed to being a life-changing factor for our community leveraging all the resources that our members can provide."
             },
             {
-                "question": "Question #2", 
-                "answer": "Answer #2"
+                "question": "How can I contribute?", 
+                "answer": "If you are interested in joining us as a collaborator, please reach us out at contact@proyectonutria.com or any social media. We will welcome your willingness to contribute regardless of your credentials or experience."
             },
             {
-                "question": "Question #3", 
-                "answer": "Answer #3"
+                "question": "How can I get started on what Proyecto Nutria offers?", 
+                "answer": "Join our Discord server and read the community’s guidelines. Once you’re signed up, you will be able to submit a request for a mock interview, a resume review, and participate in our activities."
+            },
+            {
+                "question": "How can I get the most out of Proyecto Nutria?", 
+                "answer": "In order to get the most out of our resources, we recommend you to follow our social media announcements and participate as much as you can, make questions on our Discord, and get on the mock interviews waiting list."
+            },
+            {
+                "question": "Does it matter where I come from?", 
+                "answer": "We're focused on Latin America. However, we welcome everyone and we’re always willing to help, so don't hesitate to give it a shot."
             }
         ]
     },
