@@ -7,11 +7,14 @@ import { useHistory } from 'react-router-dom';
 import { HOME_PATH } from 'routes/paths';
 import { INTERVIEWEE_PROFILE_COPY } from 'utils/constants/copy';
 import {
-    CREATE_INTERVIEWEE, UPDATE_INTERVIEWEE, UPLOAD_RESUME_TO_FOLDER_OR_UPDATE
+  CREATE_INTERVIEWEE,
+  UPDATE_INTERVIEWEE,
+  UPLOAD_RESUME_TO_FOLDER_OR_UPDATE,
 } from 'utils/constants/endpoints';
 import { SLICE_METADATA, UNIVERSITIES } from 'utils/constants/values';
 
 import { useLazyQuery, useMutation } from '@apollo/client';
+import { useEffect } from 'react';
 
 const IntervieweeEditProfile = () => {
   let history = useHistory();
@@ -63,28 +66,30 @@ const IntervieweeEditProfile = () => {
     fileReader.readAsDataURL(resume);
   };
 
-  if (uploadResumeToFolderRLoading) return <UserLoading />;
-  if (createOrUpdateIntervieweeMutationError) return <UserError />;
-
-  if (gFolderData) {
-    if (newUser) {
-      createOrUpdateInterviewee({
-        variables: {
-          information: {
-            folder: gFolderData.upload_resume_and_create_folder.id,
+  useEffect(() => {
+    if (gFolderData) {
+      if (newUser) {
+        createOrUpdateInterviewee({
+          variables: {
+            information: {
+              folder: gFolderData.upload_resume_and_create_folder.id,
+              school: school,
+            },
+          },
+        });
+      } else {
+        createOrUpdateInterviewee({
+          variables: {
             school: school,
           },
-        },
-      });
-    } else {
-      createOrUpdateInterviewee({
-        variables: {
-          school: school,
-        },
-      });
+        });
+      }
+      history.push(HOME_PATH);
     }
-    history.push(HOME_PATH);
-  }
+  }, [gFolderData, newUser, createOrUpdateInterviewee, history, school]);
+
+  if (uploadResumeToFolderRLoading) return <UserLoading />;
+  if (createOrUpdateIntervieweeMutationError) return <UserError />;
 
   return (
     <IntervieweeProfile
