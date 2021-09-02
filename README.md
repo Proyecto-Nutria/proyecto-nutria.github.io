@@ -5,16 +5,21 @@
 1. Install node 14.10.0 or later
 
    **Option 1:** Using **n**ode **v**ersion **m**anager
+
    1. Install **nvm** from https://github.com/nvm-sh/nvm
    1. Run below commands
+
    ```
    nvm install 14.10.0
    nvm use 14.10.0
    ```
+
    **Option 2:** Installing nodejs and npm directly
+
    - Debian: https://github.com/nodesource/distributions
-   - Arch Linux: `pacman -S npm` (this will install both *node* and *npm*)
+   - Arch Linux: `pacman -S npm` (this will install both _node_ and _npm_)
    - Windows: https://nodejs.org/en/download/ (remember to add installation path to environment variables)
+
 1. Install yarn
    ```
    npm install -g yarn

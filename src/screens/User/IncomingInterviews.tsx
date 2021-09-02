@@ -6,7 +6,9 @@ import React from 'react';
 import { NO_CACHE } from 'utils/constants/apollo';
 import { INCOMING_INTERVIEWS_COPY } from 'utils/constants/copy';
 import {
-    CANCEL_INTERVIEW, CONFIRM_INTERVIEW, INCOMING_INTERVIEWS
+  CANCEL_INTERVIEW,
+  CONFIRM_INTERVIEW,
+  INCOMING_INTERVIEWS,
 } from 'utils/constants/endpoints';
 import { UserRole } from 'utils/constants/values';
 import Data from 'utils/helpers/Data';

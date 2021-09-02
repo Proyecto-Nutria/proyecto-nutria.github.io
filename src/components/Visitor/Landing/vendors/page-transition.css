@@ -18,7 +18,7 @@
 
 .fragment-fadeIn {
   opacity: 0;
-  transition-delay: 300ms
+  transition-delay: 300ms;
 }
 
 .page-transition-enter-done .fragment-fadeIn {

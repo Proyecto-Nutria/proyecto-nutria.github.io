@@ -1,97 +1,97 @@
 {
-    "header":{
-        "intro": "Welcome to",
-        "phrase": "A community that will help reach your goals and engrow yourself"
+  "header": {
+    "intro": "Welcome to",
+    "phrase": "A community that will help reach your goals and engrow yourself"
+  },
+  "about": {
+    "who": {
+      "title": "Who we are?",
+      "text": "We are a community project that seeks to motivate and help more people seeking to work in Big Tech Companies such as Microsoft, Facebook, Google, etc. We have the philosophy that anyone with enthusiasm and motivation can achieve it, so we seek to guide and help them practice as much as possible so that more people have the opportunity to develop professionally and personally."
     },
-    "about":{
-        "who":{
-            "title": "Who we are?",
-            "text": "We are a community project that seeks to motivate and help more people seeking to work in Big Tech Companies such as Microsoft, Facebook, Google, etc. We have the philosophy that anyone with enthusiasm and motivation can achieve it, so we seek to guide and help them practice as much as possible so that more people have the opportunity to develop professionally and personally."
-        },
-        "mission":{
-            "title": "Our mission",
-            "text": "Empower emerging talent from Latin America to become the next interns at large technology companies." 
-        },
-        "why":{
-            "title": "Why do we do this?",
-            "text": "Our story begins in 2019, convinced that our colleagues and friends had the ability to land their dream jobs with the necessary support and guidance. Nutria Project was born there, we want our friends to be more capable of achieving their goals and dreams. JOIN NUTRIA AND GET YOUR INTERN!" 
-        }
+    "mission": {
+      "title": "Our mission",
+      "text": "Empower emerging talent from Latin America to become the next interns at large technology companies."
     },
-    "collaborators":{
-        "title": "Collaborators",
-        "text": "Thanks to all the people that make this possible",
-        "team": "Our Team"
-    },
-    "sections":{
-        "title": "Sections",
-        "activities":{
-            "workshop":{
-                "title": "Workshop",
-                "description": "From our experience, we prepared different useful workshops for you, twice a year we have one to teach about how is the process of interviews at the big companies and how to ace it. Another one focused in being a mentorship during your internship, from what to expect to tips about how to suceed during it. The last one is about System Design, a topic that will be specially useful for the people interested in a full-time position."
-            },
-            "webinar":{
-                "title": "Webinar",
-                "description": "Frequently we have different talks with people from the industry to share their experiences, tips, solve your questions, and in general try to encourage and help you in your preparation."
-            },
-            "resume":{
-                "title": "Resume Review",
-                "description": "If you want another insight of your resume, send it to us. We will be glad to help you with our point of view, only remember that is personal and is fine if you are do not want to change it."
-            },
-            "mock":{
-                "title": "Mock Interview",
-                "description": "You can schedule a mock interview to practice before your real interview, our interviewers are persons that work currently or used to work at big tech companies and have been through the process multiple times, so they can give you proper feedback about how well you are performing in the mock."
-            },
-            "english":{
-                "title": "English Club",
-                "description": "We know that sometimes you cannot practice your English regularly, that's why we wanted to create different activities to help you with it. We have a Conversation Club where we talk about random topics, also 1:1 talks with us if you're more shy and want to have a private talk, and mock interview reviews focused in generate annotations about your mistakes in your English communication."
-            },
-            "community":{
-                "title": "Community",
-                "description": "The most important part: we're a community where all of us want to help, the people inside is really kind and can answer your questions, collaborate with you, share useful info of different kind that is useful for your professional / personal grow, organize more activities that will help in your preparation, etc."
-            }
-        }
-    },
-    "progress":{
-        "title": "Helped People",
-        "subtitle": "Some facts about us.",
-        "count1": "Interviews",
-        "count2": "Resumes",
-        "count3_1": "People",
-        "count3_2": "inside",
-        "quote": "Most important: It's free!"
-    },
-    "faq": {
-        "title": "Frequently Asked Questions",
-        "text": "Have another question? Reach us out through any other channel!",
-        "questions":[
-            {
-                "question": "Is it for free?", 
-                "answer": "Yes, everything on Proyecto Nutria is for free. We are committed to being a life-changing factor for our community leveraging all the resources that our members can provide."
-            },
-            {
-                "question": "How can I contribute?", 
-                "answer": "If you are interested in joining us as a collaborator, please reach us out at contact@proyectonutria.com or any social media. We will welcome your willingness to contribute regardless of your credentials or experience."
-            },
-            {
-                "question": "How can I get started on what Proyecto Nutria offers?", 
-                "answer": "Join our Discord server and read the community’s guidelines. Once you’re signed up, you will be able to submit a request for a mock interview, a resume review, and participate in our activities."
-            },
-            {
-                "question": "How can I get the most out of Proyecto Nutria?", 
-                "answer": "In order to get the most out of our resources, we recommend you to follow our social media announcements and participate as much as you can, make questions on our Discord, and get on the mock interviews waiting list."
-            },
-            {
-                "question": "Does it matter where I come from?", 
-                "answer": "We're focused on Latin America. However, we welcome everyone and we’re always willing to help, so don't hesitate to give it a shot."
-            }
-        ]
-    },
-    "contact":{
-        "copyright": "All Rights Reserved",
-        "text": "Contact us:\n",
-        "sections":{
-            "0": "Resources",
-            "1": "Social Media"
-        }
+    "why": {
+      "title": "Why do we do this?",
+      "text": "Our story begins in 2019, convinced that our colleagues and friends had the ability to land their dream jobs with the necessary support and guidance. Nutria Project was born there, we want our friends to be more capable of achieving their goals and dreams. JOIN NUTRIA AND GET YOUR INTERN!"
     }
+  },
+  "collaborators": {
+    "title": "Collaborators",
+    "text": "Thanks to all the people that make this possible",
+    "team": "Our Team"
+  },
+  "sections": {
+    "title": "Sections",
+    "activities": {
+      "workshop": {
+        "title": "Workshop",
+        "description": "From our experience, we prepared different useful workshops for you, twice a year we have one to teach about how is the process of interviews at the big companies and how to ace it. Another one focused in being a mentorship during your internship, from what to expect to tips about how to suceed during it. The last one is about System Design, a topic that will be specially useful for the people interested in a full-time position."
+      },
+      "webinar": {
+        "title": "Webinar",
+        "description": "Frequently we have different talks with people from the industry to share their experiences, tips, solve your questions, and in general try to encourage and help you in your preparation."
+      },
+      "resume": {
+        "title": "Resume Review",
+        "description": "If you want another insight of your resume, send it to us. We will be glad to help you with our point of view, only remember that is personal and is fine if you are do not want to change it."
+      },
+      "mock": {
+        "title": "Mock Interview",
+        "description": "You can schedule a mock interview to practice before your real interview, our interviewers are persons that work currently or used to work at big tech companies and have been through the process multiple times, so they can give you proper feedback about how well you are performing in the mock."
+      },
+      "english": {
+        "title": "English Club",
+        "description": "We know that sometimes you cannot practice your English regularly, that's why we wanted to create different activities to help you with it. We have a Conversation Club where we talk about random topics, also 1:1 talks with us if you're more shy and want to have a private talk, and mock interview reviews focused in generate annotations about your mistakes in your English communication."
+      },
+      "community": {
+        "title": "Community",
+        "description": "The most important part: we're a community where all of us want to help, the people inside is really kind and can answer your questions, collaborate with you, share useful info of different kind that is useful for your professional / personal grow, organize more activities that will help in your preparation, etc."
+      }
+    }
+  },
+  "progress": {
+    "title": "Helped People",
+    "subtitle": "Some facts about us.",
+    "count1": "Interviews",
+    "count2": "Resumes",
+    "count3_1": "People",
+    "count3_2": "inside",
+    "quote": "Most important: It's free!"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "text": "Have another question? Reach us out through any other channel!",
+    "questions": [
+      {
+        "question": "Is it for free?",
+        "answer": "Yes, everything on Proyecto Nutria is for free. We are committed to being a life-changing factor for our community leveraging all the resources that our members can provide."
+      },
+      {
+        "question": "How can I contribute?",
+        "answer": "If you are interested in joining us as a collaborator, please reach us out at contact@proyectonutria.com or any social media. We will welcome your willingness to contribute regardless of your credentials or experience."
+      },
+      {
+        "question": "How can I get started on what Proyecto Nutria offers?",
+        "answer": "Join our Discord server and read the community’s guidelines. Once you’re signed up, you will be able to submit a request for a mock interview, a resume review, and participate in our activities."
+      },
+      {
+        "question": "How can I get the most out of Proyecto Nutria?",
+        "answer": "In order to get the most out of our resources, we recommend you to follow our social media announcements and participate as much as you can, make questions on our Discord, and get on the mock interviews waiting list."
+      },
+      {
+        "question": "Does it matter where I come from?",
+        "answer": "We're focused on Latin America. However, we welcome everyone and we’re always willing to help, so don't hesitate to give it a shot."
+      }
+    ]
+  },
+  "contact": {
+    "copyright": "All Rights Reserved",
+    "text": "Contact us:\n",
+    "sections": {
+      "0": "Resources",
+      "1": "Social Media"
+    }
+  }
 }

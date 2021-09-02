@@ -5,7 +5,10 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { HOME_PATH } from 'routes/paths';
 import { INTERVIEWER_PROFILE_COPY } from 'utils/constants/copy';
-import { CREATE_INTERVIEWER, UPDATE_INTERVIEWER } from 'utils/constants/endpoints';
+import {
+  CREATE_INTERVIEWER,
+  UPDATE_INTERVIEWER,
+} from 'utils/constants/endpoints';
 
 import { useMutation } from '@apollo/client';
 

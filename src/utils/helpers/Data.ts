@@ -168,7 +168,7 @@ export default class Data {
         company: pool.company,
         awaiting: pool.awaiting,
         availability: Data._parseRangesToArrayByDay(pool.availability),
-        name: pool.interviewee.user.name
+        name: pool.interviewee.user.name,
       };
       parsedData.push(poolData);
     }

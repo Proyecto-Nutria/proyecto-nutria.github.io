@@ -24,11 +24,11 @@ i18n
     fallbackLng: 'en',
 
     interpolation: {
-      escapeValue: false // react already safes from xss
+      escapeValue: false, // react already safes from xss
     },
 
     // react-i18next options
     react: {
       useSuspense: false,
-    }
+    },
   });
