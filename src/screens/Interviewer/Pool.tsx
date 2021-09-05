@@ -2,11 +2,7 @@ import InterviewerPool from 'components/Interviewer/Pool/InterviewerPool';
 import { useReducer } from 'react';
 import { NO_CACHE } from 'utils/constants/apollo';
 import { INTERVIEWER_POOL_COPY } from 'utils/constants/copy';
-import {
-  CREATE_INTERVIEW,
-  UPDATE_POOL,
-  VIEW_POOL,
-} from 'utils/constants/endpoints';
+import { CREATE_INTERVIEW, VIEW_POOL } from 'utils/constants/endpoints';
 import { UPDATE_ACTION } from 'utils/constants/reducer';
 import Data from 'utils/helpers/Data';
 import { Pool as PoolType } from 'utils/ts/dataTypes';
