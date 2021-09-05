@@ -167,6 +167,7 @@ export default class Data {
         folder: Data._getFolderUrl(pool.interviewee.folder),
         company: pool.company,
         awaiting: pool.awaiting,
+        scheduled: pool.scheduled,
         availability: Data._parseRangesToArrayByDay(pool.availability),
         name: pool.interviewee.user.name,
       };

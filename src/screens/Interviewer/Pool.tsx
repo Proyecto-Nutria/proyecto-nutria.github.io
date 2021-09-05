@@ -36,15 +36,10 @@ const Pool = () => {
     creation,
     { error: cancellationMutationError, loading: cancellationLoading },
   ] = useMutation(CREATE_INTERVIEW);
-  const [
-    updatePool,
-    { error: updatePoolMutationError, loading: updateLoading },
-  ] = useMutation(UPDATE_POOL);
   const [pool, setPool] = useReducer(poolReducer, {});
 
-  const isLoading = poolLoading || cancellationLoading || updateLoading;
-  const isError =
-    poolQueryError || cancellationMutationError || updatePoolMutationError;
+  const isLoading = poolLoading || cancellationLoading;
+  const isError = poolQueryError || cancellationMutationError;
 
   const pools: PoolType[] = poolAPIData
     ? Data.parseAPIDataToPool(poolAPIData)
@@ -66,14 +61,6 @@ const Pool = () => {
         },
       },
     })
-      .then(_ =>
-        updatePool({
-          variables: {
-            id: poolId,
-            awaiting: awaitingInterviews - 1,
-          },
-        })
-      )
       .then(_ => {
         onSuccess();
       })
