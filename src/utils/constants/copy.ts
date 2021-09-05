@@ -49,7 +49,7 @@ export const INTERVIEWER_POOL_COPY = {
   table: {
     head: {
       languagesHead: 'Languages',
-      awaitingHead: 'Awaiting',
+      awaitingHead: 'Scheduled / Requested',
       roleHead: 'Role',
       companyHead: 'Company',
       availabilityHead: 'Availability',

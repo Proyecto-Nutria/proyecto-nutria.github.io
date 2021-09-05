@@ -56,6 +56,7 @@ const VIEW_POOL = gql`
       interviewee_id
       availability
       awaiting
+      scheduled
       company
       job
       language

@@ -91,7 +91,9 @@ const InterviewerPool: React.FC<InterviewerPoolsProps> = ({
               <TableRow key={id}>
                 <TableCell align="center">{poolCandidate.name}</TableCell>
                 <TableCell align="center">{poolCandidate.languages}</TableCell>
-                <TableCell align="center">{poolCandidate.awaiting}</TableCell>
+                <TableCell align="center">
+                  {poolCandidate.scheduled} / {poolCandidate.awaiting}
+                </TableCell>
                 <TableCell align="center">{poolCandidate.role}</TableCell>
                 <TableCell align="center">{poolCandidate.company}</TableCell>
                 <TableCell align="center">

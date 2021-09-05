@@ -22,6 +22,7 @@ export type Pool = {
   folder: string;
   company: string;
   awaiting: number;
+  scheduled: number;
   availability: Array<string>;
   name: string;
 };
