@@ -28,6 +28,12 @@ export default class DateTime {
     return new Date().toISOString().split('.')[0];
   }
 
+  static getCurrentDateTimeInPT(): string {
+    return new Date(
+      new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }) + ' UTC'
+    ).toISOString().split('.')[0];
+  }
+
   static formatDateToDay(currentDate: Date) {
     return `${currentDate.getMonth()}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
   }
