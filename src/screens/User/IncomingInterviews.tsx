@@ -17,7 +17,7 @@ import { IncomingInterview } from 'utils/ts/dataTypes';
 
 import { useMutation, useQuery } from '@apollo/client';
 
-const now = DateTime.getCurrentDate();
+const now = DateTime.getCurrentDateTimeInPT();
 
 const IncomingInterviews = () => {
   const intervieweeRole = useUserRole() === UserRole[UserRole.interviewee];

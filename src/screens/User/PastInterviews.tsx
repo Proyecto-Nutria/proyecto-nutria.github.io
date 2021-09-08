@@ -10,7 +10,7 @@ import { PastInterview } from 'utils/ts/dataTypes';
 
 import { useQuery } from '@apollo/client';
 
-const now: string = DateTime.getCurrentDate();
+const now: string = DateTime.getCurrentDateTimeInPT();
 
 const PastInterviews = () => {
   const {
