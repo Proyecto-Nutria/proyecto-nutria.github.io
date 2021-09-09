@@ -108,8 +108,8 @@ export const INCOMING_INTERVIEWS_COPY = {
   header: 'Incoming Interviews',
   table: {
     head: {
-      dayHead: 'Day',
-      hourHead: 'Hour (24hrs)',
+      dayHead: 'Date',
+      hourHead: 'Time in PT (24hrs)',
       documentHead: 'Document',
       roomHead: 'Discord Room',
       confirmed: 'Confirmed',

@@ -23,16 +23,17 @@ const InterviewsPast: React.FC<PastInterviewsProps> = ({
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell align="left">{copy.table.head.dateHead}</TableCell>
-              <TableCell align="left">{copy.table.head.documentHead}</TableCell>
-              <TableCell></TableCell>
+              <TableCell align="center">{copy.table.head.dateHead}</TableCell>
+              <TableCell align="center">
+                {copy.table.head.documentHead}
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {interviewsData.map((pastInterview, id) => (
               <TableRow key={id}>
-                <TableCell>{pastInterview.date}</TableCell>
-                <TableCell align="right">
+                <TableCell align="center">{pastInterview.date}</TableCell>
+                <TableCell align="center">
                   {pastInterview.document && (
                     <Button
                       color="primary"

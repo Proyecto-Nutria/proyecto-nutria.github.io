@@ -10,8 +10,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
 const InterviewsIncoming: React.FC<IncomingInterviewsProps> = ({
   copy,
@@ -28,32 +26,26 @@ const InterviewsIncoming: React.FC<IncomingInterviewsProps> = ({
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell align="left">{copy.table.head.dayHead}</TableCell>
-              <TableCell align="left">{copy.table.head.hourHead}</TableCell>
-              <TableCell align="left">{copy.table.head.documentHead}</TableCell>
-              <TableCell align="left">{copy.table.head.roomHead}</TableCell>
-              <TableCell align="left">{copy.table.head.confirmed}</TableCell>
+              <TableCell align="center">{copy.table.head.dayHead}</TableCell>
+              <TableCell align="center">{copy.table.head.hourHead}</TableCell>
+              <TableCell align="center">
+                {copy.table.head.documentHead}
+              </TableCell>
+              <TableCell align="center">{copy.table.head.roomHead}</TableCell>
+              <TableCell align="center"></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {interviewsData.map((interview, id) => (
               <TableRow key={id}>
-                <TableCell align="left">{interview.date}</TableCell>
-                <TableCell align="left">{interview.time}</TableCell>
-                <TableCell align="left">
-                  <a color="pink" href={interview.document}>
+                <TableCell align="center">{interview.date}</TableCell>
+                <TableCell align="center">{interview.time}</TableCell>
+                <TableCell align="center">
+                  <a style={{ color: 'pink' }} href={interview.document}>
                     {interview.document}
                   </a>
                 </TableCell>
-                <TableCell align="left">{interview.room}</TableCell>
-
-                <TableCell align="left">
-                  {interview.confirmed ? (
-                    <CheckBoxIcon color="disabled" />
-                  ) : (
-                    <CheckBoxOutlineBlankIcon color="disabled" />
-                  )}
-                </TableCell>
+                <TableCell align="center">{interview.room}</TableCell>
 
                 <TableCell align="right">
                   {interview.confirmed ? (
