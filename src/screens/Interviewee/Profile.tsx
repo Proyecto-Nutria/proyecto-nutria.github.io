@@ -1,31 +1,20 @@
 import IntervieweeProfile from 'components/Interviewee/Profile/IntervieweeProfile';
 // import UserError from 'components/User/UserError';
 import UserLoading from 'components/User/UserLoading';
-import { useIsFirstLogin } from 'hooks/UserHooks';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { HOME_PATH } from 'routes/paths';
 import { INTERVIEWEE_PROFILE_COPY } from 'utils/constants/copy';
-import {
-  // CREATE_INTERVIEWEE,
-  // UPDATE_INTERVIEWEE,
-  UPLOAD_RESUME_TO_FOLDER_OR_UPDATE,
-} from 'utils/constants/endpoints';
+import { UPLOAD_RESUME_TO_FOLDER_OR_UPDATE } from 'utils/constants/endpoints';
 import { SLICE_METADATA, UNIVERSITIES } from 'utils/constants/values';
 
-import { useLazyQuery /*, useMutation */ } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client';
 import { useEffect } from 'react';
+import { UserStatusContext } from 'providers/UserStatusProvider';
 
 const IntervieweeEditProfile = () => {
   let history = useHistory();
-  const newUser = useIsFirstLogin();
-  // let profileMutation = CREATE_INTERVIEWEE;
-  useEffect(() => {
-    if (!newUser) {
-      history.push(HOME_PATH);
-    }
-  }, [newUser, history]);
-  // if (!newUser) profileMutation = UPDATE_INTERVIEWEE;
+  const { isNewUser, setIsNewUser } = useContext(UserStatusContext);
 
   const [
     uploadResumeOrUpdate,
@@ -38,13 +27,19 @@ const IntervieweeEditProfile = () => {
   const [resumeLoaded, setResumeLoaded] = React.useState(false);
   const schoolsOptions = Object.keys(UNIVERSITIES);
 
+  useEffect(() => {
+    if (responseStatus) {
+      setIsNewUser(false);
+      history.push(HOME_PATH);
+    }
+  }, [responseStatus, history, setIsNewUser]);
+
   const onFileChange = (event: any) => {
     const file = event.target.files[0];
     setResume(file);
     setResumeName(file.name);
     setResumeLoaded(true);
   };
-  console.log('usernew', newUser);
 
   const editInterviewee = () => {
     var fileReader = new FileReader();
@@ -53,13 +48,12 @@ const IntervieweeEditProfile = () => {
     // Event handler executed when the load event is fired
     fileReader.onload = fileLoadedEvent => {
       base64 = fileLoadedEvent?.target?.result;
-      console.log('school', school);
       if (base64 && resumeLoaded && school) {
         const base64Resume = base64.slice(SLICE_METADATA);
         uploadResumeOrUpdate({
           variables: {
             resume: base64Resume,
-            firstTime: newUser,
+            firstTime: isNewUser,
             school: school,
           },
         });
@@ -69,12 +63,6 @@ const IntervieweeEditProfile = () => {
     //readAsDataURL is used to read the contents of the specified Blob or File.
     fileReader.readAsDataURL(resume);
   };
-
-  useEffect(() => {
-    if (responseStatus) {
-      window.location.reload();
-    }
-  }, [responseStatus, history]);
 
   if (uploadResumeToFolderRLoading) return <UserLoading />;
 

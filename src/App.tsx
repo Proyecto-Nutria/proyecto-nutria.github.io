@@ -1,6 +1,7 @@
 import './i18n/config';
 
 import AuthProvider from 'providers/AuthProvider';
+import UserStatusProvider from 'providers/UserStatusProvider';
 import GraphProvider from 'providers/GraphProvider';
 import React, { useState } from 'react';
 import Routes from 'routes/Routes';
@@ -37,10 +38,12 @@ const App: React.FunctionComponent = () => {
   return (
     <ThemeProvider theme={muiTheme}>
       <AuthProvider>
-        <GraphProvider>
-          <CssBaseline />
-          <Routes onToggleDark={toggleDarkTheme} />
-        </GraphProvider>
+        <UserStatusProvider>
+          <GraphProvider>
+            <CssBaseline />
+            <Routes onToggleDark={toggleDarkTheme} />
+          </GraphProvider>
+        </UserStatusProvider>
       </AuthProvider>
     </ThemeProvider>
   );

@@ -1,7 +1,8 @@
 // UI
 import AppHeader from 'components/User/UserHeader';
-import { useIsFirstLogin, useUserRole } from 'hooks/UserHooks';
-import React, { Fragment } from 'react';
+import { useUserRole } from 'hooks/UserHooks';
+import { UserStatusContext } from 'providers/UserStatusProvider';
+import React, { Fragment, useContext } from 'react';
 import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
 import {
   EDIT_PATH,
@@ -29,7 +30,7 @@ import { UserRole } from 'utils/constants/values';
 
 const Routes = ({ onToggleDark }: { onToggleDark: Function }) => {
   const userRole = useUserRole();
-  const firstLogin = useIsFirstLogin();
+  const { isNewUser: firstLogin } = useContext(UserStatusContext);
 
   return (
     <HashRouter>
