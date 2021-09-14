@@ -2,7 +2,7 @@
 import AppHeader from 'components/User/UserHeader';
 import { useUserRole } from 'hooks/UserHooks';
 import { UserStatusContext } from 'providers/UserStatusProvider';
-import React, { Fragment, useContext } from 'react';
+import { Fragment, useContext } from 'react';
 import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
 import {
   EDIT_PATH,
@@ -17,12 +17,12 @@ import {
 import IntervieweeMain from 'screens/Interviewee/Board';
 import IntervieweeEditProfile from 'screens/Interviewee/Profile';
 import IntervieweeMock from 'screens/Interviewee/Schedule';
+import WEEIncomingInterviewsContainer from 'screens/Interviewee/WEEIncomingInterviewsContainer';
 // Interviewer
 import InterviewerMain from 'screens/Interviewer/Board';
 import InterviewerInterviewPools from 'screens/Interviewer/Pool';
 import InterviewerEditProfile from 'screens/Interviewer/Profile';
 //User
-import IncomingInterviews from 'screens/User/IncomingInterviews';
 import PastInterviews from 'screens/User/PastInterviews';
 // Visitor
 import Landing from 'screens/Visitor/Landing';
@@ -64,7 +64,7 @@ const Routes = ({ onToggleDark }: { onToggleDark: Function }) => {
               <Route path={WEE_MOCK_PATH} component={IntervieweeMock} />
               <Route
                 path={USER_INCOMING_INTERVIEWS_PATH}
-                component={IncomingInterviews}
+                component={WEEIncomingInterviewsContainer}
               />
               <Route
                 path={USER_PAST_INTERVIEWS_PATH}
@@ -89,7 +89,7 @@ const Routes = ({ onToggleDark }: { onToggleDark: Function }) => {
               />
               <Route
                 path={USER_INCOMING_INTERVIEWS_PATH}
-                component={IncomingInterviews}
+                component={WEEIncomingInterviewsContainer}
               />
               <Route
                 path={USER_PAST_INTERVIEWS_PATH}
