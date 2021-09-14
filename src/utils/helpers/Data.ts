@@ -34,15 +34,12 @@ export default class Data {
     return id ? `https://docs.google.com/document/d/${id}` : '';
   }
 
-  //TODO: Bug the date of the interview is not displaying correctly
   static parseAPItoIncomingInterviews(apiData: any): IncomingInterview[] {
     let allIncomingInterviews: IncomingInterview[] = [];
     for (var interview of apiData.interviews) {
       const parsedTimestamp = DateTime.timestampToDate(interview.date);
       let interviewInfo: IncomingInterview = {
         id: interview.id,
-        // TODO: The bug is with parsedTimestamp, changed to raw info instead
-        // date: DateTime.formatDateToDay(parsedTimestamp),
         date: interview.date.split('T')[0],
         time: DateTime.formatDateToHours(parsedTimestamp),
         document: Data._formatDocumentUrl(interview.document),
