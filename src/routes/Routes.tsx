@@ -22,6 +22,7 @@ import WEEIncomingInterviewsContainer from 'screens/Interviewee/WEEIncomingInter
 import InterviewerMain from 'screens/Interviewer/Board';
 import InterviewerInterviewPools from 'screens/Interviewer/Pool';
 import InterviewerEditProfile from 'screens/Interviewer/Profile';
+import WERIncomingInterviewsContainer from 'screens/Interviewer/WERIncomingInterviewsContainer';
 //User
 import PastInterviews from 'screens/User/PastInterviews';
 // Visitor
@@ -89,7 +90,7 @@ const Routes = ({ onToggleDark }: { onToggleDark: Function }) => {
               />
               <Route
                 path={USER_INCOMING_INTERVIEWS_PATH}
-                component={WEEIncomingInterviewsContainer}
+                component={WERIncomingInterviewsContainer}
               />
               <Route
                 path={USER_PAST_INTERVIEWS_PATH}
