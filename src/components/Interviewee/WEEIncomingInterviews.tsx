@@ -48,29 +48,14 @@ const WEEIncomingInterviews: React.FC<IncomingInterviewsProps> = ({
                 <TableCell align="center">{interview.room}</TableCell>
 
                 <TableCell align="right">
-                  {interview.confirmed ? (
-                    <Button
-                      color="secondary"
-                      onClick={() => {
-                        cancelInterviewMutation(interview.id);
-                      }}
-                    >
-                      {copy.table.body.cancelBtn}
-                    </Button>
-                  ) : (
-                    [
-                      intervieweeRole && (
-                        <Button
-                          color="primary"
-                          onClick={() => {
-                            confirmInterviewMutation(interview.id);
-                          }}
-                        >
-                          {copy.table.body.confirmBtn}
-                        </Button>
-                      ),
-                    ]
-                  )}
+                  <Button
+                    color="secondary"
+                    onClick={() => {
+                      cancelInterviewMutation(interview.id);
+                    }}
+                  >
+                    {copy.table.body.cancelBtn}
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}

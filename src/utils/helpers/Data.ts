@@ -47,7 +47,6 @@ export default class Data {
         time: DateTime.formatDateToHours(parsedTimestamp),
         document: Data._formatDocumentUrl(interview.document),
         room: interview.room,
-        confirmed: interview.confirmed,
       };
       allIncomingInterviews.push(interviewInfo);
     }

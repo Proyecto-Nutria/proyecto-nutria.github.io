@@ -104,8 +104,16 @@ export const CREATE_INTERVIEW = gql`
   }
 `;
 
-export const INCOMING_INTERVIEWS = gql`
-  query IncomingInterviews($now: timestamp) {
+export const WEEINCOMING_INTERVIEWS = gql`
+  query WEEIncomingInterviews($now: timestamp) {
+    interviews(where: { date: { _gt: $now } }) {
+      id
+      document
+      date
+      room
+    }
+  }
+`;
     interviews(where: { date: { _gt: $now } }) {
       id
       document

@@ -35,7 +35,6 @@ export type IncomingInterview = {
   time: string;
   document: string;
   room: string;
-  confirmed: boolean;
 };
 
 export type PastInterview = {
