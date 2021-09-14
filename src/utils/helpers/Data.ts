@@ -1,7 +1,7 @@
 import { HOME_PATH } from 'routes/paths';
 import { JOBS, POSITIONS, STRING_TYPE } from 'utils/constants/values';
 import DateTime from 'utils/helpers/DateTime';
-import { IncomingInterview, PastInterview, Pool } from 'utils/ts/dataTypes';
+import { IncomingInterview, PastInterview, Pool, WERIncomingInterview } from 'utils/ts/dataTypes';
 
 export default class Data {
   static fromEnumToArray(enumType: any) {
@@ -44,6 +44,24 @@ export default class Data {
         time: DateTime.formatDateToHours(parsedTimestamp),
         document: Data._formatDocumentUrl(interview.document),
         room: interview.room,
+      };
+      allIncomingInterviews.push(interviewInfo);
+    }
+    return allIncomingInterviews;
+  }
+
+  static parseAPItoWERIncomingInterviews(apiData: any): WERIncomingInterview[] {
+    let allIncomingInterviews: WERIncomingInterview[] = [];
+    for (var interview of apiData.interviews) {
+      const parsedTimestamp = DateTime.timestampToDate(interview.date);
+      let interviewInfo: WERIncomingInterview = {
+        id: interview.id,
+        date: interview.date.split('T')[0],
+        time: DateTime.formatDateToHours(parsedTimestamp),
+        document: Data._formatDocumentUrl(interview.document),
+        room: interview.room,
+        resume: Data._getFolderUrl(interview.interviewee.folder),
+        intervieweeName: interview.interviewee.user.name
       };
       allIncomingInterviews.push(interviewInfo);
     }

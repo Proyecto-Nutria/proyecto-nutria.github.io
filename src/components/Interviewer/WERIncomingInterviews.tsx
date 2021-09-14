@@ -1,6 +1,6 @@
 import UIMainContainer from 'components/UI/UIBoxContainer';
 import React from 'react';
-import { IncomingInterviewsProps } from 'utils/ts/propsInterfaces';
+import { WERIncomingInterviewsProps } from 'utils/ts/propsInterfaces';
 
 import Button from '@material-ui/core/Button';
 import Table from '@material-ui/core/Table';
@@ -10,8 +10,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
+import Tooltip from '@material-ui/core/Tooltip';
 
-const WERIncomingInterviews: React.FC<IncomingInterviewsProps> = ({
+const WERIncomingInterviews: React.FC<WERIncomingInterviewsProps> = ({
   copy,
   interviewsData,
   cancelInterviewMutation,
@@ -28,6 +29,7 @@ const WERIncomingInterviews: React.FC<IncomingInterviewsProps> = ({
             <TableRow>
               <TableCell align="center">{copy.table.head.dayHead}</TableCell>
               <TableCell align="center">{copy.table.head.hourHead}</TableCell>
+              <TableCell align="center">Interviewee</TableCell>
               <TableCell align="center">
                 {copy.table.head.documentHead}
               </TableCell>
@@ -41,8 +43,19 @@ const WERIncomingInterviews: React.FC<IncomingInterviewsProps> = ({
                 <TableCell align="center">{interview.date}</TableCell>
                 <TableCell align="center">{interview.time}</TableCell>
                 <TableCell align="center">
+                  <Tooltip title="Click to see resume">
+                    <Button
+                      color="primary"
+                      target="_blank"
+                      href={interview.resume}
+                    >
+                      {interview.intervieweeName}
+                    </Button>
+                  </Tooltip>
+                </TableCell>
+                <TableCell align="center">
                   <a style={{ color: 'pink' }} href={interview.document}>
-                    {interview.document}
+                    Link to interview document
                   </a>
                 </TableCell>
                 <TableCell align="center">{interview.room}</TableCell>

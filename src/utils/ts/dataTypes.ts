@@ -37,6 +37,16 @@ export type IncomingInterview = {
   room: string;
 };
 
+export type WERIncomingInterview = {
+  id: string;
+  date: string;
+  time: string;
+  document: string;
+  room: string;
+  intervieweeName: string;
+  resume: string; // this is a link to the interviewee's google drive folder
+};
+
 export type PastInterview = {
   date: string;
   document: string;

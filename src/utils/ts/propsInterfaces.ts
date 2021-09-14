@@ -1,4 +1,4 @@
-import { IncomingInterview, PastInterview, Pool } from 'utils/ts/dataTypes';
+import { IncomingInterview, PastInterview, Pool, WERIncomingInterview } from 'utils/ts/dataTypes';
 
 /* Interviewee */
 export interface IntervieweeProfileProps {
@@ -51,6 +51,14 @@ export interface InterviewerProfileProps {
 export interface IncomingInterviewsProps {
   copy: Record<string, any>;
   interviewsData: IncomingInterview[];
+  cancelInterviewMutation: any;
+  confirmInterviewMutation: any;
+  intervieweeRole: boolean;
+}
+
+export interface WERIncomingInterviewsProps {
+  copy: Record<string, any>;
+  interviewsData: WERIncomingInterview[];
   cancelInterviewMutation: any;
   confirmInterviewMutation: any;
   intervieweeRole: boolean;

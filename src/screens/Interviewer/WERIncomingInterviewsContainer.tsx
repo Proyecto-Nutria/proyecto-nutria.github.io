@@ -6,15 +6,15 @@ import { INCOMING_INTERVIEWS_COPY } from 'utils/constants/copy';
 import {
   CANCEL_INTERVIEW,
   CONFIRM_INTERVIEW,
-  WEEINCOMING_INTERVIEWS,
+  WERINCOMING_INTERVIEWS,
 } from 'utils/constants/endpoints';
 import { UserRole } from 'utils/constants/values';
 import Data from 'utils/helpers/Data';
 import DateTime from 'utils/helpers/DateTime';
-import { IncomingInterview } from 'utils/ts/dataTypes';
+import { WERIncomingInterview } from 'utils/ts/dataTypes';
 
 import { useMutation, useQuery } from '@apollo/client';
-import WEEIncomingInterviews from 'components/Interviewee/WEEIncomingInterviews';
+import WERIncomingInterviews from 'components/Interviewer/WERIncomingInterviews';
 
 const now = DateTime.getCurrentDateTimeInPT();
 
@@ -24,7 +24,7 @@ const WERIncomingInterviewsContainer = () => {
     loading: incomingInterviewsLoading,
     error: incomingInterviewsQueryError,
     data: incomingInterviewsAPIData,
-  } = useQuery(WEEINCOMING_INTERVIEWS, {
+  } = useQuery(WERINCOMING_INTERVIEWS, {
     variables: { now },
     fetchPolicy: NO_CACHE,
   });
@@ -41,8 +41,8 @@ const WERIncomingInterviewsContainer = () => {
   )
     return <UserError />;
 
-  let incomingInterviews: IncomingInterview[] =
-    Data.parseAPItoIncomingInterviews(incomingInterviewsAPIData);
+  let incomingInterviews: WERIncomingInterview[] =
+    Data.parseAPItoWERIncomingInterviews(incomingInterviewsAPIData);
 
   const confirmInterview = (id: string) => {
     confirmInterviewMutation({
@@ -60,7 +60,7 @@ const WERIncomingInterviewsContainer = () => {
   };
 
   return (
-    <WEEIncomingInterviews
+    <WERIncomingInterviews
       copy={INCOMING_INTERVIEWS_COPY}
       interviewsData={incomingInterviews}
       cancelInterviewMutation={cancelInterview}
