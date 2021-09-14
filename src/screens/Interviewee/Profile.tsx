@@ -8,7 +8,7 @@ import { INTERVIEWEE_PROFILE_COPY } from 'utils/constants/copy';
 import { UPLOAD_RESUME_TO_FOLDER_OR_UPDATE } from 'utils/constants/endpoints';
 import { SLICE_METADATA, UNIVERSITIES } from 'utils/constants/values';
 
-import { useLazyQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { useEffect } from 'react';
 import { UserStatusContext } from 'providers/UserStatusProvider';
 
@@ -19,20 +19,31 @@ const IntervieweeEditProfile = () => {
   const [
     uploadResumeOrUpdate,
     { loading: uploadResumeToFolderRLoading, data: responseStatus },
-  ] = useLazyQuery(UPLOAD_RESUME_TO_FOLDER_OR_UPDATE);
+  ] = useMutation(UPLOAD_RESUME_TO_FOLDER_OR_UPDATE);
 
   const [resume, setResume] = React.useState(new Blob());
   const [school, setSchoolValue] = React.useState('');
   const [resumeName, setResumeName] = React.useState('');
   const [resumeLoaded, setResumeLoaded] = React.useState(false);
+  const [ableToRedirect, setAbleToRedirect] = React.useState(true);
   const schoolsOptions = Object.keys(UNIVERSITIES);
 
   useEffect(() => {
-    if (responseStatus) {
+    if (
+      responseStatus?.upload_resume_and_create_folder?.result === 200 &&
+      ableToRedirect
+    ) {
       setIsNewUser(false);
+      setAbleToRedirect(false);
       history.push(HOME_PATH);
     }
-  }, [responseStatus, history, setIsNewUser]);
+  }, [
+    responseStatus,
+    setIsNewUser,
+    ableToRedirect,
+    setAbleToRedirect,
+    history,
+  ]);
 
   const onFileChange = (event: any) => {
     const file = event.target.files[0];
