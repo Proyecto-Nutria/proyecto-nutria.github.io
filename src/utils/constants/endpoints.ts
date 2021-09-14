@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-const UPLOAD_RESUME_TO_FOLDER_OR_UPDATE = gql`
+export const UPLOAD_RESUME_TO_FOLDER_OR_UPDATE = gql`
   mutation getIdOfResume(
     $resume: String!
     $school: String!
@@ -16,7 +16,7 @@ const UPLOAD_RESUME_TO_FOLDER_OR_UPDATE = gql`
   }
 `;
 
-const CREATE_INTERVIEWEE = gql`
+export const CREATE_INTERVIEWEE = gql`
   mutation createInterviewee($information: interviewees_insert_input!) {
     insert_interviewees_one(object: $information) {
       school
@@ -24,7 +24,7 @@ const CREATE_INTERVIEWEE = gql`
   }
 `;
 
-const UPDATE_INTERVIEWEE = gql`
+export const UPDATE_INTERVIEWEE = gql`
   mutation updateInterviewee($school: interviewee_school_enum!) {
     update_interviewees(where: {}, _set: { school: $school }) {
       returning {
@@ -35,7 +35,7 @@ const UPDATE_INTERVIEWEE = gql`
 `;
 
 // TODO: Test mutation
-const CREATE_INTERVIEWER = gql`
+export const CREATE_INTERVIEWER = gql`
   mutation createInterviewer($information: interviewers_insert_input!) {
     insert_interviewers_one(object: $information) {
       mentioned
@@ -43,7 +43,7 @@ const CREATE_INTERVIEWER = gql`
   }
 `;
 
-const UPDATE_INTERVIEWER = gql`
+export const UPDATE_INTERVIEWER = gql`
   mutation updateInterviewer($mentioned: Boolean!, $information: String!) {
     update_interviewers(
       where: {}
@@ -57,7 +57,7 @@ const UPDATE_INTERVIEWER = gql`
 `;
 
 // interviewee { folder, user_id }
-const VIEW_POOL = gql`
+export const VIEW_POOL = gql`
   {
     pools {
       id
@@ -79,7 +79,7 @@ const VIEW_POOL = gql`
   }
 `;
 
-const UPDATE_POOL = gql`
+export const UPDATE_POOL = gql`
   mutation update_pools($id: Int!, $awaiting: Int!) {
     update_pools(_set: { awaiting: $awaiting }, where: { id: { _eq: $id } }) {
       affected_rows
@@ -87,7 +87,7 @@ const UPDATE_POOL = gql`
   }
 `;
 
-const ENTER_POOL = gql`
+export const ENTER_POOL = gql`
   mutation enterToPool($preferences: pools_insert_input!) {
     insert_pools(objects: [$preferences]) {
       affected_rows
@@ -96,7 +96,7 @@ const ENTER_POOL = gql`
 `;
 
 // TODO: Test mutation
-const CREATE_INTERVIEW = gql`
+export const CREATE_INTERVIEW = gql`
   mutation createInterview($interview: interviews_insert_input!) {
     insert_interviews_one(object: $interview) {
       id
@@ -104,7 +104,7 @@ const CREATE_INTERVIEW = gql`
   }
 `;
 
-const INCOMING_INTERVIEWS = gql`
+export const INCOMING_INTERVIEWS = gql`
   query IncomingInterviews($now: timestamp) {
     interviews(where: { date: { _gt: $now } }) {
       id
@@ -116,7 +116,7 @@ const INCOMING_INTERVIEWS = gql`
   }
 `;
 
-const PAST_INTERVIEWS = gql`
+export const PAST_INTERVIEWS = gql`
   query PastInterviews($now: timestamp) {
     interviews(where: { date: { _lt: $now } }) {
       date
@@ -125,7 +125,7 @@ const PAST_INTERVIEWS = gql`
   }
 `;
 
-const CONFIRM_INTERVIEW = gql`
+export const CONFIRM_INTERVIEW = gql`
   mutation confirmInterview($id: Int!) {
     update_interviews(_set: { confirmed: true }, where: { id: { _eq: $id } }) {
       affected_rows
@@ -133,7 +133,7 @@ const CONFIRM_INTERVIEW = gql`
   }
 `;
 
-const CANCEL_INTERVIEW = gql`
+export const CANCEL_INTERVIEW = gql`
   mutation cancelInterview($id: Int!) {
     delete_interviews(where: { id: { _eq: $id } }) {
       returning {
@@ -142,19 +142,3 @@ const CANCEL_INTERVIEW = gql`
     }
   }
 `;
-
-export {
-  UPLOAD_RESUME_TO_FOLDER_OR_UPDATE,
-  CREATE_INTERVIEWEE,
-  UPDATE_INTERVIEWEE,
-  CREATE_INTERVIEWER,
-  UPDATE_INTERVIEWER,
-  VIEW_POOL,
-  ENTER_POOL,
-  UPDATE_POOL,
-  CREATE_INTERVIEW,
-  PAST_INTERVIEWS,
-  INCOMING_INTERVIEWS,
-  CONFIRM_INTERVIEW,
-  CANCEL_INTERVIEW,
-};
