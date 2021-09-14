@@ -114,12 +114,20 @@ export const WEEINCOMING_INTERVIEWS = gql`
     }
   }
 `;
+
+export const WERINCOMING_INTERVIEWS = gql`
+  query WERIncomingInterviews($now: timestamp) {
     interviews(where: { date: { _gt: $now } }) {
       id
       document
       date
       room
-      confirmed
+      interviewee {
+        folder
+        user {
+          name
+        }
+      }
     }
   }
 `;
