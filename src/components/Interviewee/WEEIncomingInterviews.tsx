@@ -11,7 +11,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 
-const InterviewsIncoming: React.FC<IncomingInterviewsProps> = ({
+const WEEIncomingInterviews: React.FC<IncomingInterviewsProps> = ({
   copy,
   interviewsData,
   cancelInterviewMutation,
@@ -81,4 +81,4 @@ const InterviewsIncoming: React.FC<IncomingInterviewsProps> = ({
   );
 };
 
-export default InterviewsIncoming;
+export default WEEIncomingInterviews;

@@ -1,14 +1,12 @@
-import InterviewsIncoming from 'components/User/Interviews/InterviewsIncoming';
 import UserError from 'components/User/UserError';
 import UserLoading from 'components/User/UserLoading';
 import { useUserRole } from 'hooks/UserHooks';
-import React from 'react';
 import { NO_CACHE } from 'utils/constants/apollo';
 import { INCOMING_INTERVIEWS_COPY } from 'utils/constants/copy';
 import {
   CANCEL_INTERVIEW,
   CONFIRM_INTERVIEW,
-  INCOMING_INTERVIEWS,
+  WEEINCOMING_INTERVIEWS,
 } from 'utils/constants/endpoints';
 import { UserRole } from 'utils/constants/values';
 import Data from 'utils/helpers/Data';
@@ -16,16 +14,17 @@ import DateTime from 'utils/helpers/DateTime';
 import { IncomingInterview } from 'utils/ts/dataTypes';
 
 import { useMutation, useQuery } from '@apollo/client';
+import WEEIncomingInterviews from 'components/Interviewee/WEEIncomingInterviews';
 
 const now = DateTime.getCurrentDateTimeInPT();
 
-const IncomingInterviews = () => {
+const WEEIncomingInterviewsContainer = () => {
   const intervieweeRole = useUserRole() === UserRole[UserRole.interviewee];
   const {
     loading: incomingInterviewsLoading,
     error: incomingInterviewsQueryError,
     data: incomingInterviewsAPIData,
-  } = useQuery(INCOMING_INTERVIEWS, {
+  } = useQuery(WEEINCOMING_INTERVIEWS, {
     variables: { now },
     fetchPolicy: NO_CACHE,
   });
@@ -61,7 +60,7 @@ const IncomingInterviews = () => {
   };
 
   return (
-    <InterviewsIncoming
+    <WEEIncomingInterviews
       copy={INCOMING_INTERVIEWS_COPY}
       interviewsData={incomingInterviews}
       cancelInterviewMutation={cancelInterview}
@@ -71,4 +70,4 @@ const IncomingInterviews = () => {
   );
 };
 
-export default IncomingInterviews;
+export default WEEIncomingInterviewsContainer;
