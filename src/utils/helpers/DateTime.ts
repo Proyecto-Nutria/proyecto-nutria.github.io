@@ -67,4 +67,22 @@ export default class DateTime {
     //@ts-ignore
     return momentumDate.format('YYYY-MM-DDTHH:mm:ss');
   }
+
+  static getUtcDate(utcDate: string){
+    let newDate = new Date(utcDate);
+    return newDate.toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
+  }
+
+  static getUtcDay(hours: number){
+    let currentDate = new Date();
+    currentDate.setHours(hours, 0, 0, 0);
+    return currentDate.toLocaleTimeString("en-US", {timeZone: "America/Los_Angeles"});
+  }
+
+  static getOffsetDateAndHour(d: string, offset: number, hour: number) {
+    var date = new Date(d);
+    date.setHours(hour, 0, 0, 0);
+    date.setDate(date.getDate() + offset);
+    return date.toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
+  }
 }
