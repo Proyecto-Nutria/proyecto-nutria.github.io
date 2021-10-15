@@ -12,7 +12,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 const GraphProvider: React.FunctionComponent = ({ children }) => {
   const httpLink = new HttpLink({
-    uri: 'https://nutria-core-backend.herokuapp.com/v1/graphql',
+    uri: 'https://nutria-core-backend-v2.herokuapp.com/v1/graphql',
   });
 
   const { getAccessTokenSilently } = useAuth0();
