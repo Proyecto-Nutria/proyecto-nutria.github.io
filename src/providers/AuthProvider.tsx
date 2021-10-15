@@ -16,6 +16,7 @@ const AuthProvider: React.FunctionComponent = ({ children }) => {
     <Auth0Provider
       domain="nutria-project.us.auth0.com"
       clientId="lUu4je56sqk7yOnBJbb1ssvxSZOxby91"
+      audience="https://nutria-core-backend-v2.herokuapp.com/v1/graphql"
       redirectUri={window.location.origin + '/#/home'}
       onRedirectCallback={onRedirectCallback}
     >
