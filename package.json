@@ -42,7 +42,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "set port=8020 && react-scripts start",
+    "start": "BROWSER=brave react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
