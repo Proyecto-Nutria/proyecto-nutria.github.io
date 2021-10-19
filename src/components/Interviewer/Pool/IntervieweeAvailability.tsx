@@ -1,126 +1,182 @@
 import UIMainContainer from 'components/UI/UIBoxContainer';
 import React, { useEffect, useState } from 'react';
+import { MONTHS } from 'utils/constants/values';
+import DateTime from 'utils/helpers/DateTime';
 import { IntervieweePoolAvailabilityProps } from 'utils/ts/propsInterfaces';
+
+import { Grid } from '@material-ui/core';
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import IconButton from '@material-ui/core/IconButton';
+import Paper from '@material-ui/core/Paper';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import {GrNext, GrPrevious} from 'react-icons/gr'; 
-import { Button } from '@material-ui/core';
-import DateTime from 'utils/helpers/DateTime';
-import { off } from 'process';
+import Typography from '@material-ui/core/Typography';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 const IntervieweeAvailability: React.FC<IntervieweePoolAvailabilityProps> = ({
   poolCandidate,
-  setSelectedDateOfInterview
+  setSelectedDateOfInterview,
 }) => {
-  const [currentStartWeek, setCurrentStartWeek] = useState(getStartWeekDay(new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"})));
-
-  function getStartWeekDay(date: string) {
-    var d = new Date(date);
-    d.setHours(0, 0, 0, 0);
-    var day = d.getDay();
-    var diff = d.getDate() - day; // adjust when day is sunday
-    return new Date(d.setDate(diff)).toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
-  }
-
-  function isTimeReservedByCandidate(date: string) {
-    let times: Array<string> = poolCandidate.availability. map((time: any) => {
-      return time;
-    });
-    return times.some(t => DateTime.getUtcDate(t) === date);
-  }
-
-  function isTimeReservedInAnyDayByCandidate(day: string) {
-    let times: Array<string> = poolCandidate.availability. map((time: any) => {
-      return time;
-    });
-    times = times.filter(t => currentStartWeek === getStartWeekDay(t));
-    return times.some(t => new Date(t).toLocaleTimeString("en-US", {timeZone: "America/Los_Angeles"}) === day);
-  }
-
-  function GoToOffsetWeek(offset: number) {
-    setCurrentStartWeek(DateTime.getOffsetDateAndHour(currentStartWeek, 7 * offset, new Date(currentStartWeek).getHours()));
-  }
-
-  const dayHours: Array<number> = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
-  const days: Array<number> = [0, 1, 2, 3, 4, 5, 6];
-  const monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-  ];
-
-  useEffect(() => {
+  const useStyles = makeStyles({
+    root: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginLeft: '15px',
+    },
   });
+  const classes = useStyles();
 
-  const divStyle = {
-    width: '100vh'
-  };
+  const [currentStartWeek, setCurrentStartWeek] = useState(
+    DateTime.getCurrentStartWeekFrom(DateTime.getCurrentDateTimeInPT())
+  );
+
+  function isTimeReservedByCandidate(day: number, hour: number) {
+    let availability: Array<string> = poolCandidate.availability.map(
+      (date: any) => {
+        return date;
+      }
+    );
+    return availability.some(
+      date =>
+        date === DateTime.addDaysAndHoursToDate(currentStartWeek, day, hour)
+    );
+  }
+
+  function isHourInAvailability(hour: string) {
+    let availability: Array<string> = poolCandidate.availability.map(
+      (time: any) => {
+        return time;
+      }
+    );
+    availability = availability.filter(time => {
+      return currentStartWeek === DateTime.getCurrentStartWeekFrom(time);
+    });
+    return availability.some(date => date.split('T')[1] === hour);
+  }
+
+  function setWeekWithOffset(offset: number) {
+    setCurrentStartWeek(DateTime.addDaysToDate(currentStartWeek, offset));
+  }
+
+  const hoursOfDay: Array<number> = [
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    21, 22, 23,
+  ];
+  const days: Array<number> = [0, 1, 2, 3, 4, 5, 6];
+
+  useEffect(() => {});
 
   return (
     <UIMainContainer>
       <FormControl component="fieldset">
-        <RadioGroup
-          aria-label="datetime"
-          defaultValue="default"
-          name="radio-buttons-group"
-        >
-          <div style={{display: 'flex', justifyContent: 'center', marginBottom: '12px'}}>
-            <Button
-              variant="contained"
-              onClick={() => GoToOffsetWeek(-1)}>
-              <GrPrevious />
-            </Button>
-            <h3 style={{margin: '4px 20px 0 20px'}}>
-              {monthNames[new Date((DateTime.getOffsetDateAndHour(currentStartWeek, 0, 0))).getMonth()]}
-            </h3>
-            <Button
-              variant="contained"
-              onClick={() => GoToOffsetWeek(1)}>
-              <GrNext />
-            </Button>
-          </div>
+        <RadioGroup>
+          <Grid
+            container
+            direction="row"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Grid container item xs={2} justifyContent="center">
+              <IconButton onClick={() => setWeekWithOffset(-1)}>
+                <ArrowBackIosIcon />
+              </IconButton>
+            </Grid>
+            <Grid item xs={8}>
+              <Typography variant="h5" align="center">
+                {MONTHS[DateTime.getMonthFromStr(currentStartWeek)]}
+              </Typography>
+            </Grid>
+            <Grid container item xs={2} justifyContent="center">
+              <IconButton onClick={() => setWeekWithOffset(1)}>
+                <ArrowForwardIosIcon />
+              </IconButton>
+            </Grid>
+          </Grid>
+
           <TableContainer component={Paper}>
-          <Table style={divStyle} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell align="center">Time/Day</TableCell>
-                <TableCell align="center">Sun {new Date((DateTime.getOffsetDateAndHour(currentStartWeek, 0, 0))).getDate()}</TableCell>
-                <TableCell align="center">Mon {new Date((DateTime.getOffsetDateAndHour(currentStartWeek, 1, 0))).getDate()}</TableCell>
-                <TableCell align="center">Tue {new Date((DateTime.getOffsetDateAndHour(currentStartWeek, 2, 0))).getDate()}</TableCell>
-                <TableCell align="center">Wed {new Date((DateTime.getOffsetDateAndHour(currentStartWeek, 3, 0))).getDate()}</TableCell>
-                <TableCell align="center">Thu {new Date((DateTime.getOffsetDateAndHour(currentStartWeek, 4, 0))).getDate()}</TableCell>
-                <TableCell align="center">Fri {new Date((DateTime.getOffsetDateAndHour(currentStartWeek, 5, 0))).getDate()}</TableCell>
-                <TableCell align="center">Sat {new Date((DateTime.getOffsetDateAndHour(currentStartWeek, 6, 0))).getDate()}</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {dayHours.filter(d => isTimeReservedInAnyDayByCandidate(DateTime.getUtcDay(d))).map((hour: any) => (
-                <TableRow key={hour}>
-                  <TableCell component="th" scope="row">
-                    {DateTime.getUtcDay(hour)}
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell align="center">Time/Day</TableCell>
+                  <TableCell align="center">
+                    Sun {DateTime.addDaysToDateAndGetDay(currentStartWeek, 0)}
                   </TableCell>
-                  {days.map((day: any) => (
-                    <TableCell component="th" scope="row" key={DateTime.getOffsetDateAndHour(currentStartWeek, day, hour)}>
-                      {isTimeReservedByCandidate(DateTime.getOffsetDateAndHour(currentStartWeek, day, hour)) ? 
-                        <FormControlLabel onChange={() => {
-                          setSelectedDateOfInterview(DateTime.getOffsetDateAndHour(currentStartWeek, day, hour));
-                        }} value={DateTime.getOffsetDateAndHour(currentStartWeek, day, hour)} control={<Radio />} label='' />
-                        : null}
-                    </TableCell>
+                  <TableCell align="center">
+                    Mon {DateTime.addDaysToDateAndGetDay(currentStartWeek, 1)}
+                  </TableCell>
+                  <TableCell align="center">
+                    Tue {DateTime.addDaysToDateAndGetDay(currentStartWeek, 2)}
+                  </TableCell>
+                  <TableCell align="center">
+                    Wed {DateTime.addDaysToDateAndGetDay(currentStartWeek, 3)}
+                  </TableCell>
+                  <TableCell align="center">
+                    Thu {DateTime.addDaysToDateAndGetDay(currentStartWeek, 4)}
+                  </TableCell>
+                  <TableCell align="center">
+                    Fri {DateTime.addDaysToDateAndGetDay(currentStartWeek, 5)}
+                  </TableCell>
+                  <TableCell align="center">
+                    Sat {DateTime.addDaysToDateAndGetDay(currentStartWeek, 6)}
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {hoursOfDay
+                  .filter(hour =>
+                    isHourInAvailability(DateTime.getFormattedHour(hour))
+                  )
+                  .map((hour: any) => (
+                    <TableRow key={hour}>
+                      <TableCell component="th" scope="row" align="center">
+                        {DateTime.getFormattedHour(hour)}
+                      </TableCell>
+                      {days.map((day: any) => (
+                        <TableCell
+                          component="th"
+                          scope="row"
+                          key={day}
+                          align="center"
+                        >
+                          {isTimeReservedByCandidate(day, hour) ? (
+                            <FormControlLabel
+                              onChange={() => {
+                                setSelectedDateOfInterview(
+                                  DateTime.addDaysAndHoursToDate(
+                                    currentStartWeek,
+                                    day,
+                                    hour
+                                  )
+                                );
+                              }}
+                              value={DateTime.addDaysAndHoursToDate(
+                                currentStartWeek,
+                                day,
+                                hour
+                              )}
+                              label=""
+                              control={<Radio />}
+                              classes={classes}
+                            />
+                          ) : null}
+                        </TableCell>
+                      ))}
+                    </TableRow>
                   ))}
-              </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </RadioGroup>
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </RadioGroup>
       </FormControl>
     </UIMainContainer>
   );

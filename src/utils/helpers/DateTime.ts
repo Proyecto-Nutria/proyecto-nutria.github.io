@@ -32,8 +32,11 @@ export default class DateTime {
 
   static getCurrentDateTimeInPT(): string {
     return new Date(
-      new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }) + ' UTC'
-    ).toISOString().split('.')[0];
+      new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }) +
+        ' UTC'
+    )
+      .toISOString()
+      .split('.')[0];
   }
 
   static formatDateToDay(currentDate: Date) {
@@ -68,21 +71,39 @@ export default class DateTime {
     return momentumDate.format('YYYY-MM-DDTHH:mm:ss');
   }
 
-  static getUtcDate(utcDate: string){
-    let newDate = new Date(utcDate);
-    return newDate.toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
-  }
-
-  static getUtcDay(hours: number){
-    let currentDate = new Date();
-    currentDate.setHours(hours, 0, 0, 0);
-    return currentDate.toLocaleTimeString("en-US", {timeZone: "America/Los_Angeles"});
-  }
-
   static getOffsetDateAndHour(d: string, offset: number, hour: number) {
     var date = new Date(d);
     date.setHours(hour, 0, 0, 0);
     date.setDate(date.getDate() + offset);
-    return date.toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
+    return date.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' });
+  }
+
+  static getCurrentStartWeekFrom(date: string) {
+    const tempDate = moment(date);
+    return tempDate.startOf('week').format('YYYY-MM-DD');
+  }
+
+  static addDaysToDate(date: string, days: number) {
+    return moment(date).add(days, 'days').format('YYYY-MM-DD');
+  }
+
+  static addDaysAndHoursToDate(date: string, days: number, hours: number) {
+    return moment(date)
+      .add(days, 'days')
+      .add(hours, 'hours')
+      .format('YYYY-MM-DDTHH:mm:ss');
+  }
+
+  static getFormattedHour(hours: number) {
+    var time = `${hours}:00:00`;
+    return moment(time, 'HH:mm:ss').format('HH:mm:ss');
+  }
+
+  static addDaysToDateAndGetDay(date: string, days: number) {
+    return moment(date).add(days, 'days').format('DD');
+  }
+
+  static getMonthFromStr(date: string) {
+    return parseInt(date.split('-')[1]);
   }
 }

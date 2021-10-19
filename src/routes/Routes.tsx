@@ -2,16 +2,11 @@
 import AppHeader from 'components/User/UserHeader';
 import { useUserRole } from 'hooks/UserHooks';
 import { UserStatusContext } from 'providers/UserStatusProvider';
-import { Fragment, useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
 import {
-  EDIT_PATH,
-  HOME_PATH,
-  LANDING_PATH,
-  USER_INCOMING_INTERVIEWS_PATH,
-  USER_PAST_INTERVIEWS_PATH,
-  WEE_MOCK_PATH,
-  WER_MATCH_PATH,
+    EDIT_PATH, HOME_PATH, LANDING_PATH, USER_INCOMING_INTERVIEWS_PATH, USER_PAST_INTERVIEWS_PATH,
+    WEE_MOCK_PATH, WER_MATCH_PATH
 } from 'routes/paths';
 // Interviewee
 import IntervieweeMain from 'screens/Interviewee/Board';
