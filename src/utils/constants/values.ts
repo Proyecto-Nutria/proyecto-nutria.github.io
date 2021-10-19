@@ -50,3 +50,18 @@ export const POSITIONS: { [string: string]: string } = {
   'Full Time': 'FTE',
   'Explore/STEP': 'STEP',
 };
+
+export const MONTHS = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];

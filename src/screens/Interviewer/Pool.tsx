@@ -1,5 +1,5 @@
 import InterviewerPool from 'components/Interviewer/Pool/InterviewerPool';
-import { useReducer } from 'react';
+import React, { useReducer } from 'react';
 import { NO_CACHE } from 'utils/constants/apollo';
 import { INTERVIEWER_POOL_COPY } from 'utils/constants/copy';
 import { CREATE_INTERVIEW, VIEW_POOL } from 'utils/constants/endpoints';

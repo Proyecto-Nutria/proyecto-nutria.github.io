@@ -67,3 +67,17 @@ Note: Try to split the frontend in [components and screens](https://gist.github.
 ### Yet An Otter System
 
 [Site Link](https://proyecto-nutria.github.io/)
+
+### Known issues
+
+#### Can't run `yarn build:reason`. What can I do?
+
+- Please run `yarn build`.
+
+#### I get the error `'BROWSER' is not recognized as an internal or external command` when trying to start in Windows.
+
+Open `package.json` and remove `Browser=brave`. You can set an env variable to run in chrome if you want.
+
+```
+setx BROWSER chrome
+```

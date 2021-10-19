@@ -1,11 +1,13 @@
+import IntervieweeAvailability from 'components/Interviewer/Pool/IntervieweeAvailability';
 import UIMainContainer from 'components/UI/UIBoxContainer';
 import React, { useEffect, useState } from 'react';
+import DateTime from 'utils/helpers/DateTime';
 import { InterviewerPoolsProps } from 'utils/ts/propsInterfaces';
 
 import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
+import Modal from '@material-ui/core/Modal';
+import Snackbar from '@material-ui/core/Snackbar';
+import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -13,7 +15,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
-import Snackbar from '@material-ui/core/Snackbar';
+import EventNoteIcon from '@material-ui/icons/EventNote';
 import MuiAlert from '@material-ui/lab/Alert';
 
 function Alert(props: any) {
@@ -32,6 +34,39 @@ const InterviewerPool: React.FC<InterviewerPoolsProps> = ({
 }) => {
   const [successSnackBarOpen, setSuccessSnackBarOpen] = useState(false);
   const [failSnackBarOpen, setFailSnackBarOpen] = useState(false);
+
+  const [showPoolAvailability, setPoolAvailability] = useState(false);
+  const [selectedPoolCandidate, setPoolCandidate] = useState(null);
+  const [selectedDateOfInterview, setDateOfInterview] = useState('');
+  const [selectedCandidateUid, setSelectedCandidateUid] = useState('');
+
+  const [open, setOpen] = React.useState(false);
+  const handleClose = () => setOpen(false);
+
+  function showAvailabilityForCandidate(poolCandidate: any) {
+    setOpen(true);
+    setPoolAvailability(true);
+    setPoolCandidate(poolCandidate);
+    setDateOfInterview('');
+    setSelectedCandidateUid(poolCandidate.uid);
+  }
+
+  function setSelectedDateOfInterview(date: string) {
+    date = DateTime.momentumDateToPool(
+      DateTime.createMomentumDateFromStr(date)
+    );
+    setDateOfInterview(date);
+  }
+
+  const useStyles = makeStyles(_ => ({
+    modal: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  }));
+  const classes = useStyles();
+
   useEffect(() => {
     if (isError) {
       setFailSnackBarOpen(true);
@@ -97,24 +132,9 @@ const InterviewerPool: React.FC<InterviewerPoolsProps> = ({
                 <TableCell align="center">{poolCandidate.role}</TableCell>
                 <TableCell align="center">{poolCandidate.company}</TableCell>
                 <TableCell align="center">
-                  <FormControl>
-                    <Select
-                      value={pool[poolCandidate.uid] || ''}
-                      onChange={event =>
-                        poolSet({
-                          type: poolUpdateReducer,
-                          id: poolCandidate.uid,
-                          schedule: event.target.value,
-                        })
-                      }
-                    >
-                      {poolCandidate.availability.map((date, id) => (
-                        <MenuItem key={id} value={date}>
-                          {date}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
+                  <EventNoteIcon
+                    onClick={() => showAvailabilityForCandidate(poolCandidate)}
+                  />
                 </TableCell>
                 <TableCell align="center">
                   <Button
@@ -130,12 +150,17 @@ const InterviewerPool: React.FC<InterviewerPoolsProps> = ({
                     type="submit"
                     variant="contained"
                     color="primary"
+                    disabled={
+                      selectedDateOfInterview === '' ||
+                      poolCandidate.uid.toString() !==
+                        selectedCandidateUid.toString()
+                    }
                     onClick={() => {
                       createInterviewMutation(
                         poolCandidate.uid,
                         poolCandidate.awaiting,
                         poolCandidate.intervieweeId.toString(),
-                        pool[poolCandidate.uid],
+                        selectedDateOfInterview,
                         () => {
                           setSuccessSnackBarOpen(true);
                         },
@@ -151,6 +176,24 @@ const InterviewerPool: React.FC<InterviewerPoolsProps> = ({
           </TableBody>
         </Table>
       </TableContainer>
+      <Modal
+        disableEnforceFocus
+        disableAutoFocus
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        className={classes.modal}
+      >
+        <div>
+          {showPoolAvailability ? (
+            <IntervieweeAvailability
+              poolCandidate={selectedPoolCandidate}
+              setSelectedDateOfInterview={setSelectedDateOfInterview}
+            />
+          ) : null}
+        </div>
+      </Modal>
     </UIMainContainer>
   );
 };

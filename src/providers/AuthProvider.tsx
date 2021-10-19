@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { AppState, Auth0Provider } from '@auth0/auth0-react';
 
 const AuthProvider: React.FunctionComponent = ({ children }) => {
@@ -9,8 +10,6 @@ const AuthProvider: React.FunctionComponent = ({ children }) => {
       window.location.origin + '/#/home'
     );
   };
-
-  //TODO:Use useEffect to get the user metadata
 
   return (
     <Auth0Provider

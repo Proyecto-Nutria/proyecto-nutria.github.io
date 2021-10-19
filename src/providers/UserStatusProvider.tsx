@@ -1,4 +1,5 @@
-import { createContext, ReactNode, useEffect, useState } from 'react';
+import React, { createContext, ReactNode, useEffect, useState } from 'react';
+
 import { useIsFirstLogin } from '../hooks/UserHooks';
 
 export const UserStatusContext = createContext({

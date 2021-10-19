@@ -1,13 +1,8 @@
 import React from 'react';
-import {
-  ApolloProvider,
-  ApolloClient,
-  ApolloLink,
-  HttpLink,
-  InMemoryCache,
-} from '@apollo/client';
-import { onError } from '@apollo/client/link/error';
+
+import { ApolloClient, ApolloLink, ApolloProvider, HttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { onError } from '@apollo/client/link/error';
 import { useAuth0 } from '@auth0/auth0-react';
 
 const GraphProvider: React.FunctionComponent = ({ children }) => {

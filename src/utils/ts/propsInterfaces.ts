@@ -38,6 +38,11 @@ export interface InterviewerPoolsProps {
   isError: boolean;
 }
 
+export interface IntervieweePoolAvailabilityProps {
+  poolCandidate: any;
+  setSelectedDateOfInterview: any;
+}
+
 export interface InterviewerProfileProps {
   copy: Record<string, any>;
   modifyInterviewerMutation: any;
