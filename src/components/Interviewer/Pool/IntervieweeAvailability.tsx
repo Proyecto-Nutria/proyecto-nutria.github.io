@@ -33,6 +33,9 @@ const IntervieweeAvailability: React.FC<IntervieweePoolAvailabilityProps> = ({
       justifyContent: 'center',
       marginLeft: '15px',
     },
+    container: {
+      maxHeight: 640,
+    },
   });
   const classes = useStyles();
 
@@ -103,8 +106,8 @@ const IntervieweeAvailability: React.FC<IntervieweePoolAvailabilityProps> = ({
             </Grid>
           </Grid>
 
-          <TableContainer component={Paper}>
-            <Table>
+          <TableContainer component={Paper} className={classes.container}>
+            <Table stickyHeader>
               <TableHead>
                 <TableRow>
                   <TableCell align="center">Time/Day</TableCell>
