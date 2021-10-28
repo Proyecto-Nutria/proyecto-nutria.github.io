@@ -104,6 +104,6 @@ export default class DateTime {
   }
 
   static getMonthFromStr(date: string) {
-    return parseInt(date.split('-')[1]);
+    return parseInt(date.split('-')[1]) - 1;
   }
 }
