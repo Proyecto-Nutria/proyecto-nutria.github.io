@@ -90,7 +90,7 @@ const IntervieweeAvailability: React.FC<IntervieweePoolAvailabilityProps> = ({
             justifyContent="center"
           >
             <Grid container item xs={2} justifyContent="center">
-              <IconButton onClick={() => setWeekWithOffset(-1)}>
+              <IconButton onClick={() => setWeekWithOffset(-7)}>
                 <ArrowBackIosIcon />
               </IconButton>
             </Grid>
@@ -100,7 +100,7 @@ const IntervieweeAvailability: React.FC<IntervieweePoolAvailabilityProps> = ({
               </Typography>
             </Grid>
             <Grid container item xs={2} justifyContent="center">
-              <IconButton onClick={() => setWeekWithOffset(1)}>
+              <IconButton onClick={() => setWeekWithOffset(7)}>
                 <ArrowForwardIosIcon />
               </IconButton>
             </Grid>
